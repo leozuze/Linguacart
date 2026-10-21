@@ -1,0 +1,59 @@
+# Java / Maven
+backend-java/target/
+backend-java/.mvn/wrapper/maven-wrapper.jar
+*.class
+*.jar
+!.mvn/wrapper/maven-wrapper.jar
+*.log
+
+# Java IDEs
+.idea/
+*.iml
+.vscode/
+.classpath
+.project
+.settings/
+
+# Python
+model-service/.venv/
+model-service/venv/
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# Model artifacts and local data
+*.pt
+*.bin
+*.safetensors
+*.onnx
+research/data/embeddings/*.npy
+research/data/embeddings/*.npz
+research/data/embeddings/*.jsonl
+research/data/catalogue/*.jsonl
+research/data/queries/*.jsonl
+research/data/judgments/*.jsonl
+research/data/translation_pairs/*.jsonl
+
+# Environment files
+.env
+.env.*
+!.env.example
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Node / extension
+extension/node_modules/
+extension/dist/
+extension/build/
+npm-debug.log*
+yarn-error.log*
+
+# Test outputs
+coverage/
+test-results/
+playwright-report/
