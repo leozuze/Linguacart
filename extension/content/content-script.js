@@ -1,1 +1,1 @@
-// LinguaCart content script placeholder.
+console.log("LinguaCart content script is running");
