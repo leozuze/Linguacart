@@ -1,0 +1,32 @@
+torch threads: 4 of 8 logical cores
+Loading weights:   0%|          | 0/512 [00:00<?, ?it/s]Loading weights: 100%|██████████| 512/512 [00:00<00:00, 13380.63it/s]
+Loading weights:   0%|          | 0/199 [00:00<?, ?it/s]Loading weights:   5%|▌         | 10/199 [00:00<00:01, 95.43it/s]Loading weights:  10%|█         | 20/199 [00:00<00:01, 95.38it/s]Loading weights:  15%|█▌        | 30/199 [00:00<00:01, 86.25it/s]Loading weights:  20%|█▉        | 39/199 [00:00<00:02, 77.59it/s]Loading weights:  24%|██▎       | 47/199 [00:00<00:02, 75.36it/s]Loading weights: 100%|██████████| 199/199 [00:00<00:00, 309.64it/s]
+
+--- 1. Retrieval: direct Shona vs translated English query ---
+translated 8 queries in 12.5s (1.6s each)
+
+query           English           expected     C   B  B+lex
+munyu           the salt          p_salt      12   1      1
+shuga           sugar             p_sugar      1   1      1
+sukari          sugar             p_sugar      1   1      1
+mafuta ekubika  cooking oil       p_oil        2   1      1
+chibage         corn              p_maize      1   1      1
+mupunga         rice              p_rice       2   1      1
+foni            the telephone     p_phone      3   1      1
+tauro           towel             p_towel      3   1      1
+
+C  direct Shona + E5       top1=0.38  MRR=0.59
+B  translate -> E5         top1=1.00  MRR=1.00
+B + toy lexical            top1=1.00  MRR=1.00
+
+--- 2. Whole paragraph vs sentence-by-sentence ---
+whole paragraph (22.0s):
+  Munyu wetafura uyu wakaiswa iodine unokodzera kubika zuva nezuva. Unenge waomeswa zvakanaka, uchiyerera zvakasununguka uye wakawedzerwa iodine.
+
+split into 3 sentences (16.9s):
+  This iodized table salt is ideal for everyday cooking.
+  -> Munyu uyu wetafura une iodine unokodzera kubika zuva nezuva.
+  It is finely ground, free flowing and fortified with iodine.
+  -> Rakaomeswa zvakanaka, rinoyerera zvakasununguka uye rakasimbiswa nejodi.
+  Store in a cool, dry place.
+  -> Chengetedza panzvimbo inotonhorera uye yakaoma.
