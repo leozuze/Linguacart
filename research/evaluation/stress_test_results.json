@@ -1,0 +1,155 @@
+{
+  "created_at": "2026-10-23T22:20:24.605525+00:00",
+  "device": "cpu",
+  "load_seconds": {
+    "nllb": 11.3,
+    "e5": 11.3
+  },
+  "protected": [
+    {
+      "en": "Tastic Long Grain Parboiled Rice, 2 kg - Pack of 2, Model TG-2000",
+      "sn": "Tastic Long Grain Parboiled Rice, 2 kg - Pack ye2, Model TG-2000",
+      "tokens": {
+        "Tastic": true,
+        "2 kg": true,
+        "TG-2000": true
+      }
+    },
+    {
+      "en": "Samsung Galaxy A15 5G, 128GB, Model SM-A156B",
+      "sn": "Samsung Galaxy A15 5G, 128GB, Model SM-A156B",
+      "tokens": {
+        "Samsung": true,
+        "128GB": true,
+        "SM-A156B": true,
+        "5G": true
+      }
+    },
+    {
+      "en": "Price: $2.99 (was $4.50). Save 33%.",
+      "sn": "Mutengo: $2.99 (akanga ari $4.50).",
+      "tokens": {
+        "$2.99": true,
+        "$4.50": true,
+        "33%": false
+      }
+    },
+    {
+      "en": "Dettol Antiseptic Liquid 500ml, kills 99.9% of germs",
+      "sn": "Dettol Antiseptic Liquid 500ml, inouraya 99.9% yehutachiona",
+      "tokens": {
+        "Dettol": true,
+        "500ml": true,
+        "99.9%": true
+      }
+    },
+    {
+      "en": "Maize meal, 10 kg bag, 100% natural",
+      "sn": "Chibage chibage, 10 kg bag, 100% yemasikirwo",
+      "tokens": {
+        "10 kg": true,
+        "100%": true
+      }
+    },
+    {
+      "en": "WARNING: Contains peanuts and tree nuts. Keep out of reach of children.",
+      "sn": "CHIDZIDZO: Rine zvipembenene nemiti yemiti.",
+      "tokens": {
+        "peanuts": false
+      }
+    },
+    {
+      "en": "Allergen information: Contains wheat, milk and soy.",
+      "sn": "Allergen ruzivo: Rine gorosi, mukaka uye soya.",
+      "tokens": {
+        "wheat": false,
+        "milk": false,
+        "soy": true
+      }
+    }
+  ],
+  "long_text": [
+    {
+      "label": "medium description",
+      "input_tokens": 74,
+      "truncated": false,
+      "seconds": 32.4,
+      "output": "Iyi iodized tafura munyu yakanaka yokubheka zuva nezuva. iri finely grinded, akasununguka kuyerera uye akasimbiswa iodine kutsigira utano thyroid basa. Store munzvimbo inotonhorera, yakaoma kure zvakananga zuva chiedza. akakodzera mhuri yose. akaiswazve muhomwe resalable kuchengeta munyu kutsva kwenguva yakareba."
+    },
+    {
+      "label": "very long description",
+      "input_tokens": 578,
+      "truncated": true,
+      "seconds": 113.2,
+      "output": "Iyi iodized tafura munyu yakanakira kubika kwezuva nezuva. Iyo yakaomeswa zvirinani, inoyerera zvakasununguka uye inosimbiswa ne iodine kutsigira hutano hwezuva. Inokodzera mhuri yese. Inochengetwa munzvimbo inotonhorera, yakaoma kure nezuva rakananga. Inokodzera mhuri yese. Inoiswa muhomwe inodzokororwa kuchengetedza munyu wakatsva kwenguva yakareba. Iyi iodized tafura munyu yakanakira kubika kwezuva nezuva. Iyo yakaomeswa zvirinani, inoyerera zvakasununguka uye inosimbiswa ne iodine kutsigira hutano hwakanaka hwepanyama. Inochengetwa munzvimbo inotonhorera, yakaoma kure nezuva rakananga. Inokodzera mhuri yese. Inoiswa muhomwe inodzokororwa kuchengetedza munyu wakatsva kwenguva yakareba. Iyi iodized tafura yakanakira kubika zuva nezuva. Iyo yakaomeswa, inoyerera uye inosimbiswa ne iodine kune hutano hwakanaka basa."
+    }
+  ],
+  "batch": {
+    "seconds": 96.2,
+    "markers_kept": 50,
+    "swapped": 0
+  },
+  "retrieval": {
+    "top1": 0.38,
+    "mrr": 0.59,
+    "dim": 768,
+    "rows": [
+      {
+        "query": "munyu",
+        "expected": "p_salt",
+        "rank": 12
+      },
+      {
+        "query": "shuga",
+        "expected": "p_sugar",
+        "rank": 1
+      },
+      {
+        "query": "sukari",
+        "expected": "p_sugar",
+        "rank": 1
+      },
+      {
+        "query": "mafuta ekubika",
+        "expected": "p_oil",
+        "rank": 2
+      },
+      {
+        "query": "chibage",
+        "expected": "p_maize",
+        "rank": 1
+      },
+      {
+        "query": "mupunga",
+        "expected": "p_rice",
+        "rank": 2
+      },
+      {
+        "query": "foni",
+        "expected": "p_phone",
+        "rank": 3
+      },
+      {
+        "query": "tauro",
+        "expected": "p_towel",
+        "rank": 3
+      }
+    ]
+  },
+  "latency_seconds": {
+    "translate_1_short_title": 3.36,
+    "translate_1_description": 25.83,
+    "translate_16_titles": 35.42,
+    "embed_1_query": 0.06,
+    "embed_12_passages": 0.44
+  },
+  "hard_checks": {
+    "protected_count_matches": true,
+    "batch_length": true,
+    "batch_order_no_swaps": true,
+    "edge_length": true,
+    "edge_empty_unchanged": true,
+    "embed_count": true,
+    "embed_normalised": true
+  }
+}

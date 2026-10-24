@@ -1,0 +1,1 @@
+// LinguaCart content script placeholder.

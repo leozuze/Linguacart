@@ -1,0 +1,28 @@
+# Python
+.venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+
+# Secrets / local config
+.env
+
+# Model weights and caches
+.cache/
+*.bin
+*.safetensors
+
+# Large generated research data (keep folders, not files)
+research/data/embeddings/*
+!research/data/embeddings/.gitkeep
+
+# OS / IDE
+.DS_Store
+.idea/
+.vscode/
+
+# Java
+backend-java/target/
+
+# Node
+node_modules/
