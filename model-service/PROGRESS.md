@@ -28,12 +28,12 @@ Status doc written for the team. Next: push and open PR, then Step 3 (patch sche
 - [x] errors.py (ModelUnavailableError)
 - [x] translation.py (verified with real model)
 - [x] embedding.py (verified: 768 dims, norms 1.0, order preserved)
-- [ ] schemas.py patch: allow sna_Latn -> eng_Latn (proposal #1)
-- [ ] translation.py patch: sentence splitting, repetition guard, no-letters guard, fix max_length warning (proposal #3)
-- [ ] main.py (lifespan loading, routes, 503 handling)
-- [ ] GET /health returns "loaded" for both models
-- [ ] POST /translate works with curl
-- [ ] POST /embed works with curl ("munyu" + a passage)
+- [x] schemas.py patch: allow sna_Latn -> eng_Latn (proposal #1)
+- [x] translation.py patch: sentence splitting, repetition guard, no-letters guard, fix max_length warning (proposal #3)
+- [x] main.py (lifespan loading, routes, 503 handling)
+- [x] GET /health returns "loaded" for both models
+- [x] POST /translate works with curl
+- [x] POST /embed works with curl ("munyu" + a passage)
 
 ## Phase 2b: Quality and speed
 - [x] Stress test run (research/evaluation/stress_test.py), all 7 hard checks passed

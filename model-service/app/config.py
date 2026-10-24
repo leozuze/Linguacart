@@ -20,13 +20,17 @@ class Settings(BaseSettings):
     device: str = "cpu"  # never hardcode cuda; set DEVICE=cuda only if available
 
     # --- limits (decision #2: the specs define none, so these are ours) ---
-    max_input_tokens: int = 256    # truncate longer inputs to this many tokens
-    max_new_tokens: int = 256      # cap on generated Shona tokens
+    max_input_tokens: int = 256    # per sentence; longer sentences are chunked
+    max_new_tokens: int = 256      # cap on generated tokens per sentence
     num_beams: int = 4             # NLLB beam search width
-    batch_size: int = 16           # texts per forward pass
+    batch_size: int = 16           # sentences per forward pass
     max_items_per_request: int = 64  # larger requests are rejected with 422
 
-    # --- v1 language pair (only this direction is supported) ---
+    # --- generation guards (from the stress test) ---
+    no_repeat_ngram_size: int = 4  # stops "ane ane ane..." loops; 0 disables
+    torch_threads: int = 0         # 0 = torch default (4 on this machine)
+
+    # --- v1 language pair for tokenizer init ---
     source_language: str = "eng_Latn"
     target_language: str = "sna_Latn"
 
