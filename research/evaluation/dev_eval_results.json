@@ -24,6 +24,12 @@
         "P@5": 0.238,
         "MRR@10": 0.953,
         "nDCG@5": 0.957
+      },
+      "E hybrid, no glossary": {
+        "R@5": 0.956,
+        "P@5": 0.23,
+        "MRR@10": 0.89,
+        "nDCG@5": 0.902
       }
     },
     "by_type_mrr": {
@@ -31,55 +37,64 @@
         "C direct Shona+E5": 0.29,
         "B translate+E5": 0.75,
         "A glossary+BM25": 1.0,
-        "D hybrid": 0.75
+        "D hybrid": 0.75,
+        "E hybrid, no glossary": 0.75
       },
       "attribute": {
         "C direct Shona+E5": 0.67,
         "B translate+E5": 0.88,
         "A glossary+BM25": 1.0,
-        "D hybrid": 1.0
+        "D hybrid": 1.0,
+        "E hybrid, no glossary": 0.88
       },
       "brand_mix": {
         "C direct Shona+E5": 1.0,
         "B translate+E5": 1.0,
         "A glossary+BM25": 1.0,
-        "D hybrid": 1.0
+        "D hybrid": 1.0,
+        "E hybrid, no glossary": 0.83
       },
       "caps": {
         "C direct Shona+E5": 0.0,
         "B translate+E5": 1.0,
         "A glossary+BM25": 1.0,
-        "D hybrid": 1.0
+        "D hybrid": 1.0,
+        "E hybrid, no glossary": 1.0
       },
       "english": {
         "C direct Shona+E5": 1.0,
         "B translate+E5": 1.0,
         "A glossary+BM25": 1.0,
-        "D hybrid": 1.0
+        "D hybrid": 1.0,
+        "E hybrid, no glossary": 1.0
       },
       "multiword": {
         "C direct Shona+E5": 0.51,
         "B translate+E5": 0.96,
         "A glossary+BM25": 0.96,
-        "D hybrid": 0.96
+        "D hybrid": 0.96,
+        "E hybrid, no glossary": 0.96
       },
       "single": {
         "C direct Shona+E5": 0.16,
         "B translate+E5": 0.83,
         "A glossary+BM25": 1.0,
-        "D hybrid": 0.96
+        "D hybrid": 0.96,
+        "E hybrid, no glossary": 0.86
       },
       "typo": {
         "C direct Shona+E5": 0.1,
         "B translate+E5": 1.0,
         "A glossary+BM25": 1.0,
-        "D hybrid": 1.0
+        "D hybrid": 1.0,
+        "E hybrid, no glossary": 1.0
       },
       "variant": {
         "C direct Shona+E5": 1.0,
         "B translate+E5": 0.5,
         "A glossary+BM25": 1.0,
-        "D hybrid": 0.5
+        "D hybrid": 0.5,
+        "E hybrid, no glossary": 0.5
       }
     },
     "queries": [
@@ -111,13 +126,19 @@
             "p02",
             "p01",
             "p03"
+          ],
+          "E hybrid, no glossary": [
+            "p02",
+            "p01",
+            "p03"
           ]
         },
         "first_relevant_rank": {
           "C direct Shona+E5": 15,
           "B translate+E5": 1,
           "A glossary+BM25": 1,
-          "D hybrid": 1
+          "D hybrid": 1,
+          "E hybrid, no glossary": 1
         }
       },
       {
@@ -148,13 +169,19 @@
             "p04",
             "p05",
             "p21"
+          ],
+          "E hybrid, no glossary": [
+            "p04",
+            "p05",
+            "p21"
           ]
         },
         "first_relevant_rank": {
           "C direct Shona+E5": 3,
           "B translate+E5": 1,
           "A glossary+BM25": 1,
-          "D hybrid": 1
+          "D hybrid": 1,
+          "E hybrid, no glossary": 1
         }
       },
       {
@@ -185,13 +212,19 @@
             "p04",
             "p05",
             "p21"
+          ],
+          "E hybrid, no glossary": [
+            "p04",
+            "p05",
+            "p21"
           ]
         },
         "first_relevant_rank": {
           "C direct Shona+E5": 5,
           "B translate+E5": 1,
           "A glossary+BM25": 1,
-          "D hybrid": 1
+          "D hybrid": 1,
+          "E hybrid, no glossary": 1
         }
       },
       {
@@ -222,13 +255,19 @@
             "p07",
             "p08",
             "p09"
+          ],
+          "E hybrid, no glossary": [
+            "p07",
+            "p08",
+            "p09"
           ]
         },
         "first_relevant_rank": {
           "C direct Shona+E5": 5,
           "B translate+E5": 1,
           "A glossary+BM25": 1,
-          "D hybrid": 1
+          "D hybrid": 1,
+          "E hybrid, no glossary": 1
         }
       },
       {
@@ -259,13 +298,19 @@
             "p08",
             "p07",
             "p09"
+          ],
+          "E hybrid, no glossary": [
+            "p08",
+            "p07",
+            "p09"
           ]
         },
         "first_relevant_rank": {
           "C direct Shona+E5": 3,
           "B translate+E5": 2,
           "A glossary+BM25": 1,
-          "D hybrid": 2
+          "D hybrid": 2,
+          "E hybrid, no glossary": 2
         }
       },
       {
@@ -296,13 +341,19 @@
             "p12",
             "p10",
             "p11"
+          ],
+          "E hybrid, no glossary": [
+            "p12",
+            "p02",
+            "p11"
           ]
         },
         "first_relevant_rank": {
           "C direct Shona+E5": 2,
           "B translate+E5": 3,
           "A glossary+BM25": 1,
-          "D hybrid": 2
+          "D hybrid": 2,
+          "E hybrid, no glossary": 3
         }
       },
       {
@@ -334,13 +385,19 @@
             "p19",
             "p10",
             "p12"
+          ],
+          "E hybrid, no glossary": [
+            "p19",
+            "p10",
+            "p04"
           ]
         },
         "first_relevant_rank": {
           "C direct Shona+E5": 3,
           "B translate+E5": 2,
           "A glossary+BM25": 1,
-          "D hybrid": 2
+          "D hybrid": 2,
+          "E hybrid, no glossary": 2
         }
       },
       {
@@ -372,13 +429,19 @@
             "p19",
             "p10",
             "p12"
+          ],
+          "E hybrid, no glossary": [
+            "p19",
+            "p10",
+            "p04"
           ]
         },
         "first_relevant_rank": {
           "C direct Shona+E5": 1,
           "B translate+E5": 2,
           "A glossary+BM25": 1,
-          "D hybrid": 2
+          "D hybrid": 2,
+          "E hybrid, no glossary": 2
         }
       },
       {
@@ -409,13 +472,19 @@
             "p13",
             "p10",
             "p11"
+          ],
+          "E hybrid, no glossary": [
+            "p13",
+            "p10",
+            "p11"
           ]
         },
         "first_relevant_rank": {
           "C direct Shona+E5": 30,
           "B translate+E5": 1,
           "A glossary+BM25": 1,
-          "D hybrid": 1
+          "D hybrid": 1,
+          "E hybrid, no glossary": 1
         }
       },
       {
@@ -446,13 +515,19 @@
             "p14",
             "p15",
             "p16"
+          ],
+          "E hybrid, no glossary": [
+            "p14",
+            "p15",
+            "p16"
           ]
         },
         "first_relevant_rank": {
           "C direct Shona+E5": 24,
           "B translate+E5": 1,
           "A glossary+BM25": 1,
-          "D hybrid": 1
+          "D hybrid": 1,
+          "E hybrid, no glossary": 1
         }
       },
       {
@@ -484,13 +559,19 @@
             "p16",
             "p14",
             "p09"
+          ],
+          "E hybrid, no glossary": [
+            "p16",
+            "p14",
+            "p15"
           ]
         },
         "first_relevant_rank": {
           "C direct Shona+E5": 3,
           "B translate+E5": 1,
           "A glossary+BM25": 1,
-          "D hybrid": 1
+          "D hybrid": 1,
+          "E hybrid, no glossary": 1
         }
       },
       {
@@ -521,13 +602,19 @@
             "p17",
             "p04",
             "p06"
+          ],
+          "E hybrid, no glossary": [
+            "p17",
+            "p04",
+            "p06"
           ]
         },
         "first_relevant_rank": {
           "C direct Shona+E5": 4,
           "B translate+E5": 1,
           "A glossary+BM25": 1,
-          "D hybrid": 1
+          "D hybrid": 1,
+          "E hybrid, no glossary": 1
         }
       },
       {
@@ -558,13 +645,19 @@
             "p18",
             "p06",
             "p21"
+          ],
+          "E hybrid, no glossary": [
+            "p18",
+            "p06",
+            "p21"
           ]
         },
         "first_relevant_rank": {
           "C direct Shona+E5": 1,
           "B translate+E5": 1,
           "A glossary+BM25": 1,
-          "D hybrid": 1
+          "D hybrid": 1,
+          "E hybrid, no glossary": 1
         }
       },
       {
@@ -595,13 +688,19 @@
             "p20",
             "p46",
             "p11"
+          ],
+          "E hybrid, no glossary": [
+            "p20",
+            "p46",
+            "p11"
           ]
         },
         "first_relevant_rank": {
           "C direct Shona+E5": 22,
           "B translate+E5": 1,
           "A glossary+BM25": 1,
-          "D hybrid": 1
+          "D hybrid": 1,
+          "E hybrid, no glossary": 1
         }
       },
       {
@@ -632,13 +731,19 @@
             "p21",
             "p05",
             "p41"
+          ],
+          "E hybrid, no glossary": [
+            "p21",
+            "p05",
+            "p41"
           ]
         },
         "first_relevant_rank": {
           "C direct Shona+E5": 3,
           "B translate+E5": 1,
           "A glossary+BM25": 1,
-          "D hybrid": 1
+          "D hybrid": 1,
+          "E hybrid, no glossary": 1
         }
       },
       {
@@ -669,13 +774,19 @@
             "p23",
             "p22",
             "p31"
+          ],
+          "E hybrid, no glossary": [
+            "p23",
+            "p22",
+            "p31"
           ]
         },
         "first_relevant_rank": {
           "C direct Shona+E5": 4,
           "B translate+E5": 1,
           "A glossary+BM25": 1,
-          "D hybrid": 1
+          "D hybrid": 1,
+          "E hybrid, no glossary": 1
         }
       },
       {
@@ -706,13 +817,19 @@
             "p26",
             "p53",
             "p28"
+          ],
+          "E hybrid, no glossary": [
+            "p26",
+            "p53",
+            "p28"
           ]
         },
         "first_relevant_rank": {
           "C direct Shona+E5": 49,
           "B translate+E5": 1,
           "A glossary+BM25": 1,
-          "D hybrid": 1
+          "D hybrid": 1,
+          "E hybrid, no glossary": 1
         }
       },
       {
@@ -743,13 +860,19 @@
             "p25",
             "p30",
             "p53"
+          ],
+          "E hybrid, no glossary": [
+            "p25",
+            "p30",
+            "p53"
           ]
         },
         "first_relevant_rank": {
           "C direct Shona+E5": 5,
           "B translate+E5": 1,
           "A glossary+BM25": 1,
-          "D hybrid": 1
+          "D hybrid": 1,
+          "E hybrid, no glossary": 1
         }
       },
       {
@@ -780,13 +903,19 @@
             "p29",
             "p46",
             "p02"
+          ],
+          "E hybrid, no glossary": [
+            "p46",
+            "p02",
+            "p45"
           ]
         },
         "first_relevant_rank": {
           "C direct Shona+E5": 26,
           "B translate+E5": 4,
           "A glossary+BM25": 1,
-          "D hybrid": 1
+          "D hybrid": 1,
+          "E hybrid, no glossary": 4
         }
       },
       {
@@ -817,13 +946,19 @@
             "p32",
             "p36",
             "p38"
+          ],
+          "E hybrid, no glossary": [
+            "p42",
+            "p41",
+            "p32"
           ]
         },
         "first_relevant_rank": {
           "C direct Shona+E5": 44,
           "B translate+E5": 14,
           "A glossary+BM25": 1,
-          "D hybrid": 2
+          "D hybrid": 2,
+          "E hybrid, no glossary": 14
         }
       },
       {
@@ -854,13 +989,19 @@
             "p38",
             "p39",
             "p32"
+          ],
+          "E hybrid, no glossary": [
+            "p38",
+            "p39",
+            "p32"
           ]
         },
         "first_relevant_rank": {
           "C direct Shona+E5": 45,
           "B translate+E5": 1,
           "A glossary+BM25": 1,
-          "D hybrid": 1
+          "D hybrid": 1,
+          "E hybrid, no glossary": 1
         }
       },
       {
@@ -891,13 +1032,19 @@
             "p42",
             "p34",
             "p41"
+          ],
+          "E hybrid, no glossary": [
+            "p42",
+            "p34",
+            "p41"
           ]
         },
         "first_relevant_rank": {
           "C direct Shona+E5": 3,
           "B translate+E5": 1,
           "A glossary+BM25": 1,
-          "D hybrid": 1
+          "D hybrid": 1,
+          "E hybrid, no glossary": 1
         }
       },
       {
@@ -928,13 +1075,19 @@
             "p40",
             "p04",
             "p50"
+          ],
+          "E hybrid, no glossary": [
+            "p40",
+            "p04",
+            "p50"
           ]
         },
         "first_relevant_rank": {
           "C direct Shona+E5": 31,
           "B translate+E5": 1,
           "A glossary+BM25": 1,
-          "D hybrid": 1
+          "D hybrid": 1,
+          "E hybrid, no glossary": 1
         }
       },
       {
@@ -965,13 +1118,19 @@
             "p44",
             "p43",
             "p46"
+          ],
+          "E hybrid, no glossary": [
+            "p44",
+            "p43",
+            "p46"
           ]
         },
         "first_relevant_rank": {
           "C direct Shona+E5": 8,
           "B translate+E5": 1,
           "A glossary+BM25": 1,
-          "D hybrid": 1
+          "D hybrid": 1,
+          "E hybrid, no glossary": 1
         }
       },
       {
@@ -1002,13 +1161,19 @@
             "p45",
             "p46",
             "p22"
+          ],
+          "E hybrid, no glossary": [
+            "p45",
+            "p46",
+            "p22"
           ]
         },
         "first_relevant_rank": {
           "C direct Shona+E5": 29,
           "B translate+E5": 1,
           "A glossary+BM25": 1,
-          "D hybrid": 1
+          "D hybrid": 1,
+          "E hybrid, no glossary": 1
         }
       },
       {
@@ -1039,13 +1204,19 @@
             "p47",
             "p49",
             "p48"
+          ],
+          "E hybrid, no glossary": [
+            "p47",
+            "p49",
+            "p48"
           ]
         },
         "first_relevant_rank": {
           "C direct Shona+E5": 3,
           "B translate+E5": 1,
           "A glossary+BM25": 1,
-          "D hybrid": 1
+          "D hybrid": 1,
+          "E hybrid, no glossary": 1
         }
       },
       {
@@ -1076,13 +1247,19 @@
             "p53",
             "p51",
             "p02"
+          ],
+          "E hybrid, no glossary": [
+            "p51",
+            "p02",
+            "p50"
           ]
         },
         "first_relevant_rank": {
           "C direct Shona+E5": 33,
           "B translate+E5": 9,
           "A glossary+BM25": 1,
-          "D hybrid": 1
+          "D hybrid": 1,
+          "E hybrid, no glossary": 9
         }
       },
       {
@@ -1113,13 +1290,19 @@
             "p35",
             "p41",
             "p39"
+          ],
+          "E hybrid, no glossary": [
+            "p35",
+            "p41",
+            "p39"
           ]
         },
         "first_relevant_rank": {
           "C direct Shona+E5": 34,
           "B translate+E5": 2,
           "A glossary+BM25": 1,
-          "D hybrid": 1
+          "D hybrid": 1,
+          "E hybrid, no glossary": 1
         }
       },
       {
@@ -1150,13 +1333,19 @@
             "p31",
             "p29",
             "p30"
+          ],
+          "E hybrid, no glossary": [
+            "p31",
+            "p29",
+            "p30"
           ]
         },
         "first_relevant_rank": {
           "C direct Shona+E5": 18,
           "B translate+E5": 1,
           "A glossary+BM25": 1,
-          "D hybrid": 1
+          "D hybrid": 1,
+          "E hybrid, no glossary": 1
         }
       },
       {
@@ -1188,13 +1377,19 @@
             "p32",
             "p33",
             "p07"
+          ],
+          "E hybrid, no glossary": [
+            "p32",
+            "p33",
+            "p07"
           ]
         },
         "first_relevant_rank": {
           "C direct Shona+E5": 1,
           "B translate+E5": 1,
           "A glossary+BM25": 1,
-          "D hybrid": 1
+          "D hybrid": 1,
+          "E hybrid, no glossary": 1
         }
       },
       {
@@ -1227,13 +1422,19 @@
             "p50",
             "p06",
             "p03"
+          ],
+          "E hybrid, no glossary": [
+            "p50",
+            "p06",
+            "p03"
           ]
         },
         "first_relevant_rank": {
           "C direct Shona+E5": 2,
           "B translate+E5": 1,
           "A glossary+BM25": 1,
-          "D hybrid": 1
+          "D hybrid": 1,
+          "E hybrid, no glossary": 1
         }
       },
       {
@@ -1266,13 +1467,19 @@
             "p51",
             "p22",
             "p50"
+          ],
+          "E hybrid, no glossary": [
+            "p51",
+            "p22",
+            "p50"
           ]
         },
         "first_relevant_rank": {
           "C direct Shona+E5": 1,
           "B translate+E5": 1,
           "A glossary+BM25": 2,
-          "D hybrid": 1
+          "D hybrid": 1,
+          "E hybrid, no glossary": 1
         }
       },
       {
@@ -1305,13 +1512,19 @@
             "p22",
             "p23",
             "p24"
+          ],
+          "E hybrid, no glossary": [
+            "p22",
+            "p23",
+            "p24"
           ]
         },
         "first_relevant_rank": {
           "C direct Shona+E5": 16,
           "B translate+E5": 1,
           "A glossary+BM25": 1,
-          "D hybrid": 1
+          "D hybrid": 1,
+          "E hybrid, no glossary": 1
         }
       },
       {
@@ -1343,13 +1556,19 @@
             "p08",
             "p07",
             "p35"
+          ],
+          "E hybrid, no glossary": [
+            "p08",
+            "p35",
+            "p28"
           ]
         },
         "first_relevant_rank": {
           "C direct Shona+E5": 1,
           "B translate+E5": 1,
           "A glossary+BM25": 1,
-          "D hybrid": 1
+          "D hybrid": 1,
+          "E hybrid, no glossary": 1
         }
       },
       {
@@ -1381,13 +1600,19 @@
             "p35",
             "p08",
             "p34"
+          ],
+          "E hybrid, no glossary": [
+            "p35",
+            "p08",
+            "p34"
           ]
         },
         "first_relevant_rank": {
           "C direct Shona+E5": 22,
           "B translate+E5": 1,
           "A glossary+BM25": 1,
-          "D hybrid": 1
+          "D hybrid": 1,
+          "E hybrid, no glossary": 1
         }
       },
       {
@@ -1419,13 +1644,19 @@
             "p11",
             "p10",
             "p12"
+          ],
+          "E hybrid, no glossary": [
+            "p11",
+            "p10",
+            "p19"
           ]
         },
         "first_relevant_rank": {
           "C direct Shona+E5": 7,
           "B translate+E5": 1,
           "A glossary+BM25": 1,
-          "D hybrid": 1
+          "D hybrid": 1,
+          "E hybrid, no glossary": 1
         }
       },
       {
@@ -1457,13 +1688,19 @@
             "p12",
             "p11",
             "p10"
+          ],
+          "E hybrid, no glossary": [
+            "p12",
+            "p11",
+            "p01"
           ]
         },
         "first_relevant_rank": {
           "C direct Shona+E5": 7,
           "B translate+E5": 1,
           "A glossary+BM25": 1,
-          "D hybrid": 1
+          "D hybrid": 1,
+          "E hybrid, no glossary": 1
         }
       },
       {
@@ -1495,13 +1732,19 @@
             "p54",
             "p21",
             "p02"
+          ],
+          "E hybrid, no glossary": [
+            "p54",
+            "p21",
+            "p02"
           ]
         },
         "first_relevant_rank": {
           "C direct Shona+E5": 2,
           "B translate+E5": 1,
           "A glossary+BM25": 1,
-          "D hybrid": 1
+          "D hybrid": 1,
+          "E hybrid, no glossary": 1
         }
       },
       {
@@ -1533,13 +1776,19 @@
             "p43",
             "p44",
             "p49"
+          ],
+          "E hybrid, no glossary": [
+            "p43",
+            "p44",
+            "p49"
           ]
         },
         "first_relevant_rank": {
           "C direct Shona+E5": 1,
           "B translate+E5": 1,
           "A glossary+BM25": 1,
-          "D hybrid": 1
+          "D hybrid": 1,
+          "E hybrid, no glossary": 1
         }
       },
       {
@@ -1571,13 +1820,19 @@
             "p49",
             "p17",
             "p43"
+          ],
+          "E hybrid, no glossary": [
+            "p49",
+            "p17",
+            "p43"
           ]
         },
         "first_relevant_rank": {
           "C direct Shona+E5": 1,
           "B translate+E5": 1,
           "A glossary+BM25": 1,
-          "D hybrid": 1
+          "D hybrid": 1,
+          "E hybrid, no glossary": 1
         }
       },
       {
@@ -1608,13 +1863,19 @@
             "p01",
             "p02",
             "p05"
+          ],
+          "E hybrid, no glossary": [
+            "p01",
+            "p02",
+            "p05"
           ]
         },
         "first_relevant_rank": {
           "C direct Shona+E5": 6,
           "B translate+E5": 1,
           "A glossary+BM25": 1,
-          "D hybrid": 1
+          "D hybrid": 1,
+          "E hybrid, no glossary": 1
         }
       },
       {
@@ -1645,13 +1906,19 @@
             "p04",
             "p05",
             "p21"
+          ],
+          "E hybrid, no glossary": [
+            "p04",
+            "p05",
+            "p21"
           ]
         },
         "first_relevant_rank": {
           "C direct Shona+E5": 1,
           "B translate+E5": 1,
           "A glossary+BM25": 1,
-          "D hybrid": 1
+          "D hybrid": 1,
+          "E hybrid, no glossary": 1
         }
       },
       {
@@ -1682,13 +1949,19 @@
             "p07",
             "p02",
             "p08"
+          ],
+          "E hybrid, no glossary": [
+            "p07",
+            "p02",
+            "p08"
           ]
         },
         "first_relevant_rank": {
           "C direct Shona+E5": 2,
           "B translate+E5": 1,
           "A glossary+BM25": 1,
-          "D hybrid": 1
+          "D hybrid": 1,
+          "E hybrid, no glossary": 1
         }
       },
       {
@@ -1720,13 +1993,19 @@
             "p10",
             "p19",
             "p11"
+          ],
+          "E hybrid, no glossary": [
+            "p19",
+            "p10",
+            "p11"
           ]
         },
         "first_relevant_rank": {
           "C direct Shona+E5": 1,
           "B translate+E5": 2,
           "A glossary+BM25": 1,
-          "D hybrid": 1
+          "D hybrid": 1,
+          "E hybrid, no glossary": 2
         }
       },
       {
@@ -1757,13 +2036,19 @@
             "p36",
             "p37",
             "p32"
+          ],
+          "E hybrid, no glossary": [
+            "p37",
+            "p36",
+            "p32"
           ]
         },
         "first_relevant_rank": {
           "C direct Shona+E5": 1,
           "B translate+E5": 1,
           "A glossary+BM25": 1,
-          "D hybrid": 1
+          "D hybrid": 1,
+          "E hybrid, no glossary": 2
         }
       },
       {
@@ -1792,13 +2077,19 @@
             "p37",
             "p36",
             "p35"
+          ],
+          "E hybrid, no glossary": [
+            "p37",
+            "p36",
+            "p35"
           ]
         },
         "first_relevant_rank": {
           "C direct Shona+E5": 1,
           "B translate+E5": 1,
           "A glossary+BM25": 1,
-          "D hybrid": 1
+          "D hybrid": 1,
+          "E hybrid, no glossary": 1
         }
       },
       {
@@ -1829,13 +2120,19 @@
             "p52",
             "p48",
             "p46"
+          ],
+          "E hybrid, no glossary": [
+            "p52",
+            "p48",
+            "p46"
           ]
         },
         "first_relevant_rank": {
           "C direct Shona+E5": 1,
           "B translate+E5": 1,
           "A glossary+BM25": 1,
-          "D hybrid": 1
+          "D hybrid": 1,
+          "E hybrid, no glossary": 1
         }
       },
       {
@@ -1866,13 +2163,19 @@
             "p07",
             "p08",
             "p09"
+          ],
+          "E hybrid, no glossary": [
+            "p07",
+            "p08",
+            "p09"
           ]
         },
         "first_relevant_rank": {
           "C direct Shona+E5": 10,
           "B translate+E5": 1,
           "A glossary+BM25": 1,
-          "D hybrid": 1
+          "D hybrid": 1,
+          "E hybrid, no glossary": 1
         }
       },
       {
@@ -1903,13 +2206,19 @@
             "p07",
             "p08",
             "p09"
+          ],
+          "E hybrid, no glossary": [
+            "p07",
+            "p08",
+            "p09"
           ]
         },
         "first_relevant_rank": {
           "C direct Shona+E5": 41,
           "B translate+E5": 1,
           "A glossary+BM25": 1,
-          "D hybrid": 1
+          "D hybrid": 1,
+          "E hybrid, no glossary": 1
         }
       },
       {
@@ -1938,13 +2247,19 @@
             "p07",
             "p08",
             "p09"
+          ],
+          "E hybrid, no glossary": [
+            "p07",
+            "p08",
+            "p09"
           ]
         },
         "first_relevant_rank": {
           "C direct Shona+E5": 1,
           "B translate+E5": 1,
           "A glossary+BM25": 1,
-          "D hybrid": 1
+          "D hybrid": 1,
+          "E hybrid, no glossary": 1
         }
       },
       {
@@ -1973,13 +2288,19 @@
             "p38",
             "p39",
             "p32"
+          ],
+          "E hybrid, no glossary": [
+            "p38",
+            "p39",
+            "p32"
           ]
         },
         "first_relevant_rank": {
           "C direct Shona+E5": 1,
           "B translate+E5": 1,
           "A glossary+BM25": 1,
-          "D hybrid": 1
+          "D hybrid": 1,
+          "E hybrid, no glossary": 1
         }
       },
       {
@@ -2008,13 +2329,19 @@
             "p43",
             "p44",
             "p49"
+          ],
+          "E hybrid, no glossary": [
+            "p43",
+            "p44",
+            "p49"
           ]
         },
         "first_relevant_rank": {
           "C direct Shona+E5": 1,
           "B translate+E5": 1,
           "A glossary+BM25": 1,
-          "D hybrid": 1
+          "D hybrid": 1,
+          "E hybrid, no glossary": 1
         }
       },
       {
@@ -2043,13 +2370,19 @@
             "p21",
             "p05",
             "p04"
+          ],
+          "E hybrid, no glossary": [
+            "p21",
+            "p05",
+            "p04"
           ]
         },
         "first_relevant_rank": {
           "C direct Shona+E5": 1,
           "B translate+E5": 1,
           "A glossary+BM25": 1,
-          "D hybrid": 1
+          "D hybrid": 1,
+          "E hybrid, no glossary": 1
         }
       }
     ],
@@ -2057,7 +2390,7 @@
       "vector": 0.6,
       "lexical": 0.4
     },
-    "query_translate_seconds": 91.9
+    "query_translate_seconds": 44.2
   },
   "translation": {
     "seconds": 151.2,

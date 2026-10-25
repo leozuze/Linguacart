@@ -213,3 +213,9 @@ Synthetic dev set: 54 products, 53 Shona/English queries, 40 product-page segmen
 ### Needed from a Shona speaker
 
 Review `research/evaluation/translation_review.csv` (start with the safety rows), the queries in `research/data/queries/dev_queries.jsonl`, and the glossary in `research/data/glossary/dev_glossary_starter.jsonl`.
+
+### 10.1 Query pipeline v2 and glossary caveat (2026-10-24)
+
+After lowercasing queries before translation and cleaning translated queries (drop leading article, trailing punctuation): the ALL-CAPS query recovered (B 0.10 -> 1.00), `foni` left the failure list, brand_mix D reached 1.00. Overall MRR@10: C 0.42, B 0.89, D 0.95.
+
+**Caveat:** the glossary (46 terms), queries, relevance grades and catalogue are all Claude-drafted and unreviewed, and a synonym was added to the glossary after seeing a failure. D and A are therefore inflated and only B vs C is a fair comparison. NLLB still mistranslates several rare words (gumbeze -> "coat", badza -> "beware of it"); the glossary is hiding this. System E (hybrid without glossary) was added to measure that. The dev set is a smoke test, not an evaluation, and the glossary is not usable as fine-tuning data.

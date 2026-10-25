@@ -214,7 +214,8 @@ def run_retrieval():
     cvecs = api_embed([("query", q) for q in qtexts])
     tvecs = api_embed([("query", e) for e in en])
 
-    systems = ["C direct Shona+E5", "B translate+E5", "A glossary+BM25", "D hybrid"]
+    systems = ["C direct Shona+E5", "B translate+E5", "A glossary+BM25", "D hybrid",
+               "E hybrid, no glossary"]
     per = {s: [] for s in systems}
     detail = []
     for q, e, cv, tv in zip(queries, en, cvecs, tvecs):
@@ -231,8 +232,10 @@ def run_retrieval():
         b_sc = [dot(tv, pv) for pv in pvecs]
         a_sc = bm25.score(a_tokens)
         d_sc = [W_VEC * v + W_LEX * l for v, l in zip(minmax(b_sc), minmax(bm25.score(d_tokens)))]
+        e_tokens = orig + tokens(e)  # same as D but with NO glossary terms
+        e_sc = [W_VEC * v + W_LEX * l for v, l in zip(minmax(b_sc), minmax(bm25.score(e_tokens)))]
         ranks = {systems[0]: rank(c_sc), systems[1]: rank(b_sc),
-                 systems[2]: rank(a_sc) if max(a_sc) > 0 else [], systems[3]: rank(d_sc)}
+                 systems[2]: rank(a_sc) if max(a_sc) > 0 else [], systems[3]: rank(d_sc), systems[4]: rank(e_sc)}
         for s in systems:
             per[s].append((q, metrics(ranks[s], rel)))
         detail.append({"queryId": q["queryId"], "query": q["query"], "type": q["type"],
