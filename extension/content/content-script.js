@@ -33,10 +33,36 @@ function getListingItems() {
 }
 
 // ---------- Segmenter ----------
+const PRICE_RE = /(?:INR|USD|ZiG|ZWL|₹|\$)\s?\d[\d,]*(?:\.\d+)?/g;
+const DATE_RE =
+  /\b(?:(?:Mon|Tue|Wed|Thu|Fri|Sat|Sun),\s)?(?:Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)[a-z]*\s\d{1,2}(?:\s?[-–]\s?\d{1,2})?\b/g;
+const COUNT_RE = /\b\d[\d,.]*[KkMm]\+?(?![A-Za-z])/g; // 17.1K, 10K+
+const CODE_RE = /\b(?=[\w-]*\d)(?=[\w-]*[A-Za-z])\w+(?:-\w+)*\b/g; // WH-CH720N, IPX7
+const NUM_RE = /\d[\d,]*(?:\.\d+)?\+?/g;
+
+// Where on the page a string lives (selectors are from memory: check with Inspect)
+const ROLE_SELECTORS = [
+  ["product", '#productTitle, div[data-component-type="s-search-result"] h2'],
+  ["footer", "#navFooter"],
+  ["header", "#navbar, #nav-main, #nav-belt"],
+  ["filters", "#s-refinements"],
+  ["results", 'div[data-component-type="s-search-result"]'],
+];
+
+function roleOf(el) {
+  // product titles are links to product pages, even in carousels
+  const link = el.closest('a[href*="/dp/"]');
+  if (link && el.textContent.trim().split(/\s+/).length >= 5) return "product";
+
+  for (const [role, selector] of ROLE_SELECTORS) {
+    if (el.closest(selector)) return role;
+  }
+  return "other";
+}
+
 function isVisible(el) {
   const rect = el.getBoundingClientRect();
   if (rect.width < 2 || rect.height < 2) return false;
-  // hidden "screen reader only" text is often parked far off the page
   if (rect.right + window.scrollX <= 0 || rect.bottom + window.scrollY <= 0) return false;
   const style = getComputedStyle(el);
   return style.display !== "none" && style.visibility !== "hidden";
@@ -56,9 +82,9 @@ function collectSegments(root = document.body) {
     acceptNode(node) {
       const parent = node.parentElement;
       if (!parent || SKIP_TAGS.has(parent.tagName)) return NodeFilter.FILTER_REJECT;
-      if (parent.closest(".a-price, [translate='no']")) return NodeFilter.FILTER_REJECT;
+      if (parent.closest(".a-price, .a-offscreen, [translate='no']")) return NodeFilter.FILTER_REJECT;
       const text = node.textContent.replace(/\s+/g, " ").trim();
-      if (!text || !/\p{L}/u.test(text)) return NodeFilter.FILTER_REJECT; // needs letters
+      if (!text || !/\p{L}/u.test(text)) return NodeFilter.FILTER_REJECT;
       if (!isVisible(parent)) return NodeFilter.FILTER_REJECT;
       return NodeFilter.FILTER_ACCEPT;
     },
@@ -71,6 +97,7 @@ function collectSegments(root = document.body) {
     const rect = node.parentElement.getBoundingClientRect();
     segments.push({
       text,
+      role: roleOf(node.parentElement),
       protected: text.match(PROTECTED_RE) || [],
       inViewport: inViewport(rect),
     });
@@ -78,41 +105,63 @@ function collectSegments(root = document.body) {
   return segments;
 }
 
-// Replace numbers, prices and dates with placeholders so repeated patterns group together
+// Replace prices, dates, counts, model codes and numbers with placeholders
 function toTemplate(text) {
-  const words = text.split(" ").length;
-  if (words > 9) return text; // long strings are product content, not templates
   return text
-    .replace(/(?:INR|USD|ZiG|ZWL|₹|\$)\s?\d[\d,]*(?:\.\d+)?/g, "{PRICE}")
-    .replace(/\b(?:Mon|Tue|Wed|Thu|Fri|Sat|Sun), [A-Z][a-z]{2} \d{1,2}\b/g, "{DATE}")
-    .replace(/\d[\d,]*(?:\.\d+)?[KkMm]?\+?/g, "{N}");
+    .replace(PRICE_RE, "{PRICE}")
+    .replace(DATE_RE, "{DATE}")
+    .replace(COUNT_RE, "{N}")
+    .replace(CODE_RE, "{CODE}")
+    .replace(NUM_RE, "{N}");
+}
+
+function kindOf(seg, template) {
+  if (seg.role === "product") return "content";
+  if (template.split(" ").length > 9) return "content";
+  return /\{[A-Z]+\}/.test(template) ? "template" : "label";
 }
 
 function runSegmenter() {
   const segs = collectSegments();
-  const unique = [...new Set(segs.map((s) => s.text))];
+  const unique = new Map();
+  for (const s of segs) if (!unique.has(s.text)) unique.set(s.text, s);
 
   const groups = new Map();
-  for (const text of unique) {
-    const key = toTemplate(text);
-    if (!groups.has(key)) groups.set(key, { template: key, count: 0, example: text });
-    groups.get(key).count++;
+  for (const s of unique.values()) {
+    const template = toTemplate(s.text);
+    // nothing left to translate once placeholders are removed
+    if (!/\p{L}{2,}/u.test(template.replace(/\{[A-Z]+\}/g, ""))) continue;
+    const kind = kindOf(s, template);
+    const text = kind === "content" ? s.text : template;
+    const key = kind + "|" + text;
+    if (!groups.has(key)) groups.set(key, { kind, role: s.role, text });
   }
 
-  // strings with no real words left after masking (like "({N})") need no translation
-  const needsTranslation = [...groups.values()].filter((g) =>
-    /\p{L}{2,}/u.test(g.template.replace(/\{[A-Z]+\}/g, ""))
-  );
-  const templated = needsTranslation.filter((g) => g.template.includes("{"));
-  const content = needsTranslation.filter((g) => !g.template.includes("{") && g.template.split(" ").length > 9);
-  const labels = needsTranslation.filter((g) => !g.template.includes("{") && g.template.split(" ").length <= 9);
+  const all = [...groups.values()];
+  const tally = {};
+  for (const g of all) {
+    const k = `${g.role} / ${g.kind}`;
+    tally[k] = (tally[k] || 0) + 1;
+  }
 
   console.log(
-    `LinguaCart: ${segs.length} visible segments, ${unique.length} unique -> ` +
-      `${labels.length} UI labels, ${templated.length} templates, ${content.length} long content strings`
+    `LinguaCart: ${segs.length} visible segments, ${unique.size} unique, ${all.length} to translate`
   );
-  console.log("Templates:\n" + JSON.stringify(templated.map((g) => g.template), null, 2));
-  console.log("UI labels:\n" + JSON.stringify(labels.map((g) => g.template), null, 2));
+  console.table(tally);
+  console.log(
+    "Templates:\n" +
+      JSON.stringify(all.filter((g) => g.kind === "template").map((g) => g.text), null, 2)
+  );
+  console.log(
+    "Labels (not filters or footer):\n" +
+      JSON.stringify(
+        all
+          .filter((g) => g.kind === "label" && g.role !== "footer" && g.role !== "filters")
+          .map((g) => g.text),
+        null,
+        2
+      )
+  );
 }
 
 setTimeout(runSegmenter, 2000);
