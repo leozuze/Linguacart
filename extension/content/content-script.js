@@ -40,6 +40,10 @@ const COUNT_RE = /\b\d[\d,.]*[KkMm]\+?(?![A-Za-z])/g; // 17.1K, 10K+
 const CODE_RE = /\b(?=[\w-]*\d)(?=[\w-]*[A-Za-z])\w+(?:-\w+)*\b/g; // WH-CH720N, IPX7
 const NUM_RE = /\d[\d,]*(?:\.\d+)?\+?/g;
 
+// The shopper's own search text (Amazon uses ?k=...)
+const SEARCH_QUERY = (new URLSearchParams(location.search).get("k") || "").trim();
+const escapeRe = (s) => s.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+
 // Where on the page a string lives (selectors are from memory: check with Inspect)
 const ROLE_SELECTORS = [
   ["product", '#productTitle, div[data-component-type="s-search-result"] h2'],
@@ -50,8 +54,8 @@ const ROLE_SELECTORS = [
 ];
 
 function roleOf(el) {
-  // product titles are links to product pages, even in carousels
-  const link = el.closest('a[href*="/dp/"]');
+  // product titles are links to product pages, even in carousels and sponsored results
+  const link = el.closest('a[href*="/dp/"], a[href*="%2Fdp%2F"]');
   if (link && el.textContent.trim().split(/\s+/).length >= 5) return "product";
 
   for (const [role, selector] of ROLE_SELECTORS) {
@@ -77,6 +81,17 @@ function inViewport(rect) {
   );
 }
 
+// The nearest ancestor that is displayed as a block (not inline text)
+function blockOf(el) {
+  let cur = el;
+  while (cur && cur !== document.body) {
+    const d = getComputedStyle(cur).display;
+    if (!d.startsWith("inline") && d !== "contents") return cur;
+    cur = cur.parentElement;
+  }
+  return document.body;
+}
+
 function collectSegments(root = document.body) {
   const walker = document.createTreeWalker(root, NodeFilter.SHOW_TEXT, {
     acceptNode(node) {
@@ -84,29 +99,58 @@ function collectSegments(root = document.body) {
       if (!parent || SKIP_TAGS.has(parent.tagName)) return NodeFilter.FILTER_REJECT;
       if (parent.closest(".a-price, .a-offscreen, [translate='no']")) return NodeFilter.FILTER_REJECT;
       const text = node.textContent.replace(/\s+/g, " ").trim();
-      if (!text || !/\p{L}/u.test(text)) return NodeFilter.FILTER_REJECT;
+      if (!text) return NodeFilter.FILTER_REJECT;
       if (!isVisible(parent)) return NodeFilter.FILTER_REJECT;
       return NodeFilter.FILTER_ACCEPT;
     },
   });
 
-  const segments = [];
+  // group text nodes by their block container
+  const blocks = new Map();
   while (walker.nextNode()) {
     const node = walker.currentNode;
-    const text = node.textContent.replace(/\s+/g, " ").trim();
-    const rect = node.parentElement.getBoundingClientRect();
-    segments.push({
-      text,
-      role: roleOf(node.parentElement),
-      protected: text.match(PROTECTED_RE) || [],
-      inViewport: inViewport(rect),
-    });
+    const block = blockOf(node.parentElement);
+    if (!blocks.has(block)) blocks.set(block, []);
+    blocks.get(block).push(node);
+  }
+
+  const segments = [];
+  const isNumeric = (n) => !/\p{L}/u.test(n.textContent);
+  const clean = (nodes) =>
+    nodes
+      .map((n) => n.textContent.replace(/\s+/g, " ").trim())
+      .join(" ")
+      .replace(/\s+([.,!?;:)])/g, "$1") // "India ." -> "India."
+      .replace(/([(])\s+/g, "$1")
+      .trim();
+
+  for (const [block, allNodes] of blocks) {
+    // pagination ("Previous 1 2 3 4 Next"): keep the words as separate pieces
+    const manyNumbers = allNodes.filter(isNumeric).length >= 3;
+    const groups = manyNumbers
+      ? allNodes.filter((n) => !isNumeric(n)).map((n) => [n])
+      : [allNodes];
+
+    for (const nodes of groups) {
+      const text = clean(nodes);
+      if (!/\p{L}/u.test(text)) continue; // needs letters
+      segments.push({
+        text,
+        role: roleOf(block),
+        protected: text.match(PROTECTED_RE) || [],
+        inViewport: inViewport(block.getBoundingClientRect()),
+        nodes, // kept so the renderer can replace the text later
+      });
+    }
   }
   return segments;
 }
 
-// Replace prices, dates, counts, model codes and numbers with placeholders
+// Replace the search query, prices, dates, counts, model codes and numbers with placeholders
 function toTemplate(text) {
+  if (SEARCH_QUERY) {
+    text = text.replace(new RegExp(`"${escapeRe(SEARCH_QUERY)}"`, "gi"), '"{QUERY}"');
+  }
   return text
     .replace(PRICE_RE, "{PRICE}")
     .replace(DATE_RE, "{DATE}")
@@ -117,6 +161,10 @@ function toTemplate(text) {
 
 function kindOf(seg, template) {
   if (seg.role === "product") return "content";
+  // spec lines under a result, such as "MDR-7506, 40mm drivers, 10Hz-20kHz"
+  if (seg.role === "results" && template.includes(",") && template.includes("{CODE}")) {
+    return "content";
+  }
   if (template.split(" ").length > 9) return "content";
   return /\{[A-Z]+\}/.test(template) ? "template" : "label";
 }
@@ -144,9 +192,11 @@ function runSegmenter() {
     tally[k] = (tally[k] || 0) + 1;
   }
 
+  const nodeCount = segs.reduce((n, s) => n + s.nodes.length, 0);
   console.log(
-    `LinguaCart: ${segs.length} visible segments, ${unique.size} unique, ${all.length} to translate`
+    `LinguaCart: ${nodeCount} text nodes -> ${segs.length} blocks, ${unique.size} unique, ${all.length} to translate`
   );
+
   console.table(tally);
   console.log(
     "Templates:\n" +
@@ -158,6 +208,14 @@ function runSegmenter() {
         all
           .filter((g) => g.kind === "label" && g.role !== "footer" && g.role !== "filters")
           .map((g) => g.text),
+        null,
+        2
+      )
+  );
+  console.log(
+    "Long non-product strings:\n" +
+      JSON.stringify(
+        all.filter((g) => g.kind === "content" && g.role !== "product").map((g) => g.text),
         null,
         2
       )
