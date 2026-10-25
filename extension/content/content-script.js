@@ -225,6 +225,9 @@ function runSegmenter() {
 // setTimeout(runSegmenter, 2000);
 
 // ---------- Translation (fake backend for now) ----------
+const MAX_SEGMENTS = 200;
+const BATCH_SIZE = 50; // matches the limit in the API contract
+
 function pageType() {
   if (location.pathname.includes("/dp/")) return "product";
   if (location.pathname === "/s") return "listing";
@@ -239,46 +242,82 @@ function kindFor(seg) {
 }
 
 const swaps = new Map(); // text node -> { original, shona }
+const cache = new Map(); // English text -> Shona text (this page visit only)
+const skipped = new Set(); // English texts the backend refused to translate
 let view = "en"; // "en" or "sn"
+let busy = false;
+let started = false;
 
-const MAX_SEGMENTS = 200;
-const BATCH_SIZE = 50; // matches the limit in the API contract
+function pruneSwaps() {
+  // Amazon replaces parts of the page; forget nodes that are no longer on it
+  for (const node of swaps.keys()) if (!node.isConnected) swaps.delete(node);
+}
 
-async function translatePage() {
-  const segs = collectSegments().filter((s) => s.inViewport).slice(0, MAX_SEGMENTS);
-  let translated = 0;
-  let keptEnglish = 0;
+function remember(seg, shona) {
+  // the whole translation goes into the first text node; the others are emptied
+  seg.nodes.forEach((node, i) => {
+    swaps.set(node, { original: node.textContent, shona: i === 0 ? shona : "" });
+  });
+}
 
-  for (let start = 0; start < segs.length; start += BATCH_SIZE) {
-    const batch = segs.slice(start, start + BATCH_SIZE);
-    const request = {
-      apiVersion: 1,
-      site: location.hostname.replace(/^www\./, ""),
-      pageType: pageType(),
-      target: "sna",
-      segments: batch.map((s, i) => ({ id: "s" + i, text: s.text, kind: kindFor(s) })),
-    };
+async function translateNew() {
+  if (busy) return;
+  busy = true;
+  try {
+    pruneSwaps();
+    const fresh = collectSegments()
+      .filter(
+        (s) =>
+          s.inViewport &&
+          !skipped.has(s.text) &&
+          !s.nodes.some((n) => swaps.has(n)) // not already handled
+      )
+      .slice(0, MAX_SEGMENTS);
 
-    const response = await chrome.runtime.sendMessage({ type: "translate", request });
-    if (!response || !response.results) throw new Error("No usable response from backend");
-
-    for (const r of response.results) {
-      const seg = batch[Number(r.id.slice(1))];
-      if (!seg) continue;
-      if (r.status !== "translated") {
-        keptEnglish++;
-        console.log("LinguaCart kept English:", seg.text, r.reasons);
-        continue;
-      }
-      translated++;
-      seg.nodes.forEach((node, i) => {
-        swaps.set(node, { original: node.textContent, shona: i === 0 ? r.text : "" });
-      });
+    const toSend = [];
+    for (const s of fresh) {
+      if (cache.has(s.text)) remember(s, cache.get(s.text));
+      else toSend.push(s);
     }
+
+    let translated = 0;
+    let keptEnglish = 0;
+    for (let start = 0; start < toSend.length; start += BATCH_SIZE) {
+      const batch = toSend.slice(start, start + BATCH_SIZE);
+      const request = {
+        apiVersion: 1,
+        site: location.hostname.replace(/^www\./, ""),
+        pageType: pageType(),
+        target: "sna",
+        segments: batch.map((s, i) => ({ id: "s" + i, text: s.text, kind: kindFor(s) })),
+      };
+
+      const response = await chrome.runtime.sendMessage({ type: "translate", request });
+      if (!response || !response.results) throw new Error("No usable response from backend");
+
+      for (const r of response.results) {
+        const seg = batch[Number(r.id.slice(1))];
+        if (!seg) continue;
+        if (r.status !== "translated") {
+          keptEnglish++;
+          skipped.add(seg.text);
+          console.log("LinguaCart kept English:", seg.text, r.reasons);
+          continue;
+        }
+        translated++;
+        cache.set(seg.text, r.text);
+        remember(seg, r.text);
+      }
+    }
+    if (fresh.length) {
+      console.log(
+        `LinguaCart: ${translated} translated, ${keptEnglish} kept in English, ` +
+          `${fresh.length - toSend.length} from page cache`
+      );
+    }
+  } finally {
+    busy = false;
   }
-  console.log(
-    `LinguaCart: ${translated} translated, ${keptEnglish} kept in English, of ${segs.length} segments`
-  );
 }
 
 function setView(next) {
@@ -286,6 +325,31 @@ function setView(next) {
     node.textContent = next === "sn" ? s.shona : s.original;
   }
   view = next;
+}
+
+// Translate content that appears later (scrolling, "more results", Amazon re-rendering)
+let timer = null;
+function scheduleTranslate() {
+  if (view !== "sn") return;
+  clearTimeout(timer);
+  timer = setTimeout(async () => {
+    try {
+      await translateNew();
+      if (view === "sn") setView("sn");
+    } catch (err) {
+      console.error("LinguaCart error:", err);
+    }
+  }, 500);
+}
+
+function startWatching() {
+  window.addEventListener("scroll", scheduleTranslate, { passive: true });
+  window.addEventListener("resize", scheduleTranslate);
+  // childList only: swapping text inside existing text nodes does not trigger this
+  new MutationObserver(scheduleTranslate).observe(document.body, {
+    childList: true,
+    subtree: true,
+  });
 }
 
 function createToolbar() {
@@ -310,17 +374,20 @@ function createToolbar() {
   const btn = root.getElementById("toggle");
   btn.addEventListener("click", async () => {
     try {
-      if (swaps.size === 0) {
+      if (!started) {
         btn.disabled = true;
         btn.textContent = "Translating...";
-        await translatePage();
-        btn.disabled = false;
+        await translateNew();
         setView("sn");
+        started = true;
+        startWatching();
+        btn.disabled = false;
         btn.textContent = "Show original";
       } else if (view === "sn") {
         setView("en");
         btn.textContent = "Show Shona";
       } else {
+        await translateNew(); // pick up anything that appeared while in English
         setView("sn");
         btn.textContent = "Show original";
       }
