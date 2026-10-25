@@ -1,0 +1,46 @@
+{"english": "salt", "shona": "munyu", "domain": "food", "reviewer": "unreviewed", "status": "draft"}
+{"english": "sugar", "shona": "shuga", "domain": "food", "reviewer": "unreviewed", "status": "draft"}
+{"english": "sugar", "shona": "sukari", "domain": "food", "reviewer": "unreviewed", "status": "draft"}
+{"english": "cooking oil", "shona": "mafuta ekubika", "domain": "food", "reviewer": "unreviewed", "status": "draft"}
+{"english": "oil", "shona": "mafuta", "domain": "general", "reviewer": "unreviewed", "status": "draft"}
+{"english": "maize", "shona": "chibage", "domain": "food", "reviewer": "unreviewed", "status": "draft"}
+{"english": "flour meal", "shona": "upfu", "domain": "food", "reviewer": "unreviewed", "status": "draft"}
+{"english": "flour meal", "shona": "hupfu", "domain": "food", "reviewer": "unreviewed", "status": "draft"}
+{"english": "rice", "shona": "mupunga", "domain": "food", "reviewer": "unreviewed", "status": "draft"}
+{"english": "milk", "shona": "mukaka", "domain": "food", "reviewer": "unreviewed", "status": "draft"}
+{"english": "baby", "shona": "mwana", "domain": "general", "reviewer": "unreviewed", "status": "draft"}
+{"english": "tea", "shona": "tii", "domain": "food", "reviewer": "unreviewed", "status": "draft"}
+{"english": "coffee", "shona": "kofi", "domain": "food", "reviewer": "unreviewed", "status": "draft"}
+{"english": "peanut", "shona": "nzungu", "domain": "food", "reviewer": "unreviewed", "status": "draft"}
+{"english": "beans", "shona": "bhinzi", "domain": "food", "reviewer": "unreviewed", "status": "draft"}
+{"english": "chicken", "shona": "huku", "domain": "farming", "reviewer": "unreviewed", "status": "draft"}
+{"english": "feed food", "shona": "chikafu", "domain": "farming", "reviewer": "unreviewed", "status": "draft"}
+{"english": "seed", "shona": "mbeu", "domain": "farming", "reviewer": "unreviewed", "status": "draft"}
+{"english": "fertiliser", "shona": "fetiraiza", "domain": "farming", "reviewer": "unreviewed", "status": "draft"}
+{"english": "hoe", "shona": "badza", "domain": "farming", "reviewer": "unreviewed", "status": "draft"}
+{"english": "soap", "shona": "sipo", "domain": "household", "reviewer": "unreviewed", "status": "draft"}
+{"english": "wash", "shona": "kusuka", "domain": "household", "reviewer": "unreviewed", "status": "draft"}
+{"english": "clothes", "shona": "mbatya", "domain": "household", "reviewer": "unreviewed", "status": "draft"}
+{"english": "pot", "shona": "hari", "domain": "household", "reviewer": "unreviewed", "status": "draft"}
+{"english": "bucket", "shona": "bhaketi", "domain": "household", "reviewer": "unreviewed", "status": "draft"}
+{"english": "blanket", "shona": "gumbeze", "domain": "household", "reviewer": "unreviewed", "status": "draft"}
+{"english": "towel", "shona": "tauro", "domain": "household", "reviewer": "unreviewed", "status": "draft"}
+{"english": "lamp light", "shona": "mwenje", "domain": "household", "reviewer": "unreviewed", "status": "draft"}
+{"english": "solar sun", "shona": "zuva", "domain": "household", "reviewer": "unreviewed", "status": "draft"}
+{"english": "phone smartphone mobile", "shona": "foni", "domain": "electronics", "reviewer": "unreviewed", "status": "draft"}
+{"english": "charger", "shona": "chaja", "domain": "electronics", "reviewer": "unreviewed", "status": "draft"}
+{"english": "radio", "shona": "redhiyo", "domain": "electronics", "reviewer": "unreviewed", "status": "draft"}
+{"english": "television", "shona": "terevhizheni", "domain": "electronics", "reviewer": "unreviewed", "status": "draft"}
+{"english": "battery", "shona": "bhatiri", "domain": "electronics", "reviewer": "unreviewed", "status": "draft"}
+{"english": "car", "shona": "motokari", "domain": "automotive", "reviewer": "unreviewed", "status": "draft"}
+{"english": "shoes", "shona": "shangu", "domain": "clothing", "reviewer": "unreviewed", "status": "draft"}
+{"english": "shirt", "shona": "hembe", "domain": "clothing", "reviewer": "unreviewed", "status": "draft"}
+{"english": "school", "shona": "chikoro", "domain": "education", "reviewer": "unreviewed", "status": "draft"}
+{"english": "book exercise", "shona": "bhuku", "domain": "education", "reviewer": "unreviewed", "status": "draft"}
+{"english": "bag backpack", "shona": "bhegi", "domain": "education", "reviewer": "unreviewed", "status": "draft"}
+{"english": "medicine", "shona": "mushonga", "domain": "health", "reviewer": "unreviewed", "status": "draft"}
+{"english": "pain", "shona": "kurwadza", "domain": "health", "reviewer": "unreviewed", "status": "draft"}
+{"english": "head", "shona": "musoro", "domain": "health", "reviewer": "unreviewed", "status": "draft"}
+{"english": "clean", "shona": "kuchenesa", "domain": "health", "reviewer": "unreviewed", "status": "draft"}
+{"english": "hands", "shona": "maoko", "domain": "health", "reviewer": "unreviewed", "status": "draft"}
+{"english": "diapers nappies", "shona": "pampers", "domain": "baby", "reviewer": "unreviewed", "status": "draft"}

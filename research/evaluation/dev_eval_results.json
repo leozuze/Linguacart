@@ -1,0 +1,2457 @@
+{
+  "retrieval": {
+    "overall": {
+      "C direct Shona+E5": {
+        "R@5": 0.563,
+        "P@5": 0.125,
+        "MRR@10": 0.417,
+        "nDCG@5": 0.438
+      },
+      "B translate+E5": {
+        "R@5": 0.956,
+        "P@5": 0.23,
+        "MRR@10": 0.89,
+        "nDCG@5": 0.904
+      },
+      "A glossary+BM25": {
+        "R@5": 0.978,
+        "P@5": 0.23,
+        "MRR@10": 0.991,
+        "nDCG@5": 0.958
+      },
+      "D hybrid": {
+        "R@5": 0.994,
+        "P@5": 0.238,
+        "MRR@10": 0.953,
+        "nDCG@5": 0.957
+      }
+    },
+    "by_type_mrr": {
+      "ambiguous": {
+        "C direct Shona+E5": 0.29,
+        "B translate+E5": 0.75,
+        "A glossary+BM25": 1.0,
+        "D hybrid": 0.75
+      },
+      "attribute": {
+        "C direct Shona+E5": 0.67,
+        "B translate+E5": 0.88,
+        "A glossary+BM25": 1.0,
+        "D hybrid": 1.0
+      },
+      "brand_mix": {
+        "C direct Shona+E5": 1.0,
+        "B translate+E5": 1.0,
+        "A glossary+BM25": 1.0,
+        "D hybrid": 1.0
+      },
+      "caps": {
+        "C direct Shona+E5": 0.0,
+        "B translate+E5": 1.0,
+        "A glossary+BM25": 1.0,
+        "D hybrid": 1.0
+      },
+      "english": {
+        "C direct Shona+E5": 1.0,
+        "B translate+E5": 1.0,
+        "A glossary+BM25": 1.0,
+        "D hybrid": 1.0
+      },
+      "multiword": {
+        "C direct Shona+E5": 0.51,
+        "B translate+E5": 0.96,
+        "A glossary+BM25": 0.96,
+        "D hybrid": 0.96
+      },
+      "single": {
+        "C direct Shona+E5": 0.16,
+        "B translate+E5": 0.83,
+        "A glossary+BM25": 1.0,
+        "D hybrid": 0.96
+      },
+      "typo": {
+        "C direct Shona+E5": 0.1,
+        "B translate+E5": 1.0,
+        "A glossary+BM25": 1.0,
+        "D hybrid": 1.0
+      },
+      "variant": {
+        "C direct Shona+E5": 1.0,
+        "B translate+E5": 0.5,
+        "A glossary+BM25": 1.0,
+        "D hybrid": 0.5
+      }
+    },
+    "queries": [
+      {
+        "queryId": "q01",
+        "query": "munyu",
+        "type": "single",
+        "english": "salt",
+        "glossary": [
+          "salt"
+        ],
+        "top3": {
+          "C direct Shona+E5": [
+            "p54",
+            "p05",
+            "p11"
+          ],
+          "B translate+E5": [
+            "p02",
+            "p01",
+            "p03"
+          ],
+          "A glossary+BM25": [
+            "p01",
+            "p02",
+            "p03"
+          ],
+          "D hybrid": [
+            "p02",
+            "p01",
+            "p03"
+          ]
+        },
+        "first_relevant_rank": {
+          "C direct Shona+E5": 15,
+          "B translate+E5": 1,
+          "A glossary+BM25": 1,
+          "D hybrid": 1
+        }
+      },
+      {
+        "queryId": "q02",
+        "query": "shuga",
+        "type": "single",
+        "english": "sugar",
+        "glossary": [
+          "sugar"
+        ],
+        "top3": {
+          "C direct Shona+E5": [
+            "p53",
+            "p23",
+            "p05"
+          ],
+          "B translate+E5": [
+            "p04",
+            "p05",
+            "p21"
+          ],
+          "A glossary+BM25": [
+            "p05",
+            "p04",
+            "p21"
+          ],
+          "D hybrid": [
+            "p04",
+            "p05",
+            "p21"
+          ]
+        },
+        "first_relevant_rank": {
+          "C direct Shona+E5": 3,
+          "B translate+E5": 1,
+          "A glossary+BM25": 1,
+          "D hybrid": 1
+        }
+      },
+      {
+        "queryId": "q03",
+        "query": "sukari",
+        "type": "single",
+        "english": "sugar",
+        "glossary": [
+          "sugar"
+        ],
+        "top3": {
+          "C direct Shona+E5": [
+            "p21",
+            "p02",
+            "p54"
+          ],
+          "B translate+E5": [
+            "p04",
+            "p05",
+            "p21"
+          ],
+          "A glossary+BM25": [
+            "p05",
+            "p04",
+            "p21"
+          ],
+          "D hybrid": [
+            "p04",
+            "p05",
+            "p21"
+          ]
+        },
+        "first_relevant_rank": {
+          "C direct Shona+E5": 5,
+          "B translate+E5": 1,
+          "A glossary+BM25": 1,
+          "D hybrid": 1
+        }
+      },
+      {
+        "queryId": "q04",
+        "query": "mafuta ekubika",
+        "type": "multiword",
+        "english": "cooking oil",
+        "glossary": [
+          "cooking oil"
+        ],
+        "top3": {
+          "C direct Shona+E5": [
+            "p09",
+            "p02",
+            "p08"
+          ],
+          "B translate+E5": [
+            "p07",
+            "p08",
+            "p09"
+          ],
+          "A glossary+BM25": [
+            "p07",
+            "p08",
+            "p09"
+          ],
+          "D hybrid": [
+            "p07",
+            "p08",
+            "p09"
+          ]
+        },
+        "first_relevant_rank": {
+          "C direct Shona+E5": 5,
+          "B translate+E5": 1,
+          "A glossary+BM25": 1,
+          "D hybrid": 1
+        }
+      },
+      {
+        "queryId": "q05",
+        "query": "mafuta",
+        "type": "ambiguous",
+        "english": "oil",
+        "glossary": [
+          "oil"
+        ],
+        "top3": {
+          "C direct Shona+E5": [
+            "p08",
+            "p09",
+            "p07"
+          ],
+          "B translate+E5": [
+            "p08",
+            "p07",
+            "p09"
+          ],
+          "A glossary+BM25": [
+            "p07",
+            "p08",
+            "p09"
+          ],
+          "D hybrid": [
+            "p08",
+            "p07",
+            "p09"
+          ]
+        },
+        "first_relevant_rank": {
+          "C direct Shona+E5": 3,
+          "B translate+E5": 2,
+          "A glossary+BM25": 1,
+          "D hybrid": 2
+        }
+      },
+      {
+        "queryId": "q06",
+        "query": "chibage",
+        "type": "single",
+        "english": "corn",
+        "glossary": [
+          "maize"
+        ],
+        "top3": {
+          "C direct Shona+E5": [
+            "p39",
+            "p10",
+            "p19"
+          ],
+          "B translate+E5": [
+            "p12",
+            "p02",
+            "p11"
+          ],
+          "A glossary+BM25": [
+            "p10",
+            "p12",
+            "p11"
+          ],
+          "D hybrid": [
+            "p12",
+            "p10",
+            "p11"
+          ]
+        },
+        "first_relevant_rank": {
+          "C direct Shona+E5": 2,
+          "B translate+E5": 3,
+          "A glossary+BM25": 1,
+          "D hybrid": 2
+        }
+      },
+      {
+        "queryId": "q07",
+        "query": "upfu hwechibage",
+        "type": "multiword",
+        "english": "corn flour",
+        "glossary": [
+          "flour meal",
+          "maize"
+        ],
+        "top3": {
+          "C direct Shona+E5": [
+            "p19",
+            "p15",
+            "p10"
+          ],
+          "B translate+E5": [
+            "p19",
+            "p10",
+            "p04"
+          ],
+          "A glossary+BM25": [
+            "p10",
+            "p19",
+            "p12"
+          ],
+          "D hybrid": [
+            "p19",
+            "p10",
+            "p12"
+          ]
+        },
+        "first_relevant_rank": {
+          "C direct Shona+E5": 3,
+          "B translate+E5": 2,
+          "A glossary+BM25": 1,
+          "D hybrid": 2
+        }
+      },
+      {
+        "queryId": "q08",
+        "query": "hupfu hwechibage",
+        "type": "variant",
+        "english": "corn flour",
+        "glossary": [
+          "flour meal",
+          "maize"
+        ],
+        "top3": {
+          "C direct Shona+E5": [
+            "p10",
+            "p19",
+            "p53"
+          ],
+          "B translate+E5": [
+            "p19",
+            "p10",
+            "p04"
+          ],
+          "A glossary+BM25": [
+            "p10",
+            "p19",
+            "p12"
+          ],
+          "D hybrid": [
+            "p19",
+            "p10",
+            "p12"
+          ]
+        },
+        "first_relevant_rank": {
+          "C direct Shona+E5": 1,
+          "B translate+E5": 2,
+          "A glossary+BM25": 1,
+          "D hybrid": 2
+        }
+      },
+      {
+        "queryId": "q09",
+        "query": "mupunga",
+        "type": "single",
+        "english": "rice",
+        "glossary": [
+          "rice"
+        ],
+        "top3": {
+          "C direct Shona+E5": [
+            "p51",
+            "p21",
+            "p44"
+          ],
+          "B translate+E5": [
+            "p13",
+            "p10",
+            "p11"
+          ],
+          "A glossary+BM25": [
+            "p13",
+            "p01",
+            "p02"
+          ],
+          "D hybrid": [
+            "p13",
+            "p10",
+            "p11"
+          ]
+        },
+        "first_relevant_rank": {
+          "C direct Shona+E5": 30,
+          "B translate+E5": 1,
+          "A glossary+BM25": 1,
+          "D hybrid": 1
+        }
+      },
+      {
+        "queryId": "q10",
+        "query": "mukaka",
+        "type": "single",
+        "english": "milk",
+        "glossary": [
+          "milk"
+        ],
+        "top3": {
+          "C direct Shona+E5": [
+            "p51",
+            "p02",
+            "p12"
+          ],
+          "B translate+E5": [
+            "p15",
+            "p16",
+            "p14"
+          ],
+          "A glossary+BM25": [
+            "p14",
+            "p16",
+            "p15"
+          ],
+          "D hybrid": [
+            "p14",
+            "p15",
+            "p16"
+          ]
+        },
+        "first_relevant_rank": {
+          "C direct Shona+E5": 24,
+          "B translate+E5": 1,
+          "A glossary+BM25": 1,
+          "D hybrid": 1
+        }
+      },
+      {
+        "queryId": "q11",
+        "query": "mukaka wemwana",
+        "type": "multiword",
+        "english": "infant's milk",
+        "glossary": [
+          "milk",
+          "baby"
+        ],
+        "top3": {
+          "C direct Shona+E5": [
+            "p09",
+            "p51",
+            "p16"
+          ],
+          "B translate+E5": [
+            "p16",
+            "p15",
+            "p14"
+          ],
+          "A glossary+BM25": [
+            "p16",
+            "p09",
+            "p14"
+          ],
+          "D hybrid": [
+            "p16",
+            "p14",
+            "p09"
+          ]
+        },
+        "first_relevant_rank": {
+          "C direct Shona+E5": 3,
+          "B translate+E5": 1,
+          "A glossary+BM25": 1,
+          "D hybrid": 1
+        }
+      },
+      {
+        "queryId": "q12",
+        "query": "tii",
+        "type": "single",
+        "english": "tea",
+        "glossary": [
+          "tea"
+        ],
+        "top3": {
+          "C direct Shona+E5": [
+            "p01",
+            "p31",
+            "p53"
+          ],
+          "B translate+E5": [
+            "p17",
+            "p04",
+            "p06"
+          ],
+          "A glossary+BM25": [
+            "p17",
+            "p04",
+            "p06"
+          ],
+          "D hybrid": [
+            "p17",
+            "p04",
+            "p06"
+          ]
+        },
+        "first_relevant_rank": {
+          "C direct Shona+E5": 4,
+          "B translate+E5": 1,
+          "A glossary+BM25": 1,
+          "D hybrid": 1
+        }
+      },
+      {
+        "queryId": "q13",
+        "query": "kofi",
+        "type": "single",
+        "english": "coffee",
+        "glossary": [
+          "coffee"
+        ],
+        "top3": {
+          "C direct Shona+E5": [
+            "p18",
+            "p06",
+            "p51"
+          ],
+          "B translate+E5": [
+            "p18",
+            "p06",
+            "p21"
+          ],
+          "A glossary+BM25": [
+            "p18",
+            "p06",
+            "p01"
+          ],
+          "D hybrid": [
+            "p18",
+            "p06",
+            "p21"
+          ]
+        },
+        "first_relevant_rank": {
+          "C direct Shona+E5": 1,
+          "B translate+E5": 1,
+          "A glossary+BM25": 1,
+          "D hybrid": 1
+        }
+      },
+      {
+        "queryId": "q14",
+        "query": "nzungu",
+        "type": "single",
+        "english": "nuts",
+        "glossary": [
+          "peanut"
+        ],
+        "top3": {
+          "C direct Shona+E5": [
+            "p10",
+            "p13",
+            "p21"
+          ],
+          "B translate+E5": [
+            "p20",
+            "p46",
+            "p11"
+          ],
+          "A glossary+BM25": [
+            "p20",
+            "p01",
+            "p02"
+          ],
+          "D hybrid": [
+            "p20",
+            "p46",
+            "p11"
+          ]
+        },
+        "first_relevant_rank": {
+          "C direct Shona+E5": 22,
+          "B translate+E5": 1,
+          "A glossary+BM25": 1,
+          "D hybrid": 1
+        }
+      },
+      {
+        "queryId": "q15",
+        "query": "bhinzi",
+        "type": "single",
+        "english": "beans",
+        "glossary": [
+          "beans"
+        ],
+        "top3": {
+          "C direct Shona+E5": [
+            "p13",
+            "p10",
+            "p21"
+          ],
+          "B translate+E5": [
+            "p21",
+            "p05",
+            "p41"
+          ],
+          "A glossary+BM25": [
+            "p21",
+            "p01",
+            "p02"
+          ],
+          "D hybrid": [
+            "p21",
+            "p05",
+            "p41"
+          ]
+        },
+        "first_relevant_rank": {
+          "C direct Shona+E5": 3,
+          "B translate+E5": 1,
+          "A glossary+BM25": 1,
+          "D hybrid": 1
+        }
+      },
+      {
+        "queryId": "q16",
+        "query": "sipo",
+        "type": "ambiguous",
+        "english": "soap",
+        "glossary": [
+          "soap"
+        ],
+        "top3": {
+          "C direct Shona+E5": [
+            "p51",
+            "p01",
+            "p12"
+          ],
+          "B translate+E5": [
+            "p23",
+            "p22",
+            "p31"
+          ],
+          "A glossary+BM25": [
+            "p23",
+            "p01",
+            "p02"
+          ],
+          "D hybrid": [
+            "p23",
+            "p22",
+            "p31"
+          ]
+        },
+        "first_relevant_rank": {
+          "C direct Shona+E5": 4,
+          "B translate+E5": 1,
+          "A glossary+BM25": 1,
+          "D hybrid": 1
+        }
+      },
+      {
+        "queryId": "q17",
+        "query": "hari",
+        "type": "single",
+        "english": "pot",
+        "glossary": [
+          "pot"
+        ],
+        "top3": {
+          "C direct Shona+E5": [
+            "p54",
+            "p53",
+            "p11"
+          ],
+          "B translate+E5": [
+            "p26",
+            "p53",
+            "p28"
+          ],
+          "A glossary+BM25": [
+            "p26",
+            "p01",
+            "p02"
+          ],
+          "D hybrid": [
+            "p26",
+            "p53",
+            "p28"
+          ]
+        },
+        "first_relevant_rank": {
+          "C direct Shona+E5": 49,
+          "B translate+E5": 1,
+          "A glossary+BM25": 1,
+          "D hybrid": 1
+        }
+      },
+      {
+        "queryId": "q18",
+        "query": "bhaketi",
+        "type": "single",
+        "english": "bucket",
+        "glossary": [
+          "bucket"
+        ],
+        "top3": {
+          "C direct Shona+E5": [
+            "p17",
+            "p10",
+            "p29"
+          ],
+          "B translate+E5": [
+            "p25",
+            "p30",
+            "p53"
+          ],
+          "A glossary+BM25": [
+            "p25",
+            "p01",
+            "p02"
+          ],
+          "D hybrid": [
+            "p25",
+            "p30",
+            "p53"
+          ]
+        },
+        "first_relevant_rank": {
+          "C direct Shona+E5": 5,
+          "B translate+E5": 1,
+          "A glossary+BM25": 1,
+          "D hybrid": 1
+        }
+      },
+      {
+        "queryId": "q19",
+        "query": "gumbeze",
+        "type": "single",
+        "english": "coat",
+        "glossary": [
+          "blanket"
+        ],
+        "top3": {
+          "C direct Shona+E5": [
+            "p13",
+            "p21",
+            "p10"
+          ],
+          "B translate+E5": [
+            "p46",
+            "p02",
+            "p45"
+          ],
+          "A glossary+BM25": [
+            "p29",
+            "p01",
+            "p02"
+          ],
+          "D hybrid": [
+            "p29",
+            "p46",
+            "p02"
+          ]
+        },
+        "first_relevant_rank": {
+          "C direct Shona+E5": 26,
+          "B translate+E5": 4,
+          "A glossary+BM25": 1,
+          "D hybrid": 1
+        }
+      },
+      {
+        "queryId": "q20",
+        "query": "foni",
+        "type": "single",
+        "english": "telephone",
+        "glossary": [
+          "phone smartphone mobile"
+        ],
+        "top3": {
+          "C direct Shona+E5": [
+            "p42",
+            "p51",
+            "p31"
+          ],
+          "B translate+E5": [
+            "p42",
+            "p41",
+            "p32"
+          ],
+          "A glossary+BM25": [
+            "p36",
+            "p37",
+            "p32"
+          ],
+          "D hybrid": [
+            "p32",
+            "p36",
+            "p38"
+          ]
+        },
+        "first_relevant_rank": {
+          "C direct Shona+E5": 44,
+          "B translate+E5": 14,
+          "A glossary+BM25": 1,
+          "D hybrid": 2
+        }
+      },
+      {
+        "queryId": "q21",
+        "query": "chaja",
+        "type": "single",
+        "english": "charging",
+        "glossary": [
+          "charger"
+        ],
+        "top3": {
+          "C direct Shona+E5": [
+            "p10",
+            "p17",
+            "p19"
+          ],
+          "B translate+E5": [
+            "p38",
+            "p39",
+            "p32"
+          ],
+          "A glossary+BM25": [
+            "p38",
+            "p39",
+            "p01"
+          ],
+          "D hybrid": [
+            "p38",
+            "p39",
+            "p32"
+          ]
+        },
+        "first_relevant_rank": {
+          "C direct Shona+E5": 45,
+          "B translate+E5": 1,
+          "A glossary+BM25": 1,
+          "D hybrid": 1
+        }
+      },
+      {
+        "queryId": "q22",
+        "query": "redhiyo",
+        "type": "single",
+        "english": "radio",
+        "glossary": [
+          "radio"
+        ],
+        "top3": {
+          "C direct Shona+E5": [
+            "p10",
+            "p40",
+            "p42"
+          ],
+          "B translate+E5": [
+            "p42",
+            "p41",
+            "p34"
+          ],
+          "A glossary+BM25": [
+            "p42",
+            "p34",
+            "p01"
+          ],
+          "D hybrid": [
+            "p42",
+            "p34",
+            "p41"
+          ]
+        },
+        "first_relevant_rank": {
+          "C direct Shona+E5": 3,
+          "B translate+E5": 1,
+          "A glossary+BM25": 1,
+          "D hybrid": 1
+        }
+      },
+      {
+        "queryId": "q23",
+        "query": "terevhizheni",
+        "type": "single",
+        "english": "television",
+        "glossary": [
+          "television"
+        ],
+        "top3": {
+          "C direct Shona+E5": [
+            "p53",
+            "p13",
+            "p15"
+          ],
+          "B translate+E5": [
+            "p40",
+            "p04",
+            "p50"
+          ],
+          "A glossary+BM25": [
+            "p40",
+            "p01",
+            "p02"
+          ],
+          "D hybrid": [
+            "p40",
+            "p04",
+            "p50"
+          ]
+        },
+        "first_relevant_rank": {
+          "C direct Shona+E5": 31,
+          "B translate+E5": 1,
+          "A glossary+BM25": 1,
+          "D hybrid": 1
+        }
+      },
+      {
+        "queryId": "q24",
+        "query": "shangu",
+        "type": "single",
+        "english": "shoes",
+        "glossary": [
+          "shoes"
+        ],
+        "top3": {
+          "C direct Shona+E5": [
+            "p53",
+            "p10",
+            "p19"
+          ],
+          "B translate+E5": [
+            "p44",
+            "p43",
+            "p46"
+          ],
+          "A glossary+BM25": [
+            "p44",
+            "p43",
+            "p01"
+          ],
+          "D hybrid": [
+            "p44",
+            "p43",
+            "p46"
+          ]
+        },
+        "first_relevant_rank": {
+          "C direct Shona+E5": 8,
+          "B translate+E5": 1,
+          "A glossary+BM25": 1,
+          "D hybrid": 1
+        }
+      },
+      {
+        "queryId": "q25",
+        "query": "hembe",
+        "type": "single",
+        "english": "clothing",
+        "glossary": [
+          "shirt"
+        ],
+        "top3": {
+          "C direct Shona+E5": [
+            "p53",
+            "p29",
+            "p21"
+          ],
+          "B translate+E5": [
+            "p45",
+            "p46",
+            "p22"
+          ],
+          "A glossary+BM25": [
+            "p45",
+            "p01",
+            "p02"
+          ],
+          "D hybrid": [
+            "p45",
+            "p46",
+            "p22"
+          ]
+        },
+        "first_relevant_rank": {
+          "C direct Shona+E5": 29,
+          "B translate+E5": 1,
+          "A glossary+BM25": 1,
+          "D hybrid": 1
+        }
+      },
+      {
+        "queryId": "q26",
+        "query": "mabhuku",
+        "type": "single",
+        "english": "books",
+        "glossary": [
+          "book exercise"
+        ],
+        "top3": {
+          "C direct Shona+E5": [
+            "p17",
+            "p12",
+            "p47"
+          ],
+          "B translate+E5": [
+            "p47",
+            "p49",
+            "p48"
+          ],
+          "A glossary+BM25": [
+            "p47",
+            "p01",
+            "p02"
+          ],
+          "D hybrid": [
+            "p47",
+            "p49",
+            "p48"
+          ]
+        },
+        "first_relevant_rank": {
+          "C direct Shona+E5": 3,
+          "B translate+E5": 1,
+          "A glossary+BM25": 1,
+          "D hybrid": 1
+        }
+      },
+      {
+        "queryId": "q27",
+        "query": "badza",
+        "type": "single",
+        "english": "beware of it",
+        "glossary": [
+          "hoe"
+        ],
+        "top3": {
+          "C direct Shona+E5": [
+            "p10",
+            "p21",
+            "p01"
+          ],
+          "B translate+E5": [
+            "p51",
+            "p02",
+            "p50"
+          ],
+          "A glossary+BM25": [
+            "p53",
+            "p01",
+            "p02"
+          ],
+          "D hybrid": [
+            "p53",
+            "p51",
+            "p02"
+          ]
+        },
+        "first_relevant_rank": {
+          "C direct Shona+E5": 33,
+          "B translate+E5": 9,
+          "A glossary+BM25": 1,
+          "D hybrid": 1
+        }
+      },
+      {
+        "queryId": "q28",
+        "query": "bhatiri",
+        "type": "single",
+        "english": "battery",
+        "glossary": [
+          "battery"
+        ],
+        "top3": {
+          "C direct Shona+E5": [
+            "p53",
+            "p12",
+            "p23"
+          ],
+          "B translate+E5": [
+            "p39",
+            "p34",
+            "p35"
+          ],
+          "A glossary+BM25": [
+            "p35",
+            "p41",
+            "p36"
+          ],
+          "D hybrid": [
+            "p35",
+            "p41",
+            "p39"
+          ]
+        },
+        "first_relevant_rank": {
+          "C direct Shona+E5": 34,
+          "B translate+E5": 2,
+          "A glossary+BM25": 1,
+          "D hybrid": 1
+        }
+      },
+      {
+        "queryId": "q29",
+        "query": "tauro",
+        "type": "single",
+        "english": "towel",
+        "glossary": [
+          "towel"
+        ],
+        "top3": {
+          "C direct Shona+E5": [
+            "p46",
+            "p53",
+            "p04"
+          ],
+          "B translate+E5": [
+            "p31",
+            "p29",
+            "p30"
+          ],
+          "A glossary+BM25": [
+            "p31",
+            "p01",
+            "p02"
+          ],
+          "D hybrid": [
+            "p31",
+            "p29",
+            "p30"
+          ]
+        },
+        "first_relevant_rank": {
+          "C direct Shona+E5": 18,
+          "B translate+E5": 1,
+          "A glossary+BM25": 1,
+          "D hybrid": 1
+        }
+      },
+      {
+        "queryId": "q30",
+        "query": "mwenje wezuva",
+        "type": "multiword",
+        "english": "light of the sun",
+        "glossary": [
+          "lamp light",
+          "solar sun"
+        ],
+        "top3": {
+          "C direct Shona+E5": [
+            "p32",
+            "p10",
+            "p11"
+          ],
+          "B translate+E5": [
+            "p32",
+            "p33",
+            "p07"
+          ],
+          "A glossary+BM25": [
+            "p32",
+            "p01",
+            "p02"
+          ],
+          "D hybrid": [
+            "p32",
+            "p33",
+            "p07"
+          ]
+        },
+        "first_relevant_rank": {
+          "C direct Shona+E5": 1,
+          "B translate+E5": 1,
+          "A glossary+BM25": 1,
+          "D hybrid": 1
+        }
+      },
+      {
+        "queryId": "q31",
+        "query": "mushonga wekurwadza musoro",
+        "type": "multiword",
+        "english": "treatment for headaches",
+        "glossary": [
+          "medicine",
+          "pain",
+          "head"
+        ],
+        "top3": {
+          "C direct Shona+E5": [
+            "p51",
+            "p50",
+            "p10"
+          ],
+          "B translate+E5": [
+            "p50",
+            "p06",
+            "p03"
+          ],
+          "A glossary+BM25": [
+            "p50",
+            "p01",
+            "p02"
+          ],
+          "D hybrid": [
+            "p50",
+            "p06",
+            "p03"
+          ]
+        },
+        "first_relevant_rank": {
+          "C direct Shona+E5": 2,
+          "B translate+E5": 1,
+          "A glossary+BM25": 1,
+          "D hybrid": 1
+        }
+      },
+      {
+        "queryId": "q32",
+        "query": "mushonga wekuchenesa maoko",
+        "type": "multiword",
+        "english": "hand sanitizer",
+        "glossary": [
+          "medicine",
+          "clean",
+          "hands"
+        ],
+        "top3": {
+          "C direct Shona+E5": [
+            "p51",
+            "p02",
+            "p09"
+          ],
+          "B translate+E5": [
+            "p51",
+            "p22",
+            "p50"
+          ],
+          "A glossary+BM25": [
+            "p22",
+            "p51",
+            "p01"
+          ],
+          "D hybrid": [
+            "p51",
+            "p22",
+            "p50"
+          ]
+        },
+        "first_relevant_rank": {
+          "C direct Shona+E5": 1,
+          "B translate+E5": 1,
+          "A glossary+BM25": 2,
+          "D hybrid": 1
+        }
+      },
+      {
+        "queryId": "q33",
+        "query": "sipo yekusuka mbatya",
+        "type": "multiword",
+        "english": "washing soap",
+        "glossary": [
+          "soap",
+          "wash",
+          "clothes"
+        ],
+        "top3": {
+          "C direct Shona+E5": [
+            "p10",
+            "p02",
+            "p04"
+          ],
+          "B translate+E5": [
+            "p22",
+            "p23",
+            "p24"
+          ],
+          "A glossary+BM25": [
+            "p22",
+            "p23",
+            "p01"
+          ],
+          "D hybrid": [
+            "p22",
+            "p23",
+            "p24"
+          ]
+        },
+        "first_relevant_rank": {
+          "C direct Shona+E5": 16,
+          "B translate+E5": 1,
+          "A glossary+BM25": 1,
+          "D hybrid": 1
+        }
+      },
+      {
+        "queryId": "q34",
+        "query": "mafuta emotokari",
+        "type": "multiword",
+        "english": "car fuel",
+        "glossary": [
+          "oil",
+          "car"
+        ],
+        "top3": {
+          "C direct Shona+E5": [
+            "p08",
+            "p28",
+            "p09"
+          ],
+          "B translate+E5": [
+            "p08",
+            "p28",
+            "p07"
+          ],
+          "A glossary+BM25": [
+            "p08",
+            "p35",
+            "p07"
+          ],
+          "D hybrid": [
+            "p08",
+            "p07",
+            "p35"
+          ]
+        },
+        "first_relevant_rank": {
+          "C direct Shona+E5": 1,
+          "B translate+E5": 1,
+          "A glossary+BM25": 1,
+          "D hybrid": 1
+        }
+      },
+      {
+        "queryId": "q35",
+        "query": "bhatiri remotokari",
+        "type": "multiword",
+        "english": "car battery",
+        "glossary": [
+          "battery",
+          "car"
+        ],
+        "top3": {
+          "C direct Shona+E5": [
+            "p51",
+            "p12",
+            "p23"
+          ],
+          "B translate+E5": [
+            "p35",
+            "p34",
+            "p39"
+          ],
+          "A glossary+BM25": [
+            "p35",
+            "p08",
+            "p41"
+          ],
+          "D hybrid": [
+            "p35",
+            "p08",
+            "p34"
+          ]
+        },
+        "first_relevant_rank": {
+          "C direct Shona+E5": 22,
+          "B translate+E5": 1,
+          "A glossary+BM25": 1,
+          "D hybrid": 1
+        }
+      },
+      {
+        "queryId": "q36",
+        "query": "mbeu yechibage",
+        "type": "multiword",
+        "english": "corn seed",
+        "glossary": [
+          "seed",
+          "maize"
+        ],
+        "top3": {
+          "C direct Shona+E5": [
+            "p19",
+            "p10",
+            "p17"
+          ],
+          "B translate+E5": [
+            "p11",
+            "p10",
+            "p19"
+          ],
+          "A glossary+BM25": [
+            "p11",
+            "p10",
+            "p12"
+          ],
+          "D hybrid": [
+            "p11",
+            "p10",
+            "p12"
+          ]
+        },
+        "first_relevant_rank": {
+          "C direct Shona+E5": 7,
+          "B translate+E5": 1,
+          "A glossary+BM25": 1,
+          "D hybrid": 1
+        }
+      },
+      {
+        "queryId": "q37",
+        "query": "fetiraiza yechibage",
+        "type": "multiword",
+        "english": "corn fertilizer",
+        "glossary": [
+          "fertiliser",
+          "maize"
+        ],
+        "top3": {
+          "C direct Shona+E5": [
+            "p10",
+            "p19",
+            "p01"
+          ],
+          "B translate+E5": [
+            "p12",
+            "p11",
+            "p01"
+          ],
+          "A glossary+BM25": [
+            "p12",
+            "p10",
+            "p11"
+          ],
+          "D hybrid": [
+            "p12",
+            "p11",
+            "p10"
+          ]
+        },
+        "first_relevant_rank": {
+          "C direct Shona+E5": 7,
+          "B translate+E5": 1,
+          "A glossary+BM25": 1,
+          "D hybrid": 1
+        }
+      },
+      {
+        "queryId": "q38",
+        "query": "chikafu chehuku",
+        "type": "multiword",
+        "english": "chicken food",
+        "glossary": [
+          "feed food",
+          "chicken"
+        ],
+        "top3": {
+          "C direct Shona+E5": [
+            "p12",
+            "p54",
+            "p04"
+          ],
+          "B translate+E5": [
+            "p54",
+            "p10",
+            "p21"
+          ],
+          "A glossary+BM25": [
+            "p54",
+            "p01",
+            "p13"
+          ],
+          "D hybrid": [
+            "p54",
+            "p21",
+            "p02"
+          ]
+        },
+        "first_relevant_rank": {
+          "C direct Shona+E5": 2,
+          "B translate+E5": 1,
+          "A glossary+BM25": 1,
+          "D hybrid": 1
+        }
+      },
+      {
+        "queryId": "q39",
+        "query": "shangu dzechikoro",
+        "type": "multiword",
+        "english": "school shoes",
+        "glossary": [
+          "shoes",
+          "school"
+        ],
+        "top3": {
+          "C direct Shona+E5": [
+            "p43",
+            "p54",
+            "p53"
+          ],
+          "B translate+E5": [
+            "p43",
+            "p44",
+            "p49"
+          ],
+          "A glossary+BM25": [
+            "p43",
+            "p44",
+            "p49"
+          ],
+          "D hybrid": [
+            "p43",
+            "p44",
+            "p49"
+          ]
+        },
+        "first_relevant_rank": {
+          "C direct Shona+E5": 1,
+          "B translate+E5": 1,
+          "A glossary+BM25": 1,
+          "D hybrid": 1
+        }
+      },
+      {
+        "queryId": "q40",
+        "query": "bhegi rechikoro",
+        "type": "multiword",
+        "english": "school bag",
+        "glossary": [
+          "bag backpack",
+          "school"
+        ],
+        "top3": {
+          "C direct Shona+E5": [
+            "p49",
+            "p17",
+            "p10"
+          ],
+          "B translate+E5": [
+            "p49",
+            "p48",
+            "p43"
+          ],
+          "A glossary+BM25": [
+            "p49",
+            "p17",
+            "p43"
+          ],
+          "D hybrid": [
+            "p49",
+            "p17",
+            "p43"
+          ]
+        },
+        "first_relevant_rank": {
+          "C direct Shona+E5": 1,
+          "B translate+E5": 1,
+          "A glossary+BM25": 1,
+          "D hybrid": 1
+        }
+      },
+      {
+        "queryId": "q41",
+        "query": "munyu we1kg",
+        "type": "attribute",
+        "english": "1 kg of salt",
+        "glossary": [
+          "salt"
+        ],
+        "top3": {
+          "C direct Shona+E5": [
+            "p05",
+            "p21",
+            "p54"
+          ],
+          "B translate+E5": [
+            "p01",
+            "p02",
+            "p05"
+          ],
+          "A glossary+BM25": [
+            "p01",
+            "p05",
+            "p02"
+          ],
+          "D hybrid": [
+            "p01",
+            "p02",
+            "p05"
+          ]
+        },
+        "first_relevant_rank": {
+          "C direct Shona+E5": 6,
+          "B translate+E5": 1,
+          "A glossary+BM25": 1,
+          "D hybrid": 1
+        }
+      },
+      {
+        "queryId": "q42",
+        "query": "shuga 2kg",
+        "type": "attribute",
+        "english": "2 kg of sugar",
+        "glossary": [
+          "sugar"
+        ],
+        "top3": {
+          "C direct Shona+E5": [
+            "p04",
+            "p02",
+            "p19"
+          ],
+          "B translate+E5": [
+            "p04",
+            "p05",
+            "p21"
+          ],
+          "A glossary+BM25": [
+            "p04",
+            "p02",
+            "p19"
+          ],
+          "D hybrid": [
+            "p04",
+            "p05",
+            "p21"
+          ]
+        },
+        "first_relevant_rank": {
+          "C direct Shona+E5": 1,
+          "B translate+E5": 1,
+          "A glossary+BM25": 1,
+          "D hybrid": 1
+        }
+      },
+      {
+        "queryId": "q43",
+        "query": "mafuta ekubika 2 litres",
+        "type": "attribute",
+        "english": "2 litres of cooking oil",
+        "glossary": [
+          "cooking oil"
+        ],
+        "top3": {
+          "C direct Shona+E5": [
+            "p28",
+            "p07",
+            "p04"
+          ],
+          "B translate+E5": [
+            "p07",
+            "p28",
+            "p02"
+          ],
+          "A glossary+BM25": [
+            "p07",
+            "p08",
+            "p09"
+          ],
+          "D hybrid": [
+            "p07",
+            "p02",
+            "p08"
+          ]
+        },
+        "first_relevant_rank": {
+          "C direct Shona+E5": 2,
+          "B translate+E5": 1,
+          "A glossary+BM25": 1,
+          "D hybrid": 1
+        }
+      },
+      {
+        "queryId": "q44",
+        "query": "upfu hwechibage 10kg",
+        "type": "attribute",
+        "english": "10 kg of corn flour",
+        "glossary": [
+          "flour meal",
+          "maize"
+        ],
+        "top3": {
+          "C direct Shona+E5": [
+            "p10",
+            "p04",
+            "p13"
+          ],
+          "B translate+E5": [
+            "p19",
+            "p10",
+            "p02"
+          ],
+          "A glossary+BM25": [
+            "p10",
+            "p11",
+            "p19"
+          ],
+          "D hybrid": [
+            "p10",
+            "p19",
+            "p11"
+          ]
+        },
+        "first_relevant_rank": {
+          "C direct Shona+E5": 1,
+          "B translate+E5": 2,
+          "A glossary+BM25": 1,
+          "D hybrid": 1
+        }
+      },
+      {
+        "queryId": "q45",
+        "query": "foni yeSamsung",
+        "type": "brand_mix",
+        "english": "phone from samsung",
+        "glossary": [
+          "phone smartphone mobile"
+        ],
+        "top3": {
+          "C direct Shona+E5": [
+            "p36",
+            "p37",
+            "p42"
+          ],
+          "B translate+E5": [
+            "p36",
+            "p37",
+            "p42"
+          ],
+          "A glossary+BM25": [
+            "p36",
+            "p37",
+            "p32"
+          ],
+          "D hybrid": [
+            "p36",
+            "p37",
+            "p32"
+          ]
+        },
+        "first_relevant_rank": {
+          "C direct Shona+E5": 1,
+          "B translate+E5": 1,
+          "A glossary+BM25": 1,
+          "D hybrid": 1
+        }
+      },
+      {
+        "queryId": "q46",
+        "query": "case yeSamsung A15",
+        "type": "brand_mix",
+        "english": "case of the samsung a15",
+        "glossary": [],
+        "top3": {
+          "C direct Shona+E5": [
+            "p37",
+            "p36",
+            "p35"
+          ],
+          "B translate+E5": [
+            "p37",
+            "p36",
+            "p35"
+          ],
+          "A glossary+BM25": [
+            "p37",
+            "p36",
+            "p01"
+          ],
+          "D hybrid": [
+            "p37",
+            "p36",
+            "p35"
+          ]
+        },
+        "first_relevant_rank": {
+          "C direct Shona+E5": 1,
+          "B translate+E5": 1,
+          "A glossary+BM25": 1,
+          "D hybrid": 1
+        }
+      },
+      {
+        "queryId": "q47",
+        "query": "pampers",
+        "type": "brand_mix",
+        "english": "pampers",
+        "glossary": [
+          "diapers nappies"
+        ],
+        "top3": {
+          "C direct Shona+E5": [
+            "p52",
+            "p48",
+            "p46"
+          ],
+          "B translate+E5": [
+            "p52",
+            "p48",
+            "p46"
+          ],
+          "A glossary+BM25": [
+            "p52",
+            "p01",
+            "p02"
+          ],
+          "D hybrid": [
+            "p52",
+            "p48",
+            "p46"
+          ]
+        },
+        "first_relevant_rank": {
+          "C direct Shona+E5": 1,
+          "B translate+E5": 1,
+          "A glossary+BM25": 1,
+          "D hybrid": 1
+        }
+      },
+      {
+        "queryId": "q48",
+        "query": "mafuta ekubka",
+        "type": "typo",
+        "english": "cooking oil",
+        "glossary": [
+          "oil"
+        ],
+        "top3": {
+          "C direct Shona+E5": [
+            "p02",
+            "p09",
+            "p28"
+          ],
+          "B translate+E5": [
+            "p07",
+            "p08",
+            "p09"
+          ],
+          "A glossary+BM25": [
+            "p07",
+            "p08",
+            "p09"
+          ],
+          "D hybrid": [
+            "p07",
+            "p08",
+            "p09"
+          ]
+        },
+        "first_relevant_rank": {
+          "C direct Shona+E5": 10,
+          "B translate+E5": 1,
+          "A glossary+BM25": 1,
+          "D hybrid": 1
+        }
+      },
+      {
+        "queryId": "q49",
+        "query": "MAFUTA EKUBIKA",
+        "type": "caps",
+        "english": "cooking oil",
+        "glossary": [
+          "cooking oil"
+        ],
+        "top3": {
+          "C direct Shona+E5": [
+            "p10",
+            "p23",
+            "p02"
+          ],
+          "B translate+E5": [
+            "p07",
+            "p08",
+            "p09"
+          ],
+          "A glossary+BM25": [
+            "p07",
+            "p08",
+            "p09"
+          ],
+          "D hybrid": [
+            "p07",
+            "p08",
+            "p09"
+          ]
+        },
+        "first_relevant_rank": {
+          "C direct Shona+E5": 41,
+          "B translate+E5": 1,
+          "A glossary+BM25": 1,
+          "D hybrid": 1
+        }
+      },
+      {
+        "queryId": "q50",
+        "query": "cooking oil",
+        "type": "english",
+        "english": "cooking oil",
+        "glossary": [],
+        "top3": {
+          "C direct Shona+E5": [
+            "p07",
+            "p08",
+            "p09"
+          ],
+          "B translate+E5": [
+            "p07",
+            "p08",
+            "p09"
+          ],
+          "A glossary+BM25": [
+            "p07",
+            "p08",
+            "p09"
+          ],
+          "D hybrid": [
+            "p07",
+            "p08",
+            "p09"
+          ]
+        },
+        "first_relevant_rank": {
+          "C direct Shona+E5": 1,
+          "B translate+E5": 1,
+          "A glossary+BM25": 1,
+          "D hybrid": 1
+        }
+      },
+      {
+        "queryId": "q51",
+        "query": "phone charger",
+        "type": "english",
+        "english": "phone charger",
+        "glossary": [],
+        "top3": {
+          "C direct Shona+E5": [
+            "p38",
+            "p39",
+            "p32"
+          ],
+          "B translate+E5": [
+            "p38",
+            "p39",
+            "p32"
+          ],
+          "A glossary+BM25": [
+            "p38",
+            "p39",
+            "p37"
+          ],
+          "D hybrid": [
+            "p38",
+            "p39",
+            "p32"
+          ]
+        },
+        "first_relevant_rank": {
+          "C direct Shona+E5": 1,
+          "B translate+E5": 1,
+          "A glossary+BM25": 1,
+          "D hybrid": 1
+        }
+      },
+      {
+        "queryId": "q52",
+        "query": "school shoes",
+        "type": "english",
+        "english": "school shoes",
+        "glossary": [],
+        "top3": {
+          "C direct Shona+E5": [
+            "p43",
+            "p44",
+            "p49"
+          ],
+          "B translate+E5": [
+            "p43",
+            "p44",
+            "p49"
+          ],
+          "A glossary+BM25": [
+            "p43",
+            "p44",
+            "p49"
+          ],
+          "D hybrid": [
+            "p43",
+            "p44",
+            "p49"
+          ]
+        },
+        "first_relevant_rank": {
+          "C direct Shona+E5": 1,
+          "B translate+E5": 1,
+          "A glossary+BM25": 1,
+          "D hybrid": 1
+        }
+      },
+      {
+        "queryId": "q53",
+        "query": "sugar beans",
+        "type": "english",
+        "english": "sugar beans",
+        "glossary": [],
+        "top3": {
+          "C direct Shona+E5": [
+            "p21",
+            "p06",
+            "p05"
+          ],
+          "B translate+E5": [
+            "p21",
+            "p06",
+            "p05"
+          ],
+          "A glossary+BM25": [
+            "p21",
+            "p05",
+            "p04"
+          ],
+          "D hybrid": [
+            "p21",
+            "p05",
+            "p04"
+          ]
+        },
+        "first_relevant_rank": {
+          "C direct Shona+E5": 1,
+          "B translate+E5": 1,
+          "A glossary+BM25": 1,
+          "D hybrid": 1
+        }
+      }
+    ],
+    "weights": {
+      "vector": 0.6,
+      "lexical": 0.4
+    },
+    "query_translate_seconds": 91.9
+  },
+  "translation": {
+    "seconds": 151.2,
+    "no_hard_flags": 34,
+    "total": 40,
+    "safety_total": 10,
+    "safety_clean": 8,
+    "flag_counts": {
+      "english_heavy": 5,
+      "number_lost": 6
+    },
+    "rows": [
+      {
+        "id": "t01",
+        "type": "title",
+        "safety_critical": false,
+        "text": "Tastic Long Grain Parboiled Rice, 2 kg - Pack of 2, Model TG-2000",
+        "shona": "Tastic Long Grain Parboiled Rice, 2 kg - Pack ye2, Model TG-2000",
+        "flags": [
+          "english_heavy"
+        ],
+        "leftover": 1.0
+      },
+      {
+        "id": "t02",
+        "type": "title",
+        "safety_critical": false,
+        "text": "Samsung Galaxy A15 5G, 128GB, Dual SIM, Model SM-A156B",
+        "shona": "Samsung Galaxy A15 5G, 128GB, Dual SIM, Model SM-A156B",
+        "flags": [],
+        "leftover": 1.0
+      },
+      {
+        "id": "t03",
+        "type": "title",
+        "safety_critical": false,
+        "text": "Sunflower Cooking Oil, 2 L, Pack of 6",
+        "shona": "Sunflower Cooking Oil, 2 L, Pack ye6",
+        "flags": [],
+        "leftover": 1.0
+      },
+      {
+        "id": "t04",
+        "type": "title",
+        "safety_critical": false,
+        "text": "Men's Cotton T-Shirt, 3 Pack, Size L, Assorted Colours",
+        "shona": "T-Shirt yevarume Cotton, 3 Pack, Saizi L, Mavara Akasiyana-siyana",
+        "flags": [
+          "english_heavy"
+        ],
+        "leftover": 0.5
+      },
+      {
+        "id": "t05",
+        "type": "title",
+        "safety_critical": false,
+        "text": "Stainless Steel Pressure Cooker 5 Litre with Safety Valve",
+        "shona": "Stainless Steel Pressure Cooker 5 Litre ine Safety Valve",
+        "flags": [
+          "english_heavy"
+        ],
+        "leftover": 1.0
+      },
+      {
+        "id": "t06",
+        "type": "title",
+        "safety_critical": false,
+        "text": "Boys School Shoes, Black Leather, Size 5",
+        "shona": "Shangu dzechikoro dzevakomana, Negro Leather, Size 5",
+        "flags": [],
+        "leftover": 0.33
+      },
+      {
+        "id": "b01",
+        "type": "bullet",
+        "safety_critical": false,
+        "text": "Made from 100% natural ingredients with no added preservatives.",
+        "shona": "Yakagadzirwa nezvinhu zvakasikwa 100% pasina zvekuchengetedza zvakawedzerwa.",
+        "flags": [],
+        "leftover": 0.0
+      },
+      {
+        "id": "b02",
+        "type": "bullet",
+        "safety_critical": false,
+        "text": "Fits most 6.5 inch smartphones. Easy to clean.",
+        "shona": "Inokodzera mafoni akawanda e6.5 inch. Zviri nyore kuchenesa.",
+        "flags": [],
+        "leftover": 0.17
+      },
+      {
+        "id": "b03",
+        "type": "bullet",
+        "safety_critical": false,
+        "text": "12 month warranty. Keep your receipt as proof of purchase.",
+        "shona": "Garandi yemwedzi 12. Chengeta risiti yako sechiratidzo chekutenga.",
+        "flags": [],
+        "leftover": 0.0
+      },
+      {
+        "id": "b04",
+        "type": "bullet",
+        "safety_critical": false,
+        "text": "Machine washable at 30°C. Do not bleach. Tumble dry low.",
+        "shona": "Mashini inogona kushambidzwa pa30°C. Usaita kuti zvinhu zvicheneswe. Dzvinyirira pasi.",
+        "flags": [],
+        "leftover": 0.0
+      },
+      {
+        "id": "b05",
+        "type": "bullet",
+        "safety_critical": true,
+        "text": "Suitable for children aged 3 years and above.",
+        "shona": "Inokodzera vana vane makore 3 zvichikwira.",
+        "flags": [],
+        "leftover": 0.0
+      },
+      {
+        "id": "b06",
+        "type": "bullet",
+        "safety_critical": false,
+        "text": "Battery lasts up to 20 hours on a single charge.",
+        "shona": "Bhatiri rinopedza maawa 20 richibhadharwa kamwe chete.",
+        "flags": [],
+        "leftover": 0.0
+      },
+      {
+        "id": "d01",
+        "type": "description",
+        "safety_critical": false,
+        "text": "This iodized table salt is ideal for everyday cooking. It is finely ground and fortified with iodine. Store in a cool, dry place.",
+        "shona": "Munyu uyu wetafura une iodine unokodzera kubika zuva nezuva. Yakanyatsodyarwa uye yakasimbiswa neyodi. Chengetedza panzvimbo inotonhorera uye yakaoma.",
+        "flags": [],
+        "leftover": 0.08
+      },
+      {
+        "id": "d02",
+        "type": "description",
+        "safety_critical": false,
+        "text": "This smartphone has a 6.5 inch display and a 50MP camera. The 5000mAh battery lasts all day. It supports dual SIM cards and 5G networks.",
+        "shona": "Iyi smartphone ine kuratidzwa kwemasendimita 6.5 uye kamera ye50MP. Bhatiri re5000mAh rinogara zuva rose. Inotsigira dual SIM makadhi uye 5G network.",
+        "flags": [],
+        "leftover": 0.2
+      },
+      {
+        "id": "d03",
+        "type": "description",
+        "safety_critical": false,
+        "text": "Our roller meal is milled from the finest white maize. It cooks into smooth, fluffy sadza every time. Store in a cool, dry place and use within 6 months of opening.",
+        "shona": "Zvokudya zvedu zvinopetwa zvinogadzirwa nechibage chena chakanakisisa. Inobika ikava sadza yakatsetseka, ine ruzha nguva dzose. Chengetedza munzvimbo inotonhorera, yakaoma uye shandisa mukati memwedzi mitanhatu mushure mekuvhura.",
+        "flags": [
+          "number_lost"
+        ],
+        "leftover": 0.05
+      },
+      {
+        "id": "d04",
+        "type": "description",
+        "safety_critical": false,
+        "text": "Stay warm this winter with our thick wool blanket. The soft fabric is gentle on the skin. Available in double bed size only.",
+        "shona": "Ramba uchidziya munguva yechando nechifukidziro chedu chakakora chemvere. Mucheka wakapfava uri munyoro paganda. Inowanikwa chete muhukuru hwemubhedha wechipiri.",
+        "flags": [],
+        "leftover": 0.0
+      },
+      {
+        "id": "d05",
+        "type": "description",
+        "safety_critical": true,
+        "text": "Apply 400 kg per hectare at planting. Place the fertiliser in the planting hole and cover with soil. Keep away from children and animals. Wash hands after use.",
+        "shona": "Shandisa 400 kg pahekita pakudyara. Isa fetiraiza mugomba rokudyara uye rifukidze nevhu. Gara kure nevana nemhuka. Geza maoko pashure pokushandisa.",
+        "flags": [],
+        "leftover": 0.0
+      },
+      {
+        "id": "d06",
+        "type": "description",
+        "safety_critical": false,
+        "text": "Charge in direct sunlight for 8 hours. The lamp gives up to 12 hours of bright light. It can also charge your phone through the USB port.",
+        "shona": "Bhadharisa muzuva rakananga kwemaawa masere. Rambi racho rinopa chiedza chinopenya kwemaawa 12. Inogonawo kubhadharisa foni yako kuburikidza nechiteshi cheUSB.",
+        "flags": [
+          "number_lost"
+        ],
+        "leftover": 0.0
+      },
+      {
+        "id": "p01",
+        "type": "price",
+        "safety_critical": false,
+        "text": "Price: $2.99 (was $4.50). Save 33%.",
+        "shona": "Mutengo: $2.99 (akanga ari $4.50). Chengetedza 33%.",
+        "flags": [],
+        "leftover": 0.0
+      },
+      {
+        "id": "p02",
+        "type": "price",
+        "safety_critical": false,
+        "text": "Buy 2 get 1 free. Offer ends 31 October.",
+        "shona": "Tenga 2 tora 1 pachena. Chipo chacho chinopera musi wa31 October.",
+        "flags": [],
+        "leftover": 0.25
+      },
+      {
+        "id": "p03",
+        "type": "price",
+        "safety_critical": false,
+        "text": "Free delivery on orders over $50.",
+        "shona": "Kutumira kusina mubhadharo pamirairo inodarika $ 50.",
+        "flags": [],
+        "leftover": 0.0
+      },
+      {
+        "id": "p04",
+        "type": "price",
+        "safety_critical": false,
+        "text": "Only 3 left in stock - order soon.",
+        "shona": "Zvitatu bedzi zvasara zviripo - nokukurumidza.",
+        "flags": [
+          "number_lost"
+        ],
+        "leftover": 0.0
+      },
+      {
+        "id": "p05",
+        "type": "price",
+        "safety_critical": false,
+        "text": "Delivery in 5-7 working days.",
+        "shona": "Kuendeswa mumazuva 5 kusvika ku7 ekushanda.",
+        "flags": [],
+        "leftover": 0.0
+      },
+      {
+        "id": "p06",
+        "type": "price",
+        "safety_critical": false,
+        "text": "Limited time deal: 25% off today only.",
+        "shona": "Chibvumirano chenguva shoma: 25% kubviswa nhasi chete.",
+        "flags": [],
+        "leftover": 0.0
+      },
+      {
+        "id": "p07",
+        "type": "price",
+        "safety_critical": false,
+        "text": "Save 20% when you subscribe.",
+        "shona": "Chengetedza 20% paunonyoresa.",
+        "flags": [],
+        "leftover": 0.0
+      },
+      {
+        "id": "s01",
+        "type": "safety",
+        "safety_critical": true,
+        "text": "WARNING: Contains peanuts and tree nuts. Keep out of reach of children.",
+        "shona": "Yambiro: Inosanganisira nzungu nemiti yemiti. Ramba uri kure nevana.",
+        "flags": [],
+        "leftover": 0.0
+      },
+      {
+        "id": "s02",
+        "type": "safety",
+        "safety_critical": true,
+        "text": "Allergen information: Contains wheat, milk, eggs and soy. May contain traces of nuts.",
+        "shona": "Allergen ruzivo: Rine gorosi, mukaka, mazai uye soya. Inogona kunge iine zviratidzo zvemakwenzi.",
+        "flags": [],
+        "leftover": 0.11
+      },
+      {
+        "id": "s03",
+        "type": "safety",
+        "safety_critical": true,
+        "text": "Do not exceed the stated dose. If symptoms persist, consult your doctor.",
+        "shona": "Usapfuure muyero wakataurwa. Kana zviratidzo zvichiramba zviripo, bvunza chiremba wako.",
+        "flags": [],
+        "leftover": 0.0
+      },
+      {
+        "id": "s04",
+        "type": "safety",
+        "safety_critical": true,
+        "text": "Keep away from fire. Do not use near open flames.",
+        "shona": "Ramba kure nemoto. Usashandise pedyo nemoto wakavhurika.",
+        "flags": [],
+        "leftover": 0.0
+      },
+      {
+        "id": "s05",
+        "type": "safety",
+        "safety_critical": true,
+        "text": "Not suitable for children under 3 years. Small parts may be a choking hazard.",
+        "shona": "Hazvina kukodzera vana vari pasi pemakore matatu. Zvikamu zviduku zvinogona kuita kuti munhu anyure.",
+        "flags": [
+          "number_lost"
+        ],
+        "leftover": 0.0
+      },
+      {
+        "id": "s06",
+        "type": "safety",
+        "safety_critical": true,
+        "text": "Store below 25°C. Once opened, keep refrigerated and consume within 3 days.",
+        "shona": "Chengetedza pasi pe25°C. Kana zvangovhurwa, chengeta mufiriji uye udye mukati memazuva matatu.",
+        "flags": [
+          "number_lost"
+        ],
+        "leftover": 0.0
+      },
+      {
+        "id": "s07",
+        "type": "safety",
+        "safety_critical": true,
+        "text": "For external use only. Avoid contact with eyes.",
+        "shona": "Zvokushandisa zvokunze chete. Dzivisa kusangana nemaziso.",
+        "flags": [],
+        "leftover": 0.0
+      },
+      {
+        "id": "s08",
+        "type": "safety",
+        "safety_critical": true,
+        "text": "Always follow the preparation instructions on the pack. Use boiled water cooled to 70°C.",
+        "shona": "Nguva dzose tevera mirayiridzo yekugadzirira iri pakapu. Shandisa mvura yakabikwa yakatonhora kusvika 70°C.",
+        "flags": [],
+        "leftover": 0.0
+      },
+      {
+        "id": "r01",
+        "type": "policy",
+        "safety_critical": false,
+        "text": "Returns accepted within 30 days of delivery. Items must be unused and in original packaging.",
+        "shona": "Kudzoka kunogamuchirwa mukati memazuva makumi matatu ekuendeswa. Zvinhu zvinofanira kunge zvisina kushandiswa uye zviri mumapakeji ekutanga.",
+        "flags": [
+          "number_lost"
+        ],
+        "leftover": 0.0
+      },
+      {
+        "id": "x01",
+        "type": "tricky",
+        "safety_critical": false,
+        "text": "Maize meal, 10 kg bag, 100% natural",
+        "shona": "Chibage chibage, 10 kg bag, 100% yemasikirwo",
+        "flags": [],
+        "leftover": 0.0
+      },
+      {
+        "id": "x02",
+        "type": "tricky",
+        "safety_critical": false,
+        "text": "Nike Air Max 90, Model CN8490-100, Size 10",
+        "shona": "Nike Air Max 90, Model CN8490-100, Kukura 10",
+        "flags": [],
+        "leftover": 0.5
+      },
+      {
+        "id": "x03",
+        "type": "tricky",
+        "safety_critical": false,
+        "text": "Dettol Antiseptic Liquid 500ml, kills 99.9% of germs",
+        "shona": "Dettol Antiseptic Liquid 500ml, inouraya 99.9% yehutachiona",
+        "flags": [
+          "english_heavy"
+        ],
+        "leftover": 0.5
+      },
+      {
+        "id": "x04",
+        "type": "tricky",
+        "safety_critical": false,
+        "text": "Samsung 55 inch 4K UHD Smart TV, UA55AU7000",
+        "shona": "Samsung 55 padiki 4K UHD Smart TV, UA55AU7000",
+        "flags": [],
+        "leftover": 0.5
+      },
+      {
+        "id": "x05",
+        "type": "tricky",
+        "safety_critical": false,
+        "text": "Bundle includes charger, cable and case. Battery not included.",
+        "shona": "Bhatani racho rinosanganisira charger, tambo uye chiputiriso. Bhatiri haribatanidzwi.",
+        "flags": [],
+        "leftover": 0.14
+      },
+      {
+        "id": "x06",
+        "type": "tricky",
+        "safety_critical": false,
+        "text": "Colour: Navy Blue | Size: Medium | Material: 100% Cotton",
+        "shona": "Ruvara: Navy Blue  Kukura: Medium  Material: 100% Cotton",
+        "flags": [
+          "english_heavy"
+        ],
+        "leftover": 0.71
+      }
+    ]
+  }
+}

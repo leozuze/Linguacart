@@ -146,3 +146,13 @@ Status doc written for the team. Next: push and open PR, then Step 3 (patch sche
 - 2026-10-24: Nine spec ambiguities settled. config.py, schemas.py, errors.py, translation.py, embedding.py written and verified.
 - 2026-10-24: Stress test, Shona->English test and query-translation comparison run. Six spec changes proposed.
 - 2026-10-24: Status doc docs/07-MODEL-SERVICE-STATUS.md written for the team.
+## Session update 2026-10-24 (larger dev evaluation)
+- [x] make_dev_data.py and run_dev_eval.py written (research/evaluation/). Synthetic dev set, unreviewed.
+- [x] Retrieval run: C 0.42, B 0.89, A 0.96 (inflated), D 0.94 MRR@10. Translate-first confirmed.
+- [x] Translation run: 40 segments, 151 s. Automatic checks gave 6 false alarms and missed unit/meaning errors. Details in docs/07 section 10.
+- [ ] Patch harness with reference query pipeline (normalise, translate, clean) and re-run retrieval (v2)
+- [ ] Shona speaker reviews translation_review.csv, dev_queries.jsonl, dev_glossary_starter.jsonl
+- [ ] Team decides change #9 (English beside Shona for safety text; phrase bank later)
+- [ ] Pick a licensed/open catalogue (see Phase 6)
+- [ ] Step 4: pytest suite
+- Log 2026-10-24: routes verified over HTTP; dev evaluation run; changes 4 (refined), 7, 8, 9 proposed.
