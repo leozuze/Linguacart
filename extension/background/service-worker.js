@@ -1,1 +1,1 @@
-// LinguaCart background service worker placeholder.
+console.log("LinguaCart service worker started");
