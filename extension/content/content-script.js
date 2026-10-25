@@ -1,8 +1,7 @@
 console.log("LinguaCart content script is running");
 
 // ---------- Settings ----------
-const SKIP_TAGS = new Set(["SCRIPT", "STYLE", "NOSCRIPT", "TEXTAREA", "INPUT", "CODE"]);
-
+const SKIP_TAGS = new Set(["SCRIPT", "STYLE", "NOSCRIPT", "TEXTAREA", "INPUT", "CODE", "SELECT", "OPTION"]);
 // currencies, numbers, and number+unit patterns (first draft, we will refine it)
 const PROTECTED_RE =
   /(?:INR|USD|ZiG|ZWL|₹|\$)\s?\d[\d,]*(?:\.\d+)?|\d[\d,]*(?:\.\d+)?\s?(?:oz|lb|kg|g|ml|l|cm|mm|in|hrs?|hours?)?\b/gi;
@@ -222,4 +221,115 @@ function runSegmenter() {
   );
 }
 
-setTimeout(runSegmenter, 2000);
+// To collect strings for the glossary, uncomment this line:
+// setTimeout(runSegmenter, 2000);
+
+// ---------- Translation (fake backend for now) ----------
+function pageType() {
+  if (location.pathname.includes("/dp/")) return "product";
+  if (location.pathname === "/s") return "listing";
+  return "other";
+}
+
+function kindFor(seg) {
+  const kind = kindOf(seg, toTemplate(seg.text));
+  if (kind === "label") return "ui_label";
+  if (kind === "template") return "ui_template";
+  return seg.role === "product" ? "title" : "other";
+}
+
+const swaps = new Map(); // text node -> { original, shona }
+let view = "en"; // "en" or "sn"
+
+const MAX_SEGMENTS = 200;
+const BATCH_SIZE = 50; // matches the limit in the API contract
+
+async function translatePage() {
+  const segs = collectSegments().filter((s) => s.inViewport).slice(0, MAX_SEGMENTS);
+  let translated = 0;
+  let keptEnglish = 0;
+
+  for (let start = 0; start < segs.length; start += BATCH_SIZE) {
+    const batch = segs.slice(start, start + BATCH_SIZE);
+    const request = {
+      apiVersion: 1,
+      site: location.hostname.replace(/^www\./, ""),
+      pageType: pageType(),
+      target: "sna",
+      segments: batch.map((s, i) => ({ id: "s" + i, text: s.text, kind: kindFor(s) })),
+    };
+
+    const response = await chrome.runtime.sendMessage({ type: "translate", request });
+    if (!response || !response.results) throw new Error("No usable response from backend");
+
+    for (const r of response.results) {
+      const seg = batch[Number(r.id.slice(1))];
+      if (!seg) continue;
+      if (r.status !== "translated") {
+        keptEnglish++;
+        console.log("LinguaCart kept English:", seg.text, r.reasons);
+        continue;
+      }
+      translated++;
+      seg.nodes.forEach((node, i) => {
+        swaps.set(node, { original: node.textContent, shona: i === 0 ? r.text : "" });
+      });
+    }
+  }
+  console.log(
+    `LinguaCart: ${translated} translated, ${keptEnglish} kept in English, of ${segs.length} segments`
+  );
+}
+
+function setView(next) {
+  for (const [node, s] of swaps) {
+    node.textContent = next === "sn" ? s.shona : s.original;
+  }
+  view = next;
+}
+
+function createToolbar() {
+  if (document.getElementById("linguacart-toolbar")) return;
+  const host = document.createElement("div");
+  host.id = "linguacart-toolbar";
+  host.setAttribute("translate", "no");
+  const root = host.attachShadow({ mode: "open" });
+  root.innerHTML = `
+    <style>
+      div { position: fixed; right: 16px; bottom: 16px; z-index: 2147483647; }
+      button {
+        all: initial; font: 600 14px system-ui, sans-serif; background: #1f6f43;
+        color: #fff; padding: 10px 14px; border-radius: 20px; cursor: pointer;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+      }
+      button:disabled { opacity: 0.6; cursor: wait; }
+    </style>
+    <div><button id="toggle">Translate to Shona</button></div>`;
+  document.documentElement.appendChild(host);
+
+  const btn = root.getElementById("toggle");
+  btn.addEventListener("click", async () => {
+    try {
+      if (swaps.size === 0) {
+        btn.disabled = true;
+        btn.textContent = "Translating...";
+        await translatePage();
+        btn.disabled = false;
+        setView("sn");
+        btn.textContent = "Show original";
+      } else if (view === "sn") {
+        setView("en");
+        btn.textContent = "Show Shona";
+      } else {
+        setView("sn");
+        btn.textContent = "Show original";
+      }
+    } catch (err) {
+      console.error("LinguaCart error:", err);
+      btn.disabled = false;
+      btn.textContent = "Translation unavailable";
+    }
+  });
+}
+
+createToolbar();
