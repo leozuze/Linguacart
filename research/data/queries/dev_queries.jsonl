@@ -1,0 +1,53 @@
+{"queryId": "q01", "query": "munyu", "type": "single", "my_confidence": "high", "relevance": {"p01": 3, "p02": 2}, "annotator": "claude-draft", "status": "unreviewed"}
+{"queryId": "q02", "query": "shuga", "type": "single", "my_confidence": "high", "relevance": {"p04": 3, "p05": 2, "p06": 1}, "annotator": "claude-draft", "status": "unreviewed"}
+{"queryId": "q03", "query": "sukari", "type": "single", "my_confidence": "high", "relevance": {"p04": 3, "p05": 2, "p06": 1}, "annotator": "claude-draft", "status": "unreviewed"}
+{"queryId": "q04", "query": "mafuta ekubika", "type": "multiword", "my_confidence": "high", "relevance": {"p07": 3}, "annotator": "claude-draft", "status": "unreviewed"}
+{"queryId": "q05", "query": "mafuta", "type": "ambiguous", "my_confidence": "high", "relevance": {"p07": 2, "p08": 1, "p09": 1}, "annotator": "claude-draft", "status": "unreviewed"}
+{"queryId": "q06", "query": "chibage", "type": "single", "my_confidence": "high", "relevance": {"p10": 2, "p11": 2, "p12": 1}, "annotator": "claude-draft", "status": "unreviewed"}
+{"queryId": "q07", "query": "upfu hwechibage", "type": "multiword", "my_confidence": "medium", "relevance": {"p10": 3}, "annotator": "claude-draft", "status": "unreviewed"}
+{"queryId": "q08", "query": "hupfu hwechibage", "type": "variant", "my_confidence": "medium", "relevance": {"p10": 3}, "annotator": "claude-draft", "status": "unreviewed"}
+{"queryId": "q09", "query": "mupunga", "type": "single", "my_confidence": "high", "relevance": {"p13": 3}, "annotator": "claude-draft", "status": "unreviewed"}
+{"queryId": "q10", "query": "mukaka", "type": "single", "my_confidence": "high", "relevance": {"p14": 3, "p15": 3, "p16": 1}, "annotator": "claude-draft", "status": "unreviewed"}
+{"queryId": "q11", "query": "mukaka wemwana", "type": "multiword", "my_confidence": "medium", "relevance": {"p16": 3, "p14": 1}, "annotator": "claude-draft", "status": "unreviewed"}
+{"queryId": "q12", "query": "tii", "type": "single", "my_confidence": "high", "relevance": {"p17": 3}, "annotator": "claude-draft", "status": "unreviewed"}
+{"queryId": "q13", "query": "kofi", "type": "single", "my_confidence": "high", "relevance": {"p18": 3}, "annotator": "claude-draft", "status": "unreviewed"}
+{"queryId": "q14", "query": "nzungu", "type": "single", "my_confidence": "medium", "relevance": {"p20": 2}, "annotator": "claude-draft", "status": "unreviewed"}
+{"queryId": "q15", "query": "bhinzi", "type": "single", "my_confidence": "medium", "relevance": {"p21": 3}, "annotator": "claude-draft", "status": "unreviewed"}
+{"queryId": "q16", "query": "sipo", "type": "ambiguous", "my_confidence": "high", "relevance": {"p23": 3, "p24": 2, "p22": 2}, "annotator": "claude-draft", "status": "unreviewed"}
+{"queryId": "q17", "query": "hari", "type": "single", "my_confidence": "medium", "relevance": {"p26": 3, "p27": 1}, "annotator": "claude-draft", "status": "unreviewed"}
+{"queryId": "q18", "query": "bhaketi", "type": "single", "my_confidence": "medium", "relevance": {"p25": 3}, "annotator": "claude-draft", "status": "unreviewed"}
+{"queryId": "q19", "query": "gumbeze", "type": "single", "my_confidence": "high", "relevance": {"p29": 3, "p30": 1}, "annotator": "claude-draft", "status": "unreviewed"}
+{"queryId": "q20", "query": "foni", "type": "single", "my_confidence": "high", "relevance": {"p36": 3, "p37": 1, "p38": 1}, "annotator": "claude-draft", "status": "unreviewed"}
+{"queryId": "q21", "query": "chaja", "type": "single", "my_confidence": "medium", "relevance": {"p38": 3, "p39": 2}, "annotator": "claude-draft", "status": "unreviewed"}
+{"queryId": "q22", "query": "redhiyo", "type": "single", "my_confidence": "high", "relevance": {"p42": 3}, "annotator": "claude-draft", "status": "unreviewed"}
+{"queryId": "q23", "query": "terevhizheni", "type": "single", "my_confidence": "medium", "relevance": {"p40": 3}, "annotator": "claude-draft", "status": "unreviewed"}
+{"queryId": "q24", "query": "shangu", "type": "single", "my_confidence": "high", "relevance": {"p43": 3, "p44": 3}, "annotator": "claude-draft", "status": "unreviewed"}
+{"queryId": "q25", "query": "hembe", "type": "single", "my_confidence": "medium", "relevance": {"p45": 3}, "annotator": "claude-draft", "status": "unreviewed"}
+{"queryId": "q26", "query": "mabhuku", "type": "single", "my_confidence": "medium", "relevance": {"p47": 3}, "annotator": "claude-draft", "status": "unreviewed"}
+{"queryId": "q27", "query": "badza", "type": "single", "my_confidence": "high", "relevance": {"p53": 3}, "annotator": "claude-draft", "status": "unreviewed"}
+{"queryId": "q28", "query": "bhatiri", "type": "single", "my_confidence": "medium", "relevance": {"p34": 3, "p35": 2}, "annotator": "claude-draft", "status": "unreviewed"}
+{"queryId": "q29", "query": "tauro", "type": "single", "my_confidence": "medium", "relevance": {"p31": 3}, "annotator": "claude-draft", "status": "unreviewed"}
+{"queryId": "q30", "query": "mwenje wezuva", "type": "multiword", "my_confidence": "low", "relevance": {"p32": 3, "p33": 1}, "annotator": "claude-draft", "status": "unreviewed"}
+{"queryId": "q31", "query": "mushonga wekurwadza musoro", "type": "multiword", "my_confidence": "medium", "relevance": {"p50": 3}, "annotator": "claude-draft", "status": "unreviewed"}
+{"queryId": "q32", "query": "mushonga wekuchenesa maoko", "type": "multiword", "my_confidence": "medium", "relevance": {"p51": 3}, "annotator": "claude-draft", "status": "unreviewed"}
+{"queryId": "q33", "query": "sipo yekusuka mbatya", "type": "multiword", "my_confidence": "medium", "relevance": {"p22": 3, "p23": 1}, "annotator": "claude-draft", "status": "unreviewed"}
+{"queryId": "q34", "query": "mafuta emotokari", "type": "multiword", "my_confidence": "medium", "relevance": {"p08": 3}, "annotator": "claude-draft", "status": "unreviewed"}
+{"queryId": "q35", "query": "bhatiri remotokari", "type": "multiword", "my_confidence": "medium", "relevance": {"p35": 3, "p34": 1}, "annotator": "claude-draft", "status": "unreviewed"}
+{"queryId": "q36", "query": "mbeu yechibage", "type": "multiword", "my_confidence": "medium", "relevance": {"p11": 3}, "annotator": "claude-draft", "status": "unreviewed"}
+{"queryId": "q37", "query": "fetiraiza yechibage", "type": "multiword", "my_confidence": "medium", "relevance": {"p12": 3, "p11": 1}, "annotator": "claude-draft", "status": "unreviewed"}
+{"queryId": "q38", "query": "chikafu chehuku", "type": "multiword", "my_confidence": "medium", "relevance": {"p54": 3}, "annotator": "claude-draft", "status": "unreviewed"}
+{"queryId": "q39", "query": "shangu dzechikoro", "type": "multiword", "my_confidence": "medium", "relevance": {"p43": 3}, "annotator": "claude-draft", "status": "unreviewed"}
+{"queryId": "q40", "query": "bhegi rechikoro", "type": "multiword", "my_confidence": "medium", "relevance": {"p49": 3}, "annotator": "claude-draft", "status": "unreviewed"}
+{"queryId": "q41", "query": "munyu we1kg", "type": "attribute", "my_confidence": "medium", "relevance": {"p01": 3, "p02": 1}, "annotator": "claude-draft", "status": "unreviewed"}
+{"queryId": "q42", "query": "shuga 2kg", "type": "attribute", "my_confidence": "high", "relevance": {"p04": 3, "p05": 1}, "annotator": "claude-draft", "status": "unreviewed"}
+{"queryId": "q43", "query": "mafuta ekubika 2 litres", "type": "attribute", "my_confidence": "high", "relevance": {"p07": 3}, "annotator": "claude-draft", "status": "unreviewed"}
+{"queryId": "q44", "query": "upfu hwechibage 10kg", "type": "attribute", "my_confidence": "medium", "relevance": {"p10": 3}, "annotator": "claude-draft", "status": "unreviewed"}
+{"queryId": "q45", "query": "foni yeSamsung", "type": "brand_mix", "my_confidence": "medium", "relevance": {"p36": 3, "p37": 1, "p38": 1}, "annotator": "claude-draft", "status": "unreviewed"}
+{"queryId": "q46", "query": "case yeSamsung A15", "type": "brand_mix", "my_confidence": "low", "relevance": {"p37": 3, "p36": 1}, "annotator": "claude-draft", "status": "unreviewed"}
+{"queryId": "q47", "query": "pampers", "type": "brand_mix", "my_confidence": "medium", "relevance": {"p52": 3}, "annotator": "claude-draft", "status": "unreviewed"}
+{"queryId": "q48", "query": "mafuta ekubka", "type": "typo", "my_confidence": "high", "relevance": {"p07": 3}, "annotator": "claude-draft", "status": "unreviewed"}
+{"queryId": "q49", "query": "MAFUTA EKUBIKA", "type": "caps", "my_confidence": "high", "relevance": {"p07": 3}, "annotator": "claude-draft", "status": "unreviewed"}
+{"queryId": "q50", "query": "cooking oil", "type": "english", "my_confidence": "high", "relevance": {"p07": 3}, "annotator": "claude-draft", "status": "unreviewed"}
+{"queryId": "q51", "query": "phone charger", "type": "english", "my_confidence": "high", "relevance": {"p38": 3, "p39": 2}, "annotator": "claude-draft", "status": "unreviewed"}
+{"queryId": "q52", "query": "school shoes", "type": "english", "my_confidence": "high", "relevance": {"p43": 3}, "annotator": "claude-draft", "status": "unreviewed"}
+{"queryId": "q53", "query": "sugar beans", "type": "english", "my_confidence": "high", "relevance": {"p21": 3}, "annotator": "claude-draft", "status": "unreviewed"}

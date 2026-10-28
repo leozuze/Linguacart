@@ -177,3 +177,45 @@ Raw results are in `research/evaluation/*_output.txt` and `stress_test_results.j
 - **Shona quality on product text:** code-mixing and wrong terms. Mitigated by the glossary and Java validation. Fine-tuning needs thousands of reviewed pairs we do not have yet.
 - **Licence:** NLLB is CC-BY-NC 4.0. Fine for research, but not for a commercial release.
 - **Test size:** all current numbers come from tiny samples.
+
+## 10. Larger dev evaluation (2026-10-24)
+
+Synthetic dev set: 54 products, 53 Shona/English queries, 40 product-page segments, 46-term starter glossary. All drafted by Claude and **not reviewed by a Shona speaker**, so the numbers are indicative only. Raw output: `research/evaluation/dev_eval_*_output.txt`, `dev_eval_results.json`, `translation_review.csv`.
+
+### Retrieval
+
+| System | R@5 | MRR@10 | nDCG@5 |
+|---|---|---|---|
+| C direct Shona + E5 | 0.56 | 0.42 | 0.44 |
+| B translate query + E5 | 0.94 | 0.89 | 0.89 |
+| A glossary + BM25 (inflated: glossary written from the same words as the queries) | 0.96 | 0.96 | 0.94 |
+| D hybrid (0.6 vector + 0.4 lexical) | 0.98 | 0.94 | 0.94 |
+
+- Translate-first confirmed: single-word MRR 0.16 (C) vs 0.87 (B) vs 0.94 (D).
+- ALL-CAPS query was hallucinated by NLLB ("FLOWERS for Growing Up"): queries must be lowercased before translation.
+- Translated queries came back with a leading "the" and trailing full stop: clean before searching.
+- Rare words mistranslated (`gumbeze` -> "the coat", `badza` -> "beware of it"): glossary coverage is essential.
+- Catalogue says "Smartphone", query translates to "telephone": glossary needs synonym lists.
+- English queries passed through Shona->English translation unchanged (4 of 4, small sample).
+
+### Translation (40 segments, 151 s, 3.8 s per segment)
+
+- All 6 "number_lost" flags were false alarms: Shona writes numbers as words. The Java number check must accept Shona numerals (or flag for review instead of reverting).
+- Problems the automatic checks missed: "inch" became "masendimita" (cm) and "padiki"; "Save 33%" translated with the word for store/keep; "Black" became "Negro"; "$50" became "$ 50"; separators dropped; allergen words inconsistent between segments; safety sentences likely wrong ("choking hazard", "on the pack"). Shona speaker review needed.
+
+### Updated proposed changes
+
+4. (refined) Number check accepts Shona number words; add unit and currency-format checks.
+7. (new) Java normalises queries (lowercase, strip punctuation) before translating and cleans the translation (drop leading article, trailing punctuation). Reference code: `clean_translation` in `research/evaluation/run_dev_eval.py`.
+8. (new) Glossary entries carry synonym lists; add protected terms ("Save" as discount, colours, units).
+9. (new, team decision) Safety text (warnings, allergens, doses, care): always show the English original beside the Shona, labelled machine-translated. Longer term: an approved phrase bank of reviewed warning sentences matched before calling NLLB.
+
+### Needed from a Shona speaker
+
+Review `research/evaluation/translation_review.csv` (start with the safety rows), the queries in `research/data/queries/dev_queries.jsonl`, and the glossary in `research/data/glossary/dev_glossary_starter.jsonl`.
+
+### 10.1 Query pipeline v2 and glossary caveat (2026-10-24)
+
+After lowercasing queries before translation and cleaning translated queries (drop leading article, trailing punctuation): the ALL-CAPS query recovered (B 0.10 -> 1.00), `foni` left the failure list, brand_mix D reached 1.00. Overall MRR@10: C 0.42, B 0.89, D 0.95.
+
+**Caveat:** the glossary (46 terms), queries, relevance grades and catalogue are all Claude-drafted and unreviewed, and a synonym was added to the glossary after seeing a failure. D and A are therefore inflated and only B vs C is a fair comparison. NLLB still mistranslates several rare words (gumbeze -> "coat", badza -> "beware of it"); the glossary is hiding this. System E (hybrid without glossary) was added to measure that. The dev set is a smoke test, not an evaluation, and the glossary is not usable as fine-tuning data.

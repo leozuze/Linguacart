@@ -1,9 +1,13 @@
 """Pydantic request/response models. Field names match docs/03 exactly."""
 from typing import Literal
 
-from pydantic import BaseModel, Field, field_validator
+from pydantic import BaseModel, Field, field_validator, model_validator
 
 from .config import get_settings
+
+# Proposed change #1: both directions between English and Shona.
+# To go back to the original spec, delete the second pair.
+_SUPPORTED_PAIRS = {("eng_Latn", "sna_Latn"), ("sna_Latn", "eng_Latn")}
 
 
 def _check_batch_size(items: list) -> list:
@@ -16,17 +20,24 @@ def _check_batch_size(items: list) -> list:
 
 # ---------- /translate ----------
 class TranslateRequest(BaseModel):
-    # Literal types make FastAPI return 422 for any other language (v1 rule).
-    sourceLanguage: Literal["eng_Latn"]
-    targetLanguage: Literal["sna_Latn"]
+    sourceLanguage: Literal["eng_Latn", "sna_Latn"]
+    targetLanguage: Literal["eng_Latn", "sna_Latn"]
     # min_length=1 -> empty list is a 422 (decision #3).
-    # Empty *strings* inside the list are allowed and returned as "".
+    # Empty *strings* inside the list are allowed and returned unchanged.
     texts: list[str] = Field(min_length=1)
 
     @field_validator("texts")
     @classmethod
     def _limit_texts(cls, v: list[str]) -> list[str]:
         return _check_batch_size(v)
+
+    @model_validator(mode="after")
+    def _check_pair(self) -> "TranslateRequest":
+        if (self.sourceLanguage, self.targetLanguage) not in _SUPPORTED_PAIRS:
+            raise ValueError(
+                "unsupported language pair: only eng_Latn <-> sna_Latn is supported"
+            )
+        return self
 
 
 class TranslateResponse(BaseModel):
@@ -37,8 +48,7 @@ class TranslateResponse(BaseModel):
 class EmbedInput(BaseModel):
     # Anything other than query/passage is a 422.
     type: Literal["query", "passage"]
-    # Empty text would embed only the "query: " prefix, which is meaningless,
-    # so it is rejected (new small decision, see notes).
+    # Empty text would embed only the "query: " prefix, which is meaningless.
     text: str = Field(min_length=1)
 
 
