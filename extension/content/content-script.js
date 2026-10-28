@@ -259,23 +259,62 @@ function kindFor(seg) {
 }
 
 const swaps = new Map(); // text node -> { original, shona }
-const cache = new Map(); // English text -> Shona text (this page visit only)
-const skipped = new Set(); // English texts the backend refused to translate
+const reportMeta = new Map(); // text node -> source/shown text and provenance
+const cache = new Map(); // English text -> translation result, this page visit only
+const skipped = new Set();
+const translatedKinds = new Set();
+let toolbarRoot = null;
+
 let view = "en"; // "en" or "sn"
 let busy = false;
 let started = false;
+
 
 function pruneSwaps() {
   // Amazon replaces parts of the page; forget nodes that are no longer on it
   for (const node of swaps.keys()) if (!node.isConnected) swaps.delete(node);
 }
 
-function remember(seg, shona) {
-  // the whole translation goes into the first text node; the others are emptied
-  seg.nodes.forEach((node, i) => {
-    swaps.set(node, { original: node.textContent, shona: i === 0 ? shona : "" });
-  });
+function normalizeTranslation(result) {
+  const translationType =
+    result.translationType ??
+    (result.source === "nllb"
+      ? "machine"
+      : result.source === "ui_glossary"
+        ? "human"
+        : result.source === "mock"
+          ? "mock"
+          : "unknown");
+
+  return {
+    text: result.text,
+    source: result.source ?? "unknown",
+    translationType,
+    lowConfidence: Boolean(result.lowConfidence),
+  };
 }
+
+function remember(seg, translation) {
+  const reportRecord = {
+    sourceText: seg.text,
+    shownText: translation.text,
+    source: translation.source,
+    translationType: translation.translationType,
+    lowConfidence: translation.lowConfidence,
+  };
+
+  seg.nodes.forEach((node, i) => {
+    swaps.set(node, {
+      original: node.textContent,
+      shona: i === 0 ? translation.text : "",
+    });
+    reportMeta.set(node, reportRecord);
+  });
+
+  translatedKinds.add(translation.translationType);
+  updateTranslationMarker();
+}
+
 
 async function translateNew() {
   if (busy) return;
@@ -313,18 +352,25 @@ async function translateNew() {
       if (!response || !response.results) throw new Error("No usable response from backend");
 
       for (const r of response.results) {
-        const seg = batch[Number(r.id.slice(1))];
-        if (!seg) continue;
-        if (r.status !== "translated") {
-          keptEnglish++;
-          skipped.add(seg.text);
-          console.log("LinguaCart kept English:", seg.text, r.reasons);
-          continue;
-        }
-        translated++;
-        cache.set(seg.text, r.text);
-        remember(seg, r.text);
-      }
+  if (!r || typeof r.id !== "string") continue;
+
+  const match = /^s(\d+)$/.exec(r.id);
+  const seg = match ? batch[Number(match[1])] : null;
+  if (!seg) continue;
+
+  if (r.status !== "translated" || typeof r.text !== "string" || !r.text) {
+    keptEnglish++;
+    skipped.add(seg.text);
+    console.log("LinguaCart kept English:", seg.text, r.reasons);
+    continue;
+  }
+
+  const translation = normalizeTranslation(r);
+  translated++;
+  cache.set(seg.text, translation);
+  remember(seg, translation);
+}
+
     }
     if (fresh.length) {
       console.log(
@@ -342,7 +388,10 @@ function setView(next) {
     node.textContent = next === "sn" ? s.shona : s.original;
   }
   view = next;
+  updateTranslationMarker();
+  updateReportButton();
 }
+
 
 // Translate content that appears later (scrolling, "more results", Amazon re-rendering)
 let timer = null;
@@ -369,51 +418,298 @@ function startWatching() {
   });
 }
 
+function updateTranslationMarker() {
+  const marker = toolbarRoot?.getElementById("translation-marker");
+  if (!marker) return;
+
+  const labels = [];
+  if (translatedKinds.has("machine")) labels.push("Machine-translated");
+  if (translatedKinds.has("human")) labels.push("Human-translated");
+  if (translatedKinds.has("mock")) labels.push("TEST MOCK — not Shona");
+  if (translatedKinds.has("unknown")) labels.push("Translation type unconfirmed");
+
+  if ([...reportMeta.values()].some((item) => item.lowConfidence)) {
+    labels.push("some results low-confidence");
+  }
+
+  marker.textContent = labels.join(" · ");
+  marker.hidden = view !== "sn" || labels.length === 0;
+}
+
+function selectedTranslationRecord() {
+  const selection = window.getSelection();
+  if (!selection || selection.isCollapsed) return null;
+
+  const startRecord = reportMeta.get(selection.anchorNode);
+  const endRecord = reportMeta.get(selection.focusNode);
+
+  // Keep v1 reporting to a single translated segment.
+  return startRecord && startRecord === endRecord ? startRecord : null;
+}
+
+function updateReportButton() {
+  const button = toolbarRoot?.getElementById("report-translation");
+  if (button) {
+    button.disabled = view !== "sn" || !selectedTranslationRecord();
+  }
+}
+
 function createToolbar() {
   if (document.getElementById("linguacart-toolbar")) return;
+
   const host = document.createElement("div");
   host.id = "linguacart-toolbar";
   host.setAttribute("translate", "no");
+
   const root = host.attachShadow({ mode: "open" });
+  toolbarRoot = root;
+
   root.innerHTML = `
     <style>
-      div { position: fixed; right: 16px; bottom: 16px; z-index: 2147483647; }
-      button {
-        all: initial; font: 600 14px system-ui, sans-serif; background: #1f6f43;
-        color: #fff; padding: 10px 14px; border-radius: 20px; cursor: pointer;
-        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+      [hidden] { display: none !important; }
+
+      .toolbar {
+        position: fixed;
+        right: 16px;
+        bottom: 16px;
+        z-index: 2147483647;
+        display: grid;
+        justify-items: end;
+        gap: 8px;
+        font: 14px system-ui, sans-serif;
       }
-      button:disabled { opacity: 0.6; cursor: wait; }
+
+      .marker, .report-form {
+        max-width: 360px;
+        padding: 10px 12px;
+        border: 1px solid #bbb;
+        border-radius: 10px;
+        background: #fff;
+        color: #222;
+        box-shadow: 0 2px 8px #0003;
+      }
+
+      .marker {
+        font-size: 12px;
+        font-weight: 700;
+      }
+
+      .actions {
+        display: flex;
+        gap: 8px;
+      }
+
+      button, select, textarea {
+        font: inherit;
+      }
+
+      button {
+        border: 0;
+        border-radius: 20px;
+        padding: 10px 14px;
+        cursor: pointer;
+      }
+
+      #toggle {
+        background: #1f6f43;
+        color: white;
+        font-weight: 600;
+      }
+
+      #report-translation {
+        background: #fff;
+        color: #222;
+        border: 1px solid #888;
+      }
+
+      button:disabled {
+        opacity: .55;
+        cursor: not-allowed;
+      }
+
+      .report-form {
+        display: grid;
+        gap: 8px;
+      }
+
+      .report-form label {
+        display: grid;
+        gap: 4px;
+      }
+
+      .preview {
+        max-height: 120px;
+        overflow: auto;
+        padding: 8px;
+        background: #f4f4f4;
+        border-radius: 6px;
+        white-space: pre-wrap;
+        overflow-wrap: anywhere;
+        font-size: 12px;
+      }
+
+      .form-actions {
+        display: flex;
+        gap: 8px;
+        justify-content: flex-end;
+      }
+
+      .notice {
+        max-width: 360px;
+        color: #222;
+        background: #fff;
+        padding: 8px 10px;
+        border-radius: 8px;
+        box-shadow: 0 2px 8px #0003;
+      }
     </style>
-    <div><button id="toggle">Translate to Shona</button></div>`;
+
+    <div class="toolbar">
+      <div id="translation-marker" class="marker" role="status" hidden></div>
+
+      <form id="report-form" class="report-form" hidden>
+        <strong>Report this translation</strong>
+        <div class="preview" id="report-preview"></div>
+        <label>
+          Issue
+          <select id="report-issue">
+            <option value="wrong_meaning">Wrong meaning</option>
+            <option value="unnatural">Unnatural Shona</option>
+            <option value="wrong_dialect">Wrong dialect</option>
+            <option value="number_or_price_problem">Number or price problem</option>
+            <option value="other">Other</option>
+          </select>
+        </label>
+        <label>
+          Optional comment
+          <textarea id="report-comment" rows="2" maxlength="500"></textarea>
+        </label>
+        <div class="form-actions">
+          <button type="button" id="cancel-report">Cancel</button>
+          <button type="submit" id="submit-report">Send report</button>
+        </div>
+      </form>
+
+      <div id="notice" class="notice" role="status" hidden></div>
+
+      <div class="actions">
+        <button id="report-translation" type="button" disabled>
+          Report translation
+        </button>
+        <button id="toggle" type="button">Translate to Shona</button>
+      </div>
+    </div>
+  `;
+
   document.documentElement.appendChild(host);
 
-  const btn = root.getElementById("toggle");
-  btn.addEventListener("click", async () => {
+  const toggle = root.getElementById("toggle");
+  const reportButton = root.getElementById("report-translation");
+  const reportForm = root.getElementById("report-form");
+  const preview = root.getElementById("report-preview");
+  const notice = root.getElementById("notice");
+
+  let pendingReport = null;
+
+  function showNotice(text) {
+    notice.textContent = text;
+    notice.hidden = false;
+    setTimeout(() => {
+      notice.hidden = true;
+    }, 5000);
+  }
+
+  reportButton.addEventListener("pointerdown", (event) => {
+    // Preserve the page text selection when the toolbar button is pressed.
+    event.preventDefault();
+  });
+
+  reportButton.addEventListener("click", () => {
+    pendingReport = selectedTranslationRecord();
+    if (!pendingReport) return;
+
+    // Show exactly what will be included in the report.
+    preview.textContent =
+      `Original: ${pendingReport.sourceText}\n\n` +
+      `Displayed: ${pendingReport.shownText}`;
+
+    reportForm.hidden = false;
+    root.getElementById("report-comment").value = "";
+  });
+
+  root.getElementById("cancel-report").addEventListener("click", () => {
+    pendingReport = null;
+    reportForm.hidden = true;
+  });
+
+  reportForm.addEventListener("submit", async (event) => {
+    event.preventDefault();
+    if (!pendingReport) return;
+
+    const submitButton = root.getElementById("submit-report");
+    submitButton.disabled = true;
+
+    const feedback = {
+      site: location.hostname.replace(/^www\\./, ""),
+      pageType: pageType(),
+      sourceText: pendingReport.sourceText,
+      shownText: pendingReport.shownText,
+      issue: root.getElementById("report-issue").value,
+      comment: root.getElementById("report-comment").value.trim() || undefined,
+    };
+
+    try {
+      const response = await chrome.runtime.sendMessage({
+        type: "feedback",
+        feedback,
+      });
+
+      if (response?.accepted) {
+        showNotice("Report sent. Thank you.");
+      } else {
+        showNotice(response?.message || "Report was not sent.");
+      }
+
+      reportForm.hidden = true;
+      pendingReport = null;
+    } catch (error) {
+      console.error("LinguaCart feedback error:", error);
+      showNotice("Could not send the report. Nothing was submitted.");
+    } finally {
+      submitButton.disabled = false;
+    }
+  });
+
+  toggle.addEventListener("click", async () => {
     try {
       if (!started) {
-        btn.disabled = true;
-        btn.textContent = "Translating...";
+        toggle.disabled = true;
+        toggle.textContent = "Translating...";
         await translateNew();
         setView("sn");
         started = true;
         startWatching();
-        btn.disabled = false;
-        btn.textContent = "Show original";
+        toggle.disabled = false;
+        toggle.textContent = "Show original";
       } else if (view === "sn") {
         setView("en");
-        btn.textContent = "Show Shona";
+        toggle.textContent = "Show Shona";
       } else {
-        await translateNew(); // pick up anything that appeared while in English
+        await translateNew();
         setView("sn");
-        btn.textContent = "Show original";
+        toggle.textContent = "Show original";
       }
-    } catch (err) {
-      console.error("LinguaCart error:", err);
-      btn.disabled = false;
-      btn.textContent = "Translation unavailable";
+    } catch (error) {
+      console.error("LinguaCart error:", error);
+      toggle.disabled = false;
+      toggle.textContent = "Translation unavailable";
+      showNotice("Translation failed. The original text is still available.");
     }
   });
+
+  document.addEventListener("selectionchange", updateReportButton);
+  updateTranslationMarker();
+  updateReportButton();
 }
 
 createToolbar();
