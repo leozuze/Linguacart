@@ -7,12 +7,29 @@ const PROTECTED_RE =
   /(?:INR|USD|ZiG|ZWL|₹|\$)\s?\d[\d,]*(?:\.\d+)?|\d[\d,]*(?:\.\d+)?\s?(?:oz|lb|kg|g|ml|l|cm|mm|in|hrs?|hours?)?\b/gi;
 
 // ---------- Product and listing readers (not called for now) ----------
+function firstText(selectors) {
+  for (const sel of selectors) {
+    const el = document.querySelector(sel);
+    const text = el && el.textContent.replace(/\s+/g, " ").trim();
+    if (text) return text;
+  }
+  return null;
+}
+
+// Only the product's own price area, never "any price on the page".
+// Container ids are from memory: confirm them with the diagnostic below.
+const PRICE_SELECTORS = [
+  // confirmed on the Acer page: the price inside the buy box
+  "#buybox #corePrice_feature_div .a-price:not(.a-text-price) .a-offscreen",
+  "#corePrice_feature_div .a-price:not(.a-text-price) .a-offscreen",
+  // unconfirmed fallback, from memory
+  "#corePriceDisplay_desktop_feature_div .a-price:not(.a-text-price) .a-offscreen",
+];
+
 function getProductInfo() {
-  const titleEl = document.querySelector("#productTitle");
-  const priceEl = document.querySelector(".a-price .a-offscreen");
   return {
-    title: titleEl ? titleEl.textContent.trim() : null,
-    price: priceEl ? priceEl.textContent.trim() : null,
+    title: firstText(["span#productTitle", "#title span"]),
+    price: firstText(PRICE_SELECTORS), // null means "no price shown"
   };
 }
 

@@ -5,7 +5,7 @@ console.log("LinguaCart service worker started");
 function mockTranslate(request) {
   const results = request.segments.map((seg) => {
     // test the failure path: pretend negations fail verification
-    if (/\bnot\b/i.test(seg.text)) {
+    if (/\b(not|no|never|cannot|without|unavailable)\b|n['’]t\b/i.test(seg.text)) {
       return { id: seg.id, status: "not_translated", reasons: ["negation_mismatch"] };
     }
     return { id: seg.id, status: "translated", source: "nllb", text: "[SN] " + seg.text };
