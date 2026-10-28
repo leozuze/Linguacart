@@ -1,0 +1,107 @@
+[
+  {
+    "english": "salt",
+    "shona": "munyu",
+    "domain": "food",
+    "reviewer": "shona_speaker_1",
+    "status": "approved"
+  },
+  {
+    "english": "table salt",
+    "shona": "munyu wetafura",
+    "domain": "food",
+    "reviewer": "shona_speaker_1",
+    "status": "approved"
+  },
+  {
+    "english": "iodized table salt",
+    "shona": "munyu wetafura unemhodzi",
+    "domain": "food",
+    "reviewer": "shona_speaker_1",
+    "status": "approved"
+  },
+  {
+    "english": "iodized",
+    "shona": "unemhodzi",
+    "domain": "food",
+    "reviewer": "shona_speaker_1",
+    "status": "approved"
+  },
+  {
+    "english": "sugar",
+    "shona": "shuga",
+    "domain": "food",
+    "reviewer": "shona_speaker_1",
+    "status": "approved"
+  },
+  {
+    "english": "cooking oil",
+    "shona": "mafuta ekubikisa",
+    "domain": "food",
+    "reviewer": "shona_speaker_1",
+    "status": "approved"
+  },
+  {
+    "english": "water",
+    "shona": "mvura",
+    "domain": "food",
+    "reviewer": "shona_speaker_1",
+    "status": "approved"
+  },
+  {
+    "english": "milk",
+    "shona": "mukaka",
+    "domain": "food",
+    "reviewer": "shona_speaker_1",
+    "status": "approved"
+  },
+  {
+    "english": "tea",
+    "shona": "tii",
+    "domain": "food",
+    "reviewer": "shona_speaker_1",
+    "status": "approved"
+  },
+  {
+    "english": "coffee",
+    "shona": "kofi",
+    "domain": "food",
+    "reviewer": "shona_speaker_1",
+    "status": "approved"
+  },
+  {
+    "english": "bread",
+    "shona": "chingwa",
+    "domain": "food",
+    "reviewer": "shona_speaker_1",
+    "status": "approved"
+  },
+  {
+    "english": "soap",
+    "shona": "sipo",
+    "domain": "household",
+    "reviewer": "shona_speaker_1",
+    "status": "approved"
+  },
+  {
+    "english": "headphones",
+    "shona": "mahedhifoni",
+    "domain": "electronics",
+    "reviewer": "shona_speaker_1",
+    "status": "approved"
+  },
+  {
+    "english": "shoes",
+    "shona": "shangu",
+    "domain": "apparel",
+    "reviewer": "shona_speaker_1",
+    "status": "approved"
+  },
+  {
+    "english": "rice",
+    "shona": "mupunga",
+    "domain": "food",
+    "reviewer": "shona_speaker_1",
+    "status": "approved"
+  }
+]
