@@ -70,11 +70,14 @@ Request:
 Response: `{ "status": "received" }`
 
 ### Errors
-Non-2xx responses (400 validation, 502/503 model service unavailable) will return:
+Non-2xx responses return:
 ```json
 { "error": "short_code", "message": "human readable" }
 ```
-(Error body format is coming with the global error handler; until then Spring's default error JSON is returned.)
+Standard error codes:
+- `400 Bad Request`: `"validation_error"` — request validation failed or request body is malformed.
+- `502 / 503 Service Unavailable`: `"model_service_unavailable"` — the Python model service is unreachable, timed out, or failed after retries.
+- `500 Internal Server Error`: `"internal_error"` — an unexpected server error occurred.
 
 ## Java backend -> Python model service
 
