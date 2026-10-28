@@ -3,6 +3,9 @@ console.log("LinguaCart service worker started");
 const MAX_SEGMENTS = 50;
 const MAX_TEXT_CHARS = 2000;
 const PAGE_TYPES = new Set(["product", "listing", "cart", "other"]);
+const KINDS = new Set([
+  "ui_label", "ui_template", "title", "description", "attribute", "review", "other",
+]);
 
 // Test mock only. It does not translate into Shona.
 function mockTranslate(request) {
@@ -53,6 +56,10 @@ function validateRequest(request) {
 
   if (request.segments.length > MAX_SEGMENTS) {
     return errorResponse("too_many_segments", `Maximum is ${MAX_SEGMENTS} segments`);
+  }
+
+  if (segment.kind !== undefined && !KINDS.has(segment.kind)) {
+      return errorResponse("bad_request", "Unsupported segment kind");
   }
 
   const ids = new Set();

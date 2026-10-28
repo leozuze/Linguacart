@@ -2,7 +2,18 @@ console.log("LinguaCart content script is running");
 
 // ---------- Settings ----------
 const SKIP_TAGS = new Set(["SCRIPT", "STYLE", "NOSCRIPT", "TEXTAREA", "INPUT", "CODE", "SELECT", "OPTION"]);
-// currencies, numbers, and number+unit patterns (first draft, we will refine it)
+
+// Allowed pages: search results and product pages only. Everything else
+// (cart, checkout, sign-in, account, addresses, payments) is off limits.
+function isAllowedPage() {
+  const p = location.pathname;
+  return p === "/s" || p.includes("/dp/") || p.startsWith("/gp/product/");
+}
+
+// Parts of the page that can contain personal data (ids are from memory:
+// verify with Inspect, using a TEST account, never your real one)
+const PRIVATE_SELECTORS =
+  "#nav-link-accountList, #glow-ingress-block, #nav-global-location-slot";// currencies, numbers, and number+unit patterns (first draft, we will refine it)
 const PROTECTED_RE =
   /(?:INR|USD|ZiG|ZWL|₹|\$)\s?\d[\d,]*(?:\.\d+)?|\d[\d,]*(?:\.\d+)?\s?(?:oz|lb|kg|g|ml|l|cm|mm|in|hrs?|hours?)?\b/gi;
 
@@ -114,7 +125,7 @@ function collectSegments(root = document.body) {
       const parent = node.parentElement;
       if (!parent || SKIP_TAGS.has(parent.tagName)) return NodeFilter.FILTER_REJECT;
       if (parent.closest(".a-price, .a-offscreen, [translate='no']")) return NodeFilter.FILTER_REJECT;
-      const text = node.textContent.replace(/\s+/g, " ").trim();
+      if (parent.closest(PRIVATE_SELECTORS)) return NodeFilter.FILTER_REJECT;      const text = node.textContent.replace(/\s+/g, " ").trim();
       if (!text) return NodeFilter.FILTER_REJECT;
       if (!isVisible(parent)) return NodeFilter.FILTER_REJECT;
       return NodeFilter.FILTER_ACCEPT;
@@ -349,6 +360,10 @@ async function translateNew() {
       };
 
       const response = await chrome.runtime.sendMessage({ type: "translate", request });
+      if (response?.error) {
+        const e = response.error;
+        throw new Error("Backend error: " + (e.code ?? "") + " " + (e.message ?? e));
+      }      
       if (!response || !response.results) throw new Error("No usable response from backend");
 
       for (const r of response.results) {
@@ -712,4 +727,8 @@ function createToolbar() {
   updateReportButton();
 }
 
-createToolbar();
+if (isAllowedPage()) {
+  createToolbar();
+} else {
+  console.log("LinguaCart: inactive on this page type");
+}
