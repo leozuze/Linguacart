@@ -2,6 +2,8 @@ package com.linguacart.protection;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
 import java.util.*;
@@ -12,8 +14,30 @@ import java.util.regex.Pattern;
  * Validates that protected tokens in product text (prices, currencies, quantities, units,
  * model numbers, brand names, allergen and safety warnings) survive neural model translation unchanged.
  * <p>
- * If any protected token is missing, altered, or corrupted, the field is reverted to the original
- * English text, marked as notTranslated, and logged.
+ * If any protected token is missing, altered, duplicated, or hallucinated, the field is reverted
+ * to the original English text, marked as notTranslated, and logged.
+ *
+ * <h3>Two Protection Layers:</h3>
+ * <ul>
+ *   <li><b>Layer 1:</b> The request's {@code protectedFields} map (price, quantity, unit, brand, model)
+ *       is never taken from model output and is always returned verbatim as received.</li>
+ *   <li><b>Layer 2:</b> Protected tokens embedded within free-text fields (title, description) are
+ *       extracted from English and verified as a multiset in the translated output. Extra/hallucinated
+ *       protected tokens not present in English cause immediate field reversion.</li>
+ * </ul>
+ *
+ * <h3>Known Limitations:</h3>
+ * <ul>
+ *   <li><b>Worded numbers:</b> Numbers expressed in English words (e.g. "two kilograms", "five hundred grams")
+ *       are not extracted as numeric quantities in v1; numeric digits are expected.</li>
+ *   <li><b>Fractions:</b> Vulgar fractions (e.g. "1 ½ kg", "3/4 L") are not parsed as quantities; decimal
+ *       or integer formats (e.g. "1.5 kg") are required.</li>
+ *   <li><b>Unlisted brands:</b> Brands not provided in the request's {@code brand} field or present in
+ *       the configured {@code knownBrands} list are treated as standard text.</li>
+ *   <li><b>Unit conversion:</b> Semantic unit conversion (e.g. converting USD to ZWL or kg to lbs) is
+ *       explicitly disallowed and treated as corruption.</li>
+ *   <li><b>Zero-token fields:</b> Text containing no protected tokens passes validation unchanged.</li>
+ * </ul>
  */
 @Component
 public class ProtectedFieldChecker {
@@ -26,28 +50,27 @@ public class ProtectedFieldChecker {
     );
 
     // Price pattern: currency symbol or code followed by digits
-    // e.g., $2.99, ₹1,299.00, Rs. 499, Rs.499, USD 10, USD 10.50, £15.99, €49.00
+    // e.g., $2.99, $1,299, ₹1,299.00, Rs. 499, Rs.499, USD 10, USD 10.50, £15.99, €49.00
     private static final Pattern PRICE_PATTERN = Pattern.compile(
-            "(?:([\\$₹£€¥]|(?:USD|EUR|GBP|INR|ZWL|Rs)\\b|Rs\\.)\\s*(\\d{1,3}(?:,\\d{3})*(?:\\.\\d{1,2})?|\\d+(?:\\.\\d{1,2})?)|" +
-            "(\\d+(?:\\.\\d{1,2})?)\\s*(?:(USD|EUR|GBP|INR|ZWL)\\b|(Rs\\.|Rs)))"
+            "(?:([\\$₹£€¥]|(?:USD|EUR|GBP|INR|ZWL|Rs)\\b|Rs\\.)\\s*(\\d{1,3}(?:,\\d{3})+(?:\\.\\d+)?|\\d+(?:\\.\\d+)?)|" +
+            "(\\d{1,3}(?:,\\d{3})+(?:\\.\\d+)?|\\d+(?:\\.\\d+)?)\\s*(?:(USD|EUR|GBP|INR|ZWL)\\b|(Rs\\.|Rs)))"
     );
 
-    // Quantity + Unit pattern: e.g., 500 g, 500g, 1 kg, 1.5 L, 250 ml
+    // Quantity + Unit pattern: e.g., 500 g, 500g, 1 kg, 1.5 L, 250 ml, 5 kgs
     private static final Pattern QUANTITY_UNIT_PATTERN = Pattern.compile(
-            "\\b(\\d+(?:\\.\\d+)?)\\s*(kg|g|mg|ml|mL|cl|fl\\s*oz|oz|lb|lbs|l|L|cm|mm|m|km|inch|inches|ft|count|ct|pack|pk|pcs|pieces?|capsules|tablets|tabs)\\b",
+            "\\b(\\d+(?:\\.\\d+)?)\\s*(kg|kgs|g|mg|ml|mL|cl|fl\\s*oz|oz|ozs|lb|lbs|l|L|cm|mm|m|km|inch|inches|ft|count|ct|pack|pk|pcs|pieces?|capsules|tablets|tabs)\\b",
             Pattern.CASE_INSENSITIVE
     );
 
     // Model number pattern: contains uppercase letters, hyphens, and digits (e.g. WH-1000XM5, BX-100, SM-G998B)
-    // Negative/positive lookaheads ensure words like 'gluten-free' or 'eco-friendly' are not treated as model numbers.
     private static final Pattern MODEL_NUMBER_PATTERN = Pattern.compile(
             "\\b(?=[A-Za-z0-9-]*\\d)(?=[A-Za-z0-9-]*[A-Z])[A-Z0-9]{1,10}(?:-[A-Z0-9]{1,15})+\\b"
     );
 
-    // Default allergen and safety phrases requiring verbatim survival
+    // Extended allergen and safety phrases: milk, soy, wheat, gluten, eggs, fish, peanuts, tree nuts, sesame, sulphites
+    // plus "Contains:" variants and case-insensitive English detection.
     public static final List<String> DEFAULT_SAFETY_PHRASES = List.of(
-            "Contains nuts",
-            "May contain traces of",
+            // General safety phrases
             "Keep out of reach of children",
             "Warning:",
             "Warning",
@@ -55,15 +78,32 @@ public class ProtectedFieldChecker {
             "Not for medicinal use",
             "Choking hazard",
             "Do not consume",
-            "Contains milk",
-            "Contains peanuts",
-            "Contains soy",
-            "Contains gluten",
-            "Contains eggs",
-            "Contains wheat",
-            "Contains fish",
-            "Contains shellfish",
-            "Contains tree nuts"
+            "Hypoallergenic",
+            "Flammable",
+            // Allergen phrases: "Contains" and "Contains:" variants
+            "Contains nuts", "Contains: nuts",
+            "Contains tree nuts", "Contains: tree nuts",
+            "Contains peanuts", "Contains: peanuts",
+            "Contains milk", "Contains: milk",
+            "Contains soy", "Contains: soy",
+            "Contains soya", "Contains: soya",
+            "Contains wheat", "Contains: wheat",
+            "Contains gluten", "Contains: gluten",
+            "Contains eggs", "Contains: eggs", "Contains egg", "Contains: egg",
+            "Contains fish", "Contains: fish",
+            "Contains shellfish", "Contains: shellfish",
+            "Contains crustaceans", "Contains: crustaceans",
+            "Contains sesame", "Contains: sesame",
+            "Contains sulphites", "Contains: sulphites",
+            "Contains sulfites", "Contains: sulfites",
+            // "May contain" and "May contain traces of" variants
+            "May contain traces of",
+            "May contain nuts", "May contain peanuts",
+            "May contain milk", "May contain soy",
+            "May contain wheat", "May contain gluten",
+            "May contain eggs", "May contain fish",
+            "May contain shellfish", "May contain sesame",
+            "May contain sulphites", "May contain sulfites"
     );
 
     // Default known brand names
@@ -80,9 +120,32 @@ public class ProtectedFieldChecker {
         this(DEFAULT_KNOWN_BRANDS, DEFAULT_SAFETY_PHRASES);
     }
 
+    @Autowired
+    public ProtectedFieldChecker(
+            @Value("${linguacart.protection.known-brands:}") String configuredBrands,
+            @Value("${linguacart.protection.safety-phrases:}") String configuredPhrases
+    ) {
+        Set<String> brands = new HashSet<>(DEFAULT_KNOWN_BRANDS);
+        if (configuredBrands != null && !configuredBrands.isBlank()) {
+            for (String b : configuredBrands.split(",")) {
+                if (!b.isBlank()) brands.add(b.trim());
+            }
+        }
+
+        List<String> phrases = new ArrayList<>(DEFAULT_SAFETY_PHRASES);
+        if (configuredPhrases != null && !configuredPhrases.isBlank()) {
+            for (String p : configuredPhrases.split(",")) {
+                if (!p.isBlank()) phrases.add(p.trim());
+            }
+        }
+
+        this.knownBrands = Collections.unmodifiableSet(brands);
+        this.safetyPhrases = Collections.unmodifiableList(phrases);
+    }
+
     public ProtectedFieldChecker(Set<String> knownBrands, List<String> safetyPhrases) {
-        this.knownBrands = knownBrands != null ? new HashSet<>(knownBrands) : new HashSet<>();
-        this.safetyPhrases = safetyPhrases != null ? new ArrayList<>(safetyPhrases) : new ArrayList<>();
+        this.knownBrands = knownBrands != null ? Collections.unmodifiableSet(new HashSet<>(knownBrands)) : Set.of();
+        this.safetyPhrases = safetyPhrases != null ? Collections.unmodifiableList(new ArrayList<>(safetyPhrases)) : List.of();
     }
 
     /**
@@ -105,6 +168,9 @@ public class ProtectedFieldChecker {
             effectiveBrands.add(requestBrand.trim());
         }
 
+        String requestModel = sanitizedProtected.get("model");
+        String requestPrice = sanitizedProtected.get("price");
+
         Map<String, String> resolvedFields = new LinkedHashMap<>();
         List<String> notTranslated = new ArrayList<>();
         Map<String, List<String>> failedTokensByField = new LinkedHashMap<>();
@@ -114,7 +180,7 @@ public class ProtectedFieldChecker {
             String originalEn = entry.getValue();
             String translated = translatedFields != null ? translatedFields.get(fieldName) : null;
 
-            FieldCheckResult checkResult = checkField(fieldName, originalEn, translated, effectiveBrands);
+            FieldCheckResult checkResult = checkField(fieldName, originalEn, translated, effectiveBrands, requestModel, requestPrice);
             resolvedFields.put(fieldName, checkResult.finalContent());
 
             if (checkResult.isReverted()) {
@@ -136,13 +202,16 @@ public class ProtectedFieldChecker {
     }
 
     /**
-     * Validates that all protected tokens in originalEn survive inside translatedText.
+     * Validates that all protected tokens in originalEn survive inside translatedText,
+     * and that translatedText contains no extra/hallucinated protected tokens (multiset verification).
      */
     public FieldCheckResult checkField(
             String fieldName,
             String originalEn,
             String translatedText,
-            Set<String> brandNames
+            Set<String> brandNames,
+            String literalModel,
+            String literalPrice
     ) {
         if (originalEn == null) {
             return new FieldCheckResult(fieldName, translatedText, true, List.of());
@@ -154,17 +223,33 @@ public class ProtectedFieldChecker {
             return new FieldCheckResult(fieldName, originalEn, false, List.of("<blank_translation>"));
         }
 
-        List<ExtractedToken> tokens = extractProtectedTokens(originalEn, brandNames);
-        if (tokens.isEmpty()) {
-            return new FieldCheckResult(fieldName, translatedText, true, List.of());
+        List<ExtractedToken> sourceTokens = extractProtectedTokens(originalEn, brandNames, literalModel, literalPrice);
+        List<ExtractedToken> targetTokens = extractProtectedTokens(translatedText, brandNames, literalModel, literalPrice);
+
+        // Multiset comparison: every source token must match a distinct target token,
+        // and no target token may be left unmatched (extra/hallucinated).
+        boolean[] targetMatched = new boolean[targetTokens.size()];
+        List<String> failedTokens = new ArrayList<>();
+
+        for (ExtractedToken s : sourceTokens) {
+            boolean found = false;
+            for (int j = 0; j < targetTokens.size(); j++) {
+                if (!targetMatched[j] && tokensMatch(s, targetTokens.get(j))) {
+                    targetMatched[j] = true;
+                    found = true;
+                    break;
+                }
+            }
+            if (!found) {
+                failedTokens.add(s.rawValue());
+            }
         }
 
-        List<String> failedTokens = new ArrayList<>();
-        String normalizedTranslated = normalizeWhitespace(translatedText);
-
-        for (ExtractedToken token : tokens) {
-            if (!verifyTokenSurvives(token, translatedText, normalizedTranslated)) {
-                failedTokens.add(token.rawValue());
+        // Detect extra/invented tokens in translated output
+        for (int j = 0; j < targetTokens.size(); j++) {
+            if (!targetMatched[j]) {
+                ExtractedToken extra = targetTokens.get(j);
+                failedTokens.add("+" + extra.rawValue() + " (invented)");
             }
         }
 
@@ -175,12 +260,16 @@ public class ProtectedFieldChecker {
         return new FieldCheckResult(fieldName, translatedText, true, List.of());
     }
 
+    public FieldCheckResult checkField(String fieldName, String originalEn, String translatedText, Set<String> brandNames) {
+        return checkField(fieldName, originalEn, translatedText, brandNames, null, null);
+    }
+
     public FieldCheckResult checkField(String fieldName, String originalEn, String translatedText, String brandName) {
         Set<String> brands = new HashSet<>(knownBrands);
         if (brandName != null && !brandName.isBlank()) {
             brands.add(brandName.trim());
         }
-        return checkField(fieldName, originalEn, translatedText, brands);
+        return checkField(fieldName, originalEn, translatedText, brands, null, null);
     }
 
     /**
@@ -193,13 +282,18 @@ public class ProtectedFieldChecker {
         return Collections.unmodifiableMap(new LinkedHashMap<>(requestProtectedFields));
     }
 
-    private List<ExtractedToken> extractProtectedTokens(String text, Set<String> brandNames) {
+    private List<ExtractedToken> extractProtectedTokens(
+            String text,
+            Set<String> brandNames,
+            String literalModel,
+            String literalPrice
+    ) {
         List<ExtractedToken> tokens = new ArrayList<>();
         List<Span> occupiedSpans = new ArrayList<>();
 
-        // 1. Allergen & Safety phrases
+        // 1. Allergen & Safety phrases (case-insensitive detection in text)
         for (String phrase : safetyPhrases) {
-            Pattern p = Pattern.compile("\\b" + Pattern.quote(phrase), Pattern.CASE_INSENSITIVE);
+            Pattern p = Pattern.compile("\\b" + Pattern.quote(phrase) + "\\b", Pattern.CASE_INSENSITIVE);
             Matcher m = p.matcher(text);
             while (m.find()) {
                 if (!overlaps(occupiedSpans, m.start(), m.end())) {
@@ -220,6 +314,18 @@ public class ProtectedFieldChecker {
             }
         }
 
+        // 2b. Literal Price from request protectedFields
+        if (literalPrice != null && !literalPrice.isBlank()) {
+            Pattern lpPattern = Pattern.compile(Pattern.quote(literalPrice.trim()));
+            Matcher m = lpPattern.matcher(text);
+            while (m.find()) {
+                if (!overlaps(occupiedSpans, m.start(), m.end())) {
+                    tokens.add(new ExtractedToken(TokenType.PRICE, literalPrice.trim(), literalPrice.trim()));
+                    occupiedSpans.add(new Span(m.start(), m.end()));
+                }
+            }
+        }
+
         // 3. Multi-pack quantities (e.g. 2 x 250 ml, 2×250ml)
         Matcher multiMatcher = MULTIPACK_PATTERN.matcher(text);
         while (multiMatcher.find()) {
@@ -230,7 +336,7 @@ public class ProtectedFieldChecker {
             }
         }
 
-        // 4. Quantities + Units (e.g. 500 g, 500g, 1 kg, 1.5 L)
+        // 4. Quantities + Units (e.g. 500 g, 500g, 1 kg, 1.5 L, 5 kgs)
         Matcher qtyMatcher = QUANTITY_UNIT_PATTERN.matcher(text);
         while (qtyMatcher.find()) {
             if (!overlaps(occupiedSpans, qtyMatcher.start(), qtyMatcher.end())) {
@@ -247,6 +353,18 @@ public class ProtectedFieldChecker {
                 String raw = modelMatcher.group();
                 tokens.add(new ExtractedToken(TokenType.MODEL_NUMBER, raw, raw));
                 occupiedSpans.add(new Span(modelMatcher.start(), modelMatcher.end()));
+            }
+        }
+
+        // 5b. Literal Model from request protectedFields (handles unhyphenated models e.g. "A15", "XM5")
+        if (literalModel != null && !literalModel.isBlank()) {
+            Pattern lmPattern = Pattern.compile("\\b" + Pattern.quote(literalModel.trim()) + "\\b");
+            Matcher m = lmPattern.matcher(text);
+            while (m.find()) {
+                if (!overlaps(occupiedSpans, m.start(), m.end())) {
+                    tokens.add(new ExtractedToken(TokenType.MODEL_NUMBER, literalModel.trim(), literalModel.trim()));
+                    occupiedSpans.add(new Span(m.start(), m.end()));
+                }
             }
         }
 
@@ -268,103 +386,124 @@ public class ProtectedFieldChecker {
         return tokens;
     }
 
-    private boolean verifyTokenSurvives(ExtractedToken token, String rawTranslated, String normalizedTranslated) {
-        return switch (token.type()) {
+    private boolean tokensMatch(ExtractedToken s, ExtractedToken t) {
+        if (s.type() != t.type()) {
+            return false;
+        }
+
+        return switch (s.type()) {
             case SAFETY_ALLERGEN -> {
-                // Must keep English safety phrase verbatim (whitespace normalized)
-                String normalizedPhrase = normalizeWhitespace(token.normalizedValue());
-                yield normalizedTranslated.contains(normalizedPhrase);
+                // Must survive verbatim from English (whitespace normalized)
+                String sNorm = normalizeWhitespace(s.rawValue());
+                String tNorm = normalizeWhitespace(t.rawValue());
+                yield sNorm.equals(tNorm);
             }
             case MODEL_NUMBER -> {
-                // Strict exact case-sensitive whole-word match
-                Pattern pattern = Pattern.compile("\\b" + Pattern.quote(token.rawValue()) + "\\b");
-                yield pattern.matcher(rawTranslated).find();
+                // Strict exact case-sensitive match
+                yield s.rawValue().equals(t.rawValue());
             }
             case BRAND -> {
-                // Strict exact case-sensitive whole-word match
-                Pattern pattern = Pattern.compile("\\b" + Pattern.quote(token.rawValue()) + "\\b");
-                yield pattern.matcher(rawTranslated).find();
+                // Strict exact case-sensitive match
+                yield s.rawValue().equals(t.rawValue());
             }
-            case PRICE -> verifyPriceSurvives(token.rawValue(), rawTranslated);
-            case MULTIPACK -> verifyMultipackSurvives(token.rawValue(), rawTranslated);
-            case QUANTITY_UNIT -> verifyQuantityUnitSurvives(token.rawValue(), rawTranslated);
+            case PRICE -> priceTokensMatch(s.rawValue(), t.rawValue());
+            case MULTIPACK -> multipackTokensMatch(s.rawValue(), t.rawValue());
+            case QUANTITY_UNIT -> quantityUnitTokensMatch(s.rawValue(), t.rawValue());
         };
     }
 
-    private boolean verifyPriceSurvives(String rawPrice, String text) {
-        // Parse raw price
-        Matcher m = PRICE_PATTERN.matcher(rawPrice);
-        if (!m.matches()) {
-            return text.contains(rawPrice);
+    private boolean priceTokensMatch(String sRaw, String tRaw) {
+        Matcher sM = PRICE_PATTERN.matcher(sRaw);
+        Matcher tM = PRICE_PATTERN.matcher(tRaw);
+        if (!sM.matches() || !tM.matches()) {
+            return sRaw.trim().equals(tRaw.trim());
         }
 
-        String currPrefix = m.group(1);
-        String num = m.group(2);
-        String numSuffix = m.group(3);
-        String currSuffix = m.group(4);
-
-        if (currPrefix != null && num != null) {
-            String currency = currPrefix.trim();
-            String currencyPattern;
-            if (currency.equalsIgnoreCase("Rs.") || currency.equalsIgnoreCase("Rs")) {
-                currencyPattern = "(?:Rs\\.|Rs)";
-            } else {
-                currencyPattern = Pattern.quote(currency);
-            }
-            // Thousands comma is optional in translation, but decimal point and digits must be exact
-            String numWithComma = num;
-            String numWithoutComma = num.replace(",", "");
-            String regex = currencyPattern + "\\s*(?:" + Pattern.quote(numWithComma) + "|" + Pattern.quote(numWithoutComma) + ")(?!\\d|\\.\\d)";
-            return Pattern.compile(regex).matcher(text).find();
-        } else if (numSuffix != null && currSuffix != null) {
-            String currency = currSuffix.trim();
-            String currencyPattern;
-            if (currency.equalsIgnoreCase("Rs.") || currency.equalsIgnoreCase("Rs")) {
-                currencyPattern = "(?:Rs\\.|Rs)";
-            } else {
-                currencyPattern = "\\b" + Pattern.quote(currency) + "\\b";
-            }
-            String numWithComma = numSuffix;
-            String numWithoutComma = numSuffix.replace(",", "");
-            String regex = "(?<!\\d|\\.)(?:" + Pattern.quote(numWithComma) + "|" + Pattern.quote(numWithoutComma) + ")\\s*" + currencyPattern;
-            return Pattern.compile(regex).matcher(text).find();
+        String sCurr = getCurrency(sM);
+        String tCurr = getCurrency(tM);
+        if (!currenciesMatch(sCurr, tCurr)) {
+            return false;
         }
 
-        return text.contains(rawPrice);
+        String sNum = getNumber(sM);
+        String tNum = getNumber(tM);
+
+        // Parse integer digits and decimal part
+        String sInt = getIntegerDigits(sNum);
+        String tInt = getIntegerDigits(tNum);
+        String sDec = getDecimalDigits(sNum);
+        String tDec = getDecimalDigits(tNum);
+
+        // $1,299 (sDec="") cannot match $1.299 (tDec="299")
+        return sInt.equals(tInt) && sDec.equals(tDec);
     }
 
-    private boolean verifyMultipackSurvives(String rawMultipack, String text) {
-        Matcher m = MULTIPACK_PATTERN.matcher(rawMultipack);
-        if (!m.matches()) {
-            return text.contains(rawMultipack);
-        }
-
-        String count = m.group(1);
-        String qty = m.group(3);
-        String unit = m.group(4);
-
-        String unitPart = (unit != null && !unit.isEmpty())
-                ? "\\s*" + Pattern.quote(unit) + "\\b"
-                : "";
-
-        // Accepts 2 x 250 ml, 2×250ml, 2x250ml
-        String regex = "\\b" + Pattern.quote(count) + "\\s*[xX×]\\s*" + Pattern.quote(qty) + unitPart;
-        return Pattern.compile(regex, Pattern.CASE_INSENSITIVE).matcher(text).find();
+    private String getCurrency(Matcher m) {
+        String p = m.group(1);
+        if (p != null) return p.trim();
+        String s = m.group(4);
+        if (s != null) return s.trim();
+        String alt = m.group(5);
+        return alt != null ? alt.trim() : "";
     }
 
-    private boolean verifyQuantityUnitSurvives(String rawQtyUnit, String text) {
-        Matcher m = QUANTITY_UNIT_PATTERN.matcher(rawQtyUnit);
-        if (!m.matches()) {
-            return text.contains(rawQtyUnit);
+    private String getNumber(Matcher m) {
+        String n = m.group(2);
+        if (n != null) return n.trim();
+        String s = m.group(3);
+        return s != null ? s.trim() : "";
+    }
+
+    private boolean currenciesMatch(String c1, String c2) {
+        if (c1.equalsIgnoreCase(c2)) return true;
+        boolean c1Rs = c1.equalsIgnoreCase("Rs.") || c1.equalsIgnoreCase("Rs");
+        boolean c2Rs = c2.equalsIgnoreCase("Rs.") || c2.equalsIgnoreCase("Rs");
+        return c1Rs && c2Rs;
+    }
+
+    private String getIntegerDigits(String num) {
+        int dotIdx = num.indexOf('.');
+        String intPart = dotIdx >= 0 ? num.substring(0, dotIdx) : num;
+        return intPart.replace(",", "");
+    }
+
+    private String getDecimalDigits(String num) {
+        int dotIdx = num.indexOf('.');
+        return dotIdx >= 0 ? num.substring(dotIdx + 1) : "";
+    }
+
+    private boolean multipackTokensMatch(String sRaw, String tRaw) {
+        Matcher sM = MULTIPACK_PATTERN.matcher(sRaw);
+        Matcher tM = MULTIPACK_PATTERN.matcher(tRaw);
+        if (!sM.matches() || !tM.matches()) {
+            return sRaw.trim().equalsIgnoreCase(tRaw.trim());
         }
 
-        String number = m.group(1);
-        String unit = m.group(2);
+        String sCount = sM.group(1);
+        String tCount = tM.group(1);
+        String sQty = sM.group(3);
+        String tQty = tM.group(3);
+        String sUnit = sM.group(4) != null ? sM.group(4) : "";
+        String tUnit = tM.group(4) != null ? tM.group(4) : "";
 
-        // Allows space or no space between number and unit: 500 g or 500g; 1 kg or 1kg
-        // Negative lookbehind ensures '1 kg' does not match inside '10 kg' or '11kg'
-        String regex = "(?<!\\d|\\.)" + Pattern.quote(number) + "\\s*" + Pattern.quote(unit) + "\\b";
-        return Pattern.compile(regex, Pattern.CASE_INSENSITIVE).matcher(text).find();
+        return sCount.equals(tCount) && sQty.equals(tQty) && sUnit.equalsIgnoreCase(tUnit);
+    }
+
+    private boolean quantityUnitTokensMatch(String sRaw, String tRaw) {
+        Matcher sM = QUANTITY_UNIT_PATTERN.matcher(sRaw);
+        Matcher tM = QUANTITY_UNIT_PATTERN.matcher(tRaw);
+        if (!sM.matches() || !tM.matches()) {
+            return sRaw.trim().equalsIgnoreCase(tRaw.trim());
+        }
+
+        String sNum = sM.group(1);
+        String tNum = tM.group(1);
+        String sUnit = sM.group(2);
+        String tUnit = tM.group(2);
+
+        // Numbers must be exact (e.g. 500 == 500; 1 != 10)
+        // Units must be exact case-insensitively (e.g. g == g, L == l; kg != kgs, g != mg)
+        return sNum.equals(tNum) && sUnit.equalsIgnoreCase(tUnit);
     }
 
     private static String normalizeWhitespace(String text) {

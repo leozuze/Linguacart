@@ -47,6 +47,18 @@ class ProtectedFieldCheckerTest {
     }
 
     @Test
+    @DisplayName("Price $1,299 must revert when corrupted to $1.299 (thousand-fold change)")
+    void testPriceThousandCommaToDotReverts() {
+        String en = "Premium sound system for $1,299 only";
+        String sn = "Mhando yepamusoro $1.299 chete";
+
+        FieldCheckResult result = checker.checkField("desc", en, sn, "");
+        assertTrue(result.isReverted(), "$1,299 -> $1.299 must strictly fail and revert");
+        assertEquals(en, result.finalContent());
+        assertTrue(result.failedTokens().contains("$1,299"));
+    }
+
+    @Test
     @DisplayName("Price ₹1,299.00 passes with or without thousands comma, fails on corruption")
     void testPriceRupee() {
         String en = "Sony headphones ₹1,299.00 today";
@@ -81,6 +93,42 @@ class ProtectedFieldCheckerTest {
         assertTrue(checker.checkField("desc", enUsd, "Mutengo i USD 10 pamwe", "").translated());
         assertTrue(checker.checkField("desc", enUsd, "Mutengo i EUR 10 pamwe", "").isReverted());
         assertTrue(checker.checkField("desc", enUsd, "Mutengo i USD 20 pamwe", "").isReverted());
+    }
+
+    @Test
+    @DisplayName("Unit lookalike 500 g corrupted to 500 mg must revert")
+    void testUnitLookalike_500gTo500mg_mustRevert() {
+        String en = "Ascorbic acid 500 g pouch";
+        String sn = "Acid 500 mg bhegi";
+
+        FieldCheckResult result = checker.checkField("desc", en, sn, "");
+        assertTrue(result.isReverted(), "500 g -> 500 mg must fail and revert");
+        assertEquals(en, result.finalContent());
+        assertTrue(result.failedTokens().contains("500 g"));
+    }
+
+    @Test
+    @DisplayName("Unit lookalike 1 L corrupted to 1 ml must revert")
+    void testUnitLookalike_1LTo1ml_mustRevert() {
+        String en = "Purified water 1 L bottle";
+        String sn = "Mvura yakachena 1 ml bhodhoro";
+
+        FieldCheckResult result = checker.checkField("desc", en, sn, "");
+        assertTrue(result.isReverted(), "1 L -> 1 ml must fail and revert");
+        assertEquals(en, result.finalContent());
+        assertTrue(result.failedTokens().contains("1 L"));
+    }
+
+    @Test
+    @DisplayName("Unit lookalike 5 kg corrupted to 5 kgs must revert")
+    void testUnitLookalike_5kgTo5kgs_mustRevert() {
+        String en = "Sugar bag 5 kg family pack";
+        String sn = "Shuga 5 kgs pack yemhuri";
+
+        FieldCheckResult result = checker.checkField("desc", en, sn, "");
+        assertTrue(result.isReverted(), "5 kg -> 5 kgs must fail and revert due to unit mismatch");
+        assertEquals(en, result.finalContent());
+        assertTrue(result.failedTokens().contains("5 kg"));
     }
 
     @Test
@@ -160,6 +208,20 @@ class ProtectedFieldCheckerTest {
     }
 
     @Test
+    @DisplayName("Model number without hyphen A15 changed to A16 via protectedFields.model must revert")
+    void testUnhyphenatedModelViaProtectedFields_A15ToA16_mustRevert() {
+        Map<String, String> originalFields = Map.of("title", "Apple Smartphone with A15 chip");
+        Map<String, String> translatedFields = Map.of("title", "Smartphone yeApple ine A16 chip");
+        Map<String, String> protectedFields = Map.of("model", "A15", "brand", "Apple");
+
+        ProtectionResult result = checker.verifyTranslation(originalFields, translatedFields, protectedFields);
+
+        assertTrue(result.hasReversions(), "A15 -> A16 must fail and revert");
+        assertEquals(List.of("title"), result.notTranslated());
+        assertEquals("Apple Smartphone with A15 chip", result.resolvedFields().get("title"));
+    }
+
+    @Test
     @DisplayName("Brand name passes preserved, fails on case change or alteration")
     void testBrandNames() {
         String en = "Sony WH-1000XM5 premium sound";
@@ -195,6 +257,32 @@ class ProtectedFieldCheckerTest {
     }
 
     @Test
+    @DisplayName("Uppercase allergen CONTAINS NUTS in source must revert when translated to Shona")
+    void testUppercaseAllergen_ContainsNuts_mustRevert() {
+        String en = "Organic energy bar. CONTAINS NUTS AND SOY.";
+        String sn = "Chikafu chemagetsi. CHINE NZUNGU NESOYA.";
+
+        FieldCheckResult result = checker.checkField("desc", en, sn, "");
+        assertTrue(result.isReverted(), "CONTAINS NUTS translated to Shona must revert to English");
+        assertEquals(en, result.finalContent());
+        assertTrue(result.failedTokens().contains("CONTAINS NUTS"));
+    }
+
+    @Test
+    @DisplayName("Allergen with colon Contains: nuts and Contains: milk survive verbatim, revert if missing")
+    void testAllergenWithColon() {
+        String en = "Allergy advisory: Contains: nuts, Contains: milk.";
+        String snValid = "Yambiro: Contains: nuts, Contains: milk.";
+        String snInvalid = "Yambiro: Chine: nzungu, Chine: mukaka.";
+
+        assertTrue(checker.checkField("desc", en, snValid, "").translated());
+
+        FieldCheckResult result = checker.checkField("desc", en, snInvalid, "");
+        assertTrue(result.isReverted());
+        assertEquals(en, result.finalContent());
+    }
+
+    @Test
     @DisplayName("Safety warnings survive verbatim; fails when translated or missing")
     void testSafetyWarnings() {
         String en = "Warning: Keep out of reach of children. Choking hazard.";
@@ -209,7 +297,47 @@ class ProtectedFieldCheckerTest {
     }
 
     // -------------------------------------------------------------
-    // 2. Multiple tokens in one field: single corruption causes reversion
+    // 2. Extra / Invented / Duplicated / Dropped Tokens (Multiset checks)
+    // -------------------------------------------------------------
+
+    @Test
+    @DisplayName("Hallucinated price $5.00 added to output when English source has no price must revert")
+    void testHallucinatedPriceAddedToOutputMustRevert() {
+        String en = "Fresh organic bananas from the farm";
+        String sn = "Mabanana matsva anobva kupurazi $5.00 chete";
+
+        FieldCheckResult result = checker.checkField("title", en, sn, "");
+        assertTrue(result.isReverted(), "Invented price $5.00 not in English source must cause reversion");
+        assertEquals(en, result.finalContent());
+        assertTrue(result.failedTokens().stream().anyMatch(t -> t.contains("$5.00")));
+    }
+
+    @Test
+    @DisplayName("Duplicated quantity: English has 500 g once, output has 500 g twice must revert")
+    void testDuplicatedQuantityMustRevert() {
+        String en = "Table salt 500 g pouch";
+        String sn = "Munyu 500 g bhegi 500 g hombe";
+
+        FieldCheckResult result = checker.checkField("title", en, sn, "");
+        assertTrue(result.isReverted(), "Duplicated 500 g token must cause reversion");
+        assertEquals(en, result.finalContent());
+        assertTrue(result.failedTokens().stream().anyMatch(t -> t.contains("500 g")));
+    }
+
+    @Test
+    @DisplayName("Dropped repeated quantity: English has 500 g twice, output has 500 g once must revert")
+    void testDroppedRepeatedQuantityMustRevert() {
+        String en = "Table salt 500 g and cooking sugar 500 g";
+        String sn = "Munyu 500 g neshuga yekubikisa";
+
+        FieldCheckResult result = checker.checkField("desc", en, sn, "");
+        assertTrue(result.isReverted(), "Dropped repeated 500 g token must cause reversion");
+        assertEquals(en, result.finalContent());
+        assertTrue(result.failedTokens().contains("500 g"));
+    }
+
+    // -------------------------------------------------------------
+    // 3. Multiple tokens in one field: single corruption causes reversion
     // -------------------------------------------------------------
 
     @Test
@@ -224,11 +352,11 @@ class ProtectedFieldCheckerTest {
 
         assertTrue(result.isReverted());
         assertEquals(en, result.finalContent());
-        assertEquals(List.of("$2.99"), result.failedTokens());
+        assertTrue(result.failedTokens().contains("$2.99"));
     }
 
     // -------------------------------------------------------------
-    // 3. Blank or null model output
+    // 4. Blank or null model output
     // -------------------------------------------------------------
 
     @ParameterizedTest
@@ -249,7 +377,7 @@ class ProtectedFieldCheckerTest {
     }
 
     // -------------------------------------------------------------
-    // 4. Decisions on lookalike and similar tokens
+    // 5. Decisions on lookalike and similar tokens
     // -------------------------------------------------------------
 
     @Test
@@ -297,7 +425,7 @@ class ProtectedFieldCheckerTest {
     }
 
     // -------------------------------------------------------------
-    // 5. Field with no protected tokens
+    // 6. Field with no protected tokens
     // -------------------------------------------------------------
 
     @Test
@@ -313,7 +441,7 @@ class ProtectedFieldCheckerTest {
     }
 
     // -------------------------------------------------------------
-    // 6. Layer 1: protectedFields map returned exactly as sent
+    // 7. Layer 1: protectedFields map returned exactly as sent
     // -------------------------------------------------------------
 
     @Test
@@ -324,7 +452,6 @@ class ProtectedFieldCheckerTest {
                 "description", "Delicious table salt."
         );
 
-        // Simulated translated output where title passes but model attempted to fabricate protected fields
         Map<String, String> translatedFields = Map.of(
                 "title", "BrandX BX-100 Munyu 500 g $2.99",
                 "description", "Munyu weTafura unonaka."
