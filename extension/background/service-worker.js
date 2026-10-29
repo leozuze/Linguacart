@@ -58,10 +58,6 @@ function validateRequest(request) {
     return errorResponse("too_many_segments", `Maximum is ${MAX_SEGMENTS} segments`);
   }
 
-  if (segment.kind !== undefined && !KINDS.has(segment.kind)) {
-      return errorResponse("bad_request", "Unsupported segment kind");
-  }
-
   const ids = new Set();
 
   for (const segment of request.segments) {
@@ -82,6 +78,10 @@ function validateRequest(request) {
 
     if (segment.text.length > MAX_TEXT_CHARS) {
       return errorResponse("bad_request", `Segment text exceeds ${MAX_TEXT_CHARS} characters`);
+    }
+
+    if (segment.kind !== undefined && !KINDS.has(segment.kind)) {
+      return errorResponse("bad_request", "Unsupported segment kind");
     }
   }
 

@@ -270,7 +270,8 @@ function kindFor(seg) {
 }
 
 const swaps = new Map(); // text node -> { original, shona }
-const reportMeta = new Map(); // text node -> source/shown text and provenance
+const reportMeta = new WeakMap(); // text node -> source/shown text and provenance
+let anyLowConfidence = false; // a WeakMap can't be looped over, so track this separately
 const cache = new Map(); // English text -> translation result, this page visit only
 const skipped = new Set();
 const translatedKinds = new Set();
@@ -323,6 +324,7 @@ function remember(seg, translation) {
   });
 
   translatedKinds.add(translation.translationType);
+  if (translation.lowConfidence) anyLowConfidence = true;
   updateTranslationMarker();
 }
 
@@ -400,7 +402,9 @@ async function translateNew() {
 
 function setView(next) {
   for (const [node, s] of swaps) {
-    node.textContent = next === "sn" ? s.shona : s.original;
+    const target = next === "sn" ? s.shona : s.original;
+    // only write when the text really changes, so selections are not wiped
+    if (node.textContent !== target) node.textContent = target;
   }
   view = next;
   updateTranslationMarker();
@@ -443,7 +447,7 @@ function updateTranslationMarker() {
   if (translatedKinds.has("mock")) labels.push("TEST MOCK — not Shona");
   if (translatedKinds.has("unknown")) labels.push("Translation type unconfirmed");
 
-  if ([...reportMeta.values()].some((item) => item.lowConfidence)) {
+  if (anyLowConfidence) {
     labels.push("some results low-confidence");
   }
 
@@ -453,13 +457,25 @@ function updateTranslationMarker() {
 
 function selectedTranslationRecord() {
   const selection = window.getSelection();
-  if (!selection || selection.isCollapsed) return null;
+  if (!selection || selection.isCollapsed || selection.rangeCount === 0) return null;
 
-  const startRecord = reportMeta.get(selection.anchorNode);
-  const endRecord = reportMeta.get(selection.focusNode);
+  const range = selection.getRangeAt(0);
+  const root = range.commonAncestorContainer;
 
-  // Keep v1 reporting to a single translated segment.
-  return startRecord && startRecord === endRecord ? startRecord : null;
+  // selection inside a single text node
+  if (root.nodeType === Node.TEXT_NODE) return reportMeta.get(root) || null;
+
+  // selection across several nodes: all translated text in it must belong to ONE segment
+  const walker = document.createTreeWalker(root, NodeFilter.SHOW_TEXT);
+  const records = new Set();
+  while (walker.nextNode()) {
+    const node = walker.currentNode;
+    if (!node.textContent.trim() || !range.intersectsNode(node)) continue;
+    const record = reportMeta.get(node);
+    if (record) records.add(record);
+    if (records.size > 1) return null; // keep v1 reports to a single segment
+  }
+  return records.size === 1 ? [...records][0] : null;
 }
 
 function updateReportButton() {
@@ -665,7 +681,7 @@ function createToolbar() {
     submitButton.disabled = true;
 
     const feedback = {
-      site: location.hostname.replace(/^www\\./, ""),
+      site: location.hostname.replace(/^www\./, ""),
       pageType: pageType(),
       sourceText: pendingReport.sourceText,
       shownText: pendingReport.shownText,
