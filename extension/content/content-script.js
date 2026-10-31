@@ -15,9 +15,13 @@ function isAllowedPage() {
 // Parts of the page that can contain personal data.
 // Unconfirmed ids, from memory: verify with Inspect on a TEST account, never a real one.
 const PRIVATE_SELECTORS =
-  "#nav-link-accountList, #glow-ingress-block, #nav-global-location-slot";
+  "#nav-link-accountList, #glow-ingress-block, #nav-global-location-slot, " +
+  // cart flyout on the right edge (confirmed with your id chain)
+  "#nav-flyout-ewc, #ewc-content, " +
+  // footer language, currency and country pickers (unconfirmed, from memory)
+  "#icp-touch-link-language, #icp-touch-link-cop, #icp-touch-link-country";
 
-// currencies, numbers, and number+unit patterns (first draft, we will refine it)
+  // currencies, numbers, and number+unit patterns (first draft, we will refine it)
 const PROTECTED_RE =
   /(?:INR|USD|ZiG|ZWL|₹|\$)\s?\d[\d,]*(?:\.\d+)?|\d[\d,]*(?:\.\d+)?\s?(?:oz|lb|kg|g|ml|l|cm|mm|in|hrs?|hours?)?\b/gi;
 
