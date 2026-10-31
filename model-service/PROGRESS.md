@@ -160,3 +160,12 @@ Status doc written for the team. Next: push and open PR, then Step 3 (patch sche
 - [ ] Run v3 retrieval with system E; record D vs E gap
 - [ ] Real glossary: extract candidates from real catalogue, Shona speakers review (safety/unit/colour first)
 - [ ] Real Shona queries collected from speakers using product photos
+
+## Session update 2026-10-31 (integration)
+- [x] Stub mode (app/stub.py), lazy-import main.py, requirements-stub.txt, README quick start
+- [x] docs/08-INTEGRATION-GUIDE.md and docs/model-service-openapi.json
+- [x] ESCI English-query run: MRR@10 0.93, P@5 0.84. Dev set system F MRR@10 0.97
+- [ ] Fix real_translation_test.py crash (parquet engine error)
+- [ ] Team decisions on changes 1, 2, 4, 7, 8, 9 and on using ESCI
+- [ ] Java developer calls the service in stub mode, then real mode
+- [ ] Step 4: pytest suite (will use the stub models)

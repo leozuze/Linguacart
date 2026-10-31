@@ -219,3 +219,12 @@ Review `research/evaluation/translation_review.csv` (start with the safety rows)
 After lowercasing queries before translation and cleaning translated queries (drop leading article, trailing punctuation): the ALL-CAPS query recovered (B 0.10 -> 1.00), `foni` left the failure list, brand_mix D reached 1.00. Overall MRR@10: C 0.42, B 0.89, D 0.95.
 
 **Caveat:** the glossary (46 terms), queries, relevance grades and catalogue are all Claude-drafted and unreviewed, and a synonym was added to the glossary after seeing a failure. D and A are therefore inflated and only B vs C is a fair comparison. NLLB still mistranslates several rare words (gumbeze -> "coat", badza -> "beware of it"); the glossary is hiding this. System E (hybrid without glossary) was added to measure that. The dev set is a smoke test, not an evaluation, and the glossary is not usable as fine-tuning data.
+
+## 11. Update 2026-10-31: ready for integration
+
+- Change #1 is live in the service: `/translate` accepts `eng_Latn <-> sna_Latn`.
+- New: `STUB_MODELS=true` runs the service with fake models (no downloads), for Java and extension development.
+- New: `docs/08-INTEGRATION-GUIDE.md` (pipelines, checks, timings, decisions needed) and `docs/model-service-openapi.json`.
+- Real-product English-query test (ESCI, kept out of git): MRR@10 0.93, P@5 0.84. This is the ceiling for the Shona path.
+- System F (hybrid plus original and translated query) is best on the synthetic set, MRR@10 0.97 (glossary-assisted).
+- Pending: Shona speaker review, real Shona queries, pytest suite, real-product translation run.

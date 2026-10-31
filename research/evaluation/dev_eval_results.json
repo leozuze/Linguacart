@@ -30,6 +30,12 @@
         "P@5": 0.23,
         "MRR@10": 0.89,
         "nDCG@5": 0.902
+      },
+      "F hybrid + dual query": {
+        "R@5": 0.994,
+        "P@5": 0.238,
+        "MRR@10": 0.969,
+        "nDCG@5": 0.96
       }
     },
     "by_type_mrr": {
@@ -38,63 +44,72 @@
         "B translate+E5": 0.75,
         "A glossary+BM25": 1.0,
         "D hybrid": 0.75,
-        "E hybrid, no glossary": 0.75
+        "E hybrid, no glossary": 0.75,
+        "F hybrid + dual query": 0.75
       },
       "attribute": {
         "C direct Shona+E5": 0.67,
         "B translate+E5": 0.88,
         "A glossary+BM25": 1.0,
         "D hybrid": 1.0,
-        "E hybrid, no glossary": 0.88
+        "E hybrid, no glossary": 0.88,
+        "F hybrid + dual query": 1.0
       },
       "brand_mix": {
         "C direct Shona+E5": 1.0,
         "B translate+E5": 1.0,
         "A glossary+BM25": 1.0,
         "D hybrid": 1.0,
-        "E hybrid, no glossary": 0.83
+        "E hybrid, no glossary": 0.83,
+        "F hybrid + dual query": 1.0
       },
       "caps": {
         "C direct Shona+E5": 0.0,
         "B translate+E5": 1.0,
         "A glossary+BM25": 1.0,
         "D hybrid": 1.0,
-        "E hybrid, no glossary": 1.0
+        "E hybrid, no glossary": 1.0,
+        "F hybrid + dual query": 1.0
       },
       "english": {
         "C direct Shona+E5": 1.0,
         "B translate+E5": 1.0,
         "A glossary+BM25": 1.0,
         "D hybrid": 1.0,
-        "E hybrid, no glossary": 1.0
+        "E hybrid, no glossary": 1.0,
+        "F hybrid + dual query": 1.0
       },
       "multiword": {
         "C direct Shona+E5": 0.51,
         "B translate+E5": 0.96,
         "A glossary+BM25": 0.96,
         "D hybrid": 0.96,
-        "E hybrid, no glossary": 0.96
+        "E hybrid, no glossary": 0.96,
+        "F hybrid + dual query": 1.0
       },
       "single": {
         "C direct Shona+E5": 0.16,
         "B translate+E5": 0.83,
         "A glossary+BM25": 1.0,
         "D hybrid": 0.96,
-        "E hybrid, no glossary": 0.86
+        "E hybrid, no glossary": 0.86,
+        "F hybrid + dual query": 0.95
       },
       "typo": {
         "C direct Shona+E5": 0.1,
         "B translate+E5": 1.0,
         "A glossary+BM25": 1.0,
         "D hybrid": 1.0,
-        "E hybrid, no glossary": 1.0
+        "E hybrid, no glossary": 1.0,
+        "F hybrid + dual query": 1.0
       },
       "variant": {
         "C direct Shona+E5": 1.0,
         "B translate+E5": 0.5,
         "A glossary+BM25": 1.0,
         "D hybrid": 0.5,
-        "E hybrid, no glossary": 0.5
+        "E hybrid, no glossary": 0.5,
+        "F hybrid + dual query": 1.0
       }
     },
     "queries": [
@@ -131,6 +146,11 @@
             "p02",
             "p01",
             "p03"
+          ],
+          "F hybrid + dual query": [
+            "p02",
+            "p01",
+            "p03"
           ]
         },
         "first_relevant_rank": {
@@ -138,7 +158,8 @@
           "B translate+E5": 1,
           "A glossary+BM25": 1,
           "D hybrid": 1,
-          "E hybrid, no glossary": 1
+          "E hybrid, no glossary": 1,
+          "F hybrid + dual query": 1
         }
       },
       {
@@ -174,6 +195,11 @@
             "p04",
             "p05",
             "p21"
+          ],
+          "F hybrid + dual query": [
+            "p05",
+            "p04",
+            "p21"
           ]
         },
         "first_relevant_rank": {
@@ -181,7 +207,8 @@
           "B translate+E5": 1,
           "A glossary+BM25": 1,
           "D hybrid": 1,
-          "E hybrid, no glossary": 1
+          "E hybrid, no glossary": 1,
+          "F hybrid + dual query": 1
         }
       },
       {
@@ -217,6 +244,11 @@
             "p04",
             "p05",
             "p21"
+          ],
+          "F hybrid + dual query": [
+            "p21",
+            "p04",
+            "p05"
           ]
         },
         "first_relevant_rank": {
@@ -224,7 +256,8 @@
           "B translate+E5": 1,
           "A glossary+BM25": 1,
           "D hybrid": 1,
-          "E hybrid, no glossary": 1
+          "E hybrid, no glossary": 1,
+          "F hybrid + dual query": 2
         }
       },
       {
@@ -260,6 +293,11 @@
             "p07",
             "p08",
             "p09"
+          ],
+          "F hybrid + dual query": [
+            "p07",
+            "p08",
+            "p09"
           ]
         },
         "first_relevant_rank": {
@@ -267,7 +305,8 @@
           "B translate+E5": 1,
           "A glossary+BM25": 1,
           "D hybrid": 1,
-          "E hybrid, no glossary": 1
+          "E hybrid, no glossary": 1,
+          "F hybrid + dual query": 1
         }
       },
       {
@@ -303,6 +342,11 @@
             "p08",
             "p07",
             "p09"
+          ],
+          "F hybrid + dual query": [
+            "p08",
+            "p07",
+            "p09"
           ]
         },
         "first_relevant_rank": {
@@ -310,7 +354,8 @@
           "B translate+E5": 2,
           "A glossary+BM25": 1,
           "D hybrid": 2,
-          "E hybrid, no glossary": 2
+          "E hybrid, no glossary": 2,
+          "F hybrid + dual query": 2
         }
       },
       {
@@ -346,6 +391,11 @@
             "p12",
             "p02",
             "p11"
+          ],
+          "F hybrid + dual query": [
+            "p10",
+            "p12",
+            "p11"
           ]
         },
         "first_relevant_rank": {
@@ -353,7 +403,8 @@
           "B translate+E5": 3,
           "A glossary+BM25": 1,
           "D hybrid": 2,
-          "E hybrid, no glossary": 3
+          "E hybrid, no glossary": 3,
+          "F hybrid + dual query": 1
         }
       },
       {
@@ -390,6 +441,11 @@
             "p19",
             "p10",
             "p04"
+          ],
+          "F hybrid + dual query": [
+            "p10",
+            "p19",
+            "p12"
           ]
         },
         "first_relevant_rank": {
@@ -397,7 +453,8 @@
           "B translate+E5": 2,
           "A glossary+BM25": 1,
           "D hybrid": 2,
-          "E hybrid, no glossary": 2
+          "E hybrid, no glossary": 2,
+          "F hybrid + dual query": 1
         }
       },
       {
@@ -434,6 +491,11 @@
             "p19",
             "p10",
             "p04"
+          ],
+          "F hybrid + dual query": [
+            "p10",
+            "p19",
+            "p11"
           ]
         },
         "first_relevant_rank": {
@@ -441,7 +503,8 @@
           "B translate+E5": 2,
           "A glossary+BM25": 1,
           "D hybrid": 2,
-          "E hybrid, no glossary": 2
+          "E hybrid, no glossary": 2,
+          "F hybrid + dual query": 1
         }
       },
       {
@@ -477,6 +540,11 @@
             "p13",
             "p10",
             "p11"
+          ],
+          "F hybrid + dual query": [
+            "p13",
+            "p10",
+            "p11"
           ]
         },
         "first_relevant_rank": {
@@ -484,7 +552,8 @@
           "B translate+E5": 1,
           "A glossary+BM25": 1,
           "D hybrid": 1,
-          "E hybrid, no glossary": 1
+          "E hybrid, no glossary": 1,
+          "F hybrid + dual query": 1
         }
       },
       {
@@ -520,6 +589,11 @@
             "p14",
             "p15",
             "p16"
+          ],
+          "F hybrid + dual query": [
+            "p15",
+            "p14",
+            "p16"
           ]
         },
         "first_relevant_rank": {
@@ -527,7 +601,8 @@
           "B translate+E5": 1,
           "A glossary+BM25": 1,
           "D hybrid": 1,
-          "E hybrid, no glossary": 1
+          "E hybrid, no glossary": 1,
+          "F hybrid + dual query": 1
         }
       },
       {
@@ -564,6 +639,11 @@
             "p16",
             "p14",
             "p15"
+          ],
+          "F hybrid + dual query": [
+            "p16",
+            "p09",
+            "p15"
           ]
         },
         "first_relevant_rank": {
@@ -571,7 +651,8 @@
           "B translate+E5": 1,
           "A glossary+BM25": 1,
           "D hybrid": 1,
-          "E hybrid, no glossary": 1
+          "E hybrid, no glossary": 1,
+          "F hybrid + dual query": 1
         }
       },
       {
@@ -607,6 +688,11 @@
             "p17",
             "p04",
             "p06"
+          ],
+          "F hybrid + dual query": [
+            "p17",
+            "p04",
+            "p06"
           ]
         },
         "first_relevant_rank": {
@@ -614,7 +700,8 @@
           "B translate+E5": 1,
           "A glossary+BM25": 1,
           "D hybrid": 1,
-          "E hybrid, no glossary": 1
+          "E hybrid, no glossary": 1,
+          "F hybrid + dual query": 1
         }
       },
       {
@@ -650,6 +737,11 @@
             "p18",
             "p06",
             "p21"
+          ],
+          "F hybrid + dual query": [
+            "p18",
+            "p06",
+            "p51"
           ]
         },
         "first_relevant_rank": {
@@ -657,7 +749,8 @@
           "B translate+E5": 1,
           "A glossary+BM25": 1,
           "D hybrid": 1,
-          "E hybrid, no glossary": 1
+          "E hybrid, no glossary": 1,
+          "F hybrid + dual query": 1
         }
       },
       {
@@ -693,6 +786,11 @@
             "p20",
             "p46",
             "p11"
+          ],
+          "F hybrid + dual query": [
+            "p20",
+            "p10",
+            "p11"
           ]
         },
         "first_relevant_rank": {
@@ -700,7 +798,8 @@
           "B translate+E5": 1,
           "A glossary+BM25": 1,
           "D hybrid": 1,
-          "E hybrid, no glossary": 1
+          "E hybrid, no glossary": 1,
+          "F hybrid + dual query": 1
         }
       },
       {
@@ -736,6 +835,11 @@
             "p21",
             "p05",
             "p41"
+          ],
+          "F hybrid + dual query": [
+            "p21",
+            "p13",
+            "p10"
           ]
         },
         "first_relevant_rank": {
@@ -743,7 +847,8 @@
           "B translate+E5": 1,
           "A glossary+BM25": 1,
           "D hybrid": 1,
-          "E hybrid, no glossary": 1
+          "E hybrid, no glossary": 1,
+          "F hybrid + dual query": 1
         }
       },
       {
@@ -779,6 +884,11 @@
             "p23",
             "p22",
             "p31"
+          ],
+          "F hybrid + dual query": [
+            "p23",
+            "p51",
+            "p52"
           ]
         },
         "first_relevant_rank": {
@@ -786,7 +896,8 @@
           "B translate+E5": 1,
           "A glossary+BM25": 1,
           "D hybrid": 1,
-          "E hybrid, no glossary": 1
+          "E hybrid, no glossary": 1,
+          "F hybrid + dual query": 1
         }
       },
       {
@@ -822,6 +933,11 @@
             "p26",
             "p53",
             "p28"
+          ],
+          "F hybrid + dual query": [
+            "p26",
+            "p53",
+            "p12"
           ]
         },
         "first_relevant_rank": {
@@ -829,7 +945,8 @@
           "B translate+E5": 1,
           "A glossary+BM25": 1,
           "D hybrid": 1,
-          "E hybrid, no glossary": 1
+          "E hybrid, no glossary": 1,
+          "F hybrid + dual query": 1
         }
       },
       {
@@ -865,6 +982,11 @@
             "p25",
             "p30",
             "p53"
+          ],
+          "F hybrid + dual query": [
+            "p25",
+            "p30",
+            "p19"
           ]
         },
         "first_relevant_rank": {
@@ -872,7 +994,8 @@
           "B translate+E5": 1,
           "A glossary+BM25": 1,
           "D hybrid": 1,
-          "E hybrid, no glossary": 1
+          "E hybrid, no glossary": 1,
+          "F hybrid + dual query": 1
         }
       },
       {
@@ -908,6 +1031,11 @@
             "p46",
             "p02",
             "p45"
+          ],
+          "F hybrid + dual query": [
+            "p29",
+            "p02",
+            "p46"
           ]
         },
         "first_relevant_rank": {
@@ -915,7 +1043,8 @@
           "B translate+E5": 4,
           "A glossary+BM25": 1,
           "D hybrid": 1,
-          "E hybrid, no glossary": 4
+          "E hybrid, no glossary": 4,
+          "F hybrid + dual query": 1
         }
       },
       {
@@ -951,6 +1080,11 @@
             "p42",
             "p41",
             "p32"
+          ],
+          "F hybrid + dual query": [
+            "p32",
+            "p37",
+            "p36"
           ]
         },
         "first_relevant_rank": {
@@ -958,7 +1092,8 @@
           "B translate+E5": 14,
           "A glossary+BM25": 1,
           "D hybrid": 2,
-          "E hybrid, no glossary": 14
+          "E hybrid, no glossary": 14,
+          "F hybrid + dual query": 3
         }
       },
       {
@@ -994,6 +1129,11 @@
             "p38",
             "p39",
             "p32"
+          ],
+          "F hybrid + dual query": [
+            "p38",
+            "p39",
+            "p10"
           ]
         },
         "first_relevant_rank": {
@@ -1001,7 +1141,8 @@
           "B translate+E5": 1,
           "A glossary+BM25": 1,
           "D hybrid": 1,
-          "E hybrid, no glossary": 1
+          "E hybrid, no glossary": 1,
+          "F hybrid + dual query": 1
         }
       },
       {
@@ -1037,6 +1178,11 @@
             "p42",
             "p34",
             "p41"
+          ],
+          "F hybrid + dual query": [
+            "p42",
+            "p34",
+            "p41"
           ]
         },
         "first_relevant_rank": {
@@ -1044,7 +1190,8 @@
           "B translate+E5": 1,
           "A glossary+BM25": 1,
           "D hybrid": 1,
-          "E hybrid, no glossary": 1
+          "E hybrid, no glossary": 1,
+          "F hybrid + dual query": 1
         }
       },
       {
@@ -1080,6 +1227,11 @@
             "p40",
             "p04",
             "p50"
+          ],
+          "F hybrid + dual query": [
+            "p40",
+            "p04",
+            "p51"
           ]
         },
         "first_relevant_rank": {
@@ -1087,7 +1239,8 @@
           "B translate+E5": 1,
           "A glossary+BM25": 1,
           "D hybrid": 1,
-          "E hybrid, no glossary": 1
+          "E hybrid, no glossary": 1,
+          "F hybrid + dual query": 1
         }
       },
       {
@@ -1123,6 +1276,11 @@
             "p44",
             "p43",
             "p46"
+          ],
+          "F hybrid + dual query": [
+            "p43",
+            "p44",
+            "p10"
           ]
         },
         "first_relevant_rank": {
@@ -1130,7 +1288,8 @@
           "B translate+E5": 1,
           "A glossary+BM25": 1,
           "D hybrid": 1,
-          "E hybrid, no glossary": 1
+          "E hybrid, no glossary": 1,
+          "F hybrid + dual query": 1
         }
       },
       {
@@ -1166,6 +1325,11 @@
             "p45",
             "p46",
             "p22"
+          ],
+          "F hybrid + dual query": [
+            "p45",
+            "p46",
+            "p29"
           ]
         },
         "first_relevant_rank": {
@@ -1173,7 +1337,8 @@
           "B translate+E5": 1,
           "A glossary+BM25": 1,
           "D hybrid": 1,
-          "E hybrid, no glossary": 1
+          "E hybrid, no glossary": 1,
+          "F hybrid + dual query": 1
         }
       },
       {
@@ -1209,6 +1374,11 @@
             "p47",
             "p49",
             "p48"
+          ],
+          "F hybrid + dual query": [
+            "p47",
+            "p17",
+            "p43"
           ]
         },
         "first_relevant_rank": {
@@ -1216,7 +1386,8 @@
           "B translate+E5": 1,
           "A glossary+BM25": 1,
           "D hybrid": 1,
-          "E hybrid, no glossary": 1
+          "E hybrid, no glossary": 1,
+          "F hybrid + dual query": 1
         }
       },
       {
@@ -1252,6 +1423,11 @@
             "p51",
             "p02",
             "p50"
+          ],
+          "F hybrid + dual query": [
+            "p53",
+            "p51",
+            "p10"
           ]
         },
         "first_relevant_rank": {
@@ -1259,7 +1435,8 @@
           "B translate+E5": 9,
           "A glossary+BM25": 1,
           "D hybrid": 1,
-          "E hybrid, no glossary": 9
+          "E hybrid, no glossary": 9,
+          "F hybrid + dual query": 1
         }
       },
       {
@@ -1295,6 +1472,11 @@
             "p35",
             "p41",
             "p39"
+          ],
+          "F hybrid + dual query": [
+            "p35",
+            "p41",
+            "p39"
           ]
         },
         "first_relevant_rank": {
@@ -1302,7 +1484,8 @@
           "B translate+E5": 2,
           "A glossary+BM25": 1,
           "D hybrid": 1,
-          "E hybrid, no glossary": 1
+          "E hybrid, no glossary": 1,
+          "F hybrid + dual query": 1
         }
       },
       {
@@ -1338,6 +1521,11 @@
             "p31",
             "p29",
             "p30"
+          ],
+          "F hybrid + dual query": [
+            "p31",
+            "p29",
+            "p46"
           ]
         },
         "first_relevant_rank": {
@@ -1345,7 +1533,8 @@
           "B translate+E5": 1,
           "A glossary+BM25": 1,
           "D hybrid": 1,
-          "E hybrid, no glossary": 1
+          "E hybrid, no glossary": 1,
+          "F hybrid + dual query": 1
         }
       },
       {
@@ -1382,6 +1571,11 @@
             "p32",
             "p33",
             "p07"
+          ],
+          "F hybrid + dual query": [
+            "p32",
+            "p33",
+            "p10"
           ]
         },
         "first_relevant_rank": {
@@ -1389,7 +1583,8 @@
           "B translate+E5": 1,
           "A glossary+BM25": 1,
           "D hybrid": 1,
-          "E hybrid, no glossary": 1
+          "E hybrid, no glossary": 1,
+          "F hybrid + dual query": 1
         }
       },
       {
@@ -1427,6 +1622,11 @@
             "p50",
             "p06",
             "p03"
+          ],
+          "F hybrid + dual query": [
+            "p50",
+            "p51",
+            "p02"
           ]
         },
         "first_relevant_rank": {
@@ -1434,7 +1634,8 @@
           "B translate+E5": 1,
           "A glossary+BM25": 1,
           "D hybrid": 1,
-          "E hybrid, no glossary": 1
+          "E hybrid, no glossary": 1,
+          "F hybrid + dual query": 1
         }
       },
       {
@@ -1472,6 +1673,11 @@
             "p51",
             "p22",
             "p50"
+          ],
+          "F hybrid + dual query": [
+            "p51",
+            "p22",
+            "p50"
           ]
         },
         "first_relevant_rank": {
@@ -1479,7 +1685,8 @@
           "B translate+E5": 1,
           "A glossary+BM25": 2,
           "D hybrid": 1,
-          "E hybrid, no glossary": 1
+          "E hybrid, no glossary": 1,
+          "F hybrid + dual query": 1
         }
       },
       {
@@ -1517,6 +1724,11 @@
             "p22",
             "p23",
             "p24"
+          ],
+          "F hybrid + dual query": [
+            "p22",
+            "p23",
+            "p51"
           ]
         },
         "first_relevant_rank": {
@@ -1524,7 +1736,8 @@
           "B translate+E5": 1,
           "A glossary+BM25": 1,
           "D hybrid": 1,
-          "E hybrid, no glossary": 1
+          "E hybrid, no glossary": 1,
+          "F hybrid + dual query": 1
         }
       },
       {
@@ -1561,6 +1774,11 @@
             "p08",
             "p35",
             "p28"
+          ],
+          "F hybrid + dual query": [
+            "p08",
+            "p35",
+            "p07"
           ]
         },
         "first_relevant_rank": {
@@ -1568,7 +1786,8 @@
           "B translate+E5": 1,
           "A glossary+BM25": 1,
           "D hybrid": 1,
-          "E hybrid, no glossary": 1
+          "E hybrid, no glossary": 1,
+          "F hybrid + dual query": 1
         }
       },
       {
@@ -1605,6 +1824,11 @@
             "p35",
             "p08",
             "p34"
+          ],
+          "F hybrid + dual query": [
+            "p35",
+            "p39",
+            "p41"
           ]
         },
         "first_relevant_rank": {
@@ -1612,7 +1836,8 @@
           "B translate+E5": 1,
           "A glossary+BM25": 1,
           "D hybrid": 1,
-          "E hybrid, no glossary": 1
+          "E hybrid, no glossary": 1,
+          "F hybrid + dual query": 1
         }
       },
       {
@@ -1649,6 +1874,11 @@
             "p11",
             "p10",
             "p19"
+          ],
+          "F hybrid + dual query": [
+            "p11",
+            "p10",
+            "p12"
           ]
         },
         "first_relevant_rank": {
@@ -1656,7 +1886,8 @@
           "B translate+E5": 1,
           "A glossary+BM25": 1,
           "D hybrid": 1,
-          "E hybrid, no glossary": 1
+          "E hybrid, no glossary": 1,
+          "F hybrid + dual query": 1
         }
       },
       {
@@ -1693,6 +1924,11 @@
             "p12",
             "p11",
             "p01"
+          ],
+          "F hybrid + dual query": [
+            "p12",
+            "p10",
+            "p11"
           ]
         },
         "first_relevant_rank": {
@@ -1700,7 +1936,8 @@
           "B translate+E5": 1,
           "A glossary+BM25": 1,
           "D hybrid": 1,
-          "E hybrid, no glossary": 1
+          "E hybrid, no glossary": 1,
+          "F hybrid + dual query": 1
         }
       },
       {
@@ -1737,6 +1974,11 @@
             "p54",
             "p21",
             "p02"
+          ],
+          "F hybrid + dual query": [
+            "p54",
+            "p02",
+            "p01"
           ]
         },
         "first_relevant_rank": {
@@ -1744,7 +1986,8 @@
           "B translate+E5": 1,
           "A glossary+BM25": 1,
           "D hybrid": 1,
-          "E hybrid, no glossary": 1
+          "E hybrid, no glossary": 1,
+          "F hybrid + dual query": 1
         }
       },
       {
@@ -1781,6 +2024,11 @@
             "p43",
             "p44",
             "p49"
+          ],
+          "F hybrid + dual query": [
+            "p43",
+            "p44",
+            "p49"
           ]
         },
         "first_relevant_rank": {
@@ -1788,7 +2036,8 @@
           "B translate+E5": 1,
           "A glossary+BM25": 1,
           "D hybrid": 1,
-          "E hybrid, no glossary": 1
+          "E hybrid, no glossary": 1,
+          "F hybrid + dual query": 1
         }
       },
       {
@@ -1825,6 +2074,11 @@
             "p49",
             "p17",
             "p43"
+          ],
+          "F hybrid + dual query": [
+            "p49",
+            "p17",
+            "p43"
           ]
         },
         "first_relevant_rank": {
@@ -1832,7 +2086,8 @@
           "B translate+E5": 1,
           "A glossary+BM25": 1,
           "D hybrid": 1,
-          "E hybrid, no glossary": 1
+          "E hybrid, no glossary": 1,
+          "F hybrid + dual query": 1
         }
       },
       {
@@ -1868,6 +2123,11 @@
             "p01",
             "p02",
             "p05"
+          ],
+          "F hybrid + dual query": [
+            "p01",
+            "p02",
+            "p05"
           ]
         },
         "first_relevant_rank": {
@@ -1875,7 +2135,8 @@
           "B translate+E5": 1,
           "A glossary+BM25": 1,
           "D hybrid": 1,
-          "E hybrid, no glossary": 1
+          "E hybrid, no glossary": 1,
+          "F hybrid + dual query": 1
         }
       },
       {
@@ -1911,6 +2172,11 @@
             "p04",
             "p05",
             "p21"
+          ],
+          "F hybrid + dual query": [
+            "p04",
+            "p05",
+            "p02"
           ]
         },
         "first_relevant_rank": {
@@ -1918,7 +2184,8 @@
           "B translate+E5": 1,
           "A glossary+BM25": 1,
           "D hybrid": 1,
-          "E hybrid, no glossary": 1
+          "E hybrid, no glossary": 1,
+          "F hybrid + dual query": 1
         }
       },
       {
@@ -1954,6 +2221,11 @@
             "p07",
             "p02",
             "p08"
+          ],
+          "F hybrid + dual query": [
+            "p07",
+            "p02",
+            "p09"
           ]
         },
         "first_relevant_rank": {
@@ -1961,7 +2233,8 @@
           "B translate+E5": 1,
           "A glossary+BM25": 1,
           "D hybrid": 1,
-          "E hybrid, no glossary": 1
+          "E hybrid, no glossary": 1,
+          "F hybrid + dual query": 1
         }
       },
       {
@@ -1998,6 +2271,11 @@
             "p19",
             "p10",
             "p11"
+          ],
+          "F hybrid + dual query": [
+            "p10",
+            "p19",
+            "p11"
           ]
         },
         "first_relevant_rank": {
@@ -2005,7 +2283,8 @@
           "B translate+E5": 2,
           "A glossary+BM25": 1,
           "D hybrid": 1,
-          "E hybrid, no glossary": 2
+          "E hybrid, no glossary": 2,
+          "F hybrid + dual query": 1
         }
       },
       {
@@ -2041,6 +2320,11 @@
             "p37",
             "p36",
             "p32"
+          ],
+          "F hybrid + dual query": [
+            "p36",
+            "p37",
+            "p32"
           ]
         },
         "first_relevant_rank": {
@@ -2048,7 +2332,8 @@
           "B translate+E5": 1,
           "A glossary+BM25": 1,
           "D hybrid": 1,
-          "E hybrid, no glossary": 2
+          "E hybrid, no glossary": 2,
+          "F hybrid + dual query": 1
         }
       },
       {
@@ -2082,6 +2367,11 @@
             "p37",
             "p36",
             "p35"
+          ],
+          "F hybrid + dual query": [
+            "p37",
+            "p36",
+            "p35"
           ]
         },
         "first_relevant_rank": {
@@ -2089,7 +2379,8 @@
           "B translate+E5": 1,
           "A glossary+BM25": 1,
           "D hybrid": 1,
-          "E hybrid, no glossary": 1
+          "E hybrid, no glossary": 1,
+          "F hybrid + dual query": 1
         }
       },
       {
@@ -2125,6 +2416,11 @@
             "p52",
             "p48",
             "p46"
+          ],
+          "F hybrid + dual query": [
+            "p52",
+            "p48",
+            "p46"
           ]
         },
         "first_relevant_rank": {
@@ -2132,7 +2428,8 @@
           "B translate+E5": 1,
           "A glossary+BM25": 1,
           "D hybrid": 1,
-          "E hybrid, no glossary": 1
+          "E hybrid, no glossary": 1,
+          "F hybrid + dual query": 1
         }
       },
       {
@@ -2168,6 +2465,11 @@
             "p07",
             "p08",
             "p09"
+          ],
+          "F hybrid + dual query": [
+            "p07",
+            "p09",
+            "p02"
           ]
         },
         "first_relevant_rank": {
@@ -2175,7 +2477,8 @@
           "B translate+E5": 1,
           "A glossary+BM25": 1,
           "D hybrid": 1,
-          "E hybrid, no glossary": 1
+          "E hybrid, no glossary": 1,
+          "F hybrid + dual query": 1
         }
       },
       {
@@ -2211,6 +2514,11 @@
             "p07",
             "p08",
             "p09"
+          ],
+          "F hybrid + dual query": [
+            "p07",
+            "p02",
+            "p09"
           ]
         },
         "first_relevant_rank": {
@@ -2218,7 +2526,8 @@
           "B translate+E5": 1,
           "A glossary+BM25": 1,
           "D hybrid": 1,
-          "E hybrid, no glossary": 1
+          "E hybrid, no glossary": 1,
+          "F hybrid + dual query": 1
         }
       },
       {
@@ -2252,6 +2561,11 @@
             "p07",
             "p08",
             "p09"
+          ],
+          "F hybrid + dual query": [
+            "p07",
+            "p08",
+            "p09"
           ]
         },
         "first_relevant_rank": {
@@ -2259,7 +2573,8 @@
           "B translate+E5": 1,
           "A glossary+BM25": 1,
           "D hybrid": 1,
-          "E hybrid, no glossary": 1
+          "E hybrid, no glossary": 1,
+          "F hybrid + dual query": 1
         }
       },
       {
@@ -2293,6 +2608,11 @@
             "p38",
             "p39",
             "p32"
+          ],
+          "F hybrid + dual query": [
+            "p38",
+            "p39",
+            "p32"
           ]
         },
         "first_relevant_rank": {
@@ -2300,7 +2620,8 @@
           "B translate+E5": 1,
           "A glossary+BM25": 1,
           "D hybrid": 1,
-          "E hybrid, no glossary": 1
+          "E hybrid, no glossary": 1,
+          "F hybrid + dual query": 1
         }
       },
       {
@@ -2334,6 +2655,11 @@
             "p43",
             "p44",
             "p49"
+          ],
+          "F hybrid + dual query": [
+            "p43",
+            "p44",
+            "p49"
           ]
         },
         "first_relevant_rank": {
@@ -2341,7 +2667,8 @@
           "B translate+E5": 1,
           "A glossary+BM25": 1,
           "D hybrid": 1,
-          "E hybrid, no glossary": 1
+          "E hybrid, no glossary": 1,
+          "F hybrid + dual query": 1
         }
       },
       {
@@ -2375,6 +2702,11 @@
             "p21",
             "p05",
             "p04"
+          ],
+          "F hybrid + dual query": [
+            "p21",
+            "p05",
+            "p04"
           ]
         },
         "first_relevant_rank": {
@@ -2382,7 +2714,8 @@
           "B translate+E5": 1,
           "A glossary+BM25": 1,
           "D hybrid": 1,
-          "E hybrid, no glossary": 1
+          "E hybrid, no glossary": 1,
+          "F hybrid + dual query": 1
         }
       }
     ],
@@ -2390,10 +2723,10 @@
       "vector": 0.6,
       "lexical": 0.4
     },
-    "query_translate_seconds": 44.2
+    "query_translate_seconds": 72.1
   },
   "translation": {
-    "seconds": 151.2,
+    "seconds": 175.5,
     "no_hard_flags": 34,
     "total": 40,
     "safety_total": 10,

@@ -29,6 +29,7 @@ class Settings(BaseSettings):
     # --- generation guards (from the stress test) ---
     no_repeat_ngram_size: int = 4  # stops "ane ane ane..." loops; 0 disables
     torch_threads: int = 0         # 0 = torch default (4 on this machine)
+    stub_models: bool = False      # True = fake models for teammates (app/stub.py); NOT for evaluation
 
     # --- v1 language pair for tokenizer init ---
     source_language: str = "eng_Latn"

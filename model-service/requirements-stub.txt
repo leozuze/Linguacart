@@ -1,0 +1,7 @@
+# Enough to run the service in STUB_MODELS=true mode (no torch, no model downloads)
+fastapi>=0.110
+uvicorn[standard]>=0.29
+pydantic>=2.6
+pydantic-settings>=2.2
+pytest>=8.0
+httpx>=0.27
