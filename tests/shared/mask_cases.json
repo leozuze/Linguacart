@@ -1,0 +1,92 @@
+[
+  {
+    "name": "price with a space after the code",
+    "input": "INR 16,138.68",
+    "masked": "{PRICE}",
+    "values": { "PRICE": ["INR 16,138.68"] }
+  },
+  {
+    "name": "price without a space (product page)",
+    "input": "INR133,185.25",
+    "masked": "{PRICE}",
+    "values": { "PRICE": ["INR133,185.25"] }
+  },
+  {
+    "name": "delivery fee and date",
+    "input": "INR 1,111.97 delivery Fri, Nov 13",
+    "masked": "{PRICE} delivery {DATE}",
+    "values": { "PRICE": ["INR 1,111.97"], "DATE": ["Fri, Nov 13"] }
+  },
+  {
+    "name": "import charge (about 43% of the item price on one page)",
+    "input": "INR 57,530.73 Shipping & Import Charges to India",
+    "masked": "{PRICE} Shipping & Import Charges to India",
+    "values": { "PRICE": ["INR 57,530.73"] }
+  },
+  {
+    "name": "struck-through list price",
+    "input": "List: INR 22,784.41",
+    "masked": "List: {PRICE}",
+    "values": { "PRICE": ["INR 22,784.41"] }
+  },
+  {
+    "name": "date range",
+    "input": "Nov 13 - 15",
+    "masked": "{DATE}",
+    "values": { "DATE": ["Nov 13 - 15"] }
+  },
+  {
+    "name": "rating",
+    "input": "4.3 out of 5 stars",
+    "masked": "{N} out of {N} stars",
+    "values": { "N": ["4.3", "5"] }
+  },
+  {
+    "name": "review count with K",
+    "input": "(17.1K)",
+    "masked": "({N})",
+    "values": { "N": ["17.1K"] }
+  },
+  {
+    "name": "bought in past month",
+    "input": "10K+ bought in past month",
+    "masked": "{N} bought in past month",
+    "values": { "N": ["10K+"] }
+  },
+  {
+    "name": "scarcity message",
+    "input": "Only 3 left in stock - order soon.",
+    "masked": "Only {N} left in stock - order soon.",
+    "values": { "N": ["3"] }
+  },
+  {
+    "name": "model code inside a title",
+    "input": "Sony WH-CH720N Wireless Noise Cancelling Over-Ear Headphones, Black",
+    "masked": "Sony {CODE} Wireless Noise Cancelling Over-Ear Headphones, Black",
+    "values": { "CODE": ["WH-CH720N"] }
+  },
+  {
+    "name": "result count with the shopper's own search text",
+    "input": "1-16 of over 90,000 results for \"headphones\"",
+    "query": "headphones",
+    "masked": "{N}-{N} of over {N} results for \"{QUERY}\"",
+    "values": { "N": ["1", "16", "90,000"], "QUERY": ["headphones"] }
+  },
+  {
+    "name": "a comma after a price stays in the text",
+    "input": "INR 500, free delivery",
+    "masked": "{PRICE}, free delivery",
+    "values": { "PRICE": ["INR 500"] }
+  },
+  {
+    "name": "a comma between numbers stays in the text",
+    "input": "Pack of 3, 4 or 5",
+    "masked": "Pack of {N}, {N} or {N}",
+    "values": { "N": ["3", "4", "5"] }
+  },
+  {
+    "name": "dense specification title: every token must survive masking and restoring",
+    "input": "Acer Nitro V 16S AI Gaming Laptop | AMD Ryzen 7 260 Processor | NVIDIA GeForce RTX 5060 Laptop GPU (572 AI Tops) | 16\" WUXGA IPS 180Hz Display | 32GB DDR5 | 1TB Gen 4 SSD | Wi-Fi 6 | ANV16S-41-R2AJ",
+    "roundTripOnly": true
+  }
+]
