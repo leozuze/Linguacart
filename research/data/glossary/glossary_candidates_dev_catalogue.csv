@@ -1,0 +1,342 @@
+﻿english,type,priority,products,category,example_title,shona,shona_variants_and_regions,notes,reviewer,status
+contains,word,1-safety,4,groceries,"Full Cream Milk Powder, 400 g",,,,,needs_translation
+milk,word,1-safety,3,groceries,"Full Cream Milk Powder, 400 g",,,,,needs_translation
+contains milk,phrase,1-safety,2,groceries,"Full Cream Milk Powder, 400 g",,,,,needs_translation
+cream milk,phrase,1-safety,2,groceries,"Full Cream Milk Powder, 400 g",,,,,needs_translation
+children,word,1-safety,1,health,"Paracetamol Tablets 500 mg, 24 Count",,,,,needs_translation
+eggs,word,1-safety,1,kitchen,"Non-Stick Frying Pan, 28 cm",,,,,needs_translation
+peanut,word,1-safety,1,groceries,"Crunchy Peanut Butter, 400 g",,,,,needs_translation
+peanuts,word,1-safety,1,groceries,"Crunchy Peanut Butter, 400 g",,,,,needs_translation
+soy,word,1-safety,1,baby,"Infant Formula Stage 1, 400 g",,,,,needs_translation
+wheat,word,1-safety,1,groceries,"Whole Wheat Flour, 2 kg",,,,,needs_translation
+kg,word,2-unit,12,groceries,"Iodized Table Salt, 1 kg",,,,,needs_translation
+size,word,2-unit,4,footwear,"Boys School Shoes, Black Leather, Size 5",,,,,needs_translation
+count,word,2-unit,3,groceries,"Sugar-Free Sweetener Tablets, 200 Count",,,,,needs_translation
+ml,word,2-unit,3,baby,"Baby Massage Oil, 200 ml",,,,,needs_translation
+tablets,word,2-unit,3,groceries,"Sugar-Free Sweetener Tablets, 200 Count",,,,,needs_translation
+inch,word,2-unit,2,electronics,"Samsung Galaxy A15 5G, 128GB",,,,,needs_translation
+bags,word,2-unit,1,groceries,"Black Tea Bags, 100 Count",,,,,needs_translation
+cm,word,2-unit,1,kitchen,"Non-Stick Frying Pan, 28 cm",,,,,needs_translation
+mg,word,2-unit,1,health,"Paracetamol Tablets 500 mg, 24 Count",,,,,needs_translation
+piece,word,2-unit,1,home textiles,"Cotton Bed Sheet Set, Queen",,,,,needs_translation
+white,word,3-colour,4,groceries,"White Refined Sugar, 2 kg",,,,,needs_translation
+black,word,3-colour,2,groceries,"Black Tea Bags, 100 Count",,,,,needs_translation
+white maize,phrase,3-colour,2,groceries,"Maize Meal, 10 kg",,,,,needs_translation
+assorted,word,3-colour,1,clothing,"Men's Cotton T-Shirt, 3 Pack",,,,,needs_translation
+blue,word,3-colour,1,stationery,"Blue Ballpoint Pens, 50 Pack",,,,,needs_translation
+brown,word,3-colour,1,groceries,"Brown Sugar, 1 kg",,,,,needs_translation
+navy,word,3-colour,1,clothing,"Men's Work Trousers, Navy, Size 34",,,,,needs_translation
+cooking,word,4-normal,5,groceries,"Iodized Table Salt, 1 kg",,,,,needs_translation
+usb,word,4-normal,5,electronics,Solar Rechargeable LED Lamp,,,,,needs_translation
+cotton,word,4-normal,4,home textiles,"Cotton Bed Sheet Set, Queen",,,,,needs_translation
+of,word,4-normal,4,home textiles,"Cotton Bath Towel, Large",,,,,needs_translation
+oil,word,4-normal,4,personal care,"Lavender Bath Salts, 500 g",,,,,needs_translation
+school,word,4-normal,4,stationery,"Boys School Shoes, Black Leather, Size 5",,,,,needs_translation
+strong,word,4-normal,4,groceries,"Black Tea Bags, 100 Count",,,,,needs_translation
+sugar,word,4-normal,4,groceries,"White Refined Sugar, 2 kg",,,,,needs_translation
+bath,word,4-normal,3,personal care,"Lavender Bath Salts, 500 g",,,,,needs_translation
+battery,word,4-normal,3,electronics,"Car Battery 12V 60Ah, Model NS60",,,,,needs_translation
+in,word,4-normal,3,groceries,"Sugar Beans, 1 kg",,,,,needs_translation
+led,word,4-normal,3,energy,Solar Rechargeable LED Lamp,,,,,needs_translation
+long,word,4-normal,3,groceries,"Long Grain Rice, 5 kg",,,,,needs_translation
+made,word,4-normal,3,groceries,"Maize Meal, 10 kg",,,,,needs_translation
+maize,word,4-normal,3,farming,"Maize Meal, 10 kg",,,,,needs_translation
+portable,word,4-normal,3,electronics,Two-Burner Gas Cooker,,,,,needs_translation
+soft,word,4-normal,3,home textiles,"Cotton Bath Towel, Large",,,,,needs_translation
+tea,word,4-normal,3,groceries,"White Refined Sugar, 2 kg",,,,,needs_translation
+to,word,4-normal,3,groceries,"Sugar Beans, 1 kg",,,,,needs_translation
+two,word,4-normal,3,kitchen,Two-Burner Gas Cooker,,,,,needs_translation
+water,word,4-normal,3,household,"Plastic Water Bucket, 20 L",,,,,needs_translation
+aa,word,4-normal,2,energy,LED Torch with 3 AA Batteries,,,,,needs_translation
+aa batteries,phrase,4-normal,2,energy,LED Torch with 3 AA Batteries,,,,,needs_translation
+absorbent,word,4-normal,2,home textiles,"Cotton Bath Towel, Large",,,,,needs_translation
+at,word,4-normal,2,personal care,"Lavender Bath Salts, 500 g",,,,,needs_translation
+baby,word,4-normal,2,baby,"Baby Massage Oil, 200 ml",,,,,needs_translation
+baking,word,4-normal,2,groceries,"White Refined Sugar, 2 kg",,,,,needs_translation
+batteries,word,4-normal,2,energy,LED Torch with 3 AA Batteries,,,,,needs_translation
+bed,word,4-normal,2,home textiles,"Wool Blanket, Double Bed",,,,,needs_translation
+butter,word,4-normal,2,groceries,"Crunchy Peanut Butter, 400 g",,,,,needs_translation
+camera,word,4-normal,2,electronics,"Samsung Galaxy A15 5G, 128GB",,,,,needs_translation
+charger,word,4-normal,2,electronics,USB-C Fast Charger 25W,,,,,needs_translation
+coffee,word,4-normal,2,groceries,"Sugar-Free Sweetener Tablets, 200 Count",,,,,needs_translation
+cream,word,4-normal,2,groceries,"Full Cream Milk Powder, 400 g",,,,,needs_translation
+display,word,4-normal,2,electronics,"Samsung Galaxy A15 5G, 128GB",,,,,needs_translation
+free,word,4-normal,2,groceries,"Sugar-Free Sweetener Tablets, 200 Count",,,,,needs_translation
+frying,word,4-normal,2,groceries,"Sunflower Cooking Oil, 2 L",,,,,needs_translation
+full,word,4-normal,2,groceries,"Full Cream Milk Powder, 400 g",,,,,needs_translation
+full cream,phrase,4-normal,2,groceries,"Full Cream Milk Powder, 400 g",,,,,needs_translation
+galaxy,word,4-normal,2,electronics,"Samsung Galaxy A15 5G, 128GB",,,,,needs_translation
+gas,word,4-normal,2,kitchen,"Stainless Steel Cooking Pot, 5 L",,,,,needs_translation
+hand,word,4-normal,2,household,"Laundry Washing Powder, 3 kg",,,,,needs_translation
+handle,word,4-normal,2,household,"Plastic Water Bucket, 20 L",,,,,needs_translation
+heavy,word,4-normal,2,kitchen,"Stainless Steel Cooking Pot, 5 L",,,,,needs_translation
+hours,word,4-normal,2,energy,Solar Rechargeable LED Lamp,,,,,needs_translation
+hours of,phrase,4-normal,2,energy,Solar Rechargeable LED Lamp,,,,,needs_translation
+instant,word,4-normal,2,groceries,"Full Cream Milk Powder, 400 g",,,,,needs_translation
+lid,word,4-normal,2,household,"Plastic Water Bucket, 20 L",,,,,needs_translation
+life,word,4-normal,2,groceries,"Long Life Full Cream Milk, 1 L",,,,,needs_translation
+machine,word,4-normal,2,household,"Laundry Washing Powder, 3 kg",,,,,needs_translation
+mah,word,4-normal,2,electronics,"Samsung Galaxy A15 5G, 128GB",,,,,needs_translation
+meat,word,4-normal,2,groceries,"Coarse Cooking Salt, 2 kg",,,,,needs_translation
+men,word,4-normal,2,clothing,"Men's Cotton T-Shirt, 3 Pack",,,,,needs_translation
+over,word,4-normal,2,electronics,Bluetooth Wireless Headphones,,,,,needs_translation
+phones,word,4-normal,2,energy,Solar Rechargeable LED Lamp,,,,,needs_translation
+port,word,4-normal,2,energy,Solar Rechargeable LED Lamp,,,,,needs_translation
+powder,word,4-normal,2,groceries,"Full Cream Milk Powder, 400 g",,,,,needs_translation
+rechargeable,word,4-normal,2,energy,Solar Rechargeable LED Lamp,,,,,needs_translation
+refined,word,4-normal,2,groceries,"White Refined Sugar, 2 kg",,,,,needs_translation
+rich,word,4-normal,2,groceries,"Brown Sugar, 1 kg",,,,,needs_translation
+salt,word,4-normal,2,groceries,"Iodized Table Salt, 1 kg",,,,,needs_translation
+samsung,word,4-normal,2,electronics,"Samsung Galaxy A15 5G, 128GB",,,,,needs_translation
+samsung galaxy,phrase,4-normal,2,electronics,"Samsung Galaxy A15 5G, 128GB",,,,,needs_translation
+shoes,word,4-normal,2,footwear,"Boys School Shoes, Black Leather, Size 5",,,,,needs_translation
+smooth,word,4-normal,2,groceries,"Instant Coffee, 200 g",,,,,needs_translation
+soft absorbent,phrase,4-normal,2,home textiles,"Cotton Bath Towel, Large",,,,,needs_translation
+steel,word,4-normal,2,kitchen,"Stainless Steel Cooking Pot, 5 L",,,,,needs_translation
+up,word,4-normal,2,energy,Solar Rechargeable LED Lamp,,,,,needs_translation
+whole,word,4-normal,2,groceries,"Long Life Full Cream Milk, 1 L",,,,,needs_translation
+adults,word,4-normal,1,health,"Paracetamol Tablets 500 mg, 24 Count",,,,,needs_translation
+ah,word,4-normal,1,automotive,"Car Battery 12V 60Ah, Model NS60",,,,,needs_translation
+alcohol,word,4-normal,1,health,"Hand Sanitiser, 500 ml",,,,,needs_translation
+alkaline,word,4-normal,1,electronics,"AA Alkaline Batteries, 12 Pack",,,,,needs_translation
+almond,word,4-normal,1,baby,"Baby Massage Oil, 200 ml",,,,,needs_translation
+applied,word,4-normal,1,farming,"Maize Basal Fertiliser NPK 7:14:7, 50 kg",,,,,needs_translation
+auto,word,4-normal,1,kitchen,Two-Burner Gas Cooker,,,,,needs_translation
+babies,word,4-normal,1,baby,"Infant Formula Stage 1, 400 g",,,,,needs_translation
+backpack,word,4-normal,1,stationery,"School Backpack, 25 L",,,,,needs_translation
+ballpoint,word,4-normal,1,stationery,"Blue Ballpoint Pens, 50 Pack",,,,,needs_translation
+bank,word,4-normal,1,electronics,Power Bank 20000 mAh,,,,,needs_translation
+bar,word,4-normal,1,personal care,"Bath Soap Bar, 3 Pack",,,,,needs_translation
+basal,word,4-normal,1,farming,"Maize Basal Fertiliser NPK 7:14:7, 50 kg",,,,,needs_translation
+base,word,4-normal,1,kitchen,"Stainless Steel Cooking Pot, 5 L",,,,,needs_translation
+based,word,4-normal,1,health,"Hand Sanitiser, 500 ml",,,,,needs_translation
+bass,word,4-normal,1,electronics,Bluetooth Wireless Headphones,,,,,needs_translation
+beans,word,4-normal,1,groceries,"Sugar Beans, 1 kg",,,,,needs_translation
+birth,word,4-normal,1,baby,"Infant Formula Stage 1, 400 g",,,,,needs_translation
+blanket,word,4-normal,1,home textiles,"Wool Blanket, Double Bed",,,,,needs_translation
+bluetooth,word,4-normal,1,electronics,Bluetooth Wireless Headphones,,,,,needs_translation
+books,word,4-normal,1,stationery,"A4 Exercise Books, 72 Pages, 10 Pack",,,,,needs_translation
+bottle,word,4-normal,1,stationery,"School Backpack, 25 L",,,,,needs_translation
+boys,word,4-normal,1,footwear,"Boys School Shoes, Black Leather, Size 5",,,,,needs_translation
+bread,word,4-normal,1,groceries,"Whole Wheat Flour, 2 kg",,,,,needs_translation
+breathable,word,4-normal,1,footwear,"Women's Running Shoes, Size 7",,,,,needs_translation
+bright,word,4-normal,1,energy,LED Torch with 3 AA Batteries,,,,,needs_translation
+bucket,word,4-normal,1,household,"Plastic Water Bucket, 20 L",,,,,needs_translation
+built,word,4-normal,1,electronics,32 Inch LED Television,,,,,needs_translation
+burner,word,4-normal,1,kitchen,Two-Burner Gas Cooker,,,,,needs_translation
+cable,word,4-normal,1,electronics,USB-C Fast Charger 25W,,,,,needs_translation
+calorie,word,4-normal,1,groceries,"Sugar-Free Sweetener Tablets, 200 Count",,,,,needs_translation
+car,word,4-normal,1,automotive,"Car Battery 12V 60Ah, Model NS60",,,,,needs_translation
+card,word,4-normal,1,electronics,Portable FM Radio with USB,,,,,needs_translation
+carrying,word,4-normal,1,household,"Plastic Water Bucket, 20 L",,,,,needs_translation
+cars,word,4-normal,1,automotive,"Engine Oil 5W-30, 4 L",,,,,needs_translation
+case,word,4-normal,1,accessories,Silicone Phone Case for Samsung Galaxy A15,,,,,needs_translation
+charge,word,4-normal,1,energy,Solar Rechargeable LED Lamp,,,,,needs_translation
+chicken,word,4-normal,1,farming,"Layer Chicken Feed, 50 kg",,,,,needs_translation
+clean,word,4-normal,1,household,"Laundry Washing Powder, 3 kg",,,,,needs_translation
+clothes,word,4-normal,1,household,"Laundry Washing Powder, 3 kg",,,,,needs_translation
+coarse,word,4-normal,1,groceries,"Coarse Cooking Salt, 2 kg",,,,,needs_translation
+cold,word,4-normal,1,home textiles,"Wool Blanket, Double Bed",,,,,needs_translation
+colours,word,4-normal,1,clothing,"Men's Cotton T-Shirt, 3 Pack",,,,,needs_translation
+complete,word,4-normal,1,farming,"Layer Chicken Feed, 50 kg",,,,,needs_translation
+cook,word,4-normal,1,groceries,"Sugar Beans, 1 kg",,,,,needs_translation
+cooker,word,4-normal,1,kitchen,Two-Burner Gas Cooker,,,,,needs_translation
+cover,word,4-normal,1,stationery,"A4 Exercise Books, 72 Pages, 10 Pack",,,,,needs_translation
+crunchy,word,4-normal,1,groceries,"Crunchy Peanut Butter, 400 g",,,,,needs_translation
+curing,word,4-normal,1,groceries,"Coarse Cooking Salt, 2 kg",,,,,needs_translation
+cushioned,word,4-normal,1,footwear,"Women's Running Shoes, Size 7",,,,,needs_translation
+cuts,word,4-normal,1,household,"Dishwashing Liquid, 750 ml",,,,,needs_translation
+decoder,word,4-normal,1,electronics,32 Inch LED Television,,,,,needs_translation
+deep,word,4-normal,1,electronics,Bluetooth Wireless Headphones,,,,,needs_translation
+diapers,word,4-normal,1,baby,"Baby Diapers Size 3, 52 Pack",,,,,needs_translation
+diesel,word,4-normal,1,automotive,"Engine Oil 5W-30, 4 L",,,,,needs_translation
+digging,word,4-normal,1,farming,Steel Garden Hoe,,,,,needs_translation
+digital,word,4-normal,1,electronics,Power Bank 20000 mAh,,,,,needs_translation
+dishwashing,word,4-normal,1,household,"Dishwashing Liquid, 750 ml",,,,,needs_translation
+double,word,4-normal,1,home textiles,"Wool Blanket, Double Bed",,,,,needs_translation
+dried,word,4-normal,1,groceries,"Sugar Beans, 1 kg",,,,,needs_translation
+dry,word,4-normal,1,baby,"Baby Massage Oil, 200 ml",,,,,needs_translation
+dual,word,4-normal,1,electronics,"Samsung Galaxy A15 5G, 128GB",,,,,needs_translation
+durable,word,4-normal,1,footwear,"Boys School Shoes, Black Leather, Size 5",,,,,needs_translation
+duty,word,4-normal,1,farming,Steel Garden Hoe,,,,,needs_translation
+ear,word,4-normal,1,electronics,Bluetooth Wireless Headphones,,,,,needs_translation
+easy,word,4-normal,1,groceries,"Sugar Beans, 1 kg",,,,,needs_translation
+edges,word,4-normal,1,accessories,Silicone Phone Case for Samsung Galaxy A15,,,,,needs_translation
+electric,word,4-normal,1,kitchen,"Stainless Steel Cooking Pot, 5 L",,,,,needs_translation
+engine,word,4-normal,1,automotive,"Engine Oil 5W-30, 4 L",,,,,needs_translation
+exercise,word,4-normal,1,stationery,"A4 Exercise Books, 72 Pages, 10 Pack",,,,,needs_translation
+farming,word,4-normal,1,farming,"Hybrid Maize Seed KZ-520, 10 kg",,,,,needs_translation
+fast,word,4-normal,1,electronics,USB-C Fast Charger 25W,,,,,needs_translation
+fed,word,4-normal,1,farming,"Hybrid Maize Seed KZ-520, 10 kg",,,,,needs_translation
+feed,word,4-normal,1,farming,"Layer Chicken Feed, 50 kg",,,,,needs_translation
+fertiliser,word,4-normal,1,farming,"Maize Basal Fertiliser NPK 7:14:7, 50 kg",,,,,needs_translation
+fever,word,4-normal,1,health,"Paracetamol Tablets 500 mg, 24 Count",,,,,needs_translation
+fine,word,4-normal,1,groceries,"Iodized Table Salt, 1 kg",,,,,needs_translation
+flour,word,4-normal,1,groceries,"Whole Wheat Flour, 2 kg",,,,,needs_translation
+fm,word,4-normal,1,electronics,Portable FM Radio with USB,,,,,needs_translation
+formula,word,4-normal,1,baby,"Infant Formula Stage 1, 400 g",,,,,needs_translation
+four,word,4-normal,1,home textiles,"Cotton Bed Sheet Set, Queen",,,,,needs_translation
+fresh,word,4-normal,1,household,"Laundry Washing Powder, 3 kg",,,,,needs_translation
+fridge,word,4-normal,1,groceries,"Long Life Full Cream Milk, 1 L",,,,,needs_translation
+fully,word,4-normal,1,automotive,"Engine Oil 5W-30, 4 L",,,,,needs_translation
+garden,word,4-normal,1,farming,Steel Garden Hoe,,,,,needs_translation
+gb,word,4-normal,1,electronics,"Samsung Galaxy A15 5G, 128GB",,,,,needs_translation
+gentle,word,4-normal,1,baby,"Baby Massage Oil, 200 ml",,,,,needs_translation
+germs,word,4-normal,1,health,"Hand Sanitiser, 500 ml",,,,,needs_translation
+grain,word,4-normal,1,groceries,"Long Grain Rice, 5 kg",,,,,needs_translation
+granules,word,4-normal,1,groceries,"Instant Coffee, 200 g",,,,,needs_translation
+grease,word,4-normal,1,household,"Dishwashing Liquid, 750 ml",,,,,needs_translation
+handheld,word,4-normal,1,energy,LED Torch with 3 AA Batteries,,,,,needs_translation
+hd,word,4-normal,1,electronics,32 Inch LED Television,,,,,needs_translation
+hdmi,word,4-normal,1,electronics,32 Inch LED Television,,,,,needs_translation
+headphones,word,4-normal,1,electronics,Bluetooth Wireless Headphones,,,,,needs_translation
+hens,word,4-normal,1,farming,"Layer Chicken Feed, 50 kg",,,,,needs_translation
+high,word,4-normal,1,farming,"Hybrid Maize Seed KZ-520, 10 kg",,,,,needs_translation
+hoe,word,4-normal,1,farming,Steel Garden Hoe,,,,,needs_translation
+holder,word,4-normal,1,stationery,"School Backpack, 25 L",,,,,needs_translation
+home,word,4-normal,1,personal care,"Lavender Bath Salts, 500 g",,,,,needs_translation
+hybrid,word,4-normal,1,farming,"Hybrid Maize Seed KZ-520, 10 kg",,,,,needs_translation
+ignition,word,4-normal,1,kitchen,Two-Burner Gas Cooker,,,,,needs_translation
+included,word,4-normal,1,electronics,USB-C Fast Charger 25W,,,,,needs_translation
+indicator,word,4-normal,1,baby,"Baby Diapers Size 3, 52 Pack",,,,,needs_translation
+infant,word,4-normal,1,baby,"Infant Formula Stage 1, 400 g",,,,,needs_translation
+iodized,word,4-normal,1,groceries,"Iodized Table Salt, 1 kg",,,,,needs_translation
+kills,word,4-normal,1,health,"Hand Sanitiser, 500 ml",,,,,needs_translation
+kz,word,4-normal,1,farming,"Hybrid Maize Seed KZ-520, 10 kg",,,,,needs_translation
+lace,word,4-normal,1,footwear,"Boys School Shoes, Black Leather, Size 5",,,,,needs_translation
+lamp,word,4-normal,1,energy,Solar Rechargeable LED Lamp,,,,,needs_translation
+laptop,word,4-normal,1,stationery,"School Backpack, 25 L",,,,,needs_translation
+large,word,4-normal,1,home textiles,"Cotton Bath Towel, Large",,,,,needs_translation
+lasting,word,4-normal,1,electronics,"AA Alkaline Batteries, 12 Pack",,,,,needs_translation
+laundry,word,4-normal,1,household,"Laundry Washing Powder, 3 kg",,,,,needs_translation
+lavender,word,4-normal,1,personal care,"Lavender Bath Salts, 500 g",,,,,needs_translation
+layer,word,4-normal,1,farming,"Layer Chicken Feed, 50 kg",,,,,needs_translation
+laying,word,4-normal,1,farming,"Layer Chicken Feed, 50 kg",,,,,needs_translation
+leather,word,4-normal,1,footwear,"Boys School Shoes, Black Leather, Size 5",,,,,needs_translation
+lemon,word,4-normal,1,household,"Dishwashing Liquid, 750 ml",,,,,needs_translation
+light,word,4-normal,1,energy,Solar Rechargeable LED Lamp,,,,,needs_translation
+lightweight,word,4-normal,1,footwear,"Women's Running Shoes, Size 7",,,,,needs_translation
+liquid,word,4-normal,1,household,"Dishwashing Liquid, 750 ml",,,,,needs_translation
+maintenance,word,4-normal,1,automotive,"Car Battery 12V 60Ah, Model NS60",,,,,needs_translation
+mash,word,4-normal,1,farming,"Layer Chicken Feed, 50 kg",,,,,needs_translation
+massage,word,4-normal,1,baby,"Baby Massage Oil, 200 ml",,,,,needs_translation
+meal,word,4-normal,1,groceries,"Maize Meal, 10 kg",,,,,needs_translation
+model,word,4-normal,1,automotive,"Car Battery 12V 60Ah, Model NS60",,,,,needs_translation
+moisturising,word,4-normal,1,personal care,"Bath Soap Bar, 3 Pack",,,,,needs_translation
+molasses,word,4-normal,1,groceries,"Brown Sugar, 1 kg",,,,,needs_translation
+month,word,4-normal,1,automotive,"Car Battery 12V 60Ah, Model NS60",,,,,needs_translation
+mp,word,4-normal,1,electronics,"Samsung Galaxy A15 5G, 128GB",,,,,needs_translation
+nappies,word,4-normal,1,baby,"Baby Diapers Size 3, 52 Pack",,,,,needs_translation
+neck,word,4-normal,1,clothing,"Men's Cotton T-Shirt, 3 Pack",,,,,needs_translation
+needs,word,4-normal,1,groceries,"Long Life Full Cream Milk, 1 L",,,,,needs_translation
+nights,word,4-normal,1,home textiles,"Wool Blanket, Double Bed",,,,,needs_translation
+no,word,4-normal,1,groceries,"Long Life Full Cream Milk, 1 L",,,,,needs_translation
+non,word,4-normal,1,kitchen,"Non-Stick Frying Pan, 28 cm",,,,,needs_translation
+npk,word,4-normal,1,farming,"Maize Basal Fertiliser NPK 7:14:7, 50 kg",,,,,needs_translation
+ns,word,4-normal,1,automotive,"Car Battery 12V 60Ah, Model NS60",,,,,needs_translation
+office,word,4-normal,1,stationery,"Blue Ballpoint Pens, 50 Pack",,,,,needs_translation
+opened,word,4-normal,1,groceries,"Long Life Full Cream Milk, 1 L",,,,,needs_translation
+padded,word,4-normal,1,stationery,"School Backpack, 25 L",,,,,needs_translation
+pages,word,4-normal,1,stationery,"A4 Exercise Books, 72 Pages, 10 Pack",,,,,needs_translation
+pain,word,4-normal,1,health,"Paracetamol Tablets 500 mg, 24 Count",,,,,needs_translation
+pan,word,4-normal,1,kitchen,"Non-Stick Frying Pan, 28 cm",,,,,needs_translation
+paracetamol,word,4-normal,1,health,"Paracetamol Tablets 500 mg, 24 Count",,,,,needs_translation
+pens,word,4-normal,1,stationery,"Blue Ballpoint Pens, 50 Pack",,,,,needs_translation
+petrol,word,4-normal,1,automotive,"Engine Oil 5W-30, 4 L",,,,,needs_translation
+phone,word,4-normal,1,accessories,Silicone Phone Case for Samsung Galaxy A15,,,,,needs_translation
+pillowcases,word,4-normal,1,home textiles,"Cotton Bed Sheet Set, Queen",,,,,needs_translation
+planting,word,4-normal,1,farming,"Maize Basal Fertiliser NPK 7:14:7, 50 kg",,,,,needs_translation
+plastic,word,4-normal,1,household,"Plastic Water Bucket, 20 L",,,,,needs_translation
+player,word,4-normal,1,electronics,Portable FM Radio with USB,,,,,needs_translation
+pocket,word,4-normal,1,stationery,"School Backpack, 25 L",,,,,needs_translation
+pockets,word,4-normal,1,clothing,"Men's Work Trousers, Navy, Size 34",,,,,needs_translation
+polished,word,4-normal,1,groceries,"Long Grain Rice, 5 kg",,,,,needs_translation
+ports,word,4-normal,1,electronics,Power Bank 20000 mAh,,,,,needs_translation
+pot,word,4-normal,1,kitchen,"Stainless Steel Cooking Pot, 5 L",,,,,needs_translation
+power,word,4-normal,1,electronics,Power Bank 20000 mAh,,,,,needs_translation
+powered,word,4-normal,1,energy,Solar Rechargeable LED Lamp,,,,,needs_translation
+preserving,word,4-normal,1,groceries,"Coarse Cooking Salt, 2 kg",,,,,needs_translation
+protect,word,4-normal,1,accessories,Silicone Phone Case for Samsung Galaxy A15,,,,,needs_translation
+protein,word,4-normal,1,groceries,"Sugar Beans, 1 kg",,,,,needs_translation
+pure,word,4-normal,1,groceries,"White Refined Sugar, 2 kg",,,,,needs_translation
+queen,word,4-normal,1,home textiles,"Cotton Bed Sheet Set, Queen",,,,,needs_translation
+radio,word,4-normal,1,electronics,Portable FM Radio with USB,,,,,needs_translation
+radios,word,4-normal,1,electronics,"AA Alkaline Batteries, 12 Pack",,,,,needs_translation
+rain,word,4-normal,1,farming,"Hybrid Maize Seed KZ-520, 10 kg",,,,,needs_translation
+raised,word,4-normal,1,accessories,Silicone Phone Case for Samsung Galaxy A15,,,,,needs_translation
+ready,word,4-normal,1,electronics,32 Inch LED Television,,,,,needs_translation
+reinforced,word,4-normal,1,clothing,"Men's Work Trousers, Navy, Size 34",,,,,needs_translation
+relaxing,word,4-normal,1,personal care,"Lavender Bath Salts, 500 g",,,,,needs_translation
+relief,word,4-normal,1,health,"Paracetamol Tablets 500 mg, 24 Count",,,,,needs_translation
+resistant,word,4-normal,1,energy,LED Torch with 3 AA Batteries,,,,,needs_translation
+rice,word,4-normal,1,groceries,"Long Grain Rice, 5 kg",,,,,needs_translation
+roasted,word,4-normal,1,groceries,"Crunchy Peanut Butter, 400 g",,,,,needs_translation
+roller,word,4-normal,1,groceries,"Maize Meal, 10 kg",,,,,needs_translation
+round,word,4-normal,1,clothing,"Men's Cotton T-Shirt, 3 Pack",,,,,needs_translation
+rub,word,4-normal,1,health,"Hand Sanitiser, 500 ml",,,,,needs_translation
+ruled,word,4-normal,1,stationery,"A4 Exercise Books, 72 Pages, 10 Pack",,,,,needs_translation
+running,word,4-normal,1,footwear,"Women's Running Shoes, Size 7",,,,,needs_translation
+sadza,word,4-normal,1,groceries,"Maize Meal, 10 kg",,,,,needs_translation
+salts,word,4-normal,1,personal care,"Lavender Bath Salts, 500 g",,,,,needs_translation
+sanitiser,word,4-normal,1,health,"Hand Sanitiser, 500 ml",,,,,needs_translation
+screen,word,4-normal,1,accessories,Silicone Phone Case for Samsung Galaxy A15,,,,,needs_translation
+sd,word,4-normal,1,electronics,Portable FM Radio with USB,,,,,needs_translation
+seed,word,4-normal,1,farming,"Hybrid Maize Seed KZ-520, 10 kg",,,,,needs_translation
+shea,word,4-normal,1,personal care,"Bath Soap Bar, 3 Pack",,,,,needs_translation
+sheet,word,4-normal,1,home textiles,"Cotton Bed Sheet Set, Queen",,,,,needs_translation
+shirt,word,4-normal,1,clothing,"Men's Cotton T-Shirt, 3 Pack",,,,,needs_translation
+shirts,word,4-normal,1,clothing,"Men's Cotton T-Shirt, 3 Pack",,,,,needs_translation
+shockproof,word,4-normal,1,accessories,Silicone Phone Case for Samsung Galaxy A15,,,,,needs_translation
+short,word,4-normal,1,clothing,"Men's Cotton T-Shirt, 3 Pack",,,,,needs_translation
+silicone,word,4-normal,1,accessories,Silicone Phone Case for Samsung Galaxy A15,,,,,needs_translation
+sim,word,4-normal,1,electronics,"Samsung Galaxy A15 5G, 128GB",,,,,needs_translation
+skin,word,4-normal,1,baby,"Baby Massage Oil, 200 ml",,,,,needs_translation
+sleeve,word,4-normal,1,clothing,"Men's Cotton T-Shirt, 3 Pack",,,,,needs_translation
+smartphone,word,4-normal,1,electronics,"Samsung Galaxy A15 5G, 128GB",,,,,needs_translation
+soap,word,4-normal,1,personal care,"Bath Soap Bar, 3 Pack",,,,,needs_translation
+solar,word,4-normal,1,energy,Solar Rechargeable LED Lamp,,,,,needs_translation
+soles,word,4-normal,1,footwear,"Women's Running Shoes, Size 7",,,,,needs_translation
+spa,word,4-normal,1,personal care,"Lavender Bath Salts, 500 g",,,,,needs_translation
+sports,word,4-normal,1,footwear,"Women's Running Shoes, Size 7",,,,,needs_translation
+stage,word,4-normal,1,baby,"Infant Formula Stage 1, 400 g",,,,,needs_translation
+stainless,word,4-normal,1,kitchen,"Stainless Steel Cooking Pot, 5 L",,,,,needs_translation
+stick,word,4-normal,1,kitchen,"Non-Stick Frying Pan, 28 cm",,,,,needs_translation
+stoneground,word,4-normal,1,groceries,"Whole Wheat Flour, 2 kg",,,,,needs_translation
+stove,word,4-normal,1,kitchen,Two-Burner Gas Cooker,,,,,needs_translation
+stoves,word,4-normal,1,kitchen,"Stainless Steel Cooking Pot, 5 L",,,,,needs_translation
+sunflower,word,4-normal,1,groceries,"Sunflower Cooking Oil, 2 L",,,,,needs_translation
+sweetener,word,4-normal,1,groceries,"Sugar-Free Sweetener Tablets, 200 Count",,,,,needs_translation
+synthetic,word,4-normal,1,automotive,"Engine Oil 5W-30, 4 L",,,,,needs_translation
+table,word,4-normal,1,groceries,"Iodized Table Salt, 1 kg",,,,,needs_translation
+taste,word,4-normal,1,groceries,"Brown Sugar, 1 kg",,,,,needs_translation
+television,word,4-normal,1,electronics,32 Inch LED Television,,,,,needs_translation
+thick,word,4-normal,1,home textiles,"Wool Blanket, Double Bed",,,,,needs_translation
+through,word,4-normal,1,household,"Dishwashing Liquid, 750 ml",,,,,needs_translation
+torch,word,4-normal,1,energy,LED Torch with 3 AA Batteries,,,,,needs_translation
+torches,word,4-normal,1,electronics,"AA Alkaline Batteries, 12 Pack",,,,,needs_translation
+towel,word,4-normal,1,home textiles,"Cotton Bath Towel, Large",,,,,needs_translation
+toys,word,4-normal,1,electronics,"AA Alkaline Batteries, 12 Pack",,,,,needs_translation
+trousers,word,4-normal,1,clothing,"Men's Work Trousers, Navy, Size 34",,,,,needs_translation
+tv,word,4-normal,1,electronics,32 Inch LED Television,,,,,needs_translation
+uht,word,4-normal,1,groceries,"Long Life Full Cream Milk, 1 L",,,,,needs_translation
+unrefined,word,4-normal,1,groceries,"Brown Sugar, 1 kg",,,,,needs_translation
+until,word,4-normal,1,groceries,"Long Life Full Cream Milk, 1 L",,,,,needs_translation
+vegetables,word,4-normal,1,kitchen,"Non-Stick Frying Pan, 28 cm",,,,,needs_translation
+wall,word,4-normal,1,electronics,USB-C Fast Charger 25W,,,,,needs_translation
+warm,word,4-normal,1,home textiles,"Wool Blanket, Double Bed",,,,,needs_translation
+warranty,word,4-normal,1,automotive,"Car Battery 12V 60Ah, Model NS60",,,,,needs_translation
+wash,word,4-normal,1,household,"Laundry Washing Powder, 3 kg",,,,,needs_translation
+washable,word,4-normal,1,home textiles,"Cotton Bed Sheet Set, Queen",,,,,needs_translation
+washing,word,4-normal,1,household,"Laundry Washing Powder, 3 kg",,,,,needs_translation
+weeding,word,4-normal,1,farming,Steel Garden Hoe,,,,,needs_translation
+wetness,word,4-normal,1,baby,"Baby Diapers Size 3, 52 Pack",,,,,needs_translation
+wholemeal,word,4-normal,1,groceries,"Whole Wheat Flour, 2 kg",,,,,needs_translation
+winter,word,4-normal,1,home textiles,"Wool Blanket, Double Bed",,,,,needs_translation
+wireless,word,4-normal,1,electronics,Bluetooth Wireless Headphones,,,,,needs_translation
+women,word,4-normal,1,footwear,"Women's Running Shoes, Size 7",,,,,needs_translation
+wooden,word,4-normal,1,farming,Steel Garden Hoe,,,,,needs_translation
+wool,word,4-normal,1,home textiles,"Wool Blanket, Double Bed",,,,,needs_translation
+work,word,4-normal,1,clothing,"Men's Work Trousers, Navy, Size 34",,,,,needs_translation
+writing,word,4-normal,1,stationery,"Blue Ballpoint Pens, 50 Pack",,,,,needs_translation
+yielding,word,4-normal,1,farming,"Hybrid Maize Seed KZ-520, 10 kg",,,,,needs_translation
+zero,word,4-normal,1,groceries,"Sugar-Free Sweetener Tablets, 200 Count",,,,,needs_translation

@@ -1,0 +1,87 @@
+
+Catalogue: 54 products | queries: 53 | glossary: 46 terms
+Embedding catalogue...
+  54 passages in 8.1s
+Translating queries (Shona -> English)...
+  translated 16/53  translated 32/53  translated 48/53  translated 53/53
+  53.2s total, 1.0s per query
+
+--- What NLLB made of each query (check these first) ---
+id   type       query                         -> English                glossary
+q01  single     munyu                         the salt                  salt
+q02  single     shuga                         sugar                     sugar
+q03  single     sukari                        sugar                     sugar
+q04  multiword  mafuta ekubika                cooking oil               cooking oil
+q05  ambiguous  mafuta                        oil                       oil
+q06  single     chibage                       corn                      maize
+q07  multiword  upfu hwechibage               corn flour                flour meal | maize
+q08  variant    hupfu hwechibage              corn flour                flour meal | maize
+q09  single     mupunga                       rice                      rice
+q10  single     mukaka                        the milk                  milk
+q11  multiword  mukaka wemwana                the infant's milk         milk | baby
+q12  single     tii                           tea                       tea
+q13  single     kofi                          coffee                    coffee
+q14  single     nzungu                        nuts                      peanut
+q15  single     bhinzi                        beans                     beans
+q16  ambiguous  sipo                          the soap.                 soap
+q17  single     hari                          the pot                   pot
+q18  single     bhaketi                       bucket                    bucket
+q19  single     gumbeze                       the coat                  blanket
+q20  single     foni                          the telephone             phone
+q21  single     chaja                         charging                  charger
+q22  single     redhiyo                       radio                     radio
+q23  single     terevhizheni                  television                television
+q24  single     shangu                        the shoes.                shoes
+q25  single     hembe                         clothing                  shirt
+q26  single     mabhuku                       books                     book exercise
+q27  single     badza                         beware of it              hoe
+q28  single     bhatiri                       the battery               battery
+q29  single     tauro                         towel                     towel
+q30  multiword  mwenje wezuva                 the light of the sun      lamp light | solar sun
+q31  multiword  mushonga wekurwadza musoro    treatment for headaches   medicine | pain | head
+q32  multiword  mushonga wekuchenesa maoko    hand sanitizer            medicine | clean | hands
+q33  multiword  sipo yekusuka mbatya          washing soap              soap | wash | clothes
+q34  multiword  mafuta emotokari              car fuel                  oil | car
+q35  multiword  bhatiri remotokari            car battery               battery | car
+q36  multiword  mbeu yechibage                corn seed                 seed | maize
+q37  multiword  fetiraiza yechibage           corn fertilizer           fertiliser | maize
+q38  multiword  chikafu chehuku               chicken food              feed food | chicken
+q39  multiword  shangu dzechikoro             school shoes              shoes | school
+q40  multiword  bhegi rechikoro               school bag                bag backpack | school
+q41  attribute  munyu we1kg                   1 kg of salt              salt
+q42  attribute  shuga 2kg                     2 kg of sugar             sugar
+q43  attribute  mafuta ekubika 2 litres       2 litres of cooking oil   cooking oil
+q44  attribute  upfu hwechibage 10kg          10 kg of corn flour       flour meal | maize
+q45  brand_mix  foni yeSamsung                a Samsung phone           phone
+q46  brand_mix  case yeSamsung A15            case of the Samsung A15   
+q47  brand_mix  pampers                       the pampers               diapers nappies
+q48  typo       mafuta ekubka                 cooking oil               oil
+q49  caps       MAFUTA EKUBIKA                FLOWERS for Growing Up    cooking oil
+q50  english    cooking oil                   cooking oil               
+q51  english    phone charger                 phone charger             
+q52  english    school shoes                  school shoes              
+q53  english    sugar beans                   sugar beans               
+
+--- Overall ---
+system                    R@5    P@5   MRR@10   nDCG@5
+C direct Shona+E5        0.56   0.12     0.42     0.44
+B translate+E5           0.94   0.23     0.89     0.89
+A glossary+BM25          0.96   0.23     0.96     0.94
+D hybrid                 0.98   0.24     0.94     0.94
+(P@5 is capped at |relevant|/5, so it is low by design when few products are relevant.)
+
+--- MRR@10 by query type ---
+type          n      C      B      A      D
+ambiguous     2   0.29   0.75   1.00   0.75
+attribute     4   0.67   0.88   1.00   1.00
+brand_mix     3   1.00   1.00   0.83   0.83
+caps          1   0.00   0.10   1.00   1.00
+english       4   1.00   1.00   1.00   1.00
+multiword    14   0.51   0.96   0.96   0.96
+single       23   0.16   0.87   0.96   0.94
+typo          1   0.10   1.00   1.00   1.00
+variant       1   1.00   0.50   1.00   0.50
+
+--- System D failures (first relevant product not in top 3) ---
+q20 'foni' [single] EN='the telephone' rank=8
+    top3: Solar Rechargeable LED Lamp; Silicone Phone Case for Samsung Galaxy A15; USB-C Fast Charger 25W

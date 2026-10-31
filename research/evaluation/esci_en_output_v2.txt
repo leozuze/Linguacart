@@ -1,0 +1,2 @@
+Cannot reach http://127.0.0.1:8001: [WinError 10061] No connection could be made because the target machine actively refused it
+Start it: uvicorn app.main:app --port 8001

@@ -1,0 +1,144 @@
+
+Translating 40 product-page segments (English -> Shona)...
+  translated 8/40  translated 16/40  translated 24/40  translated 32/40  translated 40/40
+
+--- All outputs ---
+[t01] title  flags: english_heavy
+   EN: Tastic Long Grain Parboiled Rice, 2 kg - Pack of 2, Model TG-2000
+   SN: Tastic Long Grain Parboiled Rice, 2 kg - Pack ye2, Model TG-2000
+[t02] title  flags: -
+   EN: Samsung Galaxy A15 5G, 128GB, Dual SIM, Model SM-A156B
+   SN: Samsung Galaxy A15 5G, 128GB, Dual SIM, Model SM-A156B
+[t03] title  flags: -
+   EN: Sunflower Cooking Oil, 2 L, Pack of 6
+   SN: Sunflower Cooking Oil, 2 L, Pack ye6
+[t04] title  flags: english_heavy
+   EN: Men's Cotton T-Shirt, 3 Pack, Size L, Assorted Colours
+   SN: T-Shirt yevarume Cotton, 3 Pack, Saizi L, Mavara Akasiyana-siyana
+[t05] title  flags: english_heavy
+   EN: Stainless Steel Pressure Cooker 5 Litre with Safety Valve
+   SN: Stainless Steel Pressure Cooker 5 Litre ine Safety Valve
+[t06] title  flags: -
+   EN: Boys School Shoes, Black Leather, Size 5
+   SN: Shangu dzechikoro dzevakomana, Negro Leather, Size 5
+[b01] bullet  flags: -
+   EN: Made from 100% natural ingredients with no added preservatives.
+   SN: Yakagadzirwa nezvinhu zvakasikwa 100% pasina zvekuchengetedza zvakawedzerwa.
+[b02] bullet  flags: -
+   EN: Fits most 6.5 inch smartphones. Easy to clean.
+   SN: Inokodzera mafoni akawanda e6.5 inch. Zviri nyore kuchenesa.
+[b03] bullet  flags: -
+   EN: 12 month warranty. Keep your receipt as proof of purchase.
+   SN: Garandi yemwedzi 12. Chengeta risiti yako sechiratidzo chekutenga.
+[b04] bullet  flags: -
+   EN: Machine washable at 30°C. Do not bleach. Tumble dry low.
+   SN: Mashini inogona kushambidzwa pa30°C. Usaita kuti zvinhu zvicheneswe. Dzvinyirira pasi.
+[b05] SAFETY bullet  flags: -
+   EN: Suitable for children aged 3 years and above.
+   SN: Inokodzera vana vane makore 3 zvichikwira.
+[b06] bullet  flags: -
+   EN: Battery lasts up to 20 hours on a single charge.
+   SN: Bhatiri rinopedza maawa 20 richibhadharwa kamwe chete.
+[d01] description  flags: -
+   EN: This iodized table salt is ideal for everyday cooking. It is finely ground and fortified with iodine. Store in a cool, dry place.
+   SN: Munyu uyu wetafura une iodine unokodzera kubika zuva nezuva. Yakanyatsodyarwa uye yakasimbiswa neyodi. Chengetedza panzvimbo inotonhorera uye yakaoma.
+[d02] description  flags: -
+   EN: This smartphone has a 6.5 inch display and a 50MP camera. The 5000mAh battery lasts all day. It supports dual SIM cards and 5G networks.
+   SN: Iyi smartphone ine kuratidzwa kwemasendimita 6.5 uye kamera ye50MP. Bhatiri re5000mAh rinogara zuva rose. Inotsigira dual SIM makadhi uye 5G network.
+[d03] description  flags: number_lost
+   EN: Our roller meal is milled from the finest white maize. It cooks into smooth, fluffy sadza every time. Store in a cool, dry place and use within 6 months of opening.
+   SN: Zvokudya zvedu zvinopetwa zvinogadzirwa nechibage chena chakanakisisa. Inobika ikava sadza yakatsetseka, ine ruzha nguva dzose. Chengetedza munzvimbo inotonhorera, yakaoma uye shandisa mukati memwedzi mitanhatu mushure mekuvhura.
+[d04] description  flags: -
+   EN: Stay warm this winter with our thick wool blanket. The soft fabric is gentle on the skin. Available in double bed size only.
+   SN: Ramba uchidziya munguva yechando nechifukidziro chedu chakakora chemvere. Mucheka wakapfava uri munyoro paganda. Inowanikwa chete muhukuru hwemubhedha wechipiri.
+[d05] SAFETY description  flags: -
+   EN: Apply 400 kg per hectare at planting. Place the fertiliser in the planting hole and cover with soil. Keep away from children and animals. Wash hands after use.
+   SN: Shandisa 400 kg pahekita pakudyara. Isa fetiraiza mugomba rokudyara uye rifukidze nevhu. Gara kure nevana nemhuka. Geza maoko pashure pokushandisa.
+[d06] description  flags: number_lost
+   EN: Charge in direct sunlight for 8 hours. The lamp gives up to 12 hours of bright light. It can also charge your phone through the USB port.
+   SN: Bhadharisa muzuva rakananga kwemaawa masere. Rambi racho rinopa chiedza chinopenya kwemaawa 12. Inogonawo kubhadharisa foni yako kuburikidza nechiteshi cheUSB.
+[p01] price  flags: -
+   EN: Price: $2.99 (was $4.50). Save 33%.
+   SN: Mutengo: $2.99 (akanga ari $4.50). Chengetedza 33%.
+[p02] price  flags: -
+   EN: Buy 2 get 1 free. Offer ends 31 October.
+   SN: Tenga 2 tora 1 pachena. Chipo chacho chinopera musi wa31 October.
+[p03] price  flags: -
+   EN: Free delivery on orders over $50.
+   SN: Kutumira kusina mubhadharo pamirairo inodarika $ 50.
+[p04] price  flags: number_lost
+   EN: Only 3 left in stock - order soon.
+   SN: Zvitatu bedzi zvasara zviripo - nokukurumidza.
+[p05] price  flags: -
+   EN: Delivery in 5-7 working days.
+   SN: Kuendeswa mumazuva 5 kusvika ku7 ekushanda.
+[p06] price  flags: -
+   EN: Limited time deal: 25% off today only.
+   SN: Chibvumirano chenguva shoma: 25% kubviswa nhasi chete.
+[p07] price  flags: -
+   EN: Save 20% when you subscribe.
+   SN: Chengetedza 20% paunonyoresa.
+[s01] SAFETY safety  flags: -
+   EN: WARNING: Contains peanuts and tree nuts. Keep out of reach of children.
+   SN: Yambiro: Inosanganisira nzungu nemiti yemiti. Ramba uri kure nevana.
+[s02] SAFETY safety  flags: -
+   EN: Allergen information: Contains wheat, milk, eggs and soy. May contain traces of nuts.
+   SN: Allergen ruzivo: Rine gorosi, mukaka, mazai uye soya. Inogona kunge iine zviratidzo zvemakwenzi.
+[s03] SAFETY safety  flags: -
+   EN: Do not exceed the stated dose. If symptoms persist, consult your doctor.
+   SN: Usapfuure muyero wakataurwa. Kana zviratidzo zvichiramba zviripo, bvunza chiremba wako.
+[s04] SAFETY safety  flags: -
+   EN: Keep away from fire. Do not use near open flames.
+   SN: Ramba kure nemoto. Usashandise pedyo nemoto wakavhurika.
+[s05] SAFETY safety  flags: number_lost
+   EN: Not suitable for children under 3 years. Small parts may be a choking hazard.
+   SN: Hazvina kukodzera vana vari pasi pemakore matatu. Zvikamu zviduku zvinogona kuita kuti munhu anyure.
+[s06] SAFETY safety  flags: number_lost
+   EN: Store below 25°C. Once opened, keep refrigerated and consume within 3 days.
+   SN: Chengetedza pasi pe25°C. Kana zvangovhurwa, chengeta mufiriji uye udye mukati memazuva matatu.
+[s07] SAFETY safety  flags: -
+   EN: For external use only. Avoid contact with eyes.
+   SN: Zvokushandisa zvokunze chete. Dzivisa kusangana nemaziso.
+[s08] SAFETY safety  flags: -
+   EN: Always follow the preparation instructions on the pack. Use boiled water cooled to 70°C.
+   SN: Nguva dzose tevera mirayiridzo yekugadzirira iri pakapu. Shandisa mvura yakabikwa yakatonhora kusvika 70°C.
+[r01] policy  flags: number_lost
+   EN: Returns accepted within 30 days of delivery. Items must be unused and in original packaging.
+   SN: Kudzoka kunogamuchirwa mukati memazuva makumi matatu ekuendeswa. Zvinhu zvinofanira kunge zvisina kushandiswa uye zviri mumapakeji ekutanga.
+[x01] tricky  flags: -
+   EN: Maize meal, 10 kg bag, 100% natural
+   SN: Chibage chibage, 10 kg bag, 100% yemasikirwo
+[x02] tricky  flags: -
+   EN: Nike Air Max 90, Model CN8490-100, Size 10
+   SN: Nike Air Max 90, Model CN8490-100, Kukura 10
+[x03] tricky  flags: english_heavy
+   EN: Dettol Antiseptic Liquid 500ml, kills 99.9% of germs
+   SN: Dettol Antiseptic Liquid 500ml, inouraya 99.9% yehutachiona
+[x04] tricky  flags: -
+   EN: Samsung 55 inch 4K UHD Smart TV, UA55AU7000
+   SN: Samsung 55 padiki 4K UHD Smart TV, UA55AU7000
+[x05] tricky  flags: -
+   EN: Bundle includes charger, cable and case. Battery not included.
+   SN: Bhatani racho rinosanganisira charger, tambo uye chiputiriso. Bhatiri haribatanidzwi.
+[x06] tricky  flags: english_heavy
+   EN: Colour: Navy Blue | Size: Medium | Material: 100% Cotton
+   SN: Ruvara: Navy Blue  Kukura: Medium  Material: 100% Cotton
+
+--- Summary ---
+time: 151s total, 3.8s per segment
+no hard flags: 34/40   (hard = brand_changed, empty, model_changed, number_lost, sentence_dropped)
+safety-critical with no hard flags: 8/10
+mean English leftover share: 0.20
+flag counts: {'english_heavy': 5, 'number_lost': 6}
+type           n  hard-flagged
+bullet         6             0
+description    6             2
+policy         1             1
+price          7             1
+safety         8             2
+title          6             0
+tricky         6             0
+
+Automatic checks cannot judge meaning. 'Save 33%' -> 'Chengetedza 33%' passes them.
+Give translation_review.csv to a Shona speaker for adequacy, fluency and terminology.
+Wrote C:\Projects\Linguacart\research\evaluation\translation_review.csv

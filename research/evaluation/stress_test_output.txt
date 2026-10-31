@@ -1,0 +1,132 @@
+Loading weights:   0%|          | 0/512 [00:00<?, ?it/s]Loading weights: 100%|##########| 512/512 [00:00<00:00, 10162.48it/s]
+Loading weights:   0%|          | 0/199 [00:00<?, ?it/s]Loading weights:   1%|1         | 2/199 [00:00<00:14, 14.05it/s]Loading weights:   9%|8         | 17/199 [00:00<00:02, 79.81it/s]Loading weights:  13%|#3        | 26/199 [00:00<00:02, 83.27it/s]Loading weights:  20%|#9        | 39/199 [00:00<00:01, 100.04it/s]Loading weights:  32%|###1      | 63/199 [00:00<00:00, 140.92it/s]Loading weights:  39%|###9      | 78/199 [00:00<00:00, 122.19it/s]Loading weights:  48%|####8     | 96/199 [00:00<00:00, 135.04it/s]Loading weights:  55%|#####5    | 110/199 [00:00<00:00, 123.84it/s]Loading weights: 100%|##########| 199/199 [00:01<00:00, 190.78it/s]
+[transformers] Both `max_new_tokens` (=256) and `max_length`(=200) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+[transformers] Both `max_new_tokens` (=256) and `max_length`(=200) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+[transformers] Both `max_new_tokens` (=256) and `max_length`(=200) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+[transformers] Both `max_new_tokens` (=256) and `max_length`(=200) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+[transformers] Both `max_new_tokens` (=256) and `max_length`(=200) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+[transformers] Both `max_new_tokens` (=256) and `max_length`(=200) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+[transformers] Both `max_new_tokens` (=256) and `max_length`(=200) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+[transformers] Both `max_new_tokens` (=256) and `max_length`(=200) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+[transformers] Both `max_new_tokens` (=256) and `max_length`(=200) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+[transformers] Both `max_new_tokens` (=256) and `max_length`(=200) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+[transformers] Both `max_new_tokens` (=256) and `max_length`(=200) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+[transformers] Both `max_new_tokens` (=256) and `max_length`(=200) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+[transformers] Both `max_new_tokens` (=256) and `max_length`(=200) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+[transformers] Both `max_new_tokens` (=256) and `max_length`(=200) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+[transformers] Both `max_new_tokens` (=256) and `max_length`(=200) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+Loaded NLLB in 11.3s and E5 in 11.3s (device=cpu)
+
+========================================================================
+1. Protected-field survival (informational; Java enforces the real check)
+========================================================================
+
+EN: Tastic Long Grain Parboiled Rice, 2 kg - Pack of 2, Model TG-2000
+SN: Tastic Long Grain Parboiled Rice, 2 kg - Pack ye2, Model TG-2000
+   kept     Tastic
+   kept     2 kg
+   kept     TG-2000
+
+EN: Samsung Galaxy A15 5G, 128GB, Model SM-A156B
+SN: Samsung Galaxy A15 5G, 128GB, Model SM-A156B
+   kept     Samsung
+   kept     128GB
+   kept     SM-A156B
+   kept     5G
+
+EN: Price: $2.99 (was $4.50). Save 33%.
+SN: Mutengo: $2.99 (akanga ari $4.50).
+   kept     $2.99
+   kept     $4.50
+   CHANGED  33%
+
+EN: Dettol Antiseptic Liquid 500ml, kills 99.9% of germs
+SN: Dettol Antiseptic Liquid 500ml, inouraya 99.9% yehutachiona
+   kept     Dettol
+   kept     500ml
+   kept     99.9%
+
+EN: Maize meal, 10 kg bag, 100% natural
+SN: Chibage chibage, 10 kg bag, 100% yemasikirwo
+   kept     10 kg
+   kept     100%
+
+EN: WARNING: Contains peanuts and tree nuts. Keep out of reach of children.
+SN: CHIDZIDZO: Rine zvipembenene nemiti yemiti.
+   CHANGED  peanuts
+
+EN: Allergen information: Contains wheat, milk and soy.
+SN: Allergen ruzivo: Rine gorosi, mukaka uye soya.
+   CHANGED  wheat
+   CHANGED  milk
+   kept     soy
+
+Note: CHANGED allergen words are expected. Java must revert those fields.
+
+========================================================================
+2. Long and multi-sentence text
+========================================================================
+
+[medium description] input tokens=74 (limit 256), 32.4s
+EN: This iodized table salt is ideal for everyday cooking. It is finely ground, free flowing and fortified with iodine to support healthy thyroid function. Store in a cool, dry place away from direct sunl...
+SN: Iyi iodized tafura munyu yakanaka yokubheka zuva nezuva. iri finely grinded, akasununguka kuyerera uye akasimbiswa iodine kutsigira utano thyroid basa. Store munzvimbo inotonhorera, yakaoma kure zvakananga zuva chiedza. akakodzera mhuri yose. akaiswazve muhomwe resalable kuchengeta munyu kutsva kwenguva yakareba.
+
+[very long description] input tokens=578 (limit 256)  -> TRUNCATED, 113.2s
+EN: This iodized table salt is ideal for everyday cooking. It is finely ground, free flowing and fortified with iodine to support healthy thyroid function. Store in a cool, dry place away from direct sunl...
+SN: Iyi iodized tafura munyu yakanakira kubika kwezuva nezuva. Iyo yakaomeswa zvirinani, inoyerera zvakasununguka uye inosimbiswa ne iodine kutsigira hutano hwezuva. Inokodzera mhuri yese. Inochengetwa munzvimbo inotonhorera, yakaoma kure nezuva rakananga. Inokodzera mhuri yese. Inoiswa muhomwe inodzokororwa kuchengetedza munyu wakatsva kwenguva yakareba. Iyi iodized tafura munyu yakanakira kubika kwezuva nezuva. Iyo yakaomeswa zvirinani, inoyerera zvakasununguka uye inosimbiswa ne iodine kutsigira hutano hwakanaka hwepanyama. Inochengetwa munzvimbo inotonhorera, yakaoma kure nezuva rakananga. Inokodzera mhuri yese. Inoiswa muhomwe inodzokororwa kuchengetedza munyu wakatsva kwenguva yakareba. Iyi iodized tafura yakanakira kubika zuva nezuva. Iyo yakaomeswa, inoyerera uye inosimbiswa ne iodine kune hutano hwakanaka basa.
+
+========================================================================
+3. Batch order (50 texts, batch size 16)
+========================================================================
+50 outputs in 96.2s; own marker kept in 50/50; another item's marker found in 0 outputs (must be 0)
+Sample: SKU-1000: hembe tsvuku yemapuranga, saizi M, pasuru ye2 | SKU-1049: hembe tsvuku yemapuranga, saizi M, pasuru ye2
+
+========================================================================
+4. Edge cases
+========================================================================
+''                                             -> ''
+'   '                                          -> '   '
+'Hello'                                        -> 'Mhoroi.'
+'!!!'                                          -> 'Ndizvo zvandiri kuita!'
+'1234567890'                                   -> '1234567890'
+'Café crème – naïve façade'                    -> 'Café crème  chifukidziro chisina maturo'
+'Line one.\nLine two.'                         -> 'Mutsetse mumwe, mutsetse wechipiri.'
+'a a a a a a a a a a a a a a a a a a a a '     -> 'ane ane ane ane ane ane ane ane ane ane ane ane ane ane ane ane ane an'
+
+========================================================================
+5. Embedding retrieval sanity (Shona query -> English product)
+========================================================================
+dim=768, norms min/max = 1.0000/1.0000
+
+munyu            expected=p_salt    rank=12   top3: p_maize 0.767, p_rice 0.759, p_sugar 0.755
+shuga            expected=p_sugar   rank=1   top3: p_sugar 0.755, p_maize 0.743, p_powder 0.734
+sukari           expected=p_sugar   rank=1   top3: p_sugar 0.784, p_oil 0.777, p_maize 0.770
+mafuta ekubika   expected=p_oil     rank=2   top3: p_powder 0.816, p_oil 0.814, p_rice 0.812
+chibage          expected=p_maize   rank=1   top3: p_maize 0.757, p_sugar 0.748, p_rice 0.745
+mupunga          expected=p_rice    rank=2   top3: p_maize 0.763, p_rice 0.757, p_sugar 0.751
+foni             expected=p_phone   rank=3   top3: p_towel 0.766, p_headphones 0.762, p_phone 0.751
+tauro            expected=p_towel   rank=3   top3: p_sugar 0.745, p_headphones 0.744, p_towel 0.743
+
+Top-1 accuracy: 0.38   MRR: 0.59   (8 queries, 12 products)
+
+========================================================================
+6. Latency (seconds, median, CPU)
+========================================================================
+translate_1_short_title      3.36
+translate_1_description      25.83
+translate_16_titles          35.42
+embed_1_query                0.06
+embed_12_passages            0.44
+
+========================================================================
+SUMMARY (hard checks)
+========================================================================
+PASS  protected_count_matches
+PASS  batch_length
+PASS  batch_order_no_swaps
+PASS  edge_length
+PASS  edge_empty_unchanged
+PASS  embed_count
+PASS  embed_normalised
+
+Saved C:\Projects\Linguacart\research\evaluation\stress_test_results.json

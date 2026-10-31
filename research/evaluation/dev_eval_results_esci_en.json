@@ -1,0 +1,3835 @@
+{
+  "retrieval_esci_en": {
+    "overall": {
+      "C direct Shona+E5": {
+        "R@5": 0.321,
+        "P@5": 0.828,
+        "MRR@10": 0.913,
+        "nDCG@5": 0.852
+      },
+      "B translate+E5": {
+        "R@5": 0.319,
+        "P@5": 0.823,
+        "MRR@10": 0.909,
+        "nDCG@5": 0.848
+      },
+      "A glossary+BM25": {
+        "R@5": 0.302,
+        "P@5": 0.8,
+        "MRR@10": 0.899,
+        "nDCG@5": 0.823
+      },
+      "D hybrid": {
+        "R@5": 0.324,
+        "P@5": 0.843,
+        "MRR@10": 0.932,
+        "nDCG@5": 0.869
+      },
+      "E hybrid, no glossary": {
+        "R@5": 0.324,
+        "P@5": 0.843,
+        "MRR@10": 0.932,
+        "nDCG@5": 0.869
+      },
+      "F hybrid + dual query": {
+        "R@5": 0.324,
+        "P@5": 0.843,
+        "MRR@10": 0.932,
+        "nDCG@5": 0.868
+      }
+    },
+    "by_type_mrr": {
+      "1word": {
+        "C direct Shona+E5": 1.0,
+        "B translate+E5": 1.0,
+        "A glossary+BM25": 1.0,
+        "D hybrid": 1.0,
+        "E hybrid, no glossary": 1.0,
+        "F hybrid + dual query": 1.0
+      },
+      "2word": {
+        "C direct Shona+E5": 0.96,
+        "B translate+E5": 0.96,
+        "A glossary+BM25": 0.82,
+        "D hybrid": 0.88,
+        "E hybrid, no glossary": 0.88,
+        "F hybrid + dual query": 0.88
+      },
+      "3word": {
+        "C direct Shona+E5": 0.9,
+        "B translate+E5": 0.89,
+        "A glossary+BM25": 0.93,
+        "D hybrid": 0.95,
+        "E hybrid, no glossary": 0.95,
+        "F hybrid + dual query": 0.95
+      }
+    },
+    "queries": [
+      {
+        "queryId": "e9437",
+        "query": "anti viral soap",
+        "type": "3word",
+        "english": "anti-viral soap",
+        "glossary": [],
+        "top3": {
+          "C direct Shona+E5": [
+            "B085XW5P2P",
+            "B077MW5FY2",
+            "B0756GNW3M"
+          ],
+          "B translate+E5": [
+            "B085XW5P2P",
+            "B0756GNW3M",
+            "B001WX0F86"
+          ],
+          "A glossary+BM25": [
+            "B019VQM42A",
+            "B085XW5P2P",
+            "B076FKC29H"
+          ],
+          "D hybrid": [
+            "B019VQM42A",
+            "B085XW5P2P",
+            "B001WX0F86"
+          ],
+          "E hybrid, no glossary": [
+            "B019VQM42A",
+            "B085XW5P2P",
+            "B001WX0F86"
+          ],
+          "F hybrid + dual query": [
+            "B019VQM42A",
+            "B085XW5P2P",
+            "B001WX0F86"
+          ]
+        },
+        "first_relevant_rank": {
+          "C direct Shona+E5": 1,
+          "B translate+E5": 1,
+          "A glossary+BM25": 1,
+          "D hybrid": 1,
+          "E hybrid, no glossary": 1,
+          "F hybrid + dual query": 1
+        }
+      },
+      {
+        "queryId": "e9836",
+        "query": "apple watch band",
+        "type": "3word",
+        "english": "apple watch band",
+        "glossary": [],
+        "top3": {
+          "C direct Shona+E5": [
+            "B07HCSY55K",
+            "B07FV8WBRQ",
+            "B07VQDKWRT"
+          ],
+          "B translate+E5": [
+            "B07HCSY55K",
+            "B07FV8WBRQ",
+            "B07VQDKWRT"
+          ],
+          "A glossary+BM25": [
+            "B0878W7T83",
+            "B07HCSY55K",
+            "B07F1RRQXQ"
+          ],
+          "D hybrid": [
+            "B07HCSY55K",
+            "B0878W7T83",
+            "B07VQDKWRT"
+          ],
+          "E hybrid, no glossary": [
+            "B07HCSY55K",
+            "B0878W7T83",
+            "B07VQDKWRT"
+          ],
+          "F hybrid + dual query": [
+            "B07HCSY55K",
+            "B0878W7T83",
+            "B07VQDKWRT"
+          ]
+        },
+        "first_relevant_rank": {
+          "C direct Shona+E5": 1,
+          "B translate+E5": 1,
+          "A glossary+BM25": 1,
+          "D hybrid": 1,
+          "E hybrid, no glossary": 1,
+          "F hybrid + dual query": 1
+        }
+      },
+      {
+        "queryId": "e11968",
+        "query": "baby girl clothes",
+        "type": "3word",
+        "english": "baby girl clothes",
+        "glossary": [],
+        "top3": {
+          "C direct Shona+E5": [
+            "B08PP2PSMR",
+            "B086STKJWQ",
+            "B0827DDDJS"
+          ],
+          "B translate+E5": [
+            "B08PP2PSMR",
+            "B086STKJWQ",
+            "B0827DDDJS"
+          ],
+          "A glossary+BM25": [
+            "B07TX95FFB",
+            "B0841WHRPT",
+            "B086STKJWQ"
+          ],
+          "D hybrid": [
+            "B08PP2PSMR",
+            "B086STKJWQ",
+            "B0841WHRPT"
+          ],
+          "E hybrid, no glossary": [
+            "B08PP2PSMR",
+            "B086STKJWQ",
+            "B0841WHRPT"
+          ],
+          "F hybrid + dual query": [
+            "B08PP2PSMR",
+            "B086STKJWQ",
+            "B0841WHRPT"
+          ]
+        },
+        "first_relevant_rank": {
+          "C direct Shona+E5": 2,
+          "B translate+E5": 2,
+          "A glossary+BM25": 1,
+          "D hybrid": 2,
+          "E hybrid, no glossary": 2,
+          "F hybrid + dual query": 2
+        }
+      },
+      {
+        "queryId": "e12020",
+        "query": "baby high chair",
+        "type": "3word",
+        "english": "baby high chair",
+        "glossary": [],
+        "top3": {
+          "C direct Shona+E5": [
+            "B07N1MK9SF",
+            "B08HGQD7PH",
+            "B00MD1QI0A"
+          ],
+          "B translate+E5": [
+            "B07N1MK9SF",
+            "B08HGQD7PH",
+            "B00MD1QI0A"
+          ],
+          "A glossary+BM25": [
+            "B08JGFDD49",
+            "B08HGQD7PH",
+            "B00AHVR6TA"
+          ],
+          "D hybrid": [
+            "B07N1MK9SF",
+            "B08HGQD7PH",
+            "B08JGFDD49"
+          ],
+          "E hybrid, no glossary": [
+            "B07N1MK9SF",
+            "B08HGQD7PH",
+            "B08JGFDD49"
+          ],
+          "F hybrid + dual query": [
+            "B07N1MK9SF",
+            "B08HGQD7PH",
+            "B08JGFDD49"
+          ]
+        },
+        "first_relevant_rank": {
+          "C direct Shona+E5": 1,
+          "B translate+E5": 1,
+          "A glossary+BM25": 1,
+          "D hybrid": 1,
+          "E hybrid, no glossary": 1,
+          "F hybrid + dual query": 1
+        }
+      },
+      {
+        "queryId": "e12497",
+        "query": "backup battery",
+        "type": "2word",
+        "english": "backup battery",
+        "glossary": [],
+        "top3": {
+          "C direct Shona+E5": [
+            "B01FWAZEIU",
+            "B01HDC236Q",
+            "B000DZRY9C"
+          ],
+          "B translate+E5": [
+            "B01FWAZEIU",
+            "B01HDC236Q",
+            "B000DZRY9C"
+          ],
+          "A glossary+BM25": [
+            "B01HDC236Q",
+            "B0779KYKLB",
+            "B01FWAZEIU"
+          ],
+          "D hybrid": [
+            "B01HDC236Q",
+            "B01FWAZEIU",
+            "B0779KYKLB"
+          ],
+          "E hybrid, no glossary": [
+            "B01HDC236Q",
+            "B01FWAZEIU",
+            "B0779KYKLB"
+          ],
+          "F hybrid + dual query": [
+            "B01HDC236Q",
+            "B01FWAZEIU",
+            "B0779KYKLB"
+          ]
+        },
+        "first_relevant_rank": {
+          "C direct Shona+E5": 1,
+          "B translate+E5": 1,
+          "A glossary+BM25": 1,
+          "D hybrid": 1,
+          "E hybrid, no glossary": 1,
+          "F hybrid + dual query": 1
+        }
+      },
+      {
+        "queryId": "e17335",
+        "query": "blue bridal shoes",
+        "type": "3word",
+        "english": "blue bridal shoes",
+        "glossary": [],
+        "top3": {
+          "C direct Shona+E5": [
+            "B07MWQ4KBV",
+            "B076QH694V",
+            "B06XPDP4BH"
+          ],
+          "B translate+E5": [
+            "B07MWQ4KBV",
+            "B076QH694V",
+            "B06XPDP4BH"
+          ],
+          "A glossary+BM25": [
+            "B06XPDP4BH",
+            "B07MWQ4KBV",
+            "B078KGWP98"
+          ],
+          "D hybrid": [
+            "B06XPDP4BH",
+            "B07MWQ4KBV",
+            "B078KGWP98"
+          ],
+          "E hybrid, no glossary": [
+            "B06XPDP4BH",
+            "B07MWQ4KBV",
+            "B078KGWP98"
+          ],
+          "F hybrid + dual query": [
+            "B06XPDP4BH",
+            "B07MWQ4KBV",
+            "B078KGWP98"
+          ]
+        },
+        "first_relevant_rank": {
+          "C direct Shona+E5": 1,
+          "B translate+E5": 1,
+          "A glossary+BM25": 1,
+          "D hybrid": 1,
+          "E hybrid, no glossary": 1,
+          "F hybrid + dual query": 1
+        }
+      },
+      {
+        "queryId": "e18529",
+        "query": "boots for men",
+        "type": "3word",
+        "english": "boots for men",
+        "glossary": [],
+        "top3": {
+          "C direct Shona+E5": [
+            "B083R8YZQ6",
+            "B01L2UH2WU",
+            "B01L2UH26G"
+          ],
+          "B translate+E5": [
+            "B083R8YZQ6",
+            "B01L2UH2WU",
+            "B01L2UH26G"
+          ],
+          "A glossary+BM25": [
+            "B000VX03PS",
+            "B076SMQKCL",
+            "B083R8YZQ6"
+          ],
+          "D hybrid": [
+            "B076SMQKCL",
+            "B083R8YZQ6",
+            "B000VX03PS"
+          ],
+          "E hybrid, no glossary": [
+            "B076SMQKCL",
+            "B083R8YZQ6",
+            "B000VX03PS"
+          ],
+          "F hybrid + dual query": [
+            "B076SMQKCL",
+            "B083R8YZQ6",
+            "B000VX03PS"
+          ]
+        },
+        "first_relevant_rank": {
+          "C direct Shona+E5": 1,
+          "B translate+E5": 1,
+          "A glossary+BM25": 1,
+          "D hybrid": 1,
+          "E hybrid, no glossary": 1,
+          "F hybrid + dual query": 1
+        }
+      },
+      {
+        "queryId": "e18902",
+        "query": "bottle of foods",
+        "type": "3word",
+        "english": "bottle of food",
+        "glossary": [],
+        "top3": {
+          "C direct Shona+E5": [
+            "B07VXTKW7L",
+            "B00091S3K4",
+            "B082DGHTM1"
+          ],
+          "B translate+E5": [
+            "B07VXTKW7L",
+            "B00091S3K4",
+            "B082DGHTM1"
+          ],
+          "A glossary+BM25": [
+            "B00IVJA7XW",
+            "B00U1RKGOW",
+            "B083SGXK16"
+          ],
+          "D hybrid": [
+            "B000WGBH1S",
+            "B00U1RKGOW",
+            "B01HMDB1QO"
+          ],
+          "E hybrid, no glossary": [
+            "B000WGBH1S",
+            "B00U1RKGOW",
+            "B01HMDB1QO"
+          ],
+          "F hybrid + dual query": [
+            "B000WGBH1S",
+            "B00U1RKGOW",
+            "B01HMDB1QO"
+          ]
+        },
+        "first_relevant_rank": {
+          "C direct Shona+E5": 2,
+          "B translate+E5": 2,
+          "A glossary+BM25": 4,
+          "D hybrid": 1,
+          "E hybrid, no glossary": 1,
+          "F hybrid + dual query": 1
+        }
+      },
+      {
+        "queryId": "e19317",
+        "query": "boys water shoes",
+        "type": "3word",
+        "english": "boys water shoes",
+        "glossary": [],
+        "top3": {
+          "C direct Shona+E5": [
+            "B073GZ96GH",
+            "B07RQX4J2R",
+            "B07PXRMJVR"
+          ],
+          "B translate+E5": [
+            "B073GZ96GH",
+            "B07RQX4J2R",
+            "B07PXRMJVR"
+          ],
+          "A glossary+BM25": [
+            "B07R8K28T2",
+            "B07L8S69Y4",
+            "B073GZ96GH"
+          ],
+          "D hybrid": [
+            "B073GZ96GH",
+            "B07R8K28T2",
+            "B07L8S69Y4"
+          ],
+          "E hybrid, no glossary": [
+            "B073GZ96GH",
+            "B07R8K28T2",
+            "B07L8S69Y4"
+          ],
+          "F hybrid + dual query": [
+            "B073GZ96GH",
+            "B07R8K28T2",
+            "B07L8S69Y4"
+          ]
+        },
+        "first_relevant_rank": {
+          "C direct Shona+E5": 1,
+          "B translate+E5": 1,
+          "A glossary+BM25": 1,
+          "D hybrid": 1,
+          "E hybrid, no glossary": 1,
+          "F hybrid + dual query": 1
+        }
+      },
+      {
+        "queryId": "e19916",
+        "query": "broncos backpack small",
+        "type": "3word",
+        "english": "broncos backpack small",
+        "glossary": [],
+        "top3": {
+          "C direct Shona+E5": [
+            "B073WMN853",
+            "B07RGSBT45",
+            "B00IXDGL7C"
+          ],
+          "B translate+E5": [
+            "B073WMN853",
+            "B07RGSBT45",
+            "B00IXDGL7C"
+          ],
+          "A glossary+BM25": [
+            "B073WMN853",
+            "B01HIIQSCU",
+            "B01HQPL5PU"
+          ],
+          "D hybrid": [
+            "B073WMN853",
+            "B01HIIQSCU",
+            "B01HQPL5PU"
+          ],
+          "E hybrid, no glossary": [
+            "B073WMN853",
+            "B01HIIQSCU",
+            "B01HQPL5PU"
+          ],
+          "F hybrid + dual query": [
+            "B073WMN853",
+            "B01HIIQSCU",
+            "B01HQPL5PU"
+          ]
+        },
+        "first_relevant_rank": {
+          "C direct Shona+E5": 1,
+          "B translate+E5": 1,
+          "A glossary+BM25": 1,
+          "D hybrid": 1,
+          "E hybrid, no glossary": 1,
+          "F hybrid + dual query": 1
+        }
+      },
+      {
+        "queryId": "e22536",
+        "query": "canvas kettlebell bag",
+        "type": "3word",
+        "english": "canvas kettlebell bag",
+        "glossary": [],
+        "top3": {
+          "C direct Shona+E5": [
+            "B086YKDV4D",
+            "B07YG6YXH9",
+            "B089RBN96H"
+          ],
+          "B translate+E5": [
+            "B086YKDV4D",
+            "B07YG6YXH9",
+            "B089RBN96H"
+          ],
+          "A glossary+BM25": [
+            "B086YKDV4D",
+            "B087N6KB8N",
+            "B089RBN96H"
+          ],
+          "D hybrid": [
+            "B086YKDV4D",
+            "B087N6KB8N",
+            "B07YG6YXH9"
+          ],
+          "E hybrid, no glossary": [
+            "B086YKDV4D",
+            "B087N6KB8N",
+            "B07YG6YXH9"
+          ],
+          "F hybrid + dual query": [
+            "B086YKDV4D",
+            "B087N6KB8N",
+            "B07YG6YXH9"
+          ]
+        },
+        "first_relevant_rank": {
+          "C direct Shona+E5": 1,
+          "B translate+E5": 1,
+          "A glossary+BM25": 1,
+          "D hybrid": 1,
+          "E hybrid, no glossary": 1,
+          "F hybrid + dual query": 1
+        }
+      },
+      {
+        "queryId": "e25242",
+        "query": "chef hat tall",
+        "type": "3word",
+        "english": "chef hat tall",
+        "glossary": [],
+        "top3": {
+          "C direct Shona+E5": [
+            "B00LSWA7QQ",
+            "B018PTABEC",
+            "B074T8SG7X"
+          ],
+          "B translate+E5": [
+            "B00LSWA7QQ",
+            "B018PTABEC",
+            "B074T8SG7X"
+          ],
+          "A glossary+BM25": [
+            "B018PTABEC",
+            "B00LSWA7QQ",
+            "B07BMQP1QQ"
+          ],
+          "D hybrid": [
+            "B00LSWA7QQ",
+            "B018PTABEC",
+            "B07BMQP1QQ"
+          ],
+          "E hybrid, no glossary": [
+            "B00LSWA7QQ",
+            "B018PTABEC",
+            "B07BMQP1QQ"
+          ],
+          "F hybrid + dual query": [
+            "B00LSWA7QQ",
+            "B018PTABEC",
+            "B07BMQP1QQ"
+          ]
+        },
+        "first_relevant_rank": {
+          "C direct Shona+E5": 1,
+          "B translate+E5": 1,
+          "A glossary+BM25": 1,
+          "D hybrid": 1,
+          "E hybrid, no glossary": 1,
+          "F hybrid + dual query": 1
+        }
+      },
+      {
+        "queryId": "e26512",
+        "query": "clam knife shucker",
+        "type": "3word",
+        "english": "clam knife shucker",
+        "glossary": [],
+        "top3": {
+          "C direct Shona+E5": [
+            "B00B97P2AQ",
+            "B07ZPTRNFL",
+            "B004YIWDRM"
+          ],
+          "B translate+E5": [
+            "B00B97P2AQ",
+            "B07ZPTRNFL",
+            "B004YIWDRM"
+          ],
+          "A glossary+BM25": [
+            "B07SQW3LTW",
+            "B00B97P2AQ",
+            "B07WWH43HL"
+          ],
+          "D hybrid": [
+            "B00B97P2AQ",
+            "B07SQW3LTW",
+            "B07ZPTRNFL"
+          ],
+          "E hybrid, no glossary": [
+            "B00B97P2AQ",
+            "B07SQW3LTW",
+            "B07ZPTRNFL"
+          ],
+          "F hybrid + dual query": [
+            "B00B97P2AQ",
+            "B07SQW3LTW",
+            "B07ZPTRNFL"
+          ]
+        },
+        "first_relevant_rank": {
+          "C direct Shona+E5": 1,
+          "B translate+E5": 1,
+          "A glossary+BM25": 2,
+          "D hybrid": 1,
+          "E hybrid, no glossary": 1,
+          "F hybrid + dual query": 1
+        }
+      },
+      {
+        "queryId": "e27326",
+        "query": "coconut oil",
+        "type": "2word",
+        "english": "coconut oil",
+        "glossary": [],
+        "top3": {
+          "C direct Shona+E5": [
+            "B06VZ3SRGD",
+            "B07346X1R5",
+            "B00DS842HS"
+          ],
+          "B translate+E5": [
+            "B06VZ3SRGD",
+            "B07346X1R5",
+            "B00DS842HS"
+          ],
+          "A glossary+BM25": [
+            "B00DS842HS",
+            "B08286SBQ9",
+            "B0792JFQN8"
+          ],
+          "D hybrid": [
+            "B06VZ3SRGD",
+            "B00DS842HS",
+            "B0792JFQN8"
+          ],
+          "E hybrid, no glossary": [
+            "B06VZ3SRGD",
+            "B00DS842HS",
+            "B0792JFQN8"
+          ],
+          "F hybrid + dual query": [
+            "B06VZ3SRGD",
+            "B00DS842HS",
+            "B0792JFQN8"
+          ]
+        },
+        "first_relevant_rank": {
+          "C direct Shona+E5": 1,
+          "B translate+E5": 1,
+          "A glossary+BM25": 1,
+          "D hybrid": 1,
+          "E hybrid, no glossary": 1,
+          "F hybrid + dual query": 1
+        }
+      },
+      {
+        "queryId": "e29699",
+        "query": "cowboy boots white",
+        "type": "3word",
+        "english": "cowboy boots white",
+        "glossary": [],
+        "top3": {
+          "C direct Shona+E5": [
+            "B07PQY2LX2",
+            "B07JHZ2BVQ",
+            "B07L1Y7BTV"
+          ],
+          "B translate+E5": [
+            "B07PQY2LX2",
+            "B07JHZ2BVQ",
+            "B07L1Y7BTV"
+          ],
+          "A glossary+BM25": [
+            "B07PQY2LX2",
+            "B07JHZ2BVQ",
+            "B07FPGFV9F"
+          ],
+          "D hybrid": [
+            "B07PQY2LX2",
+            "B07JHZ2BVQ",
+            "B07FPGFV9F"
+          ],
+          "E hybrid, no glossary": [
+            "B07PQY2LX2",
+            "B07JHZ2BVQ",
+            "B07FPGFV9F"
+          ],
+          "F hybrid + dual query": [
+            "B07PQY2LX2",
+            "B07JHZ2BVQ",
+            "B07FPGFV9F"
+          ]
+        },
+        "first_relevant_rank": {
+          "C direct Shona+E5": 1,
+          "B translate+E5": 1,
+          "A glossary+BM25": 1,
+          "D hybrid": 1,
+          "E hybrid, no glossary": 1,
+          "F hybrid + dual query": 1
+        }
+      },
+      {
+        "queryId": "e30302",
+        "query": "cross camera bags",
+        "type": "3word",
+        "english": "cross camera bags",
+        "glossary": [],
+        "top3": {
+          "C direct Shona+E5": [
+            "B071HLQL9R",
+            "B07R4DM5RM",
+            "B07R6CPC72"
+          ],
+          "B translate+E5": [
+            "B071HLQL9R",
+            "B07R4DM5RM",
+            "B07R6CPC72"
+          ],
+          "A glossary+BM25": [
+            "B01LWIS76G",
+            "B076TWSF5Y",
+            "B071HLQL9R"
+          ],
+          "D hybrid": [
+            "B071HLQL9R",
+            "B07R4DM5RM",
+            "B07R6CPC72"
+          ],
+          "E hybrid, no glossary": [
+            "B071HLQL9R",
+            "B07R4DM5RM",
+            "B07R6CPC72"
+          ],
+          "F hybrid + dual query": [
+            "B071HLQL9R",
+            "B07R4DM5RM",
+            "B07R6CPC72"
+          ]
+        },
+        "first_relevant_rank": {
+          "C direct Shona+E5": 1,
+          "B translate+E5": 1,
+          "A glossary+BM25": 1,
+          "D hybrid": 1,
+          "E hybrid, no glossary": 1,
+          "F hybrid + dual query": 1
+        }
+      },
+      {
+        "queryId": "e30736",
+        "query": "cup stacking set",
+        "type": "3word",
+        "english": "cup stacking set",
+        "glossary": [],
+        "top3": {
+          "C direct Shona+E5": [
+            "B078SSHKTD",
+            "B07K2JN7F1",
+            "B06XX4D1LP"
+          ],
+          "B translate+E5": [
+            "B078SSHKTD",
+            "B07K2JN7F1",
+            "B06XX4D1LP"
+          ],
+          "A glossary+BM25": [
+            "B078SSHKTD",
+            "B07NQNSKF9",
+            "B07NQQ9LTB"
+          ],
+          "D hybrid": [
+            "B078SSHKTD",
+            "B07NQQ9LTB",
+            "B07NQNSKF9"
+          ],
+          "E hybrid, no glossary": [
+            "B078SSHKTD",
+            "B07NQQ9LTB",
+            "B07NQNSKF9"
+          ],
+          "F hybrid + dual query": [
+            "B078SSHKTD",
+            "B07NQQ9LTB",
+            "B07NQNSKF9"
+          ]
+        },
+        "first_relevant_rank": {
+          "C direct Shona+E5": 1,
+          "B translate+E5": 1,
+          "A glossary+BM25": 1,
+          "D hybrid": 1,
+          "E hybrid, no glossary": 1,
+          "F hybrid + dual query": 1
+        }
+      },
+      {
+        "queryId": "e33369",
+        "query": "dinosaur curtains",
+        "type": "2word",
+        "english": "dinosaur curtains",
+        "glossary": [],
+        "top3": {
+          "C direct Shona+E5": [
+            "B07SRYS812",
+            "B071WXZ8SH",
+            "B07KD7PJ31"
+          ],
+          "B translate+E5": [
+            "B07SRYS812",
+            "B071WXZ8SH",
+            "B07KD7PJ31"
+          ],
+          "A glossary+BM25": [
+            "B07KD7PJ31",
+            "B07BBV8FKJ",
+            "B07W99P9MV"
+          ],
+          "D hybrid": [
+            "B07KD7PJ31",
+            "B07SRYS812",
+            "B071WXZ8SH"
+          ],
+          "E hybrid, no glossary": [
+            "B07KD7PJ31",
+            "B07SRYS812",
+            "B071WXZ8SH"
+          ],
+          "F hybrid + dual query": [
+            "B07KD7PJ31",
+            "B07SRYS812",
+            "B071WXZ8SH"
+          ]
+        },
+        "first_relevant_rank": {
+          "C direct Shona+E5": 1,
+          "B translate+E5": 1,
+          "A glossary+BM25": 1,
+          "D hybrid": 1,
+          "E hybrid, no glossary": 1,
+          "F hybrid + dual query": 1
+        }
+      },
+      {
+        "queryId": "e33701",
+        "query": "dish towel beige",
+        "type": "3word",
+        "english": "dish towel beige",
+        "glossary": [],
+        "top3": {
+          "C direct Shona+E5": [
+            "B003WOJKP2",
+            "B07PNJDZJL",
+            "B003WOJL2O"
+          ],
+          "B translate+E5": [
+            "B003WOJKP2",
+            "B07PNJDZJL",
+            "B003WOJL2O"
+          ],
+          "A glossary+BM25": [
+            "B085PNNW8F",
+            "B07PNJDZJL",
+            "B083KHXB7G"
+          ],
+          "D hybrid": [
+            "B085PNNW8F",
+            "B07PNJDZJL",
+            "B083KHXB7G"
+          ],
+          "E hybrid, no glossary": [
+            "B085PNNW8F",
+            "B07PNJDZJL",
+            "B083KHXB7G"
+          ],
+          "F hybrid + dual query": [
+            "B085PNNW8F",
+            "B07PNJDZJL",
+            "B083KHXB7G"
+          ]
+        },
+        "first_relevant_rank": {
+          "C direct Shona+E5": 1,
+          "B translate+E5": 1,
+          "A glossary+BM25": 1,
+          "D hybrid": 1,
+          "E hybrid, no glossary": 1,
+          "F hybrid + dual query": 1
+        }
+      },
+      {
+        "queryId": "e36546",
+        "query": "ebike charger xlr",
+        "type": "3word",
+        "english": "ebike charger xlr",
+        "glossary": [],
+        "top3": {
+          "C direct Shona+E5": [
+            "B07PN7PM4C",
+            "B089218PQS",
+            "B08CN6Y12M"
+          ],
+          "B translate+E5": [
+            "B07PN7PM4C",
+            "B089218PQS",
+            "B08CN6Y12M"
+          ],
+          "A glossary+BM25": [
+            "B07VVCX8Y4",
+            "B07PN7PM4C",
+            "B08CN6Y12M"
+          ],
+          "D hybrid": [
+            "B07VVCX8Y4",
+            "B07PN7PM4C",
+            "B08CN6Y12M"
+          ],
+          "E hybrid, no glossary": [
+            "B07VVCX8Y4",
+            "B07PN7PM4C",
+            "B08CN6Y12M"
+          ],
+          "F hybrid + dual query": [
+            "B07VVCX8Y4",
+            "B07PN7PM4C",
+            "B08CN6Y12M"
+          ]
+        },
+        "first_relevant_rank": {
+          "C direct Shona+E5": 1,
+          "B translate+E5": 1,
+          "A glossary+BM25": 1,
+          "D hybrid": 1,
+          "E hybrid, no glossary": 1,
+          "F hybrid + dual query": 1
+        }
+      },
+      {
+        "queryId": "e37418",
+        "query": "elsa dress",
+        "type": "2word",
+        "english": "dress of elsa",
+        "glossary": [],
+        "top3": {
+          "C direct Shona+E5": [
+            "B07VDD4495",
+            "B07D56T9CR",
+            "B07KV7SPZL"
+          ],
+          "B translate+E5": [
+            "B07D56T9CR",
+            "B07VDD4495",
+            "B07KV7SPZL"
+          ],
+          "A glossary+BM25": [
+            "B07QKTF4M9",
+            "B07KW8CRSQ",
+            "B07KV7SPZL"
+          ],
+          "D hybrid": [
+            "B07KV7SPZL",
+            "B07KW8CRSQ",
+            "B07QKTF4M9"
+          ],
+          "E hybrid, no glossary": [
+            "B07KV7SPZL",
+            "B07KW8CRSQ",
+            "B07QKTF4M9"
+          ],
+          "F hybrid + dual query": [
+            "B07KV7SPZL",
+            "B07KW8CRSQ",
+            "B07QKTF4M9"
+          ]
+        },
+        "first_relevant_rank": {
+          "C direct Shona+E5": 1,
+          "B translate+E5": 1,
+          "A glossary+BM25": 1,
+          "D hybrid": 1,
+          "E hybrid, no glossary": 1,
+          "F hybrid + dual query": 1
+        }
+      },
+      {
+        "queryId": "e38702",
+        "query": "expresso coffee pot",
+        "type": "3word",
+        "english": "espresso coffee pot",
+        "glossary": [],
+        "top3": {
+          "C direct Shona+E5": [
+            "B07DW1J5BV",
+            "B0000AN3QI",
+            "B000YDOMHU"
+          ],
+          "B translate+E5": [
+            "B01DTBI6S4",
+            "B07VFXP37D",
+            "B088K8LLX9"
+          ],
+          "A glossary+BM25": [
+            "B07WCYTRLH",
+            "B07BQ4GH8H",
+            "B07DW1J5BV"
+          ],
+          "D hybrid": [
+            "B07DW1J5BV",
+            "B07BQ4GH8H",
+            "B07WCYTRLH"
+          ],
+          "E hybrid, no glossary": [
+            "B07DW1J5BV",
+            "B07BQ4GH8H",
+            "B07WCYTRLH"
+          ],
+          "F hybrid + dual query": [
+            "B07DW1J5BV",
+            "B07BQ4GH8H",
+            "B07WCYTRLH"
+          ]
+        },
+        "first_relevant_rank": {
+          "C direct Shona+E5": 1,
+          "B translate+E5": 1,
+          "A glossary+BM25": 1,
+          "D hybrid": 1,
+          "E hybrid, no glossary": 1,
+          "F hybrid + dual query": 1
+        }
+      },
+      {
+        "queryId": "e39441",
+        "query": "fall decor pillows",
+        "type": "3word",
+        "english": "fall decor pillows",
+        "glossary": [],
+        "top3": {
+          "C direct Shona+E5": [
+            "B07TPBDPLL",
+            "B088F34PNZ",
+            "B07TRCSVWP"
+          ],
+          "B translate+E5": [
+            "B07TPBDPLL",
+            "B088F34PNZ",
+            "B07TRCSVWP"
+          ],
+          "A glossary+BM25": [
+            "B07TRCSVWP",
+            "B07TPBDPLL",
+            "B07WBYDH44"
+          ],
+          "D hybrid": [
+            "B07TPBDPLL",
+            "B07TRCSVWP",
+            "B07WBYDH44"
+          ],
+          "E hybrid, no glossary": [
+            "B07TPBDPLL",
+            "B07TRCSVWP",
+            "B07WBYDH44"
+          ],
+          "F hybrid + dual query": [
+            "B07TPBDPLL",
+            "B07TRCSVWP",
+            "B07WBYDH44"
+          ]
+        },
+        "first_relevant_rank": {
+          "C direct Shona+E5": 1,
+          "B translate+E5": 1,
+          "A glossary+BM25": 1,
+          "D hybrid": 1,
+          "E hybrid, no glossary": 1,
+          "F hybrid + dual query": 1
+        }
+      },
+      {
+        "queryId": "e40748",
+        "query": "fishing life jacket",
+        "type": "3word",
+        "english": "fishing life jacket",
+        "glossary": [],
+        "top3": {
+          "C direct Shona+E5": [
+            "B07MGZB9GY",
+            "B01KVRAE6G",
+            "B0812CVZ55"
+          ],
+          "B translate+E5": [
+            "B07MGZB9GY",
+            "B01KVRAE6G",
+            "B0812CVZ55"
+          ],
+          "A glossary+BM25": [
+            "B0812CVZ55",
+            "B077XSVSL4",
+            "B01KVRAE6G"
+          ],
+          "D hybrid": [
+            "B0812CVZ55",
+            "B01KVRAE6G",
+            "B077XSVSL4"
+          ],
+          "E hybrid, no glossary": [
+            "B0812CVZ55",
+            "B01KVRAE6G",
+            "B077XSVSL4"
+          ],
+          "F hybrid + dual query": [
+            "B0812CVZ55",
+            "B01KVRAE6G",
+            "B077XSVSL4"
+          ]
+        },
+        "first_relevant_rank": {
+          "C direct Shona+E5": 1,
+          "B translate+E5": 1,
+          "A glossary+BM25": 1,
+          "D hybrid": 1,
+          "E hybrid, no glossary": 1,
+          "F hybrid + dual query": 1
+        }
+      },
+      {
+        "queryId": "e40817",
+        "query": "fitbit alta charger",
+        "type": "3word",
+        "english": "fitbit alta charger",
+        "glossary": [],
+        "top3": {
+          "C direct Shona+E5": [
+            "B07K6DHNSG",
+            "B01HCT3GCU",
+            "B07D7587T8"
+          ],
+          "B translate+E5": [
+            "B07K6DHNSG",
+            "B01HCT3GCU",
+            "B07D7587T8"
+          ],
+          "A glossary+BM25": [
+            "B07D7587T8",
+            "B07K6DHNSG",
+            "B06ZZBYL8V"
+          ],
+          "D hybrid": [
+            "B07K6DHNSG",
+            "B07D7587T8",
+            "B01HCT3GCU"
+          ],
+          "E hybrid, no glossary": [
+            "B07K6DHNSG",
+            "B07D7587T8",
+            "B01HCT3GCU"
+          ],
+          "F hybrid + dual query": [
+            "B07K6DHNSG",
+            "B07D7587T8",
+            "B01HCT3GCU"
+          ]
+        },
+        "first_relevant_rank": {
+          "C direct Shona+E5": 1,
+          "B translate+E5": 1,
+          "A glossary+BM25": 1,
+          "D hybrid": 1,
+          "E hybrid, no glossary": 1,
+          "F hybrid + dual query": 1
+        }
+      },
+      {
+        "queryId": "e40826",
+        "query": "fitbit blaze charger",
+        "type": "3word",
+        "english": "fitbit blaze charger",
+        "glossary": [],
+        "top3": {
+          "C direct Shona+E5": [
+            "B07Y7GD4Z3",
+            "B01E9T7M76",
+            "B01H3WHNEI"
+          ],
+          "B translate+E5": [
+            "B07Y7GD4Z3",
+            "B01E9T7M76",
+            "B01H3WHNEI"
+          ],
+          "A glossary+BM25": [
+            "B01E9T7M76",
+            "B078KBV8PL",
+            "B0752CQ9H4"
+          ],
+          "D hybrid": [
+            "B07Y7GD4Z3",
+            "B01E9T7M76",
+            "B078KBV8PL"
+          ],
+          "E hybrid, no glossary": [
+            "B07Y7GD4Z3",
+            "B01E9T7M76",
+            "B078KBV8PL"
+          ],
+          "F hybrid + dual query": [
+            "B07Y7GD4Z3",
+            "B01E9T7M76",
+            "B078KBV8PL"
+          ]
+        },
+        "first_relevant_rank": {
+          "C direct Shona+E5": 1,
+          "B translate+E5": 1,
+          "A glossary+BM25": 1,
+          "D hybrid": 1,
+          "E hybrid, no glossary": 1,
+          "F hybrid + dual query": 1
+        }
+      },
+      {
+        "queryId": "e42222",
+        "query": "fortnight light",
+        "type": "2word",
+        "english": "fortnight light",
+        "glossary": [],
+        "top3": {
+          "C direct Shona+E5": [
+            "B00AR74YGC",
+            "B07XQC4KGC",
+            "B07SKKTY61"
+          ],
+          "B translate+E5": [
+            "B00AR74YGC",
+            "B07XQC4KGC",
+            "B07SKKTY61"
+          ],
+          "A glossary+BM25": [
+            "B07GGCM89X",
+            "B07Q73P2KN",
+            "B08387CPNP"
+          ],
+          "D hybrid": [
+            "B07XQC4KGC",
+            "B00AR74YGC",
+            "B07X25T9GP"
+          ],
+          "E hybrid, no glossary": [
+            "B07XQC4KGC",
+            "B00AR74YGC",
+            "B07X25T9GP"
+          ],
+          "F hybrid + dual query": [
+            "B07XQC4KGC",
+            "B00AR74YGC",
+            "B07X25T9GP"
+          ]
+        },
+        "first_relevant_rank": {
+          "C direct Shona+E5": 1,
+          "B translate+E5": 1,
+          "A glossary+BM25": 22,
+          "D hybrid": 2,
+          "E hybrid, no glossary": 2,
+          "F hybrid + dual query": 2
+        }
+      },
+      {
+        "queryId": "e42505",
+        "query": "freedom moses sandals",
+        "type": "3word",
+        "english": "freedom moses sandals",
+        "glossary": [],
+        "top3": {
+          "C direct Shona+E5": [
+            "B096KZW9MG",
+            "B087HSVFGK",
+            "B08B1XJXM9"
+          ],
+          "B translate+E5": [
+            "B096KZW9MG",
+            "B087HSVFGK",
+            "B08B1XJXM9"
+          ],
+          "A glossary+BM25": [
+            "B0894JJQ91",
+            "B0894GLQ9Q",
+            "B0894HKWBL"
+          ],
+          "D hybrid": [
+            "B087HSVFGK",
+            "B0894GFMV3",
+            "B01GZENUQU"
+          ],
+          "E hybrid, no glossary": [
+            "B087HSVFGK",
+            "B0894GFMV3",
+            "B01GZENUQU"
+          ],
+          "F hybrid + dual query": [
+            "B087HSVFGK",
+            "B0894GFMV3",
+            "B01GZENUQU"
+          ]
+        },
+        "first_relevant_rank": {
+          "C direct Shona+E5": 1,
+          "B translate+E5": 1,
+          "A glossary+BM25": 1,
+          "D hybrid": 1,
+          "E hybrid, no glossary": 1,
+          "F hybrid + dual query": 1
+        }
+      },
+      {
+        "queryId": "e43451",
+        "query": "fungicide shampoo puppues",
+        "type": "3word",
+        "english": "fungicide shampoo puppues",
+        "glossary": [],
+        "top3": {
+          "C direct Shona+E5": [
+            "B077MW5FY2",
+            "B00AVJOEW0",
+            "B078RP871P"
+          ],
+          "B translate+E5": [
+            "B077MW5FY2",
+            "B00AVJOEW0",
+            "B078RP871P"
+          ],
+          "A glossary+BM25": [
+            "B004HSQSFC",
+            "B01MYGUSUD",
+            "B0849L3675"
+          ],
+          "D hybrid": [
+            "B004HSQSFC",
+            "B07P528MHM",
+            "B008672962"
+          ],
+          "E hybrid, no glossary": [
+            "B004HSQSFC",
+            "B07P528MHM",
+            "B008672962"
+          ],
+          "F hybrid + dual query": [
+            "B004HSQSFC",
+            "B07P528MHM",
+            "B008672962"
+          ]
+        },
+        "first_relevant_rank": {
+          "C direct Shona+E5": 2,
+          "B translate+E5": 2,
+          "A glossary+BM25": 1,
+          "D hybrid": 1,
+          "E hybrid, no glossary": 1,
+          "F hybrid + dual query": 1
+        }
+      },
+      {
+        "queryId": "e44363",
+        "query": "garbage bag",
+        "type": "2word",
+        "english": "garbage bag",
+        "glossary": [],
+        "top3": {
+          "C direct Shona+E5": [
+            "B01BZ0MR54",
+            "B00HNW8CXA",
+            "B01BZ0N69U"
+          ],
+          "B translate+E5": [
+            "B01BZ0MR54",
+            "B00HNW8CXA",
+            "B01BZ0N69U"
+          ],
+          "A glossary+BM25": [
+            "B07PZ5F394",
+            "B01BZ0N69U",
+            "B07ZX7JHKK"
+          ],
+          "D hybrid": [
+            "B01BZ0N69U",
+            "B07PZ5F394",
+            "B00M8ZEB3C"
+          ],
+          "E hybrid, no glossary": [
+            "B01BZ0N69U",
+            "B07PZ5F394",
+            "B00M8ZEB3C"
+          ],
+          "F hybrid + dual query": [
+            "B01BZ0N69U",
+            "B07PZ5F394",
+            "B00M8ZEB3C"
+          ]
+        },
+        "first_relevant_rank": {
+          "C direct Shona+E5": 1,
+          "B translate+E5": 1,
+          "A glossary+BM25": 1,
+          "D hybrid": 1,
+          "E hybrid, no glossary": 1,
+          "F hybrid + dual query": 1
+        }
+      },
+      {
+        "queryId": "e45517",
+        "query": "girls backpack",
+        "type": "2word",
+        "english": "girls backpack",
+        "glossary": [],
+        "top3": {
+          "C direct Shona+E5": [
+            "B07BNSLC7G",
+            "B07R9S1LBV",
+            "B07NPCD6N9"
+          ],
+          "B translate+E5": [
+            "B07BNSLC7G",
+            "B07R9S1LBV",
+            "B07NPCD6N9"
+          ],
+          "A glossary+BM25": [
+            "B071H8Z82J",
+            "B07R9S1LBV",
+            "B07BNSLC7G"
+          ],
+          "D hybrid": [
+            "B071H8Z82J",
+            "B07R9S1LBV",
+            "B07BNSLC7G"
+          ],
+          "E hybrid, no glossary": [
+            "B071H8Z82J",
+            "B07R9S1LBV",
+            "B07BNSLC7G"
+          ],
+          "F hybrid + dual query": [
+            "B071H8Z82J",
+            "B07R9S1LBV",
+            "B07BNSLC7G"
+          ]
+        },
+        "first_relevant_rank": {
+          "C direct Shona+E5": 1,
+          "B translate+E5": 1,
+          "A glossary+BM25": 1,
+          "D hybrid": 1,
+          "E hybrid, no glossary": 1,
+          "F hybrid + dual query": 1
+        }
+      },
+      {
+        "queryId": "e45555",
+        "query": "girls clothes baby",
+        "type": "3word",
+        "english": "girls clothing baby",
+        "glossary": [],
+        "top3": {
+          "C direct Shona+E5": [
+            "B08PP2PSMR",
+            "B0827DDDJS",
+            "B086STKJWQ"
+          ],
+          "B translate+E5": [
+            "B08PP2PSMR",
+            "B0827DDDJS",
+            "B086STKJWQ"
+          ],
+          "A glossary+BM25": [
+            "B07TX95FFB",
+            "B0841WHRPT",
+            "B086STKJWQ"
+          ],
+          "D hybrid": [
+            "B08Z755PCH",
+            "B086STKJWQ",
+            "B08PP2PSMR"
+          ],
+          "E hybrid, no glossary": [
+            "B08Z755PCH",
+            "B086STKJWQ",
+            "B08PP2PSMR"
+          ],
+          "F hybrid + dual query": [
+            "B08Z755PCH",
+            "B086STKJWQ",
+            "B08PP2PSMR"
+          ]
+        },
+        "first_relevant_rank": {
+          "C direct Shona+E5": 1,
+          "B translate+E5": 1,
+          "A glossary+BM25": 5,
+          "D hybrid": 1,
+          "E hybrid, no glossary": 1,
+          "F hybrid + dual query": 1
+        }
+      },
+      {
+        "queryId": "e47276",
+        "query": "green bandage dress",
+        "type": "3word",
+        "english": "green bandage dress",
+        "glossary": [],
+        "top3": {
+          "C direct Shona+E5": [
+            "B07SXJYG7Z",
+            "B07VM6R2KD",
+            "B00JWV6FGQ"
+          ],
+          "B translate+E5": [
+            "B07SXJYG7Z",
+            "B07VM6R2KD",
+            "B00JWV6FGQ"
+          ],
+          "A glossary+BM25": [
+            "B07SXJYG7Z",
+            "B0776VSQNQ",
+            "B00JWV6FGQ"
+          ],
+          "D hybrid": [
+            "B07SXJYG7Z",
+            "B0776VSQNQ",
+            "B00JWV6FGQ"
+          ],
+          "E hybrid, no glossary": [
+            "B07SXJYG7Z",
+            "B0776VSQNQ",
+            "B00JWV6FGQ"
+          ],
+          "F hybrid + dual query": [
+            "B07SXJYG7Z",
+            "B0776VSQNQ",
+            "B00JWV6FGQ"
+          ]
+        },
+        "first_relevant_rank": {
+          "C direct Shona+E5": 1,
+          "B translate+E5": 1,
+          "A glossary+BM25": 1,
+          "D hybrid": 1,
+          "E hybrid, no glossary": 1,
+          "F hybrid + dual query": 1
+        }
+      },
+      {
+        "queryId": "e49765",
+        "query": "headphones with microphone",
+        "type": "3word",
+        "english": "headphones with microphone",
+        "glossary": [],
+        "top3": {
+          "C direct Shona+E5": [
+            "B07Y9QDTLD",
+            "B07SHH37M6",
+            "B07MCCJ6VY"
+          ],
+          "B translate+E5": [
+            "B07Y9QDTLD",
+            "B07SHH37M6",
+            "B07MCCJ6VY"
+          ],
+          "A glossary+BM25": [
+            "B08BF971WF",
+            "B000UXZQ42",
+            "B07SP6G436"
+          ],
+          "D hybrid": [
+            "B07SHH37M6",
+            "B07Y9QDTLD",
+            "B08BF971WF"
+          ],
+          "E hybrid, no glossary": [
+            "B07SHH37M6",
+            "B07Y9QDTLD",
+            "B08BF971WF"
+          ],
+          "F hybrid + dual query": [
+            "B07SHH37M6",
+            "B07Y9QDTLD",
+            "B08BF971WF"
+          ]
+        },
+        "first_relevant_rank": {
+          "C direct Shona+E5": 1,
+          "B translate+E5": 1,
+          "A glossary+BM25": 1,
+          "D hybrid": 1,
+          "E hybrid, no glossary": 1,
+          "F hybrid + dual query": 1
+        }
+      },
+      {
+        "queryId": "e49941",
+        "query": "heating blankets",
+        "type": "2word",
+        "english": "heating blankets",
+        "glossary": [],
+        "top3": {
+          "C direct Shona+E5": [
+            "B008BF21SK",
+            "B07TS1NR5W",
+            "B008BF2MFM"
+          ],
+          "B translate+E5": [
+            "B008BF21SK",
+            "B07TS1NR5W",
+            "B008BF2MFM"
+          ],
+          "A glossary+BM25": [
+            "B07TS1NR5W",
+            "B07W4HCV6T",
+            "B07XCYFV35"
+          ],
+          "D hybrid": [
+            "B07TS1NR5W",
+            "B07XCYFV35",
+            "B07W4HCV6T"
+          ],
+          "E hybrid, no glossary": [
+            "B07TS1NR5W",
+            "B07XCYFV35",
+            "B07W4HCV6T"
+          ],
+          "F hybrid + dual query": [
+            "B07TS1NR5W",
+            "B07XCYFV35",
+            "B07W4HCV6T"
+          ]
+        },
+        "first_relevant_rank": {
+          "C direct Shona+E5": 1,
+          "B translate+E5": 1,
+          "A glossary+BM25": 1,
+          "D hybrid": 1,
+          "E hybrid, no glossary": 1,
+          "F hybrid + dual query": 1
+        }
+      },
+      {
+        "queryId": "e50435",
+        "query": "hidden shoes",
+        "type": "2word",
+        "english": "hidden shoes",
+        "glossary": [],
+        "top3": {
+          "C direct Shona+E5": [
+            "B07H7DN41H",
+            "B07SMPCQQ4",
+            "B006L3V6QC"
+          ],
+          "B translate+E5": [
+            "B07H7DN41H",
+            "B07SMPCQQ4",
+            "B006L3V6QC"
+          ],
+          "A glossary+BM25": [
+            "B07H7DN41H",
+            "B07SMPCQQ4",
+            "B006L3V6QC"
+          ],
+          "D hybrid": [
+            "B07H7DN41H",
+            "B07SMPCQQ4",
+            "B006L3V6QC"
+          ],
+          "E hybrid, no glossary": [
+            "B07H7DN41H",
+            "B07SMPCQQ4",
+            "B006L3V6QC"
+          ],
+          "F hybrid + dual query": [
+            "B07H7DN41H",
+            "B07SMPCQQ4",
+            "B006L3V6QC"
+          ]
+        },
+        "first_relevant_rank": {
+          "C direct Shona+E5": 7,
+          "B translate+E5": 7,
+          "A glossary+BM25": 53,
+          "D hybrid": 15,
+          "E hybrid, no glossary": 15,
+          "F hybrid + dual query": 15
+        }
+      },
+      {
+        "queryId": "e52207",
+        "query": "hybrid tv",
+        "type": "2word",
+        "english": "hybrid television",
+        "glossary": [],
+        "top3": {
+          "C direct Shona+E5": [
+            "B07PBHNVN1",
+            "B07P789ZK3",
+            "B07FRXZRNZ"
+          ],
+          "B translate+E5": [
+            "B07PBHNVN1",
+            "B07P789ZK3",
+            "B07FRXZRNZ"
+          ],
+          "A glossary+BM25": [
+            "B07RXXJ8YD",
+            "B07P789ZK3",
+            "B017028HAK"
+          ],
+          "D hybrid": [
+            "B07PBHNVN1",
+            "B07P789ZK3",
+            "B07RXXJ8YD"
+          ],
+          "E hybrid, no glossary": [
+            "B07PBHNVN1",
+            "B07P789ZK3",
+            "B07RXXJ8YD"
+          ],
+          "F hybrid + dual query": [
+            "B07PBHNVN1",
+            "B07P789ZK3",
+            "B07RXXJ8YD"
+          ]
+        },
+        "first_relevant_rank": {
+          "C direct Shona+E5": 1,
+          "B translate+E5": 1,
+          "A glossary+BM25": 2,
+          "D hybrid": 1,
+          "E hybrid, no glossary": 1,
+          "F hybrid + dual query": 1
+        }
+      },
+      {
+        "queryId": "e52292",
+        "query": "hygger aquarium heater",
+        "type": "3word",
+        "english": "hygger aquarium heater",
+        "glossary": [],
+        "top3": {
+          "C direct Shona+E5": [
+            "B094DK6R9D",
+            "B07ZWX5QMN",
+            "B08HCGPM51"
+          ],
+          "B translate+E5": [
+            "B094DK6R9D",
+            "B07ZWX5QMN",
+            "B08HCGPM51"
+          ],
+          "A glossary+BM25": [
+            "B08Y73G7QG",
+            "B08MQ3PYSP",
+            "B08PDZYMKH"
+          ],
+          "D hybrid": [
+            "B08Y73G7QG",
+            "B08HCGPM51",
+            "B08RYV3DGF"
+          ],
+          "E hybrid, no glossary": [
+            "B08Y73G7QG",
+            "B08HCGPM51",
+            "B08RYV3DGF"
+          ],
+          "F hybrid + dual query": [
+            "B08Y73G7QG",
+            "B08HCGPM51",
+            "B08RYV3DGF"
+          ]
+        },
+        "first_relevant_rank": {
+          "C direct Shona+E5": 1,
+          "B translate+E5": 1,
+          "A glossary+BM25": 1,
+          "D hybrid": 1,
+          "E hybrid, no glossary": 1,
+          "F hybrid + dual query": 1
+        }
+      },
+      {
+        "queryId": "e54456",
+        "query": "iphone headphone adapter",
+        "type": "3word",
+        "english": "iphone headphone adapter",
+        "glossary": [],
+        "top3": {
+          "C direct Shona+E5": [
+            "B01LXJFMGF",
+            "B088R3LY3W",
+            "B084L8S5D8"
+          ],
+          "B translate+E5": [
+            "B01LXJFMGF",
+            "B088R3LY3W",
+            "B084L8S5D8"
+          ],
+          "A glossary+BM25": [
+            "B087GLGH3C",
+            "B087TQGFP8",
+            "B085G7SHZ7"
+          ],
+          "D hybrid": [
+            "B084YQ2451",
+            "B089NM7KQY",
+            "B087GLGH3C"
+          ],
+          "E hybrid, no glossary": [
+            "B084YQ2451",
+            "B089NM7KQY",
+            "B087GLGH3C"
+          ],
+          "F hybrid + dual query": [
+            "B084YQ2451",
+            "B089NM7KQY",
+            "B087GLGH3C"
+          ]
+        },
+        "first_relevant_rank": {
+          "C direct Shona+E5": 1,
+          "B translate+E5": 1,
+          "A glossary+BM25": 1,
+          "D hybrid": 1,
+          "E hybrid, no glossary": 1,
+          "F hybrid + dual query": 1
+        }
+      },
+      {
+        "queryId": "e58074",
+        "query": "kids vans socks",
+        "type": "3word",
+        "english": "kids vans socks",
+        "glossary": [],
+        "top3": {
+          "C direct Shona+E5": [
+            "B00L3ENQBC",
+            "B07JYH826B",
+            "B00HPZEOCS"
+          ],
+          "B translate+E5": [
+            "B00L3ENQBC",
+            "B07JYH826B",
+            "B00HPZEOCS"
+          ],
+          "A glossary+BM25": [
+            "B07JYH826B",
+            "B0721QWHC1",
+            "B00J0TMZ8M"
+          ],
+          "D hybrid": [
+            "B07JYH826B",
+            "B00L3ENQBC",
+            "B00HPZEOCS"
+          ],
+          "E hybrid, no glossary": [
+            "B07JYH826B",
+            "B00L3ENQBC",
+            "B00HPZEOCS"
+          ],
+          "F hybrid + dual query": [
+            "B07JYH826B",
+            "B00L3ENQBC",
+            "B00HPZEOCS"
+          ]
+        },
+        "first_relevant_rank": {
+          "C direct Shona+E5": 1,
+          "B translate+E5": 1,
+          "A glossary+BM25": 1,
+          "D hybrid": 1,
+          "E hybrid, no glossary": 1,
+          "F hybrid + dual query": 1
+        }
+      },
+      {
+        "queryId": "e58866",
+        "query": "knifes",
+        "type": "1word",
+        "english": "knives",
+        "glossary": [],
+        "top3": {
+          "C direct Shona+E5": [
+            "B07R77WZ2R",
+            "B00GHX5HGG",
+            "B01KTACCBK"
+          ],
+          "B translate+E5": [
+            "B00GHX5HGG",
+            "B01KTACCBK",
+            "B07R77WZ2R"
+          ],
+          "A glossary+BM25": [
+            "B07GXKB1FJ",
+            "B07SQW3LTW",
+            "B00GHX5HGG"
+          ],
+          "D hybrid": [
+            "B01KTACCBK",
+            "B00GHX5HGG",
+            "B0799FZ71S"
+          ],
+          "E hybrid, no glossary": [
+            "B01KTACCBK",
+            "B00GHX5HGG",
+            "B0799FZ71S"
+          ],
+          "F hybrid + dual query": [
+            "B01KTACCBK",
+            "B00GHX5HGG",
+            "B0799FZ71S"
+          ]
+        },
+        "first_relevant_rank": {
+          "C direct Shona+E5": 1,
+          "B translate+E5": 1,
+          "A glossary+BM25": 1,
+          "D hybrid": 1,
+          "E hybrid, no glossary": 1,
+          "F hybrid + dual query": 1
+        }
+      },
+      {
+        "queryId": "e60433",
+        "query": "lavazza coffee machine",
+        "type": "3word",
+        "english": "lavazza coffee machine",
+        "glossary": [],
+        "top3": {
+          "C direct Shona+E5": [
+            "B01AMMTFXI",
+            "B07RVDJW56",
+            "B000SDKDM4"
+          ],
+          "B translate+E5": [
+            "B01AMMTFXI",
+            "B07RVDJW56",
+            "B000SDKDM4"
+          ],
+          "A glossary+BM25": [
+            "B000SDKDM4",
+            "B07BL6ZHQ2",
+            "B07BL69CDX"
+          ],
+          "D hybrid": [
+            "B07RVDJW56",
+            "B000SDKDM4",
+            "B01AMMTFXI"
+          ],
+          "E hybrid, no glossary": [
+            "B07RVDJW56",
+            "B000SDKDM4",
+            "B01AMMTFXI"
+          ],
+          "F hybrid + dual query": [
+            "B07RVDJW56",
+            "B000SDKDM4",
+            "B01AMMTFXI"
+          ]
+        },
+        "first_relevant_rank": {
+          "C direct Shona+E5": 1,
+          "B translate+E5": 1,
+          "A glossary+BM25": 5,
+          "D hybrid": 1,
+          "E hybrid, no glossary": 1,
+          "F hybrid + dual query": 1
+        }
+      },
+      {
+        "queryId": "e64842",
+        "query": "magnanni shoes men",
+        "type": "3word",
+        "english": "magnanni shoes men",
+        "glossary": [],
+        "top3": {
+          "C direct Shona+E5": [
+            "B07F1JTJRJ",
+            "B07768DCQY",
+            "B07117BJK8"
+          ],
+          "B translate+E5": [
+            "B07F1JTJRJ",
+            "B07768DCQY",
+            "B07117BJK8"
+          ],
+          "A glossary+BM25": [
+            "B07768DCQY",
+            "B07BPM5QS8",
+            "B07F1JTJRJ"
+          ],
+          "D hybrid": [
+            "B07768DCQY",
+            "B07F1JTJRJ",
+            "B07BPM5QS8"
+          ],
+          "E hybrid, no glossary": [
+            "B07768DCQY",
+            "B07F1JTJRJ",
+            "B07BPM5QS8"
+          ],
+          "F hybrid + dual query": [
+            "B07768DCQY",
+            "B07F1JTJRJ",
+            "B07BPM5QS8"
+          ]
+        },
+        "first_relevant_rank": {
+          "C direct Shona+E5": 1,
+          "B translate+E5": 1,
+          "A glossary+BM25": 1,
+          "D hybrid": 1,
+          "E hybrid, no glossary": 1,
+          "F hybrid + dual query": 1
+        }
+      },
+      {
+        "queryId": "e67907",
+        "query": "mens socks",
+        "type": "2word",
+        "english": "men's socks",
+        "glossary": [],
+        "top3": {
+          "C direct Shona+E5": [
+            "B00AECT1ZE",
+            "B00L3ENQBC",
+            "B07Q34YLTW"
+          ],
+          "B translate+E5": [
+            "B00AECT1ZE",
+            "B00L3ENQBC",
+            "B07926CYY8"
+          ],
+          "A glossary+BM25": [
+            "B07MGZYK6R",
+            "B0735V67KT",
+            "B0735T525V"
+          ],
+          "D hybrid": [
+            "B0735V67KT",
+            "B0735T525V",
+            "B07MGZYK6R"
+          ],
+          "E hybrid, no glossary": [
+            "B0735V67KT",
+            "B0735T525V",
+            "B07MGZYK6R"
+          ],
+          "F hybrid + dual query": [
+            "B07MGZYK6R",
+            "B0735V67KT",
+            "B0735T525V"
+          ]
+        },
+        "first_relevant_rank": {
+          "C direct Shona+E5": 1,
+          "B translate+E5": 1,
+          "A glossary+BM25": 1,
+          "D hybrid": 1,
+          "E hybrid, no glossary": 1,
+          "F hybrid + dual query": 1
+        }
+      },
+      {
+        "queryId": "e73208",
+        "query": "newborn baby boy",
+        "type": "3word",
+        "english": "newborn baby boy",
+        "glossary": [],
+        "top3": {
+          "C direct Shona+E5": [
+            "B079KZPVMR",
+            "B07GYW7CNM",
+            "B07G99QQ3D"
+          ],
+          "B translate+E5": [
+            "B079KZPVMR",
+            "B07GYW7CNM",
+            "B07G99QQ3D"
+          ],
+          "A glossary+BM25": [
+            "B07G99QQ3D",
+            "B07XML8PC6",
+            "B079KZPVMR"
+          ],
+          "D hybrid": [
+            "B079KZPVMR",
+            "B07G99QQ3D",
+            "B07XML8PC6"
+          ],
+          "E hybrid, no glossary": [
+            "B079KZPVMR",
+            "B07G99QQ3D",
+            "B07XML8PC6"
+          ],
+          "F hybrid + dual query": [
+            "B079KZPVMR",
+            "B07G99QQ3D",
+            "B07XML8PC6"
+          ]
+        },
+        "first_relevant_rank": {
+          "C direct Shona+E5": 1,
+          "B translate+E5": 1,
+          "A glossary+BM25": 1,
+          "D hybrid": 1,
+          "E hybrid, no glossary": 1,
+          "F hybrid + dual query": 1
+        }
+      },
+      {
+        "queryId": "e74172",
+        "query": "noise reduction headphone",
+        "type": "3word",
+        "english": "noise reduction headphone",
+        "glossary": [],
+        "top3": {
+          "C direct Shona+E5": [
+            "B07RFPLLD3",
+            "B07G4YL6BM",
+            "B07RXXJ8YD"
+          ],
+          "B translate+E5": [
+            "B07RFPLLD3",
+            "B07G4YL6BM",
+            "B07RXXJ8YD"
+          ],
+          "A glossary+BM25": [
+            "B019U00D7K",
+            "B077YG22Y9",
+            "B07Q1841D1"
+          ],
+          "D hybrid": [
+            "B019U00D7K",
+            "B077YG22Y9",
+            "B07Q1841D1"
+          ],
+          "E hybrid, no glossary": [
+            "B019U00D7K",
+            "B077YG22Y9",
+            "B07Q1841D1"
+          ],
+          "F hybrid + dual query": [
+            "B019U00D7K",
+            "B077YG22Y9",
+            "B07Q1841D1"
+          ]
+        },
+        "first_relevant_rank": {
+          "C direct Shona+E5": 1,
+          "B translate+E5": 1,
+          "A glossary+BM25": 1,
+          "D hybrid": 1,
+          "E hybrid, no glossary": 1,
+          "F hybrid + dual query": 1
+        }
+      },
+      {
+        "queryId": "e75459",
+        "query": "olive sheer curtains",
+        "type": "3word",
+        "english": "olive sheer curtains",
+        "glossary": [],
+        "top3": {
+          "C direct Shona+E5": [
+            "B07X5X3C57",
+            "B07X97R1FK",
+            "B082D9WCCF"
+          ],
+          "B translate+E5": [
+            "B07X5X3C57",
+            "B07X97R1FK",
+            "B082D9WCCF"
+          ],
+          "A glossary+BM25": [
+            "B082D9WCCF",
+            "B087P9YT2R",
+            "B085T378PK"
+          ],
+          "D hybrid": [
+            "B082D9WCCF",
+            "B087P9YT2R",
+            "B085T378PK"
+          ],
+          "E hybrid, no glossary": [
+            "B082D9WCCF",
+            "B087P9YT2R",
+            "B085T378PK"
+          ],
+          "F hybrid + dual query": [
+            "B082D9WCCF",
+            "B087P9YT2R",
+            "B085T378PK"
+          ]
+        },
+        "first_relevant_rank": {
+          "C direct Shona+E5": 1,
+          "B translate+E5": 1,
+          "A glossary+BM25": 1,
+          "D hybrid": 1,
+          "E hybrid, no glossary": 1,
+          "F hybrid + dual query": 1
+        }
+      },
+      {
+        "queryId": "e76622",
+        "query": "outdoor lights patio",
+        "type": "3word",
+        "english": "outdoor lights patio",
+        "glossary": [],
+        "top3": {
+          "C direct Shona+E5": [
+            "B082R2QCQR",
+            "B00RQHBZVS",
+            "B00V2UKF98"
+          ],
+          "B translate+E5": [
+            "B082R2QCQR",
+            "B00RQHBZVS",
+            "B00V2UKF98"
+          ],
+          "A glossary+BM25": [
+            "B07R9W67JP",
+            "B07X7K9XT2",
+            "B00V2UKF98"
+          ],
+          "D hybrid": [
+            "B082R2QCQR",
+            "B00V2UKF98",
+            "B07R9W67JP"
+          ],
+          "E hybrid, no glossary": [
+            "B082R2QCQR",
+            "B00V2UKF98",
+            "B07R9W67JP"
+          ],
+          "F hybrid + dual query": [
+            "B082R2QCQR",
+            "B00V2UKF98",
+            "B07R9W67JP"
+          ]
+        },
+        "first_relevant_rank": {
+          "C direct Shona+E5": 1,
+          "B translate+E5": 1,
+          "A glossary+BM25": 1,
+          "D hybrid": 1,
+          "E hybrid, no glossary": 1,
+          "F hybrid + dual query": 1
+        }
+      },
+      {
+        "queryId": "e78486",
+        "query": "pebble watch",
+        "type": "2word",
+        "english": "pebble watch",
+        "glossary": [],
+        "top3": {
+          "C direct Shona+E5": [
+            "B015N8XRHG",
+            "B00KVHEL8E",
+            "B011VB21DU"
+          ],
+          "B translate+E5": [
+            "B015N8XRHG",
+            "B00KVHEL8E",
+            "B011VB21DU"
+          ],
+          "A glossary+BM25": [
+            "B01DZW6J7M",
+            "B06Y24KL32",
+            "B015N8XRHG"
+          ],
+          "D hybrid": [
+            "B01DZW6J7M",
+            "B015N8XRHG",
+            "B06Y24KL32"
+          ],
+          "E hybrid, no glossary": [
+            "B01DZW6J7M",
+            "B015N8XRHG",
+            "B06Y24KL32"
+          ],
+          "F hybrid + dual query": [
+            "B01DZW6J7M",
+            "B015N8XRHG",
+            "B06Y24KL32"
+          ]
+        },
+        "first_relevant_rank": {
+          "C direct Shona+E5": 1,
+          "B translate+E5": 1,
+          "A glossary+BM25": 2,
+          "D hybrid": 2,
+          "E hybrid, no glossary": 2,
+          "F hybrid + dual query": 2
+        }
+      },
+      {
+        "queryId": "e78729",
+        "query": "pencil pouch canvas",
+        "type": "3word",
+        "english": "pencil pouch canvas",
+        "glossary": [],
+        "top3": {
+          "C direct Shona+E5": [
+            "B071VZTWF4",
+            "B07QDMK2V7",
+            "B071ZRSMN3"
+          ],
+          "B translate+E5": [
+            "B071VZTWF4",
+            "B07QDMK2V7",
+            "B071ZRSMN3"
+          ],
+          "A glossary+BM25": [
+            "B07YHTPS4V",
+            "B071VZTWF4",
+            "B071ZRSMN3"
+          ],
+          "D hybrid": [
+            "B071VZTWF4",
+            "B07YHTPS4V",
+            "B071ZRSMN3"
+          ],
+          "E hybrid, no glossary": [
+            "B071VZTWF4",
+            "B07YHTPS4V",
+            "B071ZRSMN3"
+          ],
+          "F hybrid + dual query": [
+            "B071VZTWF4",
+            "B07YHTPS4V",
+            "B071ZRSMN3"
+          ]
+        },
+        "first_relevant_rank": {
+          "C direct Shona+E5": 1,
+          "B translate+E5": 1,
+          "A glossary+BM25": 1,
+          "D hybrid": 1,
+          "E hybrid, no glossary": 1,
+          "F hybrid + dual query": 1
+        }
+      },
+      {
+        "queryId": "e80662",
+        "query": "pizza beach towel",
+        "type": "3word",
+        "english": "pizza beach towel",
+        "glossary": [],
+        "top3": {
+          "C direct Shona+E5": [
+            "B07QDX351F",
+            "B08C53R3BK",
+            "B088T1RRMQ"
+          ],
+          "B translate+E5": [
+            "B07QDX351F",
+            "B08C53R3BK",
+            "B088T1RRMQ"
+          ],
+          "A glossary+BM25": [
+            "B07X6TVFC1",
+            "B08C53R3BK",
+            "B082KLCP8P"
+          ],
+          "D hybrid": [
+            "B08C53R3BK",
+            "B07QDX351F",
+            "B088T1RRMQ"
+          ],
+          "E hybrid, no glossary": [
+            "B08C53R3BK",
+            "B07QDX351F",
+            "B088T1RRMQ"
+          ],
+          "F hybrid + dual query": [
+            "B08C53R3BK",
+            "B07QDX351F",
+            "B088T1RRMQ"
+          ]
+        },
+        "first_relevant_rank": {
+          "C direct Shona+E5": 1,
+          "B translate+E5": 1,
+          "A glossary+BM25": 1,
+          "D hybrid": 1,
+          "E hybrid, no glossary": 1,
+          "F hybrid + dual query": 1
+        }
+      },
+      {
+        "queryId": "e81018",
+        "query": "plastic coffee cups",
+        "type": "3word",
+        "english": "plastic coffee cups",
+        "glossary": [],
+        "top3": {
+          "C direct Shona+E5": [
+            "B07NC2HQNT",
+            "B01H7OGY4M",
+            "B01H45DKSW"
+          ],
+          "B translate+E5": [
+            "B07NC2HQNT",
+            "B01H7OGY4M",
+            "B01H45DKSW"
+          ],
+          "A glossary+BM25": [
+            "B07NC2HQNT",
+            "B071Z9NXRQ",
+            "B071Z9P1B3"
+          ],
+          "D hybrid": [
+            "B07NC2HQNT",
+            "B071Z9NXRQ",
+            "B071Z9P1B3"
+          ],
+          "E hybrid, no glossary": [
+            "B07NC2HQNT",
+            "B071Z9NXRQ",
+            "B071Z9P1B3"
+          ],
+          "F hybrid + dual query": [
+            "B07NC2HQNT",
+            "B071Z9NXRQ",
+            "B071Z9P1B3"
+          ]
+        },
+        "first_relevant_rank": {
+          "C direct Shona+E5": 1,
+          "B translate+E5": 1,
+          "A glossary+BM25": 1,
+          "D hybrid": 1,
+          "E hybrid, no glossary": 1,
+          "F hybrid + dual query": 1
+        }
+      },
+      {
+        "queryId": "e82151",
+        "query": "pool light gasket",
+        "type": "3word",
+        "english": "pool light gasket",
+        "glossary": [],
+        "top3": {
+          "C direct Shona+E5": [
+            "B088RBNDJ4",
+            "B07MJ5GY7S",
+            "B004VTGYRE"
+          ],
+          "B translate+E5": [
+            "B088RBNDJ4",
+            "B07MJ5GY7S",
+            "B004VTGYRE"
+          ],
+          "A glossary+BM25": [
+            "B07MJ5GY7S",
+            "B088RBNDJ4",
+            "B0031Q2XUA"
+          ],
+          "D hybrid": [
+            "B088RBNDJ4",
+            "B07MJ5GY7S",
+            "B07GBNC38V"
+          ],
+          "E hybrid, no glossary": [
+            "B088RBNDJ4",
+            "B07MJ5GY7S",
+            "B07GBNC38V"
+          ],
+          "F hybrid + dual query": [
+            "B088RBNDJ4",
+            "B07MJ5GY7S",
+            "B07GBNC38V"
+          ]
+        },
+        "first_relevant_rank": {
+          "C direct Shona+E5": 1,
+          "B translate+E5": 1,
+          "A glossary+BM25": 1,
+          "D hybrid": 1,
+          "E hybrid, no glossary": 1,
+          "F hybrid + dual query": 1
+        }
+      },
+      {
+        "queryId": "e82717",
+        "query": "pot markers",
+        "type": "2word",
+        "english": "pot markers",
+        "glossary": [],
+        "top3": {
+          "C direct Shona+E5": [
+            "B07Y64QQND",
+            "B07GTZV4NC",
+            "B07DC16C4M"
+          ],
+          "B translate+E5": [
+            "B07Y64QQND",
+            "B07GTZV4NC",
+            "B07DC16C4M"
+          ],
+          "A glossary+BM25": [
+            "B07DC16C4M",
+            "B07GTZV4NC",
+            "B07Q48CP4Q"
+          ],
+          "D hybrid": [
+            "B07DC16C4M",
+            "B07GTZV4NC",
+            "B07Q48CP4Q"
+          ],
+          "E hybrid, no glossary": [
+            "B07DC16C4M",
+            "B07GTZV4NC",
+            "B07Q48CP4Q"
+          ],
+          "F hybrid + dual query": [
+            "B07DC16C4M",
+            "B07GTZV4NC",
+            "B07Q48CP4Q"
+          ]
+        },
+        "first_relevant_rank": {
+          "C direct Shona+E5": 1,
+          "B translate+E5": 1,
+          "A glossary+BM25": 1,
+          "D hybrid": 1,
+          "E hybrid, no glossary": 1,
+          "F hybrid + dual query": 1
+        }
+      },
+      {
+        "queryId": "e82910",
+        "query": "power tool bench",
+        "type": "3word",
+        "english": "power tool bench",
+        "glossary": [],
+        "top3": {
+          "C direct Shona+E5": [
+            "B01381O7NS",
+            "B07T3L1T8S",
+            "B07ZCNT2NQ"
+          ],
+          "B translate+E5": [
+            "B01381O7NS",
+            "B07T3L1T8S",
+            "B07ZCNT2NQ"
+          ],
+          "A glossary+BM25": [
+            "B07ZCNT2NQ",
+            "B01381O7NS",
+            "B07T3L1T8S"
+          ],
+          "D hybrid": [
+            "B07ZCNT2NQ",
+            "B01381O7NS",
+            "B07T3L1T8S"
+          ],
+          "E hybrid, no glossary": [
+            "B07ZCNT2NQ",
+            "B01381O7NS",
+            "B07T3L1T8S"
+          ],
+          "F hybrid + dual query": [
+            "B07ZCNT2NQ",
+            "B01381O7NS",
+            "B07T3L1T8S"
+          ]
+        },
+        "first_relevant_rank": {
+          "C direct Shona+E5": 1,
+          "B translate+E5": 1,
+          "A glossary+BM25": 1,
+          "D hybrid": 1,
+          "E hybrid, no glossary": 1,
+          "F hybrid + dual query": 1
+        }
+      },
+      {
+        "queryId": "e84228",
+        "query": "puma boys shoes",
+        "type": "3word",
+        "english": "puma boys shoes",
+        "glossary": [],
+        "top3": {
+          "C direct Shona+E5": [
+            "B07Q9HZHRP",
+            "B07KS36JQR",
+            "B018Z6W4JA"
+          ],
+          "B translate+E5": [
+            "B07Q9HZHRP",
+            "B07KS36JQR",
+            "B018Z6W4JA"
+          ],
+          "A glossary+BM25": [
+            "B01G3LZACM",
+            "B07KS1RZGD",
+            "B0761GMFLV"
+          ],
+          "D hybrid": [
+            "B07KS1RZGD",
+            "B01G3LZACM",
+            "B0761GMFLV"
+          ],
+          "E hybrid, no glossary": [
+            "B07KS1RZGD",
+            "B01G3LZACM",
+            "B0761GMFLV"
+          ],
+          "F hybrid + dual query": [
+            "B07KS1RZGD",
+            "B01G3LZACM",
+            "B0761GMFLV"
+          ]
+        },
+        "first_relevant_rank": {
+          "C direct Shona+E5": 4,
+          "B translate+E5": 4,
+          "A glossary+BM25": 5,
+          "D hybrid": 5,
+          "E hybrid, no glossary": 5,
+          "F hybrid + dual query": 5
+        }
+      },
+      {
+        "queryId": "e84563",
+        "query": "purple fluffy pillow",
+        "type": "3word",
+        "english": "purple fluffy pillow",
+        "glossary": [],
+        "top3": {
+          "C direct Shona+E5": [
+            "B071L7X8DQ",
+            "B07R8WMY4Y",
+            "B07W662J7F"
+          ],
+          "B translate+E5": [
+            "B071L7X8DQ",
+            "B07R8WMY4Y",
+            "B07W662J7F"
+          ],
+          "A glossary+BM25": [
+            "B071H8FRPN",
+            "B07W662J7F",
+            "B07R8WMY4Y"
+          ],
+          "D hybrid": [
+            "B07W662J7F",
+            "B07R8WMY4Y",
+            "B071H8FRPN"
+          ],
+          "E hybrid, no glossary": [
+            "B07W662J7F",
+            "B07R8WMY4Y",
+            "B071H8FRPN"
+          ],
+          "F hybrid + dual query": [
+            "B07W662J7F",
+            "B07R8WMY4Y",
+            "B071H8FRPN"
+          ]
+        },
+        "first_relevant_rank": {
+          "C direct Shona+E5": 2,
+          "B translate+E5": 2,
+          "A glossary+BM25": 1,
+          "D hybrid": 1,
+          "E hybrid, no glossary": 1,
+          "F hybrid + dual query": 1
+        }
+      },
+      {
+        "queryId": "e84591",
+        "query": "purple pillow covers",
+        "type": "3word",
+        "english": "purple pillow covers",
+        "glossary": [],
+        "top3": {
+          "C direct Shona+E5": [
+            "B071L7X8DQ",
+            "B07H854N24",
+            "B07F6ZY564"
+          ],
+          "B translate+E5": [
+            "B071L7X8DQ",
+            "B07H854N24",
+            "B07F6ZY564"
+          ],
+          "A glossary+BM25": [
+            "B071L7X8DQ",
+            "B07X9Q97RC",
+            "B071H8FRPN"
+          ],
+          "D hybrid": [
+            "B071L7X8DQ",
+            "B07H854N24",
+            "B00YCD7VK8"
+          ],
+          "E hybrid, no glossary": [
+            "B071L7X8DQ",
+            "B07H854N24",
+            "B00YCD7VK8"
+          ],
+          "F hybrid + dual query": [
+            "B071L7X8DQ",
+            "B07H854N24",
+            "B00YCD7VK8"
+          ]
+        },
+        "first_relevant_rank": {
+          "C direct Shona+E5": 2,
+          "B translate+E5": 2,
+          "A glossary+BM25": 4,
+          "D hybrid": 2,
+          "E hybrid, no glossary": 2,
+          "F hybrid + dual query": 2
+        }
+      },
+      {
+        "queryId": "e85204",
+        "query": "rachel kids shoes",
+        "type": "3word",
+        "english": "rachel kids shoes",
+        "glossary": [],
+        "top3": {
+          "C direct Shona+E5": [
+            "B07KX6SH8C",
+            "B07KX8DFGX",
+            "B01MDS41IJ"
+          ],
+          "B translate+E5": [
+            "B07KX6SH8C",
+            "B07KX8DFGX",
+            "B01MDS41IJ"
+          ],
+          "A glossary+BM25": [
+            "B07DGJ7RMZ",
+            "B07KX8DFGX",
+            "B01MDS41IJ"
+          ],
+          "D hybrid": [
+            "B07KX8DFGX",
+            "B07DGJ7RMZ",
+            "B01MDS41IJ"
+          ],
+          "E hybrid, no glossary": [
+            "B07KX8DFGX",
+            "B07DGJ7RMZ",
+            "B01MDS41IJ"
+          ],
+          "F hybrid + dual query": [
+            "B07KX8DFGX",
+            "B07DGJ7RMZ",
+            "B01MDS41IJ"
+          ]
+        },
+        "first_relevant_rank": {
+          "C direct Shona+E5": 1,
+          "B translate+E5": 1,
+          "A glossary+BM25": 1,
+          "D hybrid": 1,
+          "E hybrid, no glossary": 1,
+          "F hybrid + dual query": 1
+        }
+      },
+      {
+        "queryId": "e86635",
+        "query": "reef boys sandals",
+        "type": "3word",
+        "english": "reef boys sandals",
+        "glossary": [],
+        "top3": {
+          "C direct Shona+E5": [
+            "B07CZ7GPGT",
+            "B07CTR652R",
+            "B00R8NS3XI"
+          ],
+          "B translate+E5": [
+            "B07CZ7GPGT",
+            "B07CTR652R",
+            "B00R8NS3XI"
+          ],
+          "A glossary+BM25": [
+            "B07CZ7GPGT",
+            "B07CTR652R",
+            "B07CZH4SBC"
+          ],
+          "D hybrid": [
+            "B07CZ7GPGT",
+            "B07CTR652R",
+            "B00R8NS3XI"
+          ],
+          "E hybrid, no glossary": [
+            "B07CZ7GPGT",
+            "B07CTR652R",
+            "B00R8NS3XI"
+          ],
+          "F hybrid + dual query": [
+            "B07CZ7GPGT",
+            "B07CTR652R",
+            "B00R8NS3XI"
+          ]
+        },
+        "first_relevant_rank": {
+          "C direct Shona+E5": 1,
+          "B translate+E5": 1,
+          "A glossary+BM25": 1,
+          "D hybrid": 1,
+          "E hybrid, no glossary": 1,
+          "F hybrid + dual query": 1
+        }
+      },
+      {
+        "queryId": "e89177",
+        "query": "running shoes",
+        "type": "2word",
+        "english": "running shoes",
+        "glossary": [],
+        "top3": {
+          "C direct Shona+E5": [
+            "B06XKCM38C",
+            "B0716XGHGR",
+            "B072BVVBNG"
+          ],
+          "B translate+E5": [
+            "B06XKCM38C",
+            "B0716XGHGR",
+            "B072BVVBNG"
+          ],
+          "A glossary+BM25": [
+            "B07BL18PFG",
+            "B07NLVK1NP",
+            "B06XKCM38C"
+          ],
+          "D hybrid": [
+            "B06XKCM38C",
+            "B07NLVK1NP",
+            "B07BL18PFG"
+          ],
+          "E hybrid, no glossary": [
+            "B06XKCM38C",
+            "B07NLVK1NP",
+            "B07BL18PFG"
+          ],
+          "F hybrid + dual query": [
+            "B06XKCM38C",
+            "B07NLVK1NP",
+            "B07BL18PFG"
+          ]
+        },
+        "first_relevant_rank": {
+          "C direct Shona+E5": 1,
+          "B translate+E5": 1,
+          "A glossary+BM25": 1,
+          "D hybrid": 1,
+          "E hybrid, no glossary": 1,
+          "F hybrid + dual query": 1
+        }
+      },
+      {
+        "queryId": "e91095",
+        "query": "scout deano bag",
+        "type": "3word",
+        "english": "scout deano bag",
+        "glossary": [],
+        "top3": {
+          "C direct Shona+E5": [
+            "B07MJF12JG",
+            "B0765X3RKC",
+            "B085HBGQXC"
+          ],
+          "B translate+E5": [
+            "B07MJF12JG",
+            "B0765X3RKC",
+            "B085HBGQXC"
+          ],
+          "A glossary+BM25": [
+            "B07MJF12JG",
+            "B0765X3RKC",
+            "B085HBGQXC"
+          ],
+          "D hybrid": [
+            "B07MJF12JG",
+            "B0765X3RKC",
+            "B085HBGQXC"
+          ],
+          "E hybrid, no glossary": [
+            "B07MJF12JG",
+            "B0765X3RKC",
+            "B085HBGQXC"
+          ],
+          "F hybrid + dual query": [
+            "B07MJF12JG",
+            "B0765X3RKC",
+            "B085HBGQXC"
+          ]
+        },
+        "first_relevant_rank": {
+          "C direct Shona+E5": 1,
+          "B translate+E5": 1,
+          "A glossary+BM25": 1,
+          "D hybrid": 1,
+          "E hybrid, no glossary": 1,
+          "F hybrid + dual query": 1
+        }
+      },
+      {
+        "queryId": "e91730",
+        "query": "sensitive led light",
+        "type": "3word",
+        "english": "sensitive led light",
+        "glossary": [],
+        "top3": {
+          "C direct Shona+E5": [
+            "B086YXGS91",
+            "B07KW8NYQ7",
+            "B07Z4ZRNPP"
+          ],
+          "B translate+E5": [
+            "B086YXGS91",
+            "B07KW8NYQ7",
+            "B07Z4ZRNPP"
+          ],
+          "A glossary+BM25": [
+            "B07Z4ZRNPP",
+            "B07XBSN3Y5",
+            "B07XBSP6BJ"
+          ],
+          "D hybrid": [
+            "B07Z4ZRNPP",
+            "B086YXGS91",
+            "B07KW8NYQ7"
+          ],
+          "E hybrid, no glossary": [
+            "B07Z4ZRNPP",
+            "B086YXGS91",
+            "B07KW8NYQ7"
+          ],
+          "F hybrid + dual query": [
+            "B07Z4ZRNPP",
+            "B086YXGS91",
+            "B07KW8NYQ7"
+          ]
+        },
+        "first_relevant_rank": {
+          "C direct Shona+E5": 1,
+          "B translate+E5": 1,
+          "A glossary+BM25": 1,
+          "D hybrid": 1,
+          "E hybrid, no glossary": 1,
+          "F hybrid + dual query": 1
+        }
+      },
+      {
+        "queryId": "e94370",
+        "query": "slide split dress",
+        "type": "3word",
+        "english": "slide split dress",
+        "glossary": [],
+        "top3": {
+          "C direct Shona+E5": [
+            "B0756X7FBV",
+            "B07YDCRL5H",
+            "B0794VMZ19"
+          ],
+          "B translate+E5": [
+            "B0756X7FBV",
+            "B07YDCRL5H",
+            "B0794VMZ19"
+          ],
+          "A glossary+BM25": [
+            "B07YDCRL5H",
+            "B0756X7FBV",
+            "B00X890ZL4"
+          ],
+          "D hybrid": [
+            "B0756X7FBV",
+            "B07YDCRL5H",
+            "B07QYKKHYV"
+          ],
+          "E hybrid, no glossary": [
+            "B0756X7FBV",
+            "B07YDCRL5H",
+            "B07QYKKHYV"
+          ],
+          "F hybrid + dual query": [
+            "B0756X7FBV",
+            "B07YDCRL5H",
+            "B07QYKKHYV"
+          ]
+        },
+        "first_relevant_rank": {
+          "C direct Shona+E5": 1,
+          "B translate+E5": 1,
+          "A glossary+BM25": 1,
+          "D hybrid": 1,
+          "E hybrid, no glossary": 1,
+          "F hybrid + dual query": 1
+        }
+      },
+      {
+        "queryId": "e96370",
+        "query": "southside serpents jacket",
+        "type": "3word",
+        "english": "southside serpents jacket",
+        "glossary": [],
+        "top3": {
+          "C direct Shona+E5": [
+            "B07HPBBMFN",
+            "B07XP4FNH6",
+            "B07ZQB9FW3"
+          ],
+          "B translate+E5": [
+            "B07HPBBMFN",
+            "B07XP4FNH6",
+            "B07ZQB9FW3"
+          ],
+          "A glossary+BM25": [
+            "B07YSBNS8R",
+            "B07XP4FNH6",
+            "B081QDJK74"
+          ],
+          "D hybrid": [
+            "B07YSBNS8R",
+            "B07XP4FNH6",
+            "B081QDJK74"
+          ],
+          "E hybrid, no glossary": [
+            "B07YSBNS8R",
+            "B07XP4FNH6",
+            "B081QDJK74"
+          ],
+          "F hybrid + dual query": [
+            "B07YSBNS8R",
+            "B07XP4FNH6",
+            "B081QDJK74"
+          ]
+        },
+        "first_relevant_rank": {
+          "C direct Shona+E5": 2,
+          "B translate+E5": 2,
+          "A glossary+BM25": 1,
+          "D hybrid": 1,
+          "E hybrid, no glossary": 1,
+          "F hybrid + dual query": 1
+        }
+      },
+      {
+        "queryId": "e98971",
+        "query": "sugar dispensers",
+        "type": "2word",
+        "english": "sugar dispensers",
+        "glossary": [],
+        "top3": {
+          "C direct Shona+E5": [
+            "B001A5ZRRU",
+            "B01MQIRMFP",
+            "B07Q7XQ87C"
+          ],
+          "B translate+E5": [
+            "B001A5ZRRU",
+            "B01MQIRMFP",
+            "B07Q7XQ87C"
+          ],
+          "A glossary+BM25": [
+            "B0041HVBDS",
+            "B01LW258TP",
+            "B008DI1AQ4"
+          ],
+          "D hybrid": [
+            "B001A5ZRRU",
+            "B0041HVBDS",
+            "B07Q7XQ87C"
+          ],
+          "E hybrid, no glossary": [
+            "B001A5ZRRU",
+            "B0041HVBDS",
+            "B07Q7XQ87C"
+          ],
+          "F hybrid + dual query": [
+            "B001A5ZRRU",
+            "B0041HVBDS",
+            "B07Q7XQ87C"
+          ]
+        },
+        "first_relevant_rank": {
+          "C direct Shona+E5": 1,
+          "B translate+E5": 1,
+          "A glossary+BM25": 1,
+          "D hybrid": 1,
+          "E hybrid, no glossary": 1,
+          "F hybrid + dual query": 1
+        }
+      },
+      {
+        "queryId": "e100404",
+        "query": "tahoe speaker",
+        "type": "2word",
+        "english": "tahoe speaker",
+        "glossary": [],
+        "top3": {
+          "C direct Shona+E5": [
+            "B0161I43TS",
+            "B0161I46KY",
+            "B000S2QM5W"
+          ],
+          "B translate+E5": [
+            "B0161I43TS",
+            "B0161I46KY",
+            "B000S2QM5W"
+          ],
+          "A glossary+BM25": [
+            "B0161I43TS",
+            "B0161I46KY",
+            "B000S2QM5W"
+          ],
+          "D hybrid": [
+            "B0161I43TS",
+            "B0161I46KY",
+            "B000S2QM5W"
+          ],
+          "E hybrid, no glossary": [
+            "B0161I43TS",
+            "B0161I46KY",
+            "B000S2QM5W"
+          ],
+          "F hybrid + dual query": [
+            "B0161I43TS",
+            "B0161I46KY",
+            "B000S2QM5W"
+          ]
+        },
+        "first_relevant_rank": {
+          "C direct Shona+E5": 1,
+          "B translate+E5": 1,
+          "A glossary+BM25": 1,
+          "D hybrid": 1,
+          "E hybrid, no glossary": 1,
+          "F hybrid + dual query": 1
+        }
+      },
+      {
+        "queryId": "e101020",
+        "query": "tea tree shampoo",
+        "type": "3word",
+        "english": "tea tree shampoo",
+        "glossary": [],
+        "top3": {
+          "C direct Shona+E5": [
+            "B01MYGUSUD",
+            "B000MD65FO",
+            "B089VYQ2JZ"
+          ],
+          "B translate+E5": [
+            "B01MYGUSUD",
+            "B000MD65FO",
+            "B089VYQ2JZ"
+          ],
+          "A glossary+BM25": [
+            "B0041TBSS4",
+            "B082BC4R3W",
+            "B004OTH20Y"
+          ],
+          "D hybrid": [
+            "B01MYGUSUD",
+            "B0041TBSS4",
+            "B089VYQ2JZ"
+          ],
+          "E hybrid, no glossary": [
+            "B01MYGUSUD",
+            "B0041TBSS4",
+            "B089VYQ2JZ"
+          ],
+          "F hybrid + dual query": [
+            "B01MYGUSUD",
+            "B0041TBSS4",
+            "B089VYQ2JZ"
+          ]
+        },
+        "first_relevant_rank": {
+          "C direct Shona+E5": 1,
+          "B translate+E5": 1,
+          "A glossary+BM25": 1,
+          "D hybrid": 1,
+          "E hybrid, no glossary": 1,
+          "F hybrid + dual query": 1
+        }
+      },
+      {
+        "queryId": "e102899",
+        "query": "throat plate",
+        "type": "2word",
+        "english": "throat plate",
+        "glossary": [],
+        "top3": {
+          "C direct Shona+E5": [
+            "B00U9PFX4E",
+            "B01ITIIJFW",
+            "B00QMKJUGW"
+          ],
+          "B translate+E5": [
+            "B00U9PFX4E",
+            "B01ITIIJFW",
+            "B00QMKJUGW"
+          ],
+          "A glossary+BM25": [
+            "B01ITIIJFW",
+            "B00U9PFX4E",
+            "B085SWNW5W"
+          ],
+          "D hybrid": [
+            "B00U9PFX4E",
+            "B01ITIIJFW",
+            "B00QMKJUGW"
+          ],
+          "E hybrid, no glossary": [
+            "B00U9PFX4E",
+            "B01ITIIJFW",
+            "B00QMKJUGW"
+          ],
+          "F hybrid + dual query": [
+            "B00U9PFX4E",
+            "B01ITIIJFW",
+            "B00QMKJUGW"
+          ]
+        },
+        "first_relevant_rank": {
+          "C direct Shona+E5": 1,
+          "B translate+E5": 1,
+          "A glossary+BM25": 1,
+          "D hybrid": 1,
+          "E hybrid, no glossary": 1,
+          "F hybrid + dual query": 1
+        }
+      },
+      {
+        "queryId": "e104448",
+        "query": "towel creations",
+        "type": "2word",
+        "english": "towel creations",
+        "glossary": [],
+        "top3": {
+          "C direct Shona+E5": [
+            "B001M96NRW",
+            "B000PL6P4E",
+            "B002FIRS8W"
+          ],
+          "B translate+E5": [
+            "B001M96NRW",
+            "B000PL6P4E",
+            "B002FIRS8W"
+          ],
+          "A glossary+BM25": [
+            "B000PL6P4E",
+            "B001M96NRW",
+            "B07RQVF8SC"
+          ],
+          "D hybrid": [
+            "B001M96NRW",
+            "B000PL6P4E",
+            "B002FIRS8W"
+          ],
+          "E hybrid, no glossary": [
+            "B001M96NRW",
+            "B000PL6P4E",
+            "B002FIRS8W"
+          ],
+          "F hybrid + dual query": [
+            "B001M96NRW",
+            "B000PL6P4E",
+            "B002FIRS8W"
+          ]
+        },
+        "first_relevant_rank": {
+          "C direct Shona+E5": 1,
+          "B translate+E5": 1,
+          "A glossary+BM25": 1,
+          "D hybrid": 1,
+          "E hybrid, no glossary": 1,
+          "F hybrid + dual query": 1
+        }
+      },
+      {
+        "queryId": "e106785",
+        "query": "unicorn baby bouncer",
+        "type": "3word",
+        "english": "unicorn baby bouncer",
+        "glossary": [],
+        "top3": {
+          "C direct Shona+E5": [
+            "B07ZYT977Q",
+            "B079T3XQLY",
+            "B07VLSR4FH"
+          ],
+          "B translate+E5": [
+            "B07ZYT977Q",
+            "B079T3XQLY",
+            "B07VLSR4FH"
+          ],
+          "A glossary+BM25": [
+            "B07ZYT977Q",
+            "B07C73NPG1",
+            "B079T3XQLY"
+          ],
+          "D hybrid": [
+            "B07ZYT977Q",
+            "B07C73NPG1",
+            "B079T3XQLY"
+          ],
+          "E hybrid, no glossary": [
+            "B07ZYT977Q",
+            "B07C73NPG1",
+            "B079T3XQLY"
+          ],
+          "F hybrid + dual query": [
+            "B07ZYT977Q",
+            "B07C73NPG1",
+            "B079T3XQLY"
+          ]
+        },
+        "first_relevant_rank": {
+          "C direct Shona+E5": 1,
+          "B translate+E5": 1,
+          "A glossary+BM25": 1,
+          "D hybrid": 1,
+          "E hybrid, no glossary": 1,
+          "F hybrid + dual query": 1
+        }
+      },
+      {
+        "queryId": "e106986",
+        "query": "unlocked samsung phones",
+        "type": "3word",
+        "english": "unlocked samsung phones",
+        "glossary": [],
+        "top3": {
+          "C direct Shona+E5": [
+            "B086FKHTLZ",
+            "B076M9RQJ2",
+            "B078WJSWWN"
+          ],
+          "B translate+E5": [
+            "B086FKHTLZ",
+            "B076M9RQJ2",
+            "B078WJSWWN"
+          ],
+          "A glossary+BM25": [
+            "B086FKHTLZ",
+            "B076M9RQJ2",
+            "B07Q84DPZH"
+          ],
+          "D hybrid": [
+            "B086FKHTLZ",
+            "B076M9RQJ2",
+            "B078WJSWWN"
+          ],
+          "E hybrid, no glossary": [
+            "B086FKHTLZ",
+            "B076M9RQJ2",
+            "B078WJSWWN"
+          ],
+          "F hybrid + dual query": [
+            "B086FKHTLZ",
+            "B076M9RQJ2",
+            "B078WJSWWN"
+          ]
+        },
+        "first_relevant_rank": {
+          "C direct Shona+E5": 1,
+          "B translate+E5": 1,
+          "A glossary+BM25": 1,
+          "D hybrid": 1,
+          "E hybrid, no glossary": 1,
+          "F hybrid + dual query": 1
+        }
+      },
+      {
+        "queryId": "e107912",
+        "query": "vape pen battery",
+        "type": "3word",
+        "english": "battery of the pen",
+        "glossary": [],
+        "top3": {
+          "C direct Shona+E5": [
+            "B01AEMYFCW",
+            "B086DFYLC6",
+            "B086BTKH1J"
+          ],
+          "B translate+E5": [
+            "B01AEMYFCW",
+            "B07ZCM128V",
+            "B086BTKH1J"
+          ],
+          "A glossary+BM25": [
+            "B086DFYLC6",
+            "B086BTKH1J",
+            "B0716XTB5P"
+          ],
+          "D hybrid": [
+            "B01AEMYFCW",
+            "B086BTKH1J",
+            "B086DFYLC6"
+          ],
+          "E hybrid, no glossary": [
+            "B01AEMYFCW",
+            "B086BTKH1J",
+            "B086DFYLC6"
+          ],
+          "F hybrid + dual query": [
+            "B086BTKH1J",
+            "B01AEMYFCW",
+            "B086DFYLC6"
+          ]
+        },
+        "first_relevant_rank": {
+          "C direct Shona+E5": 2,
+          "B translate+E5": 5,
+          "A glossary+BM25": 1,
+          "D hybrid": 3,
+          "E hybrid, no glossary": 3,
+          "F hybrid + dual query": 3
+        }
+      },
+      {
+        "queryId": "e111078",
+        "query": "white dog shirt",
+        "type": "3word",
+        "english": "white dog shirt",
+        "glossary": [],
+        "top3": {
+          "C direct Shona+E5": [
+            "B07LDRJ555",
+            "B07G79RZ4Z",
+            "B01LZSCCTP"
+          ],
+          "B translate+E5": [
+            "B07LDRJ555",
+            "B07G79RZ4Z",
+            "B01LZSCCTP"
+          ],
+          "A glossary+BM25": [
+            "B07LDRJ555",
+            "B085ZJL52Z",
+            "B08B1L39JX"
+          ],
+          "D hybrid": [
+            "B07LDRJ555",
+            "B085ZJL52Z",
+            "B07G79RZ4Z"
+          ],
+          "E hybrid, no glossary": [
+            "B07LDRJ555",
+            "B085ZJL52Z",
+            "B07G79RZ4Z"
+          ],
+          "F hybrid + dual query": [
+            "B07LDRJ555",
+            "B085ZJL52Z",
+            "B07G79RZ4Z"
+          ]
+        },
+        "first_relevant_rank": {
+          "C direct Shona+E5": 1,
+          "B translate+E5": 1,
+          "A glossary+BM25": 1,
+          "D hybrid": 1,
+          "E hybrid, no glossary": 1,
+          "F hybrid + dual query": 1
+        }
+      },
+      {
+        "queryId": "e111289",
+        "query": "white sheer curtains",
+        "type": "3word",
+        "english": "white sheer curtains",
+        "glossary": [],
+        "top3": {
+          "C direct Shona+E5": [
+            "B07TWCJKFZ",
+            "B078VKPCQF",
+            "B088WG3GTC"
+          ],
+          "B translate+E5": [
+            "B07TWCJKFZ",
+            "B078VKPCQF",
+            "B088WG3GTC"
+          ],
+          "A glossary+BM25": [
+            "B0861XXXM7",
+            "B07SYYP5M5",
+            "B01M8IX2X6"
+          ],
+          "D hybrid": [
+            "B0861XXXM7",
+            "B07TWCJKFZ",
+            "B078VKPCQF"
+          ],
+          "E hybrid, no glossary": [
+            "B0861XXXM7",
+            "B07TWCJKFZ",
+            "B078VKPCQF"
+          ],
+          "F hybrid + dual query": [
+            "B0861XXXM7",
+            "B07TWCJKFZ",
+            "B078VKPCQF"
+          ]
+        },
+        "first_relevant_rank": {
+          "C direct Shona+E5": 1,
+          "B translate+E5": 1,
+          "A glossary+BM25": 1,
+          "D hybrid": 1,
+          "E hybrid, no glossary": 1,
+          "F hybrid + dual query": 1
+        }
+      },
+      {
+        "queryId": "e111338",
+        "query": "white suction cups",
+        "type": "3word",
+        "english": "white suction cups",
+        "glossary": [],
+        "top3": {
+          "C direct Shona+E5": [
+            "B073S5TX8W",
+            "B07ZKN6N8W",
+            "B092S379C2"
+          ],
+          "B translate+E5": [
+            "B073S5TX8W",
+            "B07ZKN6N8W",
+            "B092S379C2"
+          ],
+          "A glossary+BM25": [
+            "B08VDDXNP7",
+            "B0872D7QV2",
+            "B07MTTN169"
+          ],
+          "D hybrid": [
+            "B07ZKN6N8W",
+            "B073S5TX8W",
+            "B07MTTN169"
+          ],
+          "E hybrid, no glossary": [
+            "B07ZKN6N8W",
+            "B073S5TX8W",
+            "B07MTTN169"
+          ],
+          "F hybrid + dual query": [
+            "B07ZKN6N8W",
+            "B073S5TX8W",
+            "B07MTTN169"
+          ]
+        },
+        "first_relevant_rank": {
+          "C direct Shona+E5": 2,
+          "B translate+E5": 2,
+          "A glossary+BM25": 1,
+          "D hybrid": 1,
+          "E hybrid, no glossary": 1,
+          "F hybrid + dual query": 1
+        }
+      },
+      {
+        "queryId": "e112431",
+        "query": "womans fluffy pants",
+        "type": "3word",
+        "english": "women's fluffy pants",
+        "glossary": [],
+        "top3": {
+          "C direct Shona+E5": [
+            "B078RP871P",
+            "B078RLQJ3R",
+            "B07VZXXLC3"
+          ],
+          "B translate+E5": [
+            "B078RP871P",
+            "B078RLQJ3R",
+            "B07VZXXLC3"
+          ],
+          "A glossary+BM25": [
+            "B07VZXXLC3",
+            "B078RP871P",
+            "B078RLQJ3R"
+          ],
+          "D hybrid": [
+            "B07VZXXLC3",
+            "B078RP871P",
+            "B078RLQJ3R"
+          ],
+          "E hybrid, no glossary": [
+            "B07VZXXLC3",
+            "B078RP871P",
+            "B078RLQJ3R"
+          ],
+          "F hybrid + dual query": [
+            "B07VZXXLC3",
+            "B078RP871P",
+            "B078RLQJ3R"
+          ]
+        },
+        "first_relevant_rank": {
+          "C direct Shona+E5": 3,
+          "B translate+E5": 3,
+          "A glossary+BM25": 1,
+          "D hybrid": 1,
+          "E hybrid, no glossary": 1,
+          "F hybrid + dual query": 1
+        }
+      },
+      {
+        "queryId": "e113576",
+        "query": "wood stove",
+        "type": "2word",
+        "english": "wood stove",
+        "glossary": [],
+        "top3": {
+          "C direct Shona+E5": [
+            "B08242JZBJ",
+            "B00LLH515A",
+            "B0155324VO"
+          ],
+          "B translate+E5": [
+            "B08242JZBJ",
+            "B00LLH515A",
+            "B0155324VO"
+          ],
+          "A glossary+BM25": [
+            "B07VQNGKLK",
+            "B07F1C55LZ",
+            "B0155324VO"
+          ],
+          "D hybrid": [
+            "B07F1C55LZ",
+            "B08242JZBJ",
+            "B0155324VO"
+          ],
+          "E hybrid, no glossary": [
+            "B07F1C55LZ",
+            "B08242JZBJ",
+            "B0155324VO"
+          ],
+          "F hybrid + dual query": [
+            "B07F1C55LZ",
+            "B08242JZBJ",
+            "B0155324VO"
+          ]
+        },
+        "first_relevant_rank": {
+          "C direct Shona+E5": 1,
+          "B translate+E5": 1,
+          "A glossary+BM25": 3,
+          "D hybrid": 2,
+          "E hybrid, no glossary": 2,
+          "F hybrid + dual query": 2
+        }
+      },
+      {
+        "queryId": "e113577",
+        "query": "wood stove accessories",
+        "type": "3word",
+        "english": "wood stove accessories",
+        "glossary": [],
+        "top3": {
+          "C direct Shona+E5": [
+            "B0155324VO",
+            "B07JYT8LJL",
+            "B0779BJMQ3"
+          ],
+          "B translate+E5": [
+            "B0155324VO",
+            "B07JYT8LJL",
+            "B0779BJMQ3"
+          ],
+          "A glossary+BM25": [
+            "B07VQNGKLK",
+            "B07F1C55LZ",
+            "B0155324VO"
+          ],
+          "D hybrid": [
+            "B0155324VO",
+            "B07F1C55LZ",
+            "B07VQNGKLK"
+          ],
+          "E hybrid, no glossary": [
+            "B0155324VO",
+            "B07F1C55LZ",
+            "B07VQNGKLK"
+          ],
+          "F hybrid + dual query": [
+            "B0155324VO",
+            "B07F1C55LZ",
+            "B07VQNGKLK"
+          ]
+        },
+        "first_relevant_rank": {
+          "C direct Shona+E5": 3,
+          "B translate+E5": 3,
+          "A glossary+BM25": 1,
+          "D hybrid": 2,
+          "E hybrid, no glossary": 2,
+          "F hybrid + dual query": 2
+        }
+      },
+      {
+        "queryId": "e115024",
+        "query": "yoga blanket",
+        "type": "2word",
+        "english": "yoga blanket",
+        "glossary": [],
+        "top3": {
+          "C direct Shona+E5": [
+            "B07QNYGVM9",
+            "B0019O6NAM",
+            "B07JQCH32W"
+          ],
+          "B translate+E5": [
+            "B07QNYGVM9",
+            "B0019O6NAM",
+            "B07JQCH32W"
+          ],
+          "A glossary+BM25": [
+            "B07QNYGVM9",
+            "B01MRKGRCV",
+            "B07NMSL1LT"
+          ],
+          "D hybrid": [
+            "B07QNYGVM9",
+            "B01MRKGRCV",
+            "B07JQCH32W"
+          ],
+          "E hybrid, no glossary": [
+            "B07QNYGVM9",
+            "B01MRKGRCV",
+            "B07JQCH32W"
+          ],
+          "F hybrid + dual query": [
+            "B07QNYGVM9",
+            "B01MRKGRCV",
+            "B07JQCH32W"
+          ]
+        },
+        "first_relevant_rank": {
+          "C direct Shona+E5": 1,
+          "B translate+E5": 1,
+          "A glossary+BM25": 1,
+          "D hybrid": 1,
+          "E hybrid, no glossary": 1,
+          "F hybrid + dual query": 1
+        }
+      }
+    ],
+    "weights": {
+      "vector": 0.6,
+      "lexical": 0.4
+    },
+    "query_translate_seconds": 85.9
+  }
+}
