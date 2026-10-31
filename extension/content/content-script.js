@@ -1,7 +1,9 @@
 console.log("LinguaCart content script is running");
 
 // ---------- Settings ----------
-const SKIP_TAGS = new Set(["SCRIPT", "STYLE", "NOSCRIPT", "TEXTAREA", "INPUT", "CODE", "SELECT", "OPTION"]);
+const SKIP_TAGS = new Set([
+  "SCRIPT", "STYLE", "NOSCRIPT", "TEXTAREA", "INPUT", "CODE", "SELECT", "OPTION",
+]);
 
 // Allowed pages: search results and product pages only. Everything else
 // (cart, checkout, sign-in, account, addresses, payments) is off limits.
@@ -10,10 +12,12 @@ function isAllowedPage() {
   return p === "/s" || p.includes("/dp/") || p.startsWith("/gp/product/");
 }
 
-// Parts of the page that can contain personal data (ids are from memory:
-// verify with Inspect, using a TEST account, never your real one)
+// Parts of the page that can contain personal data.
+// Unconfirmed ids, from memory: verify with Inspect on a TEST account, never a real one.
 const PRIVATE_SELECTORS =
-  "#nav-link-accountList, #glow-ingress-block, #nav-global-location-slot";// currencies, numbers, and number+unit patterns (first draft, we will refine it)
+  "#nav-link-accountList, #glow-ingress-block, #nav-global-location-slot";
+
+// currencies, numbers, and number+unit patterns (first draft, we will refine it)
 const PROTECTED_RE =
   /(?:INR|USD|ZiG|ZWL|₹|\$)\s?\d[\d,]*(?:\.\d+)?|\d[\d,]*(?:\.\d+)?\s?(?:oz|lb|kg|g|ml|l|cm|mm|in|hrs?|hours?)?\b/gi;
 
@@ -28,9 +32,8 @@ function firstText(selectors) {
 }
 
 // Only the product's own price area, never "any price on the page".
-// Container ids are from memory: confirm them with the diagnostic below.
 const PRICE_SELECTORS = [
-  // confirmed on the Acer page: the price inside the buy box
+  // confirmed on a product page: the price inside the buy box
   "#buybox #corePrice_feature_div .a-price:not(.a-text-price) .a-offscreen",
   "#corePrice_feature_div .a-price:not(.a-text-price) .a-offscreen",
   // unconfirmed fallback, from memory
@@ -119,13 +122,24 @@ function blockOf(el) {
   return document.body;
 }
 
+// True when the nodes sit in different links/buttons (or some in one and some outside)
+function hasMixedInteractive(nodes) {
+  const owners = new Set(
+    nodes.map((n) => n.parentElement.closest("a, button, [role='button']"))
+  );
+  return owners.size > 1;
+}
+
 function collectSegments(root = document.body) {
   const walker = document.createTreeWalker(root, NodeFilter.SHOW_TEXT, {
     acceptNode(node) {
       const parent = node.parentElement;
       if (!parent || SKIP_TAGS.has(parent.tagName)) return NodeFilter.FILTER_REJECT;
-      if (parent.closest(".a-price, .a-offscreen, [translate='no']")) return NodeFilter.FILTER_REJECT;
-      if (parent.closest(PRIVATE_SELECTORS)) return NodeFilter.FILTER_REJECT;      const text = node.textContent.replace(/\s+/g, " ").trim();
+      if (parent.closest(".a-price, .a-offscreen, [translate='no']")) {
+        return NodeFilter.FILTER_REJECT;
+      }
+      if (parent.closest(PRIVATE_SELECTORS)) return NodeFilter.FILTER_REJECT;
+      const text = node.textContent.replace(/\s+/g, " ").trim();
       if (!text) return NodeFilter.FILTER_REJECT;
       if (!isVisible(parent)) return NodeFilter.FILTER_REJECT;
       return NodeFilter.FILTER_ACCEPT;
@@ -166,6 +180,7 @@ function collectSegments(root = document.body) {
         role: roleOf(block),
         protected: text.match(PROTECTED_RE) || [],
         inViewport: inViewport(block.getBoundingClientRect()),
+        mixedLinks: hasMixedInteractive(nodes),
         nodes, // kept so the renderer can replace the text later
       });
     }
@@ -269,22 +284,37 @@ function kindFor(seg) {
   return seg.role === "product" ? "title" : "other";
 }
 
-const swaps = new Map(); // text node -> { original, shona }
+// One record per translated segment:
+//   { nodes, originals: [English text per node], shown: [Shona text per node] }
+// The whole translation goes into the first node; the other nodes are emptied.
+const segmentsDone = new Set();
+const nodeRecord = new WeakMap(); // text node -> its segment record
 const reportMeta = new WeakMap(); // text node -> source/shown text and provenance
 let anyLowConfidence = false; // a WeakMap can't be looped over, so track this separately
 const cache = new Map(); // English text -> translation result, this page visit only
-const skipped = new Set();
+const skipped = new Set(); // English texts the backend refused (not retried this visit)
 const translatedKinds = new Set();
 let toolbarRoot = null;
+let notify = () => {}; // replaced by createToolbar
 
 let view = "en"; // "en" or "sn"
 let busy = false;
 let started = false;
+let lastErrorNoticeAt = 0;
 
+function forget(record) {
+  segmentsDone.delete(record);
+  for (const node of record.nodes) {
+    nodeRecord.delete(node);
+    reportMeta.delete(node);
+  }
+}
 
-function pruneSwaps() {
-  // Amazon replaces parts of the page; forget nodes that are no longer on it
-  for (const node of swaps.keys()) if (!node.isConnected) swaps.delete(node);
+function pruneDone() {
+  // Amazon replaces parts of the page; forget segments whose nodes left the page
+  for (const record of [...segmentsDone]) {
+    if (record.nodes.some((n) => !n.isConnected)) forget(record);
+  }
 }
 
 function normalizeTranslation(result) {
@@ -307,6 +337,11 @@ function normalizeTranslation(result) {
 }
 
 function remember(seg, translation) {
+  const record = {
+    nodes: seg.nodes,
+    originals: seg.nodes.map((n) => n.textContent),
+    shown: seg.nodes.map((n, i) => (i === 0 ? translation.text : "")),
+  };
   const reportRecord = {
     sourceText: seg.text,
     shownText: translation.text,
@@ -315,31 +350,28 @@ function remember(seg, translation) {
     lowConfidence: translation.lowConfidence,
   };
 
-  seg.nodes.forEach((node, i) => {
-    swaps.set(node, {
-      original: node.textContent,
-      shona: i === 0 ? translation.text : "",
-    });
+  for (const node of seg.nodes) {
+    nodeRecord.set(node, record);
     reportMeta.set(node, reportRecord);
-  });
+  }
+  segmentsDone.add(record);
 
   translatedKinds.add(translation.translationType);
   if (translation.lowConfidence) anyLowConfidence = true;
   updateTranslationMarker();
 }
 
-
 async function translateNew() {
   if (busy) return;
   busy = true;
   try {
-    pruneSwaps();
+    pruneDone();
     const fresh = collectSegments()
       .filter(
         (s) =>
           s.inViewport &&
           !skipped.has(s.text) &&
-          !s.nodes.some((n) => swaps.has(n)) // not already handled
+          !s.nodes.some((n) => nodeRecord.has(n)) // not already handled
       )
       .slice(0, MAX_SEGMENTS);
 
@@ -365,29 +397,30 @@ async function translateNew() {
       if (response?.error) {
         const e = response.error;
         throw new Error("Backend error: " + (e.code ?? "") + " " + (e.message ?? e));
-      }      
+      }
       if (!response || !response.results) throw new Error("No usable response from backend");
 
       for (const r of response.results) {
-  if (!r || typeof r.id !== "string") continue;
+        if (!r || typeof r.id !== "string") continue;
 
-  const match = /^s(\d+)$/.exec(r.id);
-  const seg = match ? batch[Number(match[1])] : null;
-  if (!seg) continue;
+        const match = /^s(\d+)$/.exec(r.id);
+        const seg = match ? batch[Number(match[1])] : null;
+        if (!seg) continue;
 
-  if (r.status !== "translated" || typeof r.text !== "string" || !r.text) {
-    keptEnglish++;
-    skipped.add(seg.text);
-    console.log("LinguaCart kept English:", seg.text, r.reasons);
-    continue;
-  }
+        if (r.status !== "translated" || typeof r.text !== "string" || !r.text) {
+          keptEnglish++;
+          // a temporary model problem may succeed later; other refusals are final
+          const temporary = Array.isArray(r.reasons) && r.reasons.includes("model_error");
+          if (!temporary) skipped.add(seg.text);
+          console.log("LinguaCart kept English:", seg.text, r.reasons);
+          continue;
+        }
 
-  const translation = normalizeTranslation(r);
-  translated++;
-  cache.set(seg.text, translation);
-  remember(seg, translation);
-}
-
+        const translation = normalizeTranslation(r);
+        translated++;
+        cache.set(seg.text, translation);
+        remember(seg, translation);
+      }
     }
     if (fresh.length) {
       console.log(
@@ -401,16 +434,38 @@ async function translateNew() {
 }
 
 function setView(next) {
-  for (const [node, s] of swaps) {
-    const target = next === "sn" ? s.shona : s.original;
-    // only write when the text really changes, so selections are not wiped
-    if (node.textContent !== target) node.textContent = target;
+  for (const record of [...segmentsDone]) {
+    // If the page changed this text itself, stop managing it and never overwrite it.
+    const changed = record.nodes.some(
+      (n, i) =>
+        !n.isConnected ||
+        (n.textContent !== record.originals[i] && n.textContent !== record.shown[i])
+    );
+    if (changed) {
+      // put English back on any node of this segment that still shows our Shona text
+      record.nodes.forEach((n, i) => {
+        if (
+          n.isConnected &&
+          n.textContent === record.shown[i] &&
+          record.shown[i] !== record.originals[i]
+        ) {
+          n.textContent = record.originals[i];
+        }
+      });
+      forget(record);
+      continue;
+    }
+
+    const wanted = next === "sn" ? record.shown : record.originals;
+    record.nodes.forEach((n, i) => {
+      // only write when the text really changes, so selections are not wiped
+      if (n.textContent !== wanted[i]) n.textContent = wanted[i];
+    });
   }
   view = next;
   updateTranslationMarker();
   updateReportButton();
 }
-
 
 // Translate content that appears later (scrolling, "more results", Amazon re-rendering)
 let timer = null;
@@ -423,6 +478,11 @@ function scheduleTranslate() {
       if (view === "sn") setView("sn");
     } catch (err) {
       console.error("LinguaCart error:", err);
+      // tell the user, but at most once every 30 seconds
+      if (Date.now() - lastErrorNoticeAt > 30000) {
+        lastErrorNoticeAt = Date.now();
+        notify("Some text could not be translated. The original English is still shown.");
+      }
     }
   }, 500);
 }
@@ -446,10 +506,7 @@ function updateTranslationMarker() {
   if (translatedKinds.has("human")) labels.push("Human-translated");
   if (translatedKinds.has("mock")) labels.push("TEST MOCK — not Shona");
   if (translatedKinds.has("unknown")) labels.push("Translation type unconfirmed");
-
-  if (anyLowConfidence) {
-    labels.push("some results low-confidence");
-  }
+  if (anyLowConfidence) labels.push("some results low-confidence");
 
   marker.textContent = labels.join(" · ");
   marker.hidden = view !== "sn" || labels.length === 0;
@@ -504,10 +561,13 @@ function createToolbar() {
         right: 16px;
         bottom: 16px;
         z-index: 2147483647;
+        font: 14px system-ui, sans-serif;
+      }
+
+      .panel {
         display: grid;
         justify-items: end;
         gap: 8px;
-        font: 14px system-ui, sans-serif;
       }
 
       .marker, .report-form {
@@ -520,19 +580,11 @@ function createToolbar() {
         box-shadow: 0 2px 8px #0003;
       }
 
-      .marker {
-        font-size: 12px;
-        font-weight: 700;
-      }
+      .marker { font-size: 12px; font-weight: 700; }
 
-      .actions {
-        display: flex;
-        gap: 8px;
-      }
+      .actions { display: flex; gap: 8px; align-items: center; }
 
-      button, select, textarea {
-        font: inherit;
-      }
+      button, select, textarea { font: inherit; }
 
       button {
         border: 0;
@@ -541,32 +593,32 @@ function createToolbar() {
         cursor: pointer;
       }
 
-      #toggle {
-        background: #1f6f43;
-        color: white;
-        font-weight: 600;
-      }
+      #toggle { background: #1f6f43; color: white; font-weight: 600; }
 
-      #report-translation {
+      #report-translation,
+      #collapse {
         background: #fff;
         color: #222;
         border: 1px solid #888;
       }
 
-      button:disabled {
-        opacity: .55;
-        cursor: not-allowed;
+      #collapse { padding: 10px 12px; font-weight: 700; }
+
+      #expand {
+        width: 44px;
+        height: 44px;
+        padding: 0;
+        border-radius: 50%;
+        background: #1f6f43;
+        color: white;
+        font-weight: 700;
+        box-shadow: 0 2px 8px #0005;
       }
 
-      .report-form {
-        display: grid;
-        gap: 8px;
-      }
+      button:disabled { opacity: .55; cursor: not-allowed; }
 
-      .report-form label {
-        display: grid;
-        gap: 4px;
-      }
+      .report-form { display: grid; gap: 8px; }
+      .report-form label { display: grid; gap: 4px; }
 
       .preview {
         max-height: 120px;
@@ -579,11 +631,7 @@ function createToolbar() {
         font-size: 12px;
       }
 
-      .form-actions {
-        display: flex;
-        gap: 8px;
-        justify-content: flex-end;
-      }
+      .form-actions { display: flex; gap: 8px; justify-content: flex-end; }
 
       .notice {
         max-width: 360px;
@@ -596,44 +644,49 @@ function createToolbar() {
     </style>
 
     <div class="toolbar">
-      <div id="translation-marker" class="marker" role="status" hidden></div>
+      <div id="panel" class="panel">
+        <div id="translation-marker" class="marker" role="status" hidden></div>
 
-      <form id="report-form" class="report-form" hidden>
-        <strong>Report this translation</strong>
-        <div class="preview" id="report-preview"></div>
-        <label>
-          Issue
-          <select id="report-issue">
-            <option value="wrong_meaning">Wrong meaning</option>
-            <option value="unnatural">Unnatural Shona</option>
-            <option value="wrong_dialect">Wrong dialect</option>
-            <option value="number_or_price_problem">Number or price problem</option>
-            <option value="other">Other</option>
-          </select>
-        </label>
-        <label>
-          Optional comment
-          <textarea id="report-comment" rows="2" maxlength="500"></textarea>
-        </label>
-        <div class="form-actions">
-          <button type="button" id="cancel-report">Cancel</button>
-          <button type="submit" id="submit-report">Send report</button>
+        <form id="report-form" class="report-form" hidden>
+          <strong>Report this translation</strong>
+          <div class="preview" id="report-preview"></div>
+          <label>
+            Issue
+            <select id="report-issue">
+              <option value="wrong_meaning">Wrong meaning</option>
+              <option value="unnatural">Unnatural Shona</option>
+              <option value="wrong_dialect">Wrong dialect</option>
+              <option value="number_or_price_problem">Number or price problem</option>
+              <option value="other">Other</option>
+            </select>
+          </label>
+          <label>
+            Optional comment
+            <textarea id="report-comment" rows="2" maxlength="500"></textarea>
+          </label>
+          <div class="form-actions">
+            <button type="button" id="cancel-report">Cancel</button>
+            <button type="submit" id="submit-report">Send report</button>
+          </div>
+        </form>
+
+        <div id="notice" class="notice" role="status" hidden></div>
+
+        <div class="actions">
+          <button id="report-translation" type="button" disabled>Report translation</button>
+          <button id="toggle" type="button">Translate to Shona</button>
+          <button id="collapse" type="button" title="Minimise LinguaCart" aria-label="Minimise LinguaCart">&minus;</button>
         </div>
-      </form>
-
-      <div id="notice" class="notice" role="status" hidden></div>
-
-      <div class="actions">
-        <button id="report-translation" type="button" disabled>
-          Report translation
-        </button>
-        <button id="toggle" type="button">Translate to Shona</button>
       </div>
+
+      <button id="expand" type="button" title="Open LinguaCart" aria-label="Open LinguaCart" hidden>LC</button>
     </div>
   `;
 
   document.documentElement.appendChild(host);
 
+  const panel = root.getElementById("panel");
+  const expand = root.getElementById("expand");
   const toggle = root.getElementById("toggle");
   const reportButton = root.getElementById("report-translation");
   const reportForm = root.getElementById("report-form");
@@ -641,14 +694,26 @@ function createToolbar() {
   const notice = root.getElementById("notice");
 
   let pendingReport = null;
+  let noticeTimer = null;
+
+  function setCollapsed(collapsed) {
+    panel.hidden = collapsed;
+    expand.hidden = !collapsed;
+  }
 
   function showNotice(text) {
+    setCollapsed(false); // messages must be seen
     notice.textContent = text;
     notice.hidden = false;
-    setTimeout(() => {
+    clearTimeout(noticeTimer);
+    noticeTimer = setTimeout(() => {
       notice.hidden = true;
     }, 5000);
   }
+  notify = showNotice;
+
+  root.getElementById("collapse").addEventListener("click", () => setCollapsed(true));
+  expand.addEventListener("click", () => setCollapsed(false));
 
   reportButton.addEventListener("pointerdown", (event) => {
     // Preserve the page text selection when the toolbar button is pressed.
@@ -685,6 +750,8 @@ function createToolbar() {
       pageType: pageType(),
       sourceText: pendingReport.sourceText,
       shownText: pendingReport.shownText,
+      source: pendingReport.source,
+      translationType: pendingReport.translationType,
       issue: root.getElementById("report-issue").value,
       comment: root.getElementById("report-comment").value.trim() || undefined,
     };
