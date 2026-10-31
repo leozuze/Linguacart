@@ -65,7 +65,7 @@ def api_embed(items, chunk=32):
 
 
 def save(key, data):
-    p = HERE / "dev_eval_results.json"
+    p = HERE / f"dev_eval_results{os.environ.get('EVAL_TAG', '')}.json"
     cur = json.loads(p.read_text(encoding="utf-8")) if p.exists() else {}
     cur[key] = data
     p.write_text(json.dumps(cur, indent=2, ensure_ascii=False), encoding="utf-8")
@@ -167,11 +167,12 @@ def clean_translation(text):
 
 
 def run_retrieval():
-    cat = load_jsonl(ROOT / "data/catalogue/dev_catalogue.jsonl")
-    queries = load_jsonl(ROOT / "data/queries/dev_queries.jsonl")
-    gloss = sorted(((g["shona"], g["english"]) for g in
-                    load_jsonl(ROOT / "data/glossary/dev_glossary_starter.jsonl")),
-                   key=lambda x: -len(x[0]))
+    cat = load_jsonl(ROOT / os.environ.get("EVAL_CATALOGUE", "data/catalogue/dev_catalogue.jsonl"))
+    queries = load_jsonl(ROOT / os.environ.get("EVAL_QUERIES", "data/queries/dev_queries.jsonl"))
+    gloss_file = os.environ.get("EVAL_GLOSSARY", "data/glossary/dev_glossary_starter.jsonl")
+    gloss = [] if gloss_file == "none" else sorted(
+        ((g["shona"], g["english"]) for g in load_jsonl(ROOT / gloss_file)),
+        key=lambda x: -len(x[0]))
     ids = [p["id"] for p in cat]
     title = {p["id"]: p["title"] for p in cat}
 
@@ -202,7 +203,21 @@ def run_retrieval():
     print(f"\nCatalogue: {len(cat)} products | queries: {len(queries)} | glossary: {len(gloss)} terms")
     print("Embedding catalogue...")
     t0 = time.perf_counter()
-    pvecs = api_embed([("passage", doc_text(p)) for p in cat])
+    import hashlib
+    texts_for_cache = [doc_text(p) for p in cat]
+    cache_key = hashlib.md5("\n".join(texts_for_cache).encode("utf-8")).hexdigest()
+    cache_file = ROOT / "data/embeddings" / (
+        Path(os.environ.get("EVAL_CATALOGUE", "dev_catalogue.jsonl")).stem + "_e5.json")
+    pvecs = None
+    if cache_file.exists():  # delete the cache file if you ever change the embedding model
+        cached = json.loads(cache_file.read_text(encoding="utf-8"))
+        if cached.get("key") == cache_key:
+            pvecs = cached["vectors"]
+            print("  using cached passage embeddings")
+    if pvecs is None:
+        pvecs = api_embed([("passage", t) for t in texts_for_cache])
+        cache_file.parent.mkdir(parents=True, exist_ok=True)
+        cache_file.write_text(json.dumps({"key": cache_key, "vectors": pvecs}), encoding="utf-8")
     print(f"  {len(pvecs)} passages in {time.perf_counter() - t0:.1f}s")
 
     qtexts = [q["query"] for q in queries]
@@ -215,7 +230,7 @@ def run_retrieval():
     tvecs = api_embed([("query", e) for e in en])
 
     systems = ["C direct Shona+E5", "B translate+E5", "A glossary+BM25", "D hybrid",
-               "E hybrid, no glossary"]
+               "E hybrid, no glossary", "F hybrid + dual query"]
     per = {s: [] for s in systems}
     detail = []
     for q, e, cv, tv in zip(queries, en, cvecs, tvecs):
@@ -234,8 +249,11 @@ def run_retrieval():
         d_sc = [W_VEC * v + W_LEX * l for v, l in zip(minmax(b_sc), minmax(bm25.score(d_tokens)))]
         e_tokens = orig + tokens(e)  # same as D but with NO glossary terms
         e_sc = [W_VEC * v + W_LEX * l for v, l in zip(minmax(b_sc), minmax(bm25.score(e_tokens)))]
+        # F: vector part mixes the ORIGINAL query (safe for English/brands) and the translated one
+        f_vec = [0.4 * x + 0.6 * y for x, y in zip(minmax(c_sc), minmax(b_sc))]
+        f_sc = [W_VEC * v + W_LEX * l for v, l in zip(minmax(f_vec), minmax(bm25.score(d_tokens)))]
         ranks = {systems[0]: rank(c_sc), systems[1]: rank(b_sc),
-                 systems[2]: rank(a_sc) if max(a_sc) > 0 else [], systems[3]: rank(d_sc), systems[4]: rank(e_sc)}
+                 systems[2]: rank(a_sc) if max(a_sc) > 0 else [], systems[3]: rank(d_sc), systems[4]: rank(e_sc), systems[5]: rank(f_sc)}
         for s in systems:
             per[s].append((q, metrics(ranks[s], rel)))
         detail.append({"queryId": q["queryId"], "query": q["query"], "type": q["type"],
@@ -281,7 +299,7 @@ def run_retrieval():
     if not shown:
         print("none")
 
-    save("retrieval", {"overall": overall, "by_type_mrr": by_type, "queries": detail,
+    save("retrieval" + os.environ.get("EVAL_TAG", ""), {"overall": overall, "by_type_mrr": by_type, "queries": detail,
                        "weights": {"vector": W_VEC, "lexical": W_LEX},
                        "query_translate_seconds": round(t_secs, 1)})
 

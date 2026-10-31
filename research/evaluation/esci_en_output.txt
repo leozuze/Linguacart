@@ -1,0 +1,123 @@
+
+Catalogue: 1656 products | queries: 80 | glossary: 0 terms
+Embedding catalogue...
+  1656 passages in 676.9s
+Translating queries (Shona -> English)...
+  translated 16/80  translated 32/80  translated 48/80  translated 64/80  translated 80/80
+  166.6s total, 2.1s per query
+
+--- What NLLB made of each query (check these first) ---
+id   type       query                         -> English                glossary
+e58792word      a plus                        plus one                  
+e80192word      alien stuff                   foreign stuff             
+e84611word      amanzon                       amazon                    
+e90792word      andy milligan                 andy milligan             
+e101583word      architecture without architectsarchitecture without architects
+e120133word      baby hat black                baby hat black            
+e130452word      bape sweatpants               give me some sweatpants   
+e133552word      base plate                    base plate                
+e139703word      battery water flosser         battery water flosser     
+e142983word      beard blade shaver            beard blade shaver        
+e153392word      bh cosmetics                  bh cosmetics              
+e159102word      binders cute                  cute binders              
+e171431word      blink                         blink of an eye           
+e171613word      bliss face wash               bliss face wash           
+e178443word      bobby lounger newborn         bobby lounger newborn     
+e180772word      bole salts                    boiled salts              
+e215893word      california king blanket       california king blanket   
+e218722word      camera ba                     camera                    
+e232342word      carmel harrington             carmel harrington         
+e238322word      cat items                     cat items                 
+e246812word      champagne mermaid             champagne mermaid         
+e247143word      champion reverse weave        champion reverse weave    
+e251363word      cheap womens pullover         cheap women's pullover    
+e254033word      chi hair straightener         hair straightener         
+e256143word      childs wallet girls           children's wallet girls   
+e287803word      cool boys clothes             cool boys clothes         
+e301193word      cricut maker tools            cricut maker tools        
+e305423word      cube of styrofoam             cube of styrofoam         
+e332542word      digital potty                 digital potty             
+e338733word      display cage pets             display cage pets         
+e366482word      ecoflow delta                 ecoflow delta             
+e393182word      fairy wings                   fairy wings               
+e394803word      fall womens tops              fall womens tops          
+e425861word      frescolita                    frescolita                
+e429213word      fryer filtration hose         fryer filtration hose     
+e459343word      glass wood jars               glass wood jars           
+e464413word      gold metallic bustier         gold metallic bustier     
+e475382word      griddle hack                  griddle hack              
+e489083word      handheld dishwasher automatic handheld dishwasher automatic
+e520472word      humidity probe                humidity probe            
+e534013word      insignia fire tv              insignia fire tv          
+e553272word      jack standds                  jack standds              
+e558823word      jesus without cross           jesus without the cross   
+e568892word      kama weapon                   like a weapon             
+e577953word      kids ergonomic backpack       children ergonomic backpack
+e579242word      kids outdoors                 kids outdoors             
+e587302word      kiwi black                    kiwi black                
+e630973word      living without pain           living without pain       
+e641023word      lucite napkin holder          lucite napkin holder      
+e645252word      mac bronzer                   mac bronzer               
+e668312word      medical scissors              medical scissors          
+e670212word      melinda snodgrass             melinda snodgrass         
+e701213word      modern glasses drinking       modern glasses for drinking
+e739533word      nismo oil filter              and oil filter            
+e754953word      olympic weights set           olympic weights set       
+e757633word      onsies for men                onsies for men            
+e764182word      otome games                   otome games               
+e764221word      otostick                      otostick                  
+e804933word      pirate crew hat               pirate crew hat           
+e806433word      pixi body wash                pixi body wash            
+e829103word      power tool bench              power tool bench          
+e866492word      reeses tshirt                 reeses shirt              
+e880753word      rocket espresso machine       rocket espresso machine   
+e889553word      rubber pipe liner             rubber pipe liner         
+e890311word      rue                           on the other hand         
+e942013word      skull face makeup             skull face makeup         
+e947702word      small keyboard                small keyboard            
+e952473word      snack vending machine         snack vending machine     
+e965342word      sparkling rose                sparkling rose            
+e993593word      super wings buttons           super wings buttons       
+e1004142word      tailgate grill                tailgate grill            
+e1015273word      tepui rooftop tent            tepui rooftop tent        
+e1037223word      toddler night gowns           toddler nightgowns        
+e1038092word      toddler wolf                  young wolf                
+e1047493word      tragus piercing jewelry       tragus piercing jewelry   
+e1047733word      trailer light switch          trailer light switch      
+e1079003word      vans toddler girls            vans toddler girls        
+e1080752word      veganise mayonnaise           vegetarian mayonnaise     
+e1102443word      wax warmer cleaner            wax warmer cleaner        
+e1136983word      wooden trim decoration        wooden trim decoration    
+
+--- Overall ---
+system                    R@5    P@5   MRR@10   nDCG@5
+C direct Shona+E5        0.39   0.65     0.81     0.71
+B translate+E5           0.35   0.58     0.77     0.65
+A glossary+BM25          0.34   0.56     0.76     0.63
+D hybrid                 0.39   0.64     0.80     0.70
+E hybrid, no glossary    0.39   0.64     0.80     0.70
+(P@5 is capped at |relevant|/5, so it is low by design when few products are relevant.)
+
+--- MRR@10 by query type ---
+type          n      C      B      A      D      E
+1word         5   0.90   0.80   0.80   0.90   0.90
+2word        31   0.87   0.78   0.73   0.84   0.84
+3word        44   0.75   0.76   0.77   0.77   0.77
+
+--- System D failures (first relevant product not in top 3) ---
+e5879 'a plus' [2word] EN='plus one' rank=10
+    top3: Plus One; The Plus: Self-Help for People Who Hate Self-Help; PlayStation Plus: 12 Month Membership [Digital Code]
+e12013 'baby hat black' [3word] EN='baby hat black' rank=6
+    top3: Soft Warm Baby Hats | Adjustable Top Knot Baby Beanie | Custom Baby Caps - 3PK Black/White/HthrGrey CA55; Durio Newborn Hat Knot Newborn Hats for Girls Boys Soft Baby Hat Gifts for Newborn Baby Fall Spring Baby Beanie A 3 Pack Black & White & Grey 0-3 Months; Durio Baby Hats Knot Baby Beanie Newborn Baby Boy Hat Soft Baby Girl Beanies Gifts for Baby Newborn Fall Winter Caps 3 Pack Black & White & Grey One Size Fits 0-6 Months
+e17844 'bobby lounger newborn' [3word] EN='bobby lounger newborn' rank=4
+    top3: Newborn Lounger Pillow Cover Fit for Boppy & Leachco & Nuby Lounger, 100% Jersey Knit Cotton Silky Soft Stretchy Removable Slipcover for Girls Boys, Snugly Fit Infant Lounger for Baby; OMORC Newborn Lounger with Removable Slipcover, 100% Pure Cotton Baby Lounger Pillow, Super Soft Snug Baby Nest Bassinet, Portable Dinosaur Infant Floor Seat for Baby 3-8 M; Stretchy Newborn Lounger Cover -2 Pack Removable Slipcover,Super Soft Snug Fitted,Whale & Clouds
+e24714 'champion reverse weave' [3word] EN='champion reverse weave' rank=5
+    top3: Champion Women's Reverse Weave Cropped Cut Off Crew, white, S; Champion Women's Reverse Weave Cropped Cut Off Crew, black, XX-Large; Champion Reverse Weave Crew Journey Yellow MD
+e55882 'jesus without cross' [3word] EN='jesus without the cross' rank=7
+    top3: Don't Go Away Without Jesus; IEFRICH Cross Necklace for Women, Silver Jesus Cross Pendant Necklace Religious Christian Jewelry Gifts for Women; Tell Me The Story Of Jesus (Performance Track without Background Vocals in Bb)
+e80643 'pixi body wash' [3word] EN='pixi body wash' rank=18
+    top3: Pixi Skintreats Glow Tonic Cleansing Gel; pHisoderm Anti-Blemish Body Wash 10 oz (Pack of 3); Pixi - Jasmine Oil Blend
+e88075 'rocket espresso machine' [3word] EN='rocket espresso machine' rank=8
+    top3: SEVEN&ME Espresso Machine with Milk Frother Coffee Maker Electric Moka Pot 60ml Single Serve Barista-Quality Latte Cappuccino Macchiato with One-Click Operation Expresso Coffee Machines at Home; DeLonghi EC155 15 Bar Espresso and Cappuccino Machine, Black; Espresso Machine & Cappuccino Maker with Milk Steamer- 15 Bar Pump, 7 Pc All-In-One Barista Bundle Set w/ Built-in Frother (Inc: Coffee Bean Grinder, Milk Frothing Cup, Tamper & 2 Cups), 1350W (Silver)
+e108075 'veganise mayonnaise' [2word] EN='vegetarian mayonnaise' rank=5
+    top3: VMayo | 190ml | Chilli Mash Company | British Made Vegan Mayonnaise; Best Foods Vegan Dressing and Spread for a Rich, Creamy Plant-Based Alternative to Mayo Plant-Based Mayonnaise Free From Eggs 24 Oz; Hellmann's Vegan Dressing and Spread for A Rich, Creamy Plant-Based Alternative to Mayonnaise Vegan Dressing and Spread Plant Based Alternative to Mayo Free From Eggs 24 oz
