@@ -395,10 +395,10 @@ async function translateNew() {
     for (let start = 0; start < toSend.length; start += BATCH_SIZE) {
       const batch = toSend.slice(start, start + BATCH_SIZE);
       const request = {
-        apiVersion: 1,
+        sourceLanguage: "eng_Latn",
+        targetLanguage: "sna_Latn",
         site: location.hostname.replace(/^www\./, ""),
         pageType: pageType(),
-        target: "sna",
         segments: batch.map((s, i) => ({ id: "s" + i, text: s.text, kind: kindFor(s) })),
       };
 
