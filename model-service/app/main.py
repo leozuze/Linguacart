@@ -8,6 +8,7 @@ without downloading weights. Real models are imported lazily, so stub mode needs
 """
 from __future__ import annotations
 
+import hmac
 import logging
 from contextlib import asynccontextmanager
 from typing import TYPE_CHECKING
@@ -100,6 +101,16 @@ def create_app(
     app = FastAPI(title="LinguaCart model service", version="0.1.0", lifespan=lifespan)
     app.state.translator = translator
     app.state.embedder = embedder
+
+    if settings.api_key:
+        open_paths = {"/health", "/docs", "/openapi.json"}
+
+        @app.middleware("http")
+        async def _require_key(request: Request, call_next):
+            given = request.headers.get("x-api-key", "")
+            if request.url.path in open_paths or hmac.compare_digest(given, settings.api_key):
+                return await call_next(request)
+            return JSONResponse(status_code=401, content={"detail": "Missing or invalid X-API-Key"})
 
     # ---- JSON-only error responses; Java reads "detail" in every case ----
     @app.exception_handler(ModelUnavailableError)
