@@ -1,11 +1,15 @@
 console.log("LinguaCart content script is running");
 
+// This file runs after content/masking.js (see manifest.json), which provides
+// PROTECTED_RE, maskText, unmaskText and toTemplate.
+
 // ---------- Settings ----------
 const SKIP_TAGS = new Set([
   "SCRIPT", "STYLE", "NOSCRIPT", "TEXTAREA", "INPUT", "CODE", "SELECT", "OPTION",
 ]);
 
-// Page areas whose text is never sent for translation (decision pending)
+// Page areas whose text is never sent for translation (decision pending).
+// Set to new Set() to translate the footer too.
 const SKIP_ROLES = new Set(["footer"]);
 
 // Allowed pages: search results and product pages only. Everything else
@@ -15,18 +19,13 @@ function isAllowedPage() {
   return p === "/s" || p.includes("/dp/") || p.startsWith("/gp/product/");
 }
 
-// Parts of the page that can contain personal data.
-// Unconfirmed ids, from memory: verify with Inspect on a TEST account, never a real one.
+// Parts of the page that can contain personal data or settings.
+// Confirmed: #nav-flyout-ewc and #ewc-content (the cart flyout on the right edge).
+// Unconfirmed, from memory: the others. Verify with Inspect on a TEST account.
 const PRIVATE_SELECTORS =
   "#nav-link-accountList, #glow-ingress-block, #nav-global-location-slot, " +
-  // cart flyout on the right edge (confirmed with your id chain)
   "#nav-flyout-ewc, #ewc-content, " +
-  // footer language, currency and country pickers (unconfirmed, from memory)
   "#icp-touch-link-language, #icp-touch-link-cop, #icp-touch-link-country";
-
-  // currencies, numbers, and number+unit patterns (first draft, we will refine it)
-const PROTECTED_RE =
-  /(?:INR|USD|ZiG|ZWL|₹|\$)\s?\d[\d,]*(?:\.\d+)?|\d[\d,]*(?:\.\d+)?\s?(?:oz|lb|kg|g|ml|l|cm|mm|in|hrs?|hours?)?\b/gi;
 
 // ---------- Product and listing readers (not called for now) ----------
 function firstText(selectors) {
@@ -70,16 +69,9 @@ function getListingItems() {
 }
 
 // ---------- Segmenter ----------
-const PRICE_RE = /(?:INR|USD|ZiG|ZWL|₹|\$)\s?\d[\d,]*(?:\.\d+)?/g;
-const DATE_RE =
-  /\b(?:(?:Mon|Tue|Wed|Thu|Fri|Sat|Sun),\s)?(?:Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)[a-z]*\s\d{1,2}(?:\s?[-–]\s?\d{1,2})?\b/g;
-const COUNT_RE = /\b\d[\d,.]*[KkMm]\+?(?![A-Za-z])/g; // 17.1K, 10K+
-const CODE_RE = /\b(?=[\w-]*\d)(?=[\w-]*[A-Za-z])\w+(?:-\w+)*\b/g; // WH-CH720N, IPX7
-const NUM_RE = /\d[\d,]*(?:\.\d+)?\+?/g;
 
 // The shopper's own search text (Amazon uses ?k=...)
 const SEARCH_QUERY = (new URLSearchParams(location.search).get("k") || "").trim();
-const escapeRe = (s) => s.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
 
 // Where on the page a string lives (selectors are from memory: check with Inspect)
 const ROLE_SELECTORS = [
@@ -129,7 +121,8 @@ function blockOf(el) {
   return document.body;
 }
 
-// True when the nodes sit in different links/buttons (or some in one and some outside)
+// True when the nodes sit in different links/buttons (or some in one and some outside).
+// Such sentences stay in English: replacing their text would empty a link or button.
 function hasMixedInteractive(nodes) {
   const owners = new Set(
     nodes.map((n) => n.parentElement.closest("a, button, [role='button']"))
@@ -195,19 +188,6 @@ function collectSegments(root = document.body) {
   return segments;
 }
 
-// Replace the search query, prices, dates, counts, model codes and numbers with placeholders
-function toTemplate(text) {
-  if (SEARCH_QUERY) {
-    text = text.replace(new RegExp(`"${escapeRe(SEARCH_QUERY)}"`, "gi"), '"{QUERY}"');
-  }
-  return text
-    .replace(PRICE_RE, "{PRICE}")
-    .replace(DATE_RE, "{DATE}")
-    .replace(COUNT_RE, "{N}")
-    .replace(CODE_RE, "{CODE}")
-    .replace(NUM_RE, "{N}");
-}
-
 function kindOf(seg, template) {
   if (seg.role === "product") return "content";
   // spec lines under a result, such as "MDR-7506, 40mm drivers, 10Hz-20kHz"
@@ -225,7 +205,7 @@ function runSegmenter() {
 
   const groups = new Map();
   for (const s of unique.values()) {
-    const template = toTemplate(s.text);
+    const template = toTemplate(s.text, SEARCH_QUERY);
     // nothing left to translate once placeholders are removed
     if (!/\p{L}{2,}/u.test(template.replace(/\{[A-Z]+\}/g, ""))) continue;
     const kind = kindOf(s, template);
@@ -274,7 +254,7 @@ function runSegmenter() {
 // To collect strings for the glossary, uncomment this line:
 // setTimeout(runSegmenter, 2000);
 
-// ---------- Translation (fake backend for now) ----------
+// ---------- Translation ----------
 const MAX_SEGMENTS = 200;
 const BATCH_SIZE = 50; // matches the limit in the API contract
 
@@ -285,7 +265,7 @@ function pageType() {
 }
 
 function kindFor(seg) {
-  const kind = kindOf(seg, toTemplate(seg.text));
+  const kind = kindOf(seg, toTemplate(seg.text, SEARCH_QUERY));
   if (kind === "label") return "ui_label";
   if (kind === "template") return "ui_template";
   return seg.role === "product" ? "title" : "other";
@@ -819,8 +799,21 @@ function createToolbar() {
   updateReportButton();
 }
 
+// Tell the user once if the translation service is down, instead of failing silently.
+async function checkBackend() {
+  try {
+    const health = await chrome.runtime.sendMessage({ type: "health" });
+    if (!health?.ok || health.modelService === "down") {
+      notify("The translation service is not available right now. Pages stay in English.");
+    }
+  } catch (err) {
+    console.error("LinguaCart health check failed:", err);
+  }
+}
+
 if (isAllowedPage()) {
   createToolbar();
+  checkBackend();
 } else {
   console.log("LinguaCart: inactive on this page type");
 }
