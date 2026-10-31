@@ -5,6 +5,9 @@ const SKIP_TAGS = new Set([
   "SCRIPT", "STYLE", "NOSCRIPT", "TEXTAREA", "INPUT", "CODE", "SELECT", "OPTION",
 ]);
 
+// Page areas whose text is never sent for translation (decision pending)
+const SKIP_ROLES = new Set(["footer"]);
+
 // Allowed pages: search results and product pages only. Everything else
 // (cart, checkout, sign-in, account, addresses, payments) is off limits.
 function isAllowedPage() {
@@ -374,6 +377,8 @@ async function translateNew() {
       .filter(
         (s) =>
           s.inViewport &&
+          !SKIP_ROLES.has(s.role) &&
+          !s.mixedLinks && // never break links or buttons inside a sentence
           !skipped.has(s.text) &&
           !s.nodes.some((n) => nodeRecord.has(n)) // not already handled
       )
