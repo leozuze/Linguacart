@@ -19,11 +19,14 @@ import java.util.concurrent.Callable;
 
 /**
  * HTTP implementation of ModelServiceClient for the Python FastAPI service.
- * Wire format source of truth: docs/model-service-openapi.json and docs/08-INTEGRATION-GUIDE.md.
+ * Wire format source of truth: docs/model-service-openapi.json and
+ * docs/08-INTEGRATION-GUIDE.md.
  * All Python-specific JSON shapes stay inside this class.
  *
- * Retry policy: "maxRetries" is the TOTAL number of attempts. Connection failures and 5xx are retried.
- * 4xx answers, malformed answers and read timeouts are NOT retried (a translate call can legitimately
+ * Retry policy: "maxRetries" is the TOTAL number of attempts. Connection
+ * failures and 5xx are retried.
+ * 4xx answers, malformed answers and read timeouts are NOT retried (a translate
+ * call can legitimately
  * take a long time, and retrying it would multiply the wait).
  */
 public class HttpModelServiceClient implements ModelServiceClient {
@@ -39,12 +42,12 @@ public class HttpModelServiceClient implements ModelServiceClient {
     private final long retryBackoffMs;
 
     public HttpModelServiceClient(String baseUrl,
-                                  String apiKey,
-                                  long connectTimeoutMs,
-                                  long translateReadTimeoutMs,
-                                  long embedReadTimeoutMs,
-                                  int maxRetries,
-                                  long retryBackoffMs) {
+            String apiKey,
+            long connectTimeoutMs,
+            long translateReadTimeoutMs,
+            long embedReadTimeoutMs,
+            int maxRetries,
+            long retryBackoffMs) {
         this.translateClient = buildClient(baseUrl, apiKey, connectTimeoutMs, translateReadTimeoutMs);
         this.embedClient = buildClient(baseUrl, apiKey, connectTimeoutMs, embedReadTimeoutMs);
         this.maxRetries = Math.max(1, maxRetries);
@@ -61,6 +64,7 @@ public class HttpModelServiceClient implements ModelServiceClient {
 
     private static RestClient buildClient(String baseUrl, String apiKey, long connectTimeoutMs, long readTimeoutMs) {
         HttpClient httpClient = HttpClient.newBuilder()
+                .version(HttpClient.Version.HTTP_1_1)
                 .connectTimeout(Duration.ofMillis(connectTimeoutMs))
                 .build();
 
@@ -220,10 +224,21 @@ public class HttpModelServiceClient implements ModelServiceClient {
     }
 
     // Python model service wire contract (docs/model-service-openapi.json)
-    record TranslatePayload(String sourceLanguage, String targetLanguage, List<String> texts) {}
-    record TranslateResult(List<String> translations) {}
-    record EmbedInput(String type, String text) {}
-    record EmbedPayload(List<EmbedInput> inputs) {}
-    record EmbedResult(List<float[]> embeddings) {}
-    record HealthResult(String status) {}
+    record TranslatePayload(String sourceLanguage, String targetLanguage, List<String> texts) {
+    }
+
+    record TranslateResult(List<String> translations) {
+    }
+
+    record EmbedInput(String type, String text) {
+    }
+
+    record EmbedPayload(List<EmbedInput> inputs) {
+    }
+
+    record EmbedResult(List<float[]> embeddings) {
+    }
+
+    record HealthResult(String status) {
+    }
 }
