@@ -1,8 +1,7 @@
 package com.linguacart.api;
 
-import com.linguacart.dto.TranslateRequest;
-import com.linguacart.dto.TranslateResponse;
-import com.linguacart.service.TranslationService;
+import com.linguacart.dto.SegmentDtos;
+import com.linguacart.service.SegmentTranslationService;
 import jakarta.validation.Valid;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -10,24 +9,21 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
- * REST endpoint for product-field translation.
- *
- * <p>This controller is intentionally thin — all translation logic lives in
- * {@link TranslationService}. The controller's sole job is request validation
- * and HTTP delegation.
+ * POST /api/v1/translate, segment-based contract v0.3 (docs/07-API-CONTRACT.md).
+ * All logic lives in {@link SegmentTranslationService}.
  */
 @RestController
 @RequestMapping("/api/v1")
 public class TranslationController {
 
-    private final TranslationService translationService;
+    private final SegmentTranslationService translationService;
 
-    public TranslationController(TranslationService translationService) {
+    public TranslationController(SegmentTranslationService translationService) {
         this.translationService = translationService;
     }
 
     @PostMapping("/translate")
-    public TranslateResponse translate(@Valid @RequestBody TranslateRequest request) {
+    public SegmentDtos.Response translate(@Valid @RequestBody SegmentDtos.Request request) {
         return translationService.translate(request);
     }
 }

@@ -1,9 +1,9 @@
 package com.linguacart.api;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.linguacart.dto.TranslateRequest;
-import com.linguacart.dto.TranslateResponse;
-import com.linguacart.service.TranslationService;
+import com.linguacart.dto.SegmentDtos.Request;
+import com.linguacart.dto.SegmentDtos.Response;
+import com.linguacart.dto.SegmentDtos.Result;
+import com.linguacart.service.SegmentTranslationService;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,251 +15,152 @@ import org.springframework.test.web.servlet.MockMvc;
 import java.util.List;
 import java.util.Map;
 
-import static org.hamcrest.Matchers.*;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
-/**
- * MockMvc contract test for {@code POST /api/v1/translate}.
- *
- * <p>Verifies the final HTTP and JSON contract: status codes, response field names,
- * protectedFields echo, status string values, notTranslated list, and that
- * {@code status="failed"} still returns HTTP 200 (so the extension can display English).
- */
+/** MockMvc contract test for POST /api/v1/translate (docs/07-API-CONTRACT.md v0.3). */
 @WebMvcTest(TranslationController.class)
 class TranslationControllerMvcTest {
 
     @Autowired
     MockMvc mockMvc;
 
-    @Autowired
-    ObjectMapper objectMapper;
-
     @MockBean
-    TranslationService translationService;
+    SegmentTranslationService translationService;
 
-    // -------------------------------------------------------------------------
-    // 1. Happy path — all fields translated
-    // -------------------------------------------------------------------------
+    private static final String VALID = """
+            {
+              "sourceLanguage": "eng_Latn",
+              "targetLanguage": "sna_Latn",
+              "site": "amazon.com",
+              "pageType": "listing",
+              "segments": [
+                { "id": "s0", "text": "Add to cart", "kind": "ui_label" },
+                { "id": "s4", "text": "Not waterproof. Runs small.", "kind": "review" }
+              ]
+            }
+            """;
 
-    @Test
-    @DisplayName("POST /translate returns correct JSON shape with status=translated and empty notTranslated")
-    void translateReturnsCorrectJsonShape() throws Exception {
-        Map<String, String> protectedIn = Map.of("price", "$2.99", "brand", "BrandX");
-        TranslateResponse stubResponse = new TranslateResponse(
-                Map.of("title", "[sn] Table salt 500 g", "description", "[sn] Healthy salt"),
-                protectedIn,
-                "translated",
-                List.of()
-        );
-        when(translationService.translate(any(TranslateRequest.class))).thenReturn(stubResponse);
-
-        String body = """
-                {
-                  "sourceLanguage": "eng_Latn",
-                  "targetLanguage": "sna_Latn",
-                  "fields": { "title": "Table salt 500 g", "description": "Healthy salt" },
-                  "protectedFields": { "price": "$2.99", "brand": "BrandX" }
-                }
-                """;
-
-        mockMvc.perform(post("/api/v1/translate")
-                        .contentType(MediaType.APPLICATION_JSON)
-                        .content(body))
-                .andExpect(status().isOk())
-                .andExpect(content().contentTypeCompatibleWith(MediaType.APPLICATION_JSON))
-                // Required top-level keys
-                .andExpect(jsonPath("$.translations").exists())
-                .andExpect(jsonPath("$.protectedFields").exists())
-                .andExpect(jsonPath("$.status").exists())
-                .andExpect(jsonPath("$.notTranslated").exists())
-                // Status
-                .andExpect(jsonPath("$.status").value("translated"))
-                // notTranslated empty
-                .andExpect(jsonPath("$.notTranslated", hasSize(0)))
-                // Translation values
-                .andExpect(jsonPath("$.translations.title").value("[sn] Table salt 500 g"))
-                .andExpect(jsonPath("$.translations.description").value("[sn] Healthy salt"))
-                // protectedFields echoed exactly
-                .andExpect(jsonPath("$.protectedFields.price").value("$2.99"))
-                .andExpect(jsonPath("$.protectedFields.brand").value("BrandX"));
+    private void expectBadRequest(String body) throws Exception {
+        mockMvc.perform(post("/api/v1/translate").contentType(MediaType.APPLICATION_JSON).content(body))
+                .andExpect(status().isBadRequest())
+                .andExpect(jsonPath("$.error").value("validation_error"))
+                .andExpect(jsonPath("$.message").isNotEmpty());
     }
 
-    // -------------------------------------------------------------------------
-    // 2. status=failed still returns HTTP 200
-    // -------------------------------------------------------------------------
-
     @Test
-    @DisplayName("status=failed (all fields reverted) still returns HTTP 200, not 5xx")
-    void translateAllFailedReturnsHttp200() throws Exception {
-        TranslateResponse failedResponse = new TranslateResponse(
-                Map.of("title", "Salt", "description", "Table salt"),
-                Map.of(),
-                "failed",
-                List.of("title", "description")
-        );
-        when(translationService.translate(any(TranslateRequest.class))).thenReturn(failedResponse);
+    @DisplayName("valid request returns the v0.3 shape; not_translated results omit text and source")
+    void validRequest() throws Exception {
+        Response stub = new Response("partial", List.of("s4"), List.of(
+                Result.translated("s0", "nllb", "machine", "[sn] Add to cart"),
+                Result.notTranslated("s4", "negation_mismatch")), Map.of());
+        when(translationService.translate(any(Request.class))).thenReturn(stub);
 
-        String body = """
-                {
-                  "sourceLanguage": "eng_Latn",
-                  "targetLanguage": "sna_Latn",
-                  "fields": { "title": "Salt", "description": "Table salt" },
-                  "protectedFields": {}
-                }
-                """;
-
-        mockMvc.perform(post("/api/v1/translate")
-                        .contentType(MediaType.APPLICATION_JSON)
-                        .content(body))
-                .andExpect(status().isOk())        // NOT 5xx — contract requirement
-                .andExpect(jsonPath("$.status").value("failed"))
-                .andExpect(jsonPath("$.notTranslated", hasSize(2)))
-                // English text returned for all reverted fields
-                .andExpect(jsonPath("$.translations.title").value("Salt"))
-                .andExpect(jsonPath("$.translations.description").value("Table salt"));
-    }
-
-    // -------------------------------------------------------------------------
-    // 3. status=partial
-    // -------------------------------------------------------------------------
-
-    @Test
-    @DisplayName("status=partial: notTranslated lists only the reverted field name(s)")
-    void translatePartialReturnsPartialStatus() throws Exception {
-        TranslateResponse partialResponse = new TranslateResponse(
-                Map.of("title", "Salt $2.99", "description", "[sn] Healthy salt"),
-                Map.of(),
-                "partial",
-                List.of("title")
-        );
-        when(translationService.translate(any(TranslateRequest.class))).thenReturn(partialResponse);
-
-        String body = """
-                {
-                  "sourceLanguage": "eng_Latn",
-                  "targetLanguage": "sna_Latn",
-                  "fields": { "title": "Salt $2.99", "description": "Healthy salt" },
-                  "protectedFields": {}
-                }
-                """;
-
-        mockMvc.perform(post("/api/v1/translate")
-                        .contentType(MediaType.APPLICATION_JSON)
-                        .content(body))
+        mockMvc.perform(post("/api/v1/translate").contentType(MediaType.APPLICATION_JSON).content(VALID))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$.status").value("partial"))
-                .andExpect(jsonPath("$.notTranslated", hasSize(1)))
-                .andExpect(jsonPath("$.notTranslated[0]").value("title"))
-                // Reverted field carries English text
-                .andExpect(jsonPath("$.translations.title").value("Salt $2.99"));
+                .andExpect(jsonPath("$.notTranslated[0]").value("s4"))
+                .andExpect(jsonPath("$.results[0].id").value("s0"))
+                .andExpect(jsonPath("$.results[0].status").value("translated"))
+                .andExpect(jsonPath("$.results[0].source").value("nllb"))
+                .andExpect(jsonPath("$.results[0].translationType").value("machine"))
+                .andExpect(jsonPath("$.results[0].text").value("[sn] Add to cart"))
+                .andExpect(jsonPath("$.results[0].reasons").doesNotExist())
+                .andExpect(jsonPath("$.results[1].status").value("not_translated"))
+                .andExpect(jsonPath("$.results[1].reasons[0]").value("negation_mismatch"))
+                .andExpect(jsonPath("$.results[1].text").doesNotExist())
+                .andExpect(jsonPath("$.results[1].source").doesNotExist())
+                .andExpect(jsonPath("$.protectedFields").doesNotExist());
     }
 
-    // -------------------------------------------------------------------------
-    // 4. Validation: empty fields map → 400
-    // -------------------------------------------------------------------------
-
     @Test
-    @DisplayName("POST /translate: empty fields map returns 400")
-    void emptyFieldsReturns400() throws Exception {
-        String body = """
-                {
-                  "sourceLanguage": "eng_Latn",
-                  "targetLanguage": "sna_Latn",
-                  "fields": {},
-                  "protectedFields": {}
-                }
-                """;
+    @DisplayName("status failed is still HTTP 200 so the extension can keep English")
+    void failedIsStill200() throws Exception {
+        Response stub = new Response("failed", List.of("s0", "s4"), List.of(
+                Result.notTranslated("s0", "model_error"),
+                Result.notTranslated("s4", "model_error")), Map.of());
+        when(translationService.translate(any(Request.class))).thenReturn(stub);
 
-        mockMvc.perform(post("/api/v1/translate")
-                        .contentType(MediaType.APPLICATION_JSON)
-                        .content(body))
-                .andExpect(status().isBadRequest());
-    }
-
-    // -------------------------------------------------------------------------
-    // 5. Validation: missing sourceLanguage → 400
-    // -------------------------------------------------------------------------
-
-    @Test
-    @DisplayName("POST /translate: missing sourceLanguage returns 400")
-    void missingSourceLanguageReturns400() throws Exception {
-        String body = """
-                {
-                  "targetLanguage": "sna_Latn",
-                  "fields": { "title": "Salt" }
-                }
-                """;
-
-        mockMvc.perform(post("/api/v1/translate")
-                        .contentType(MediaType.APPLICATION_JSON)
-                        .content(body))
-                .andExpect(status().isBadRequest());
-    }
-
-    // -------------------------------------------------------------------------
-    // 6. protectedFields null → defaults to empty map, request succeeds
-    // -------------------------------------------------------------------------
-
-    @Test
-    @DisplayName("POST /translate: null protectedFields defaults to empty map, request succeeds")
-    void nullProtectedFieldsDefaultsToEmptyMap() throws Exception {
-        TranslateResponse resp = new TranslateResponse(
-                Map.of("title", "[sn] Fresh fruit"),
-                Map.of(),
-                "translated",
-                List.of()
-        );
-        when(translationService.translate(any(TranslateRequest.class))).thenReturn(resp);
-
-        String body = """
-                {
-                  "sourceLanguage": "eng_Latn",
-                  "targetLanguage": "sna_Latn",
-                  "fields": { "title": "Fresh fruit" }
-                }
-                """;
-
-        mockMvc.perform(post("/api/v1/translate")
-                        .contentType(MediaType.APPLICATION_JSON)
-                        .content(body))
+        mockMvc.perform(post("/api/v1/translate").contentType(MediaType.APPLICATION_JSON).content(VALID))
                 .andExpect(status().isOk())
-                .andExpect(jsonPath("$.protectedFields").isMap());
+                .andExpect(jsonPath("$.status").value("failed"));
     }
 
-    // -------------------------------------------------------------------------
-    // 7. protectedFields echoed unchanged (full set)
-    // -------------------------------------------------------------------------
+    @Test
+    @DisplayName("protectedFields are returned when the request carried them")
+    void protectedFieldsReturned() throws Exception {
+        Response stub = new Response("translated", List.of(), List.of(
+                Result.translated("s0", "nllb", "machine", "x")), Map.of("price", "$2.99"));
+        when(translationService.translate(any(Request.class))).thenReturn(stub);
+
+        mockMvc.perform(post("/api/v1/translate").contentType(MediaType.APPLICATION_JSON).content(VALID))
+                .andExpect(jsonPath("$.protectedFields.price").value("$2.99"));
+    }
 
     @Test
-    @DisplayName("POST /translate: protectedFields returned exactly as sent")
-    void protectedFieldsEchoedUnchanged() throws Exception {
-        Map<String, String> sent = Map.of(
-                "price", "$2.99", "quantity", "1", "unit", "kg",
-                "brand", "BrandX", "model", "BX-100"
-        );
-        TranslateResponse resp = new TranslateResponse(
-                Map.of("title", "[sn] BrandX BX-100 Salt 1 kg $2.99"),
-                sent,
-                "translated",
-                List.of()
-        );
-        when(translationService.translate(any(TranslateRequest.class))).thenReturn(resp);
+    @DisplayName("400 when segments are missing or empty")
+    void segmentsMissing() throws Exception {
+        expectBadRequest("{\"sourceLanguage\":\"eng_Latn\",\"targetLanguage\":\"sna_Latn\"}");
+        expectBadRequest("{\"sourceLanguage\":\"eng_Latn\",\"targetLanguage\":\"sna_Latn\",\"segments\":[]}");
+    }
 
-        String body = objectMapper.writeValueAsString(
-                new TranslateRequest("eng_Latn", "sna_Latn",
-                        Map.of("title", "BrandX BX-100 Salt 1 kg $2.99"), sent));
+    @Test
+    @DisplayName("400 on the old fields-map request shape")
+    void oldShapeRejected() throws Exception {
+        expectBadRequest("{\"sourceLanguage\":\"eng_Latn\",\"targetLanguage\":\"sna_Latn\",\"fields\":{\"title\":\"x\"}}");
+    }
 
-        mockMvc.perform(post("/api/v1/translate")
-                        .contentType(MediaType.APPLICATION_JSON)
-                        .content(body))
-                .andExpect(status().isOk())
-                .andExpect(jsonPath("$.protectedFields.price").value("$2.99"))
-                .andExpect(jsonPath("$.protectedFields.quantity").value("1"))
-                .andExpect(jsonPath("$.protectedFields.unit").value("kg"))
-                .andExpect(jsonPath("$.protectedFields.brand").value("BrandX"))
-                .andExpect(jsonPath("$.protectedFields.model").value("BX-100"));
+    @Test
+    @DisplayName("400 on wrong languages")
+    void wrongLanguages() throws Exception {
+        expectBadRequest("{\"sourceLanguage\":\"sna_Latn\",\"targetLanguage\":\"eng_Latn\","
+                + "\"segments\":[{\"id\":\"a\",\"text\":\"x\"}]}");
+    }
+
+    @Test
+    @DisplayName("400 on empty id, empty text, or unknown kind")
+    void badSegment() throws Exception {
+        String head = "{\"sourceLanguage\":\"eng_Latn\",\"targetLanguage\":\"sna_Latn\",\"segments\":[";
+        expectBadRequest(head + "{\"id\":\"\",\"text\":\"x\"}]}");
+        expectBadRequest(head + "{\"id\":\"a\",\"text\":\"   \"}]}");
+        expectBadRequest(head + "{\"id\":\"a\",\"text\":\"x\",\"kind\":\"banner\"}]}");
+    }
+
+    @Test
+    @DisplayName("400 on duplicate segment ids")
+    void duplicateIds() throws Exception {
+        expectBadRequest("{\"sourceLanguage\":\"eng_Latn\",\"targetLanguage\":\"sna_Latn\",\"segments\":["
+                + "{\"id\":\"a\",\"text\":\"x\"},{\"id\":\"a\",\"text\":\"y\"}]}");
+    }
+
+    @Test
+    @DisplayName("400 on more than 50 segments")
+    void tooManySegments() throws Exception {
+        StringBuilder sb = new StringBuilder(
+                "{\"sourceLanguage\":\"eng_Latn\",\"targetLanguage\":\"sna_Latn\",\"segments\":[");
+        for (int i = 0; i < 51; i++) {
+            if (i > 0) {
+                sb.append(',');
+            }
+            sb.append("{\"id\":\"s").append(i).append("\",\"text\":\"x\"}");
+        }
+        sb.append("]}");
+        expectBadRequest(sb.toString());
+    }
+
+    @Test
+    @DisplayName("400 on text longer than 2000 characters")
+    void textTooLong() throws Exception {
+        expectBadRequest("{\"sourceLanguage\":\"eng_Latn\",\"targetLanguage\":\"sna_Latn\",\"segments\":["
+                + "{\"id\":\"a\",\"text\":\"" + "x".repeat(2001) + "\"}]}");
+    }
+
+    @Test
+    @DisplayName("400 on malformed JSON")
+    void malformedJson() throws Exception {
+        expectBadRequest("{not json");
     }
 }
