@@ -44,7 +44,22 @@ public class SegmentTranslationService {
     private final String modelVersion;
     private final boolean mockMode;
     private final boolean rejectNegation;
+    private final boolean applyGlossary;
 
+    /** Test and library convenience: glossary corrections on, as before this switch existed. */
+    public SegmentTranslationService(
+            ModelServiceClient modelServiceClient,
+            GlossaryService glossaryService,
+            ProtectedFieldChecker protectedFieldChecker,
+            LruTranslationCache cache,
+            String modelVersion,
+            String mode,
+            boolean rejectNegation) {
+        this(modelServiceClient, glossaryService, protectedFieldChecker, cache, modelVersion, mode,
+                rejectNegation, true);
+    }
+
+    @org.springframework.beans.factory.annotation.Autowired
     public SegmentTranslationService(
             ModelServiceClient modelServiceClient,
             GlossaryService glossaryService,
@@ -52,7 +67,8 @@ public class SegmentTranslationService {
             LruTranslationCache cache,
             @Value("${linguacart.cache.model-version:nllb-200-distilled-600M-v1}") String modelVersion,
             @Value("${linguacart.model-service.mode:mock}") String mode,
-            @Value("${linguacart.translate.reject-negation:true}") boolean rejectNegation) {
+            @Value("${linguacart.translate.reject-negation:true}") boolean rejectNegation,
+            @Value("${linguacart.translate.apply-glossary:false}") boolean applyGlossary) {
         this.modelServiceClient = modelServiceClient;
         this.glossaryService = glossaryService;
         this.protectedFieldChecker = protectedFieldChecker;
@@ -60,6 +76,7 @@ public class SegmentTranslationService {
         this.modelVersion = modelVersion;
         this.mockMode = "mock".equalsIgnoreCase(mode);
         this.rejectNegation = rejectNegation;
+        this.applyGlossary = applyGlossary;
     }
 
     public Response translate(Request request) {
@@ -123,8 +140,10 @@ public class SegmentTranslationService {
             return Result.notTranslated(id, "model_error");
         }
 
-        // Glossary corrections run before the protection checks so the checks see the final text.
-        String corrected = glossaryService.applyGlossary(modelOutput);
+        // Glossary corrections (when enabled) run before the protection checks so the checks see the final text.
+        // They are OFF by default: every bundled glossary entry is an unreviewed draft, and this step
+        // rewrites text the shopper reads. Turn on linguacart.translate.apply-glossary only for a reviewed glossary.
+        String corrected = applyGlossary ? glossaryService.applyGlossary(modelOutput) : modelOutput;
 
         ProtectionResult checked = protectedFieldChecker.verifyTranslation(
                 Map.of(id, text), Map.of(id, corrected), protectedFields);
