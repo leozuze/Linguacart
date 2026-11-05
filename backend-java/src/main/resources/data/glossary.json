@@ -3,105 +3,105 @@
     "english": "salt",
     "shona": "munyu",
     "domain": "food",
-    "reviewer": "shona_speaker_1",
-    "status": "approved"
+    "reviewer": "unreviewed",
+    "status": "draft"
   },
   {
     "english": "table salt",
     "shona": "munyu wetafura",
     "domain": "food",
-    "reviewer": "shona_speaker_1",
-    "status": "approved"
+    "reviewer": "unreviewed",
+    "status": "draft"
   },
   {
     "english": "iodized table salt",
     "shona": "munyu wetafura unemhodzi",
     "domain": "food",
-    "reviewer": "shona_speaker_1",
-    "status": "approved"
+    "reviewer": "unreviewed",
+    "status": "draft"
   },
   {
     "english": "iodized",
     "shona": "unemhodzi",
     "domain": "food",
-    "reviewer": "shona_speaker_1",
-    "status": "approved"
+    "reviewer": "unreviewed",
+    "status": "draft"
   },
   {
     "english": "sugar",
     "shona": "shuga",
     "domain": "food",
-    "reviewer": "shona_speaker_1",
-    "status": "approved"
+    "reviewer": "unreviewed",
+    "status": "draft"
   },
   {
     "english": "cooking oil",
     "shona": "mafuta ekubikisa",
     "domain": "food",
-    "reviewer": "shona_speaker_1",
-    "status": "approved"
+    "reviewer": "unreviewed",
+    "status": "draft"
   },
   {
     "english": "water",
     "shona": "mvura",
     "domain": "food",
-    "reviewer": "shona_speaker_1",
-    "status": "approved"
+    "reviewer": "unreviewed",
+    "status": "draft"
   },
   {
     "english": "milk",
     "shona": "mukaka",
     "domain": "food",
-    "reviewer": "shona_speaker_1",
-    "status": "approved"
+    "reviewer": "unreviewed",
+    "status": "draft"
   },
   {
     "english": "tea",
     "shona": "tii",
     "domain": "food",
-    "reviewer": "shona_speaker_1",
-    "status": "approved"
+    "reviewer": "unreviewed",
+    "status": "draft"
   },
   {
     "english": "coffee",
     "shona": "kofi",
     "domain": "food",
-    "reviewer": "shona_speaker_1",
-    "status": "approved"
+    "reviewer": "unreviewed",
+    "status": "draft"
   },
   {
     "english": "bread",
     "shona": "chingwa",
     "domain": "food",
-    "reviewer": "shona_speaker_1",
-    "status": "approved"
+    "reviewer": "unreviewed",
+    "status": "draft"
   },
   {
     "english": "soap",
     "shona": "sipo",
     "domain": "household",
-    "reviewer": "shona_speaker_1",
-    "status": "approved"
+    "reviewer": "unreviewed",
+    "status": "draft"
   },
   {
     "english": "headphones",
     "shona": "mahedhifoni",
     "domain": "electronics",
-    "reviewer": "shona_speaker_1",
-    "status": "approved"
+    "reviewer": "unreviewed",
+    "status": "draft"
   },
   {
     "english": "shoes",
     "shona": "shangu",
     "domain": "apparel",
-    "reviewer": "shona_speaker_1",
-    "status": "approved"
+    "reviewer": "unreviewed",
+    "status": "draft"
   },
   {
     "english": "rice",
     "shona": "mupunga",
     "domain": "food",
-    "reviewer": "shona_speaker_1",
-    "status": "approved"
+    "reviewer": "unreviewed",
+    "status": "draft"
   }
 ]

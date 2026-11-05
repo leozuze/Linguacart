@@ -33,10 +33,18 @@ Response:
   "notTranslated": []
 }
 ```
-- `status`: `translated` | `partial` | `failed`
-- `notTranslated`: field names reverted to original English (failed protection check or model error). **Extension: show the English text for these and label them.**
+- `status`:
+  - `"translated"` — all fields translated successfully; `notTranslated` is empty.
+  - `"partial"` — some but not all fields were reverted to English; `notTranslated` lists them.
+  - `"failed"` — **every** field was reverted (model service down, or all protection checks failed).
+    **HTTP status is still 200** so the extension can display the page in English. 503 is reserved
+    for cases where the request cannot be processed at all (e.g. infrastructure failure before
+    processing begins).
+- `notTranslated`: field names reverted to original English (protection check failed or model error).
+  **Extension: display the English text for these fields and label them.**
 - `protectedFields` are always returned exactly as sent. Never taken from the model.
 - `fields` must be non-empty (otherwise 400).
+
 
 ### POST /search
 Request:
